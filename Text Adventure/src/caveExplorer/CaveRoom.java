@@ -104,7 +104,7 @@ public class CaveRoom {
 	 */
 	public static void setUpCaves()
 	{
-		CaveExplorer.caves = new CaveRoom[5][5];
+		CaveExplorer.caves = new CaveRoom[20][20];
 		CaveRoom[][] c = CaveExplorer.caves; // shortcut
 		for(int row = 0; row < c.length; row++)
 		{
