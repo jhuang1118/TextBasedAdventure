@@ -1,16 +1,14 @@
 package caveExplorer;
-//hello
 
 public class CaveRoom {
-	
-	private String description;
-	private String directions;//tells you which door can be used
-	private String contents;//a symbol showing you what is in the room
-		//...('X' when you are in the room)
-	private String defaultContents;//what is in the room when you aren't in the room 
+
+	private String description; 
+	private String directions; //which doors
+	private String contents; // a symbol to show room you are in
+	private String defaultContents; // what is in the room when your aren't in the room
 	
 	private CaveRoom[] borderingRooms;
-	private Door[] doors;
+	private Door[] doors; // valid 
 	
 	//constants
 	public static final int NORTH = 0;
@@ -18,188 +16,138 @@ public class CaveRoom {
 	public static final int SOUTH = 2;
 	public static final int WEST = 3;
 	
-	public CaveRoom(String description) {
+	public CaveRoom( String description) {
 		this.description = description;
 		setDefaultContents(" ");
 		contents = defaultContents;
-		//NOTE: Arrays are instantiated with 'null' values
 		borderingRooms = new CaveRoom[4];
 		doors = new Door[4];
 		setDirections();
 	}
 
 	/**
-	 * for every Door in doors[] that is not null,
-	 * this method appends a String to "directions" describing the door and where it is. For example,
-	 * 		There is a (passage) to (the North)
-	 * 		There is a (passage) to (the East)
-	 * If there are no doors that are not null, this sets directions to:
-	 * 		"There is no way out. You are trapped in this room"
+	 * for every Door in doors[] that is not null, 
+	 * this method appends a String describing the door and 
+	 * where it is ie: There is a (passage to the north);
 	 */
 	public void setDirections() {
 		directions = "";
-		//hint: to check if a door is null, use:
-		//doors[0] == null OR USE doors[0] != null
-		boolean doorFound = false;
-		for(int i = 0; i < doors.length; i++) {
-			if(doors[i] != null){
-				doorFound = true;
-				directions += "There is a " + doors[i].getDescription() 
-				+ " to the " + toDirection(i) + ". " + doors[i].getDetails() + "\n";
-				System.out.println(directions);
+		boolean doorFound = true;
+		for(int i =0; i< this.doors.length; i++)
+		{
+			if(this.doors[i] != null)
+			{
+				doorFound = false;
+				this.directions += "There is a "+ this.doors[i].getDescription()+" to "+ toDirection(i)+". "+this.doors[i].getDetails() + "/n"; 
 			}
 		}
-		directions = "You're trapped in this room!";
-		System.out.println(directions);
 	}
 	
+	public Door getDoor(int direction) {
+		return doors[direction];
+	}
+
 	/**
 	 * converts an int to a direction:
-	 * 		0 -> "the North:
-	 * 		1 -> "the East"
-	 * hint: complete this method without using an if statement 
+	 * 0 = north
+	 * 1 = east
 	 * @param dir
 	 * @return
 	 */
-	public static String toDirection(int dir) {
-		String[] direction = {"the North", "the East", "the South", "the West"};
-		//NOTE: when I say "no long if-else" statements,
-		//this is how you should be thinking
-		return direction[dir];
+	public static String toDirection(int dir)
+	{
+		String[] directions = {"the North", "the East", "the South", "the West"};
+		//NOTE: When i sat "no long if-else stat. 
+		// this is how you should be thinking
+		return directions[dir];
 	}
 	
-	public void enter() {
-		contents = "X";
+	public void enter()
+	{
+		this.contents = "X";
 	}
 	
-	public void leave() {
-		contents = defaultContents;
+	public void leave()
+	{
+		this.contents = defaultContents;
 	}
 	
-	/**
-	 * This is how we join rooms together.
-	 * It gives this room access to anotherRoom and vice-versa
-	 * It also puts the door between both rooms
-	 * @param direction
-	 * @param anotherRoom
-	 * @param door
-	 */
-	public void setConnection(int direction, CaveRoom anotherRoom, Door door) {
-		addRoom(direction,anotherRoom,door);
+	public void setConnection(int direction, CaveRoom anotherRoom, Door door)
+	{
+		addRoom(direction, anotherRoom, door);
 		anotherRoom.addRoom(oppositeDirection(direction), this, door);
 	}
 	
 	public void addRoom(int dir, CaveRoom caveRoom, Door door) {
 		borderingRooms[dir] = caveRoom;
 		doors[dir] = door;
-		setDirections();//updates the directions 
+		setDirections(); //update Directions
 	}
 	
-	public void interpretInput(String input) {
-		while(!isValid(input)) {
-			printValidMoves();
+	public void interpretInput(String input)
+	{
+		while(!isValid(input))
+		{
+			System.out.println("You can only enter 'w', 'a', 's', or 'd'");
 			input = CaveExplorer.in.nextLine();
 		}
-		int direction = validMoves().indexOf(input);
-		if(direction < 4) {
-			/*
-			 * convert w,a,s,d to directions 0,3,2,1
-			 */
-			goToRoom(direction);
-		}else {
-			performAction(direction);
-		}
-		
-		
+		int direction = "wdsa".indexOf(input);
+		goToRoom(direction);
+	}
+	
+	private boolean isValid(String input) {
+		return "wdsa".indexOf(input.toLowerCase()) > -1 && input.length() == 1;
 	}
 	
 	/**
-	 * override to create response to keys other than wdsa
-	 * @param direction
+	 * Determine the size of the cave:
 	 */
-	public void performAction(int direction) {
-		CaveExplorer.print("That key does nothing.");
-		
-	}
-
-	/**
-	 * Override to change description of possible moves
-	 */
-	public void printValidMoves() {
-		System.out.println("You can only enter 'w', 'a', 's', or 'd'.");
-		
-	}
-
-	/**
-	 * THIS IS WHERE YOU EDIT YOUR CAVES 
-	 */
-	public static void setUpCaves() {
-		//1. Determine size of caves
+	public static void setUpCaves()
+	{
 		CaveExplorer.caves = new CaveRoom[5][5];
-		CaveRoom[][] c = CaveExplorer.caves;//create a shortcut for accessing CaveExplorer.caves
-		//2. Populate with default caves
-		for(int row = 0; row < c.length; row++) {
-			for(int col = 0; col < c[row].length; col++) {
-				c[row][col] = new CaveRoom("This cave has coordinates " + row + ", " + col);
+		CaveRoom[][] c = CaveExplorer.caves; // shortcut
+		for(int row = 0; row < c.length; row++)
+		{
+			for(int col = 0; col < c[row].length; col ++)
+			{
+				c[row][col] = new CaveRoom("This has coordinates "+ row +", " + col+".");
 			}
 		}
-		//3. Replace some default rooms with custom rooms (SAVE FOR LATER)
+		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		
-		//4. Set starting room
+		//Set Starting Room
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
 		
-		//5. Set up doors 
+		//Set up doors
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
-		c[1][1].setConnection(EAST, c[1][2], new Door());
 	}
 	
-	/**
-	 * override to add more moves
-	 * @return
-	 */
-	public String validMoves() {
-		return "wdsa";
-	}
-	
-	/**
-	 * returns true if w,a,s, or d is the input (NO IF STATEMENTS)
-	 * @param input
-	 * @return
-	 */
-	private boolean isValid(String input) {
-		return validMoves().indexOf(input) != -1 && input.length() == 1;
-	}
-
-	public void goToRoom(int direction) {
-		//make sure that there is a room to go to:
-		if(borderingRooms[direction] != null && doors[direction] != null &&
-				doors[direction].isOpen()){
-			CaveExplorer.currentRoom.leave();
-			CaveExplorer.currentRoom = borderingRooms[direction];
+	public void goToRoom(int dir)
+	{
+		if(borderingRooms[dir] != null && doors[dir] != null && doors[dir].isOpen())
+		{
+			CaveExplorer.currentRoom.leave(); 
+			CaveExplorer.currentRoom = borderingRooms[dir];
+			CaveExplorer.currentRoom.enter();
 			CaveExplorer.inventory.updateMap();
-		}else {
-			//print red text
-			System.err.println("You can't do that!");
+		}
+		else
+		{
+			System.err.println("You can't do that");
 		}
 	}
-	
-	/**
-	 * returns the OPPOSITE direction
-	 * 		oD(0) returns 2
-	 * @param dir
-	 * @return
-	 */
+
 	public static int oppositeDirection(int dir) {
-		return (dir + 2) % 4;
-	}
-	
-	public void setDefaultContents(String defaultContents) {
-		this.defaultContents = defaultContents;
+		return (dir+2)%4;
 	}
 
 	public String getDescription() {
 		return description;
+	}
+
+	public void setDefaultContents(String defaultContents) {
+		this.defaultContents = defaultContents;
 	}
 
 	public void setDescription(String description) {
@@ -220,10 +168,6 @@ public class CaveRoom {
 
 	public void setContents(String contents) {
 		this.contents = contents;
-	}
-
-	public Door getDoor(int direction) {
-		return doors[direction];
 	}
 
 }
