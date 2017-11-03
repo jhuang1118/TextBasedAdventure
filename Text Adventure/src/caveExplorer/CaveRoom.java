@@ -130,7 +130,7 @@ public class CaveRoom {
 			for(int j = 0; j < c.length; j++) {
 				c[i][j].setConnection(SOUTH, c[i+1][j], new Door());
 			}
-	}
+		}
 	}
 	
 	public void goToRoom(int dir)
