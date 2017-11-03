@@ -9,13 +9,11 @@ public class CaveExplorer {
 	public static CaveRoom currentRoom;
 	public static Inventory inventory;
 	public static boolean playing = true;
+	public static NPC[] npcs;
 	
 	public static void main(String[] args) {
 		in = new Scanner(System.in);
-		CaveRoom.setUpCaves(); // creates caves and starting room
-		caves[0][20] = new JasonJason(null);
-		caves[20][0] = new JohnsonDaniel(null);
-		caves[9][10] = new DavidEthan(null);
+		CaveRoom.setUpCaves(); // creates caves andstarting room
 		inventory = new Inventory();
 		startExploring();
 	}
@@ -26,11 +24,21 @@ public class CaveExplorer {
 	private static void startExploring() {
 		while(playing)
 		{
+			moveNPCs();
 			print(inventory.getDescription());
+			System.out.println("You have $"+inventory.getCash());
 			print(currentRoom.getDescription());
 			print(currentRoom.getDirections());
 			print(" what would you like to do?");
 			currentRoom.interpretInput(in.nextLine());
 		}
 	}
+	private static void moveNPCs() {
+		for(NPC n: npcs)
+		{
+			n.autoMove();
+		}
+		inventory.updateMap();
+	}
+
 }
