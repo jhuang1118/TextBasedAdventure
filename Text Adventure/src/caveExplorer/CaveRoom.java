@@ -38,7 +38,7 @@ public class CaveRoom {
 			if(this.doors[i] != null)
 			{
 				doorFound = false;
-				this.directions += "There is a "+ this.doors[i].getDescription()+" to "+ toDirection(i)+". "+this.doors[i].getDetails() + "/n"; 
+				this.directions += "There is a "+ this.doors[i].getDescription()+" to "+ toDirection(i)+". "+this.doors[i].getDetails(); 
 			}
 		}
 	}
@@ -86,43 +86,102 @@ public class CaveRoom {
 	
 	public void interpretInput(String input)
 	{
+		
 		while(!isValid(input))
 		{
-			System.out.println("You can only enter 'w', 'a', 's', or 'd'");
+			printValidMoves();
+			
 			input = CaveExplorer.in.nextLine();
 		}
-		int direction = "wdsa".indexOf(input);
-		goToRoom(direction);
+		int direction = validMoves().indexOf(input);
+		if(direction<4)
+		{
+			goToRoom(direction);
+		}
+		else
+		{
+			performAction(direction);
+		}
+		
 	}
 	
-	private boolean isValid(String input) {
-		return "wdsa".indexOf(input.toLowerCase()) > -1 && input.length() == 1;
+	/**
+	 * Override to create response to keys other than wdsa
+	 * @param direction
+	 */
+	public void performAction(int direction) {
+		CaveExplorer.print("that key does nothing.");
+		
+	}
+
+	/**
+	 * Override to change description of possible moves
+	 */
+	public void printValidMoves() {
+		System.out.println("You can only enter 'w', 'a', 's', or 'd'");
+	}
+
+	public boolean isValid(String input) {
+		return validMoves().indexOf(input.toLowerCase()) > -1 && input.length() == 1;
 	}
 	
+	public String validMoves()
+	{
+		return "wdsa"; 
+	}
 	/**
 	 * Determine the size of the cave:
 	 */
 	public static void setUpCaves()
 	{
-		CaveExplorer.caves = new CaveRoom[20][20];
+		CaveExplorer.caves = new NPCRoom[5][5];
 		CaveRoom[][] c = CaveExplorer.caves; // shortcut
 		for(int row = 0; row < c.length; row++)
 		{
 			for(int col = 0; col < c[row].length; col ++)
 			{
-				c[row][col] = new CaveRoom("This has coordinates "+ row +", " + col+".");
+				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
 			}
 		}
+		c[0][0] = new TreasureRoom("");
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
-		
+		NPC testNPC = new NPC();
+		Princess testPNPC = new Princess();
+		CaveExplorer.npcs = new NPC[2];
+		CaveExplorer.npcs[0] = testNPC;
+		CaveExplorer.npcs[1] = testPNPC;
+		testNPC.setPosition(3,4);
+		testPNPC.setPosition(c.length-1, c[c.length-1].length-1);
 		//Set Starting Room
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
 		
 		//Set up doors
-		c[0][1].setConnection(SOUTH, c[1][1], new Door());
+		setConnectionForAll();
 	}
 	
+	private static void setConnectionForAll() {
+		CaveRoom[][] c = CaveExplorer.caves;
+		for(int row = 0; row< c.length-1; row++)
+		{
+			for(int col = 0; col < c.length-1; col++)
+			{
+				c[row][col].setConnection(SOUTH, c[row+1][col], new Door());
+				c[row][col].setConnection(EAST, c[row][col+1], new Door());
+			}
+		}
+		
+		for(int i = 0; i<c[c.length-1].length-1; i++)
+		{
+			c[c.length-1][i].setConnection(EAST, c[c.length-1][i+1], new Door());
+		}
+		
+		for(int i = 0; i< c.length-1; i++)
+		{
+			c[i][c[i].length-1].setConnection(SOUTH, c[i][c[i].length-1], new Door());
+		}
+	}
+
 	public void goToRoom(int dir)
 	{
 		if(borderingRooms[dir] != null && doors[dir] != null && doors[dir].isOpen())
