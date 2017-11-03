@@ -3,10 +3,18 @@ package caveExplorer;
 public class Inventory {
 	
 	private String map;
+	private int cash;
 	
 	public Inventory()
 	{
+		cash = 0;
 		updateMap();
+	}
+	public int getCash() {
+		return cash;
+	}
+	public void setCash(int cash) {
+		this.cash = cash;
 	}
 	public void updateMap() {
 		map = " ";
@@ -62,6 +70,7 @@ public class Inventory {
 				map += text +"\n";
 			}
 		}
+		
 	}
 
 	public String getDescription()
