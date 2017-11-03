@@ -143,15 +143,11 @@ public class CaveRoom {
 				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
 			}
 		}
-		c[0][0] = new TreasureRoom("");
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		NPC testNPC = new NPC();
-		Princess testPNPC = new Princess();
-		CaveExplorer.npcs = new NPC[2];
+		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = testNPC;
-		CaveExplorer.npcs[1] = testPNPC;
 		testNPC.setPosition(3,4);
-		testPNPC.setPosition(c.length-1, c[c.length-1].length-1);
 		//Set Starting Room
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
