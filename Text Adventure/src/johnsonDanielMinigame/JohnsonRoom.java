@@ -8,5 +8,5 @@ public class JohnsonRoom extends NPCRoom {
 		super(description);
 		// TODO Auto-generated constructor stub
 	}
-	//
+	
 }
