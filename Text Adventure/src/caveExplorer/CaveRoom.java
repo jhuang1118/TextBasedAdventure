@@ -40,7 +40,7 @@ public class CaveRoom {
 			if(this.doors[i] != null)
 			{
 				doorFound = false;
-				this.directions += "There is a "+ this.doors[i].getDescription()+" to "+ toDirection(i)+". "+this.doors[i].getDetails() + "/n"; 
+				this.directions += "There is a "+ this.doors[i].getDescription()+" to "+ toDirection(i)+". "+this.doors[i].getDetails() + "\n"; 
 			}
 		}
 	}
@@ -119,12 +119,20 @@ public class CaveRoom {
 		c[0][0] = new DavidRoomFrontEnd("This is the bank");
 		c[0][1] = new DavidRoomFrontEnd("This is the bank");
 		//Set Starting Room
-		CaveExplorer.currentRoom = c[0][1];
+		CaveExplorer.currentRoom = c[(int)(Math.random() * c.length)][(int)(Math.random() * c.length)];
 		CaveExplorer.currentRoom.enter();
 		
 		//Set up doors
-		c[0][1].setConnection(SOUTH, c[1][1], new Door());
-		c[0][2].setConnection(SOUTH, c[1][1], new Door());
+
+		/*c[0][1].setConnection(SOUTH, c[1][1], new Door());
+		c[1][1].setConnection(SOUTH, c[2][1], new Door());
+		c[2][1].setConnection(SOUTH, c[3][1], new Door());
+		c[3][1].setConnection(SOUTH, c[4][1], new Door());
+		c[4][1].setConnection(SOUTH, c[5][1], new Door());
+		c[5][1].setConnection(SOUTH, c[6][1], new Door());
+		c[6][1].setConnection(SOUTH, c[7][1], new Door());
+		c[7][1].setConnection(SOUTH, c[8][1], new Door());
+		c[8][1].setConnection(SOUTH, c[9][1], new Door()); */
 	}
 	
 	public void goToRoom(int dir)
