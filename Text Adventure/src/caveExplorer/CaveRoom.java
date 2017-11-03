@@ -116,14 +116,15 @@ public class CaveRoom {
 			}
 		}
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
-		c[9][10] = new DavidRoomFrontEnd("This is the bank");
-		c[9][11] = new DavidRoomFrontEnd("This is the bank");
+		c[0][0] = new DavidRoomFrontEnd("This is the bank");
+		c[0][1] = new DavidRoomFrontEnd("This is the bank");
 		//Set Starting Room
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
 		
 		//Set up doors
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
+		c[0][2].setConnection(SOUTH, c[1][1], new Door());
 	}
 	
 	public void goToRoom(int dir)
