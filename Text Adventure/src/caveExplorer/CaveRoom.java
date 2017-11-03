@@ -1,7 +1,7 @@
 package caveExplorer;
 
 public class CaveRoom {
-
+	//comment
 	private String description; 
 	private String directions; //which doors
 	private String contents; // a symbol to show room you are in
