@@ -1,5 +1,7 @@
 package caveExplorer;
 
+import ethanDavidMinigame.DavidRoomFrontEnd;
+
 public class CaveRoom {
 	//comment
 	private String description; 
@@ -104,7 +106,7 @@ public class CaveRoom {
 	 */
 	public static void setUpCaves()
 	{
-		CaveExplorer.caves = new CaveRoom[20][20];
+		CaveExplorer.caves = new CaveRoom[15][15];
 		CaveRoom[][] c = CaveExplorer.caves; // shortcut
 		for(int row = 0; row < c.length; row++)
 		{
@@ -114,7 +116,8 @@ public class CaveRoom {
 			}
 		}
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
-		
+		c[9][10] = new DavidRoomFrontEnd("This is the bank");
+		c[9][11] = new DavidRoomFrontEnd("This is the bank");
 		//Set Starting Room
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();

@@ -2,9 +2,9 @@ package ethanDavidMinigame;
 
 import caveExplorer.NPCRoom;
 
-public class DavidRoom extends NPCRoom {
+public class DavidRoomFrontEnd extends NPCRoom {
 
-	public DavidRoom(String description) {
+	public DavidRoomFrontEnd(String description) {
 		super(description);
 		// TODO Auto-generated constructor stub
 	}
