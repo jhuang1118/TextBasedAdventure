@@ -1,6 +1,7 @@
 package caveExplorer;
 
 import ethanDavidMinigame.DavidRoomFrontEnd;
+import ethanDavidMinigame.EthanRoomBackEnd;
 
 public class CaveRoom {
 	//comment
@@ -118,21 +119,18 @@ public class CaveRoom {
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		c[0][0] = new DavidRoomFrontEnd("This is the bank");
 		c[0][1] = new DavidRoomFrontEnd("This is the bank");
+		c[9][5] = new EthanRoomBackEnd("Vault located here");
 		//Set Starting Room
 		CaveExplorer.currentRoom = c[(int)(Math.random() * c.length)][(int)(Math.random() * c.length)];
 		CaveExplorer.currentRoom.enter();
 		
 		//Set up doors
 
-		/*c[0][1].setConnection(SOUTH, c[1][1], new Door());
-		c[1][1].setConnection(SOUTH, c[2][1], new Door());
-		c[2][1].setConnection(SOUTH, c[3][1], new Door());
-		c[3][1].setConnection(SOUTH, c[4][1], new Door());
-		c[4][1].setConnection(SOUTH, c[5][1], new Door());
-		c[5][1].setConnection(SOUTH, c[6][1], new Door());
-		c[6][1].setConnection(SOUTH, c[7][1], new Door());
-		c[7][1].setConnection(SOUTH, c[8][1], new Door());
-		c[8][1].setConnection(SOUTH, c[9][1], new Door()); */
+		for(int i = 0; i < c.length-1; i++) {
+			for(int j = 0; j < c.length; j++) {
+				c[i][j].setConnection(SOUTH, c[i+1][j], new Door());
+			}
+	}
 	}
 	
 	public void goToRoom(int dir)
