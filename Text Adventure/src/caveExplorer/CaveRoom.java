@@ -117,9 +117,6 @@ public class CaveRoom {
 				c[row][col] = new DavidRoomFrontEnd("You are currently in the bank." + "\n" 
 						+ "You are located at "+ row +", " + col+"." + "\n" +
 						 "GET TO THE VAULT!");
-				if(c[row][col] == c[9][5]) {
-					c[9][5] = new EthanRoomBackEnd("You are at the Vault. Hurry, press 'e' to enter!");
-				}
 			}
 		}
 		//Set Starting Room

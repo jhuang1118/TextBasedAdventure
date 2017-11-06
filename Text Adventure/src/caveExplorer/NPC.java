@@ -19,9 +19,8 @@ public class NPC {
 		this.floor = CaveExplorer.caves;
 		this.activeDescription = "There is a person standing in the room, waiting to talk to you. Press 'e' to talk";
 		this.inactiveDescription = "The person you spoke to earlier is standing here.";
-		CaveRoom[][] c = CaveExplorer.caves;
-		this.currentCol = (int)(Math.random() * c.length/2); 
-		this.currentRow = (int)(Math.random() * c.length/2);
+		this.currentCol = -1; 
+		this.currentRow = -1;
 		currentRoom = null; 
 		active = true;
 	}
@@ -95,7 +94,7 @@ public class NPC {
 		newPosition[1] = currentCol + possibleMoves[index][1];
 		while(currentRoom.getDoor(index) == null || !(CaveExplorer.caves[newPosition[0]][newPosition[1]] instanceof NPCRoom))
 		{
-			index = (int) (Math.random() *possibleMoves.length);
+			index = (int) (Math.random() * possibleMoves.length);
 			newPosition[0] = currentRow + possibleMoves[index][0];
 			newPosition[1] = currentCol + possibleMoves[index][1];
 		}
