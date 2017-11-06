@@ -131,6 +131,7 @@ public class CaveRoom {
 				c[i][j].setConnection(SOUTH, c[i+1][j], new Door());
 			}
 		}
+		
 	}
 	
 	public void goToRoom(int dir)
