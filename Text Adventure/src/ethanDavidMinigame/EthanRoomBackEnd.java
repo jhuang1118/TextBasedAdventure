@@ -9,13 +9,13 @@ public class EthanRoomBackEnd extends NPCRoom{
 		// TODO Auto-generated constructor stub
 	}
 	private boolean isValid(String input) {
-		return "wdsa".indexOf(input.toLowerCase()) > -1 && input.length() == 1;
+		return validMoves().indexOf(input.toLowerCase()) > -1 && input.length() == 1;
 	}
 	public void interpretInput(String input)
 	{
 		while(!isValid(input))
 		{
-			System.out.println("noopoooooooooop");
+			printValidMoves();
 			input = CaveExplorer.in.nextLine();
 		}
 		int direction = "wdsa".indexOf(input);
