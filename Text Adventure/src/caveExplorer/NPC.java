@@ -19,8 +19,9 @@ public class NPC {
 		this.floor = CaveExplorer.caves;
 		this.activeDescription = "There is a person standing in the room, waiting to talk to you. Press 'e' to talk";
 		this.inactiveDescription = "The person you spoke to earlier is standing here.";
-		this.currentCol = -1; 
-		this.currentRow = -1;
+		CaveRoom[][] c = CaveExplorer.caves;
+		this.currentCol = (int)(Math.random() * c.length/2); 
+		this.currentRow = (int)(Math.random() * c.length/2);
 		currentRoom = null; 
 		active = true;
 	}
