@@ -189,7 +189,16 @@ public class CaveRoom {
 			CaveExplorer.currentRoom.leave(); 
 			CaveExplorer.currentRoom = borderingRooms[dir];
 			CaveExplorer.currentRoom.enter();
-			CaveExplorer.inventory.updateMap();
+			if(borderingRooms[dir] instanceof JasonZRoom)
+			{
+				borderingRooms[dir].
+				CaveExplorer.inventory.updateMap(borderingRooms[dir].newMap);
+			}
+			else
+			{
+				CaveExplorer.inventory.updateMap(CaveExplorer.caves);
+			}
+			
 		}
 		else
 		{

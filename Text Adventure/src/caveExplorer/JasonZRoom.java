@@ -21,6 +21,7 @@ public class JasonZRoom extends NPCRoom {
 		this.col = j;
 		borderingRooms = new NPCRoom[4];
 		this.doors = new Door[4];
+		createNewMap();
 		setDirections();
 	}
 	/**
@@ -62,8 +63,11 @@ public class JasonZRoom extends NPCRoom {
 				newMap[bRow][bCol] = c[row][col];
 				bCol ++;
 			}
+			bCol = 0;
 			bRow ++;
 		}
+		
+		CaveExplorer.inventory.updateMap(newMap);
 	}
 	public void performAction(int direction) {
 		if(direction == 4)

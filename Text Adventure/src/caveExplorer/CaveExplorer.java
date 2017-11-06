@@ -38,7 +38,7 @@ public class CaveExplorer {
 		{
 			n.autoMove();
 		}
-		inventory.updateMap();
+		inventory.updateMap(caves);
 	}
 
 }

@@ -12,7 +12,7 @@ public class Inventory {
 	public Inventory()
 	{
 		cash = 0;
-		updateMap();
+		updateMap(CaveExplorer.caves);
 	}
 	public int getCash() {
 		return cash;
@@ -20,15 +20,15 @@ public class Inventory {
 	public void setCash(int cash) {
 		this.cash = cash;
 	}
-	public void updateMap() {
+	public void updateMap(CaveRoom[][] caves) {
 		map = " ";
 		// make for. line across top:
-		for(int i = 0; i< CaveExplorer.caves[0].length -1; i++)
+		for(int i = 0; i< caves[0].length -1; i++)
 		{
 			map += "____";//4
 		}
 		map +="___ \n";//3
-		for(CaveRoom[] row: CaveExplorer.caves)
+		for(CaveRoom[] row: caves)
 		{
 			for(int i = 0; i< 3; i++)
 			{
