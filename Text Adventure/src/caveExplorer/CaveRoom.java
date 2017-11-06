@@ -117,7 +117,8 @@ public class CaveRoom {
 			{
 				c[row][col] = new DavidRoomFrontEnd("You are currently in the bank." + "\n" 
 						+ "You are located at "+ row +", " + col+"." + "\n" +
-						 "GET TO THE VAULT!");
+						 "GET TO THE VAULT! (Avoid the police! 'P')"
+						 + "\n");
 			}
 		}
 		c[5][5] = new EthanRoomBackEnd("sdkjhaskd");
@@ -125,7 +126,7 @@ public class CaveRoom {
 		CaveExplorer.currentRoom = c[(int)(Math.random() * c.length/2)][(int)(Math.random() * c.length/2)];
 		CaveExplorer.currentRoom.enter();
 		setConnectionForAll();
-		//Set up doors
+		//Set up doors  
 	}
 		private static void setConnectionForAll() {
 			CaveRoom[][] c = CaveExplorer.caves;
