@@ -1,8 +1,8 @@
 package jasonYJasonZMinigame;
 
-import caveExplorer.JasonJason;
+import caveExplorer.JasonZRoom;
 
-public class JasonZBackend extends JasonJason {
+public class JasonZBackend extends JasonZRoom {
 
 	//set guns manually
 	public final static String[][] GUNS = {};

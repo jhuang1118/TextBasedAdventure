@@ -34,4 +34,5 @@ public class JasonZGuns {
 	{
 		this.ammo = this.maxAmmo;
 	}
+	
 }

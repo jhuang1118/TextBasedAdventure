@@ -1,9 +1,13 @@
 package caveExplorer;
 
+import jasonYJasonZMinigame.JasonZGuns;
+
 public class Inventory {
 	
 	private String map;
 	private int cash;
+	private String[] defaultGuns = {"M16", "0"};
+	JasonZGuns currentGun = new JasonZGuns(defaultGuns);
 	
 	public Inventory()
 	{
