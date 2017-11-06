@@ -123,12 +123,28 @@ public class CaveRoom {
 		//Set Starting Room
 		CaveExplorer.currentRoom = c[(int)(Math.random() * c.length)][(int)(Math.random() * c.length)];
 		CaveExplorer.currentRoom.enter();
-		
+		setConnectionforAll;
 		//Set up doors
 
-		for(int i = 0; i < c.length-1; i++) {
-			for(int j = 0; j < c.length; j++) {
-				c[i][j].setConnection(SOUTH, c[i+1][j], new Door());
+		private static void setConnectionForAll() {
+			CaveRoom[][] c = CaveExplorer.caves;
+			for(int row = 0; row< c.length-1; row++)
+			{
+				for(int col = 0; col < c.length-1; col++)
+				{
+					c[row][col].setConnection(SOUTH, c[row+1][col], new Door());
+					c[row][col].setConnection(EAST, c[row][col+1], new Door());
+				}
+			}
+			
+			for(int i = 0; i<c[c.length-1].length-1; i++)
+			{
+				c[c.length-1][i].setConnection(EAST, c[c.length-1][i+1], new Door());
+			}
+			
+			for(int i = 0; i< c.length-1; i++)
+			{
+				c[i][c[i].length-1].setConnection(SOUTH, c[i][c[i].length-1], new Door());
 			}
 		}
 		
