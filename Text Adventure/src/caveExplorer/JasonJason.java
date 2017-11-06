@@ -141,9 +141,11 @@ public class JasonJason extends NPCRoom {
 		{
 			for(int col = 0; col < c[row].length; col ++)
 			{
-				c[row][col] = new JasonJason("This has coordinates "+ row +", " + col+".");
+				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
 			}
 		}
+		
+		c[0][2] = new JasonJason("TEST ROOM");
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		NPC testNPC = new NPC();
 		CaveExplorer.npcs = new NPC[2];
