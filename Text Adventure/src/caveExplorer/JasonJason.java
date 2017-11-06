@@ -141,7 +141,7 @@ public class JasonJason extends NPCRoom {
 		{
 			for(int col = 0; col < c[row].length; col ++)
 			{
-				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
+				c[row][col] = new JasonJason("This has coordinates "+ row +", " + col+".");
 			}
 		}
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
