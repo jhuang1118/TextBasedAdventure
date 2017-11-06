@@ -109,19 +109,21 @@ public class CaveRoom {
 	{
 		CaveExplorer.caves = new CaveRoom[10][10];
 		CaveRoom[][] c = CaveExplorer.caves; // shortcut
+		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		for(int row = 0; row < c.length; row++)
 		{
 			for(int col = 0; col < c[row].length; col ++)
 			{
-				c[row][col] = new CaveRoom("This has coordinates "+ row +", " + col+".");
+				c[row][col] = new DavidRoomFrontEnd("You are currently in the bank." + "\n" 
+						+ "You are located at "+ row +", " + col+"." + "\n" +
+						 "GET TO THE VAULT!");
+				if(c[row][col] == c[9][5]) {
+					c[9][5] = new EthanRoomBackEnd("You are at the Vault. Hurry, press 'e' to enter!");
+				}
 			}
 		}
-		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
-		c[0][0] = new DavidRoomFrontEnd("This is the bank");
-		c[0][1] = new DavidRoomFrontEnd("This is the bank");
-		c[9][5] = new EthanRoomBackEnd("Vault located here");
 		//Set Starting Room
-		CaveExplorer.currentRoom = c[(int)(Math.random() * c.length)][(int)(Math.random() * c.length)];
+		CaveExplorer.currentRoom = c[(int)(Math.random() * c.length/2)][(int)(Math.random() * c.length/2)];
 		CaveExplorer.currentRoom.enter();
 		setConnectionForAll();
 		//Set up doors
