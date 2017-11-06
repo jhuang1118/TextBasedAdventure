@@ -110,6 +110,7 @@ public class CaveRoom {
 		CaveExplorer.caves = new CaveRoom[10][10];
 		CaveRoom[][] c = CaveExplorer.caves; // shortcut
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
+		c[5][5] = new EthanRoomBackEnd("sdkjhaskd");
 		for(int row = 0; row < c.length; row++)
 		{
 			for(int col = 0; col < c[row].length; col ++)
@@ -119,6 +120,7 @@ public class CaveRoom {
 						 "GET TO THE VAULT!");
 			}
 		}
+		c[5][5] = new EthanRoomBackEnd("sdkjhaskd");
 		//Set Starting Room
 		CaveExplorer.currentRoom = c[(int)(Math.random() * c.length/2)][(int)(Math.random() * c.length/2)];
 		CaveExplorer.currentRoom.enter();
@@ -156,6 +158,7 @@ public class CaveRoom {
 			CaveExplorer.currentRoom = borderingRooms[dir];
 			CaveExplorer.currentRoom.enter();
 			CaveExplorer.inventory.updateMap();
+			CaveExplorer.inventory.getMoney();
 		}
 		else
 		{

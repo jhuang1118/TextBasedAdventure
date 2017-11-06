@@ -1,8 +1,6 @@
 package ethanDavidMinigame;
 
 import caveExplorer.CaveExplorer;
-import caveExplorer.CaveRoom;
-import caveExplorer.NPC;
 import caveExplorer.NPCRoom;
 
 public class EthanRoomBackEnd extends NPCRoom{
@@ -10,6 +8,20 @@ public class EthanRoomBackEnd extends NPCRoom{
 		super(description);
 		// TODO Auto-generated constructor stub
 	}
+	private boolean isValid(String input) {
+		return "wdsa".indexOf(input.toLowerCase()) > -1 && input.length() == 1;
+	}
+	public void interpretInput(String input)
+	{
+		while(!isValid(input))
+		{
+			System.out.println("noopoooooooooop");
+			input = CaveExplorer.in.nextLine();
+		}
+		int direction = "wdsa".indexOf(input);
+		goToRoom(direction);
+	}
+	
 		public void printValidMoves() {
 			System.out.println("You can only enter 'w', 'a', 's', or 'd' to move " + 
 					"or you can press 'e' to interact.");
@@ -40,6 +52,6 @@ public class EthanRoomBackEnd extends NPCRoom{
 		}
 		
 		public String getDescription() {
-			return "You have reached the vault. Enter using 'e'";
+			return "You have reached the vault. Interact using 'e'";
 		}
 	}
