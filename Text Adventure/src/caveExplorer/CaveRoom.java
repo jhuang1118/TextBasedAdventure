@@ -123,9 +123,9 @@ public class CaveRoom {
 		//Set Starting Room
 		CaveExplorer.currentRoom = c[(int)(Math.random() * c.length)][(int)(Math.random() * c.length)];
 		CaveExplorer.currentRoom.enter();
-		setConnectionforAll;
+		setConnectionForAll();
 		//Set up doors
-
+	}
 		private static void setConnectionForAll() {
 			CaveRoom[][] c = CaveExplorer.caves;
 			for(int row = 0; row< c.length-1; row++)
@@ -148,7 +148,6 @@ public class CaveRoom {
 			}
 		}
 		
-	}
 	
 	public void goToRoom(int dir)
 	{
