@@ -145,7 +145,7 @@ public class CaveRoom {
 			for(int i = 0; i< c.length-1; i++)
 			{
 				c[i][c[i].length-1].setConnection(SOUTH, c[i][c[i].length-1], new Door());
-			}
+			} 
 		}
 		
 	
