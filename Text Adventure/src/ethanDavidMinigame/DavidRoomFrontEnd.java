@@ -1,5 +1,7 @@
 package ethanDavidMinigame;
 
+import caveExplorer.CaveExplorer;
+import caveExplorer.CaveRoom;
 import caveExplorer.NPCRoom;
 
 public class DavidRoomFrontEnd extends NPCRoom {
@@ -8,5 +10,4 @@ public class DavidRoomFrontEnd extends NPCRoom {
 		super(description);
 		// TODO Auto-generated constructor stub
 	}
-
 }
