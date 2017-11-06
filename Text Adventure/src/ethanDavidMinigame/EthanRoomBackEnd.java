@@ -39,6 +39,6 @@ public class EthanRoomBackEnd extends NPCRoom{
 		}
 		
 		public String getDescription() {
-			return "You have entered the vault. Enter using 'e'";
+			return "You have reached the vault. Enter using 'e'";
 		}
 	}
