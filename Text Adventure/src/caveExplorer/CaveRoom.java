@@ -134,7 +134,7 @@ public class CaveRoom {
 	 */
 	public static void setUpCaves()
 	{
-		CaveExplorer.caves = new NPCRoom[5][5];
+		CaveExplorer.caves = new NPCRoom[20][20];
 		CaveRoom[][] c = CaveExplorer.caves; // shortcut
 		for(int row = 0; row < c.length; row++)
 		{
@@ -143,6 +143,7 @@ public class CaveRoom {
 				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
 			}
 		}
+		c[0][2] = new JasonJason("TEST ROOM", 0, 2);
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		NPC testNPC = new NPC();
 		CaveExplorer.npcs = new NPC[2];

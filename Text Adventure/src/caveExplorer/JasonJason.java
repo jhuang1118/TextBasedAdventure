@@ -6,6 +6,9 @@ public class JasonJason extends NPCRoom {
 	private String directions; //which doors
 	private String contents; // a symbol to show room you are in
 	private String defaultContents; // what is in the room when your aren't in the room
+	private int row = 0;
+	private int col = 0;
+	
 	
 	private CaveRoom[] borderingRooms;
 	private Door[] doors; // valid 
@@ -16,13 +19,14 @@ public class JasonJason extends NPCRoom {
 	public static final int SOUTH = 2;
 	public static final int WEST = 3;
 	
-	public JasonJason( String description) {
+	public JasonJason( String description, int row, int col) {
 		super(description);
 		this.description = description;
-		setDefaultContents(" ");
-		contents = defaultContents;
-		borderingRooms = new CaveRoom[4];
+		setDefaultContents("S");
+		borderingRooms = new NPCRoom[4];
 		doors = new Door[4];
+		this.row = row;
+		this.col = col;
 		setDirections();
 	}
 
@@ -128,75 +132,7 @@ public class JasonJason extends NPCRoom {
 	
 	public String validMoves()
 	{
-		return "wdsa"; 
-	}
-	/**
-	 * Determine the size of the cave:
-	 */
-	public static void setUpCaves()
-	{
-		CaveExplorer.caves = new NPCRoom[5][5];
-		CaveRoom[][] c = CaveExplorer.caves; // shortcut
-		for(int row = 0; row < c.length; row++)
-		{
-			for(int col = 0; col < c[row].length; col ++)
-			{
-				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
-			}
-		}
-		
-		c[0][2] = new JasonJason("TEST ROOM");
-		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
-		NPC testNPC = new NPC();
-		CaveExplorer.npcs = new NPC[2];
-		CaveExplorer.npcs[0] = testNPC;
-		testNPC.setPosition(3,4);
-		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs[0] = testNPC;
-		testNPC.setPosition(3,4);
-		//Set Starting Room
-		CaveExplorer.currentRoom = c[0][1];
-		CaveExplorer.currentRoom.enter();
-		
-		//Set up doors
-		setConnectionForAll();
-	}
-	
-	private static void setConnectionForAll() {
-		CaveRoom[][] c = CaveExplorer.caves;
-		for(int row = 0; row< c.length-1; row++)
-		{
-			for(int col = 0; col < c.length-1; col++)
-			{
-				c[row][col].setConnection(SOUTH, c[row+1][col], new Door());
-				c[row][col].setConnection(EAST, c[row][col+1], new Door());
-			}
-		}
-		
-		for(int i = 0; i<c[c.length-1].length-1; i++)
-		{
-			c[c.length-1][i].setConnection(EAST, c[c.length-1][i+1], new Door());
-		}
-		
-		for(int i = 0; i< c.length-1; i++)
-		{
-			c[i][c[i].length-1].setConnection(SOUTH, c[i][c[i].length-1], new Door());
-		}
-	}
-
-	public void goToRoom(int dir)
-	{
-		if(borderingRooms[dir] != null && doors[dir] != null && doors[dir].isOpen())
-		{
-			CaveExplorer.currentRoom.leave(); 
-			CaveExplorer.currentRoom = borderingRooms[dir];
-			CaveExplorer.currentRoom.enter();
-			CaveExplorer.inventory.updateMap();
-		}
-		else
-		{
-			System.err.println("You can't do that");
-		}
+		return "wdsaf"; 
 	}
 
 	public static int oppositeDirection(int dir) {

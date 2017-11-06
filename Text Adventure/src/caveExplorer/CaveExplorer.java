@@ -13,7 +13,7 @@ public class CaveExplorer {
 	
 	public static void main(String[] args) {
 		in = new Scanner(System.in);
-		CaveRoom.setUpCaves(); // creates caves andstarting room
+		CaveRoom.setUpCaves(); // creates caves and starting room
 		inventory = new Inventory();
 		startExploring();
 	}
