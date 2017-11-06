@@ -23,16 +23,17 @@ public class EthanRoomBackEnd extends NPCRoom{
 		 * @param direction
 		 */
 		public void performAction(int direction) {
-			if(direction == 5) {
-				interact();
+			if(direction == 4) {
+				interactVault();
 			}else {
 				super.performAction(direction);
 				
 			}		
 		}
-		private void interact() {
-			//int n = caveExplorer.Inventory.getMoney();
-			
+		private void interactVault() {
+			int n = CaveExplorer.inventory.getMoney();
+			CaveExplorer.inventory.setMoney(n+50);
+			System.out.print("Looks like you earned some money!");
 		}
 		public String getContents() {
 			return "V";
