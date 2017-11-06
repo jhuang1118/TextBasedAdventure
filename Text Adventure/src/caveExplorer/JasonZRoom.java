@@ -12,10 +12,13 @@ public class JasonZRoom extends NPCRoom {
 	
 	private CaveRoom[] borderingRooms;
 	private Door[] doors; // valid 
+	private CaveRoom[][] newMap;
 	
-	public JasonZRoom( String description) {
+	public JasonZRoom( String description, int i, int j) {
 		super(description);
 		this.description = description;
+		this.row = i; 
+		this.col = j;
 		borderingRooms = new NPCRoom[4];
 		this.doors = new Door[4];
 		setDirections();
@@ -26,7 +29,41 @@ public class JasonZRoom extends NPCRoom {
 	 */
 	public void createNewMap()
 	{
+		CaveRoom[][] c = CaveExplorer.caves;
+		int leftMargin = 0;
+		int rightMargin = c[row].length;
+		int topMargin = 0;
+		int bottomMargin = c.length;
 		
+		if(col > 10)
+		{
+			leftMargin = col -10;
+		}
+		if(col < c.length-10)
+		{
+			rightMargin = col + 10;
+		}
+		if(row > 10)
+		{
+			topMargin = row -10;
+		}
+		if(row < c.length - 10)
+		{
+			bottomMargin = row +10;
+		}
+		
+		newMap = new CaveRoom[rightMargin -leftMargin][bottomMargin - topMargin];
+		int bRow = 0; 
+		int bCol = 0;
+		for(int row = topMargin; row < bottomMargin; row ++)
+		{
+			for(int col = leftMargin; col<rightMargin; col++)
+			{
+				newMap[bRow][bCol] = c[row][col];
+				bCol ++;
+			}
+			bRow ++;
+		}
 	}
 	public void performAction(int direction) {
 		if(direction == 4)

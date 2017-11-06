@@ -143,7 +143,7 @@ public class CaveRoom {
 				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
 			}
 		}
-		c[0][2] = new JasonZRoom("TEST ROOM");
+		c[0][2] = new JasonZRoom("TEST ROOM", 0, 2);
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		NPC testNPC = new NPC();
 		CaveExplorer.npcs = new NPC[2];
