@@ -18,8 +18,13 @@ public class EthanRoomBackEnd extends NPCRoom{
 			printValidMoves();
 			input = CaveExplorer.in.nextLine();
 		}
-		int direction = "wdsa".indexOf(input);
-		goToRoom(direction);
+		if(input.equals("e")) {
+			performAction(4);
+		}else {
+			int direction = "wdsa".indexOf(input);
+			goToRoom(direction);
+		}
+
 	}
 	
 		public void printValidMoves() {
