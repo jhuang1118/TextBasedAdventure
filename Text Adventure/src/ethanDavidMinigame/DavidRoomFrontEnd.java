@@ -17,9 +17,11 @@ public class DavidRoomFrontEnd extends NPCRoom {
 	
 	public String spawnPolice() {
 		int numberOfPolice = (int)(Math.random() * 5) + 3;
-		for(int i = 0; i < numberOfPolice; i++) {
+		int policeOnSite = 0;
+		while(policeOnSite != numberOfPolice) {
 			CaveRoom[][] c = CaveExplorer.caves;
 			int index = (int)(Math.random() * c.length);
+			c[index][index] = "P";
 		}
 	}
 	
