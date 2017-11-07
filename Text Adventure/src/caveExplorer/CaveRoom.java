@@ -19,6 +19,8 @@ public class CaveRoom {
 	public static final int SOUTH = 2;
 	public static final int WEST = 3;
 	
+	public int cRIndex;
+	
 	public CaveRoom( String description) {
 		this.description = description;
 		setDefaultContents(" ");
@@ -123,7 +125,8 @@ public class CaveRoom {
 		}
 		c[5][5] = new EthanRoomBackEnd("sdkjhaskd");
 		//Set Starting Room
-		CaveExplorer.currentRoom = c[(int)(Math.random() * c.length/2)][(int)(Math.random() * c.length/2)];
+		int cRIndex = (int)(Math.random() * c.length/2);
+		CaveExplorer.currentRoom = c[cRIndex][cRIndex];
 		CaveExplorer.currentRoom.enter();
 		setConnectionForAll();
 		//Set up doors  
