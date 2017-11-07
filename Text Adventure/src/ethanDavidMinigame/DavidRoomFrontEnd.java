@@ -10,4 +10,9 @@ public class DavidRoomFrontEnd extends NPCRoom {
 		super(description);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public String spawnPolice() {
+		int numberOfPolice = (int)(Math.random() * 5) + 3;
+	}
+	
 }
