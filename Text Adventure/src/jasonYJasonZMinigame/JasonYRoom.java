@@ -3,6 +3,7 @@ package jasonYJasonZMinigame;
 import caveExplorer.CaveExplorer;
 import caveExplorer.CaveRoom;
 import caveExplorer.Door;
+import caveExplorer.NPC;
 import caveExplorer.NPCRoom;
 
 public class JasonYRoom extends NPCRoom{
@@ -29,8 +30,15 @@ public class JasonYRoom extends NPCRoom{
 	}
 	
 	private void spawnCops() {
-		int randomNum = (int)(Math.random()*10);
-		
+		int randomNum = (int)(Math.random() * 10 + 1);
+		CaveExplorer.npcs = new NPC[randomNum];
+		for(int i = 0; i < randomNum; i++) {
+			NPC testNPC = new JasonYNPC();
+			CaveExplorer.npcs[i] = testNPC;
+			int row = (int)(Math.random() * 10 + 1);
+			int col = (int)(Math.random() * 10 + 1);
+			testNPC.setPosition(row,col);
+		}
 	}
 
 
