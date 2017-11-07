@@ -11,8 +11,22 @@ public class DavidRoomFrontEnd extends NPCRoom {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public String spawnPolice() {
+	public String getSymbol() {
+		return "P";
+	}
+	
+	public void spawnPolice() {
 		int numberOfPolice = (int)(Math.random() * 5) + 3;
+		int policeOnSite = 0;
+		while(policeOnSite != numberOfPolice) {
+			CaveRoom[][] c = CaveExplorer.caves;
+			int index = (int)(Math.random() * c.length);
+			while(index == cRIndex) {
+				index = (int)(Math.random() * c.length);
+			}
+			c[index][index] = "P";
+			policeOnSite++;
+		}
 	}
 	
 }
