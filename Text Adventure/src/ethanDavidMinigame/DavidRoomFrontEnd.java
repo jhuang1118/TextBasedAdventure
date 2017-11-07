@@ -24,7 +24,7 @@ public class DavidRoomFrontEnd extends NPCRoom {
 			while(index == cRIndex) {
 				index = (int)(Math.random() * c.length);
 			}
-			c[index][index] = "P"
+			c[index][index] = "P";
 			policeOnSite++;
 		}
 	}
