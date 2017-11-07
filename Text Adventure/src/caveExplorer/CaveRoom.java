@@ -115,11 +115,12 @@ public class CaveRoom {
 		CaveRoom[][] c = CaveExplorer.caves;// shortcut
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		c[9][5] = new EthanRoomBackEnd("sdkjhaskd");
-		c[(int)(Math.random() * c.length)][(int)(Math.random() * c.length)] = new Police("Police!");
-		for(int row = 0; row < c.length; row++)
-		{
-			for(int col = 0; col < c[row].length; col ++)
-			{
+		NPC testNPC = new Police();
+		testNPC.setPosition((int)(Math.random() * c.length),(int)(Math.random() * c.length));
+		CaveExplorer.police = new Police[1];
+		CaveExplorer.police[0] = testNPC;
+		for(int row = 0; row < c.length; row++) {
+			for(int col = 0; col < c[row].length; col ++) {
 				c[row][col] = new DavidRoomFrontEnd("You are currently in the bank." + "\n" 
 						+ "You are located at "+ row +", " + col+"." + "\n" +
 						 "GET TO THE VAULT! (Avoid the police! 'P')"
@@ -127,10 +128,10 @@ public class CaveRoom {
 			}
 		}
 		c[9][5] = new EthanRoomBackEnd("sdkjhaskd");
-		c[(int)(Math.random() * c.length)][(int)(Math.random() * c.length)] = new Police("Police!");
 		//Set Starting Room
 		int cRIndex = (int)(Math.random() * c.length/2);
-		CaveExplorer.currentRoom = c[cRIndex][cRIndex];
+		int sIndex = (int)(Math.random() * c.length/2);
+		CaveExplorer.currentRoom = c[cRIndex][sIndex];
 		CaveExplorer.currentRoom.enter();
 		setConnectionForAll();
 		//Set up doors  
