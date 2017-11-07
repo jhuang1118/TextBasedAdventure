@@ -113,9 +113,9 @@ public class CaveRoom {
 	{
 		CaveExplorer.caves = new CaveRoom[10][10];
 		CaveRoom[][] c = CaveExplorer.caves;// shortcut
-		c[3][3] = new Police("Police!");
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		c[9][5] = new EthanRoomBackEnd("sdkjhaskd");
+		c[(int)(Math.random() * c.length)][(int)(Math.random() * c.length)] = new Police("Police!");
 		for(int row = 0; row < c.length; row++)
 		{
 			for(int col = 0; col < c[row].length; col ++)
@@ -127,6 +127,7 @@ public class CaveRoom {
 			}
 		}
 		c[9][5] = new EthanRoomBackEnd("sdkjhaskd");
+		c[(int)(Math.random() * c.length)][(int)(Math.random() * c.length)] = new Police("Police!");
 		//Set Starting Room
 		int cRIndex = (int)(Math.random() * c.length/2);
 		CaveExplorer.currentRoom = c[cRIndex][cRIndex];
