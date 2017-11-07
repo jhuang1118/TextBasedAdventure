@@ -50,7 +50,7 @@ public class EthanRoomBackEnd extends NPCRoom{
 		private void interactVault() {
 			int n = CaveExplorer.inventory.getMoney();
 			CaveExplorer.inventory.setMoney(n+50);
-			System.out.print("Looks like you earned some money!");
+			System.out.print("\n" + " Looks like you earned some money! " + "\n");
 		}
 		public String getContents() {
 			return "V";
