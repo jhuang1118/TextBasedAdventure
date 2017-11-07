@@ -2,6 +2,7 @@ package caveExplorer;
 
 import ethanDavidMinigame.DavidRoomFrontEnd;
 import ethanDavidMinigame.EthanRoomBackEnd;
+import ethanDavidMinigame.Police;
 
 public class CaveRoom {
 	//comment
@@ -19,7 +20,8 @@ public class CaveRoom {
 	public static final int SOUTH = 2;
 	public static final int WEST = 3;
 	
-	public int cRIndex;
+	public static int cRIndex;
+	public static int index;
 	
 	public CaveRoom( String description) {
 		this.description = description;
@@ -110,9 +112,10 @@ public class CaveRoom {
 	public static void setUpCaves()
 	{
 		CaveExplorer.caves = new CaveRoom[10][10];
-		CaveRoom[][] c = CaveExplorer.caves; // shortcut
+		CaveRoom[][] c = CaveExplorer.caves;// shortcut
+		c[3][3] = new Police("Police!");
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
-		c[5][5] = new EthanRoomBackEnd("sdkjhaskd");
+		c[9][5] = new EthanRoomBackEnd("sdkjhaskd");
 		for(int row = 0; row < c.length; row++)
 		{
 			for(int col = 0; col < c[row].length; col ++)
@@ -123,7 +126,7 @@ public class CaveRoom {
 						 + "\n");
 			}
 		}
-		c[5][5] = new EthanRoomBackEnd("sdkjhaskd");
+		c[9][5] = new EthanRoomBackEnd("sdkjhaskd");
 		//Set Starting Room
 		int cRIndex = (int)(Math.random() * c.length/2);
 		CaveExplorer.currentRoom = c[cRIndex][cRIndex];
@@ -201,5 +204,5 @@ public class CaveRoom {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-
+	
 }

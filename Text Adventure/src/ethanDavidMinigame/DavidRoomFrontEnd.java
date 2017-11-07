@@ -5,17 +5,16 @@ import caveExplorer.CaveRoom;
 import caveExplorer.NPCRoom;
 
 public class DavidRoomFrontEnd extends NPCRoom {
+	
+	public int index;
 
 	public DavidRoomFrontEnd(String description) {
 		super(description);
 		// TODO Auto-generated constructor stub
 	}
 	
-	public String getSymbol() {
-		return "P";
-	}
 	
-	public void spawnPolice() {
+	/* public void spawnPolice() {
 		int numberOfPolice = (int)(Math.random() * 5) + 3;
 		int policeOnSite = 0;
 		while(policeOnSite != numberOfPolice) {
@@ -24,9 +23,9 @@ public class DavidRoomFrontEnd extends NPCRoom {
 			while(index == cRIndex) {
 				index = (int)(Math.random() * c.length);
 			}
-			c[index][index] = "P";
+			c[index][index] = new DavidRoomFrontEnd("Police!");
 			policeOnSite++;
 		}
-	}
+	} */
 	
 }
