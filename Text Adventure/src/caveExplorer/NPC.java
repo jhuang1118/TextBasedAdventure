@@ -94,7 +94,7 @@ public class NPC {
 		newPosition[1] = currentCol + possibleMoves[index][1];
 		while(currentRoom.getDoor(index) == null || !(CaveExplorer.caves[newPosition[0]][newPosition[1]] instanceof NPCRoom))
 		{
-			index = (int) (Math.random() *possibleMoves.length);
+			index = (int) (Math.random() * possibleMoves.length);
 			newPosition[0] = currentRow + possibleMoves[index][0];
 			newPosition[1] = currentCol + possibleMoves[index][1];
 		}
@@ -102,3 +102,4 @@ public class NPC {
 	}
 
 }
+

@@ -34,7 +34,7 @@ public class CaveExplorer {
 		}
 	}
 	private static void moveNPCs() {
-		for(NPC n: npcs)
+		for(NPC n: police)
 		{
 			n.autoMove();
 		}
