@@ -8,7 +8,7 @@ public class EthanRoomBackEnd extends NPCRoom{
 		super(description);
 		// TODO Auto-generated constructor stub
 	}
-	private boolean isValid(String input) {
+	public boolean isValid(String input) {
 		return validMoves().indexOf(input.toLowerCase()) > -1 && input.length() == 1;
 	}
 	public void interpretInput(String input)

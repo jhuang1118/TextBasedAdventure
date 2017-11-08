@@ -1,11 +1,9 @@
 package caveExplorer;
 
-import ethanDavidMinigame.DavidRoomFrontEnd;
 import ethanDavidMinigame.EthanRoomBackEnd;
-import ethanDavidMinigame.Police;
 
 public class CaveRoom {
-	//comment
+
 	private String description; 
 	private String directions; //which doors
 	private String contents; // a symbol to show room you are in
@@ -19,9 +17,6 @@ public class CaveRoom {
 	public static final int EAST = 1;
 	public static final int SOUTH = 2;
 	public static final int WEST = 3;
-	
-	public static int cRIndex;
-	public static int index;
 	
 	public CaveRoom( String description) {
 		this.description = description;
@@ -45,7 +40,7 @@ public class CaveRoom {
 			if(this.doors[i] != null)
 			{
 				doorFound = false;
-				this.directions += "There is a "+ this.doors[i].getDescription()+" to "+ toDirection(i)+". "+this.doors[i].getDetails() + "\n"; 
+				this.directions += "There is a "+ this.doors[i].getDescription()+" to "+ toDirection(i)+". "+this.doors[i].getDetails(); 
 			}
 		}
 	}
@@ -93,72 +88,97 @@ public class CaveRoom {
 	
 	public void interpretInput(String input)
 	{
+		
 		while(!isValid(input))
 		{
-			System.out.println("You can only enter 'w', 'a', 's', or 'd'");
+			printValidMoves();
+			
 			input = CaveExplorer.in.nextLine();
 		}
-		int direction = "wdsa".indexOf(input);
-		goToRoom(direction);
+		int direction = validMoves().indexOf(input);
+		if(direction<4)
+		{
+			goToRoom(direction);
+		}
+		else
+		{
+			performAction(direction);
+		}
+		
 	}
 	
-	private boolean isValid(String input) {
-		return "wdsa".indexOf(input.toLowerCase()) > -1 && input.length() == 1;
+	/**
+	 * Override to create response to keys other than wdsa
+	 * @param direction
+	 */
+	public void performAction(int direction) {
+		CaveExplorer.print("that key does nothing.");
+		
+	}
+
+	/**
+	 * Override to change description of possible moves
+	 */
+	public void printValidMoves() {
+		System.out.println("You can only enter 'w', 'a', 's', or 'd'");
+	}
+
+	public boolean isValid(String input) {
+		return validMoves().indexOf(input.toLowerCase()) > -1 && input.length() == 1;
 	}
 	
+	public String validMoves()
+	{
+		return "wdsa"; 
+	}
 	/**
 	 * Determine the size of the cave:
 	 */
 	public static void setUpCaves()
 	{
-		CaveExplorer.caves = new CaveRoom[10][10];
-		CaveRoom[][] c = CaveExplorer.caves;// shortcut
-		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
-		c[9][5] = new EthanRoomBackEnd("sdkjhaskd");
-		NPC testNPC = new Police();
-		testNPC.setPosition((int)(Math.random() * c.length),(int)(Math.random() * c.length));
-		CaveExplorer.police = new Police[1];
-		CaveExplorer.police[0] = testNPC;
-		for(int row = 0; row < c.length; row++) {
-			for(int col = 0; col < c[row].length; col ++) {
-				c[row][col] = new DavidRoomFrontEnd("You are currently in the bank." + "\n" 
-						+ "You are located at "+ row +", " + col+"." + "\n" +
-						 "GET TO THE VAULT! (Avoid the police! 'P')"
-						 + "\n");
+		CaveExplorer.caves = new NPCRoom[5][5];
+		CaveRoom[][] c = CaveExplorer.caves; // shortcut
+		for(int row = 0; row < c.length; row++)
+		{
+			for(int col = 0; col < c[row].length; col ++)
+			{
+				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
 			}
 		}
-		c[9][5] = new EthanRoomBackEnd("sdkjhaskd");
+		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
+		NPC testNPC = new NPC();
+		c[2][3] = new EthanRoomBackEnd("");
+		
 		//Set Starting Room
-		int cRIndex = (int)(Math.random() * c.length/2);
-		int sIndex = (int)(Math.random() * c.length/2);
-		CaveExplorer.currentRoom = c[cRIndex][sIndex];
+		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
+		
+		//Set up doors
 		setConnectionForAll();
-		//Set up doors  
 	}
-		private static void setConnectionForAll() {
-			CaveRoom[][] c = CaveExplorer.caves;
-			for(int row = 0; row< c.length-1; row++)
+	
+	private static void setConnectionForAll() {
+		CaveRoom[][] c = CaveExplorer.caves;
+		for(int row = 0; row< c.length-1; row++)
+		{
+			for(int col = 0; col < c.length-1; col++)
 			{
-				for(int col = 0; col < c.length-1; col++)
-				{
-					c[row][col].setConnection(SOUTH, c[row+1][col], new Door());
-					c[row][col].setConnection(EAST, c[row][col+1], new Door());
-				}
+				c[row][col].setConnection(SOUTH, c[row+1][col], new Door());
+				c[row][col].setConnection(EAST, c[row][col+1], new Door());
 			}
-			
-			for(int i = 0; i<c[c.length-1].length-1; i++)
-			{
-				c[c.length-1][i].setConnection(EAST, c[c.length-1][i+1], new Door());
-			}
-			
-			for(int i = 0; i< c.length-1; i++)
-			{
-				c[i][c[i].length-1].setConnection(SOUTH, c[i][c[i].length-1], new Door());
-			} 
 		}
 		
-	
+		for(int i = 0; i<c[c.length-1].length-1; i++)
+		{
+			c[c.length-1][i].setConnection(EAST, c[c.length-1][i+1], new Door());
+		}
+		
+		for(int i = 0; i< c.length-1; i++)
+		{
+			c[i][c[i].length-1].setConnection(SOUTH, c[i][c[i].length-1], new Door());
+		}
+	}
+
 	public void goToRoom(int dir)
 	{
 		if(borderingRooms[dir] != null && doors[dir] != null && doors[dir].isOpen())
@@ -167,7 +187,6 @@ public class CaveRoom {
 			CaveExplorer.currentRoom = borderingRooms[dir];
 			CaveExplorer.currentRoom.enter();
 			CaveExplorer.inventory.updateMap();
-			CaveExplorer.inventory.getMoney();
 		}
 		else
 		{
@@ -206,5 +225,5 @@ public class CaveRoom {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	
+
 }
