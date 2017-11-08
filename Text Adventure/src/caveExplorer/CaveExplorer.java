@@ -10,6 +10,7 @@ public class CaveExplorer {
 	public static Inventory inventory;
 	public static boolean playing = true;
 	public static NPC[] police;
+	public static NPC[] npcs;
 	
 	public static void main(String[] args) {
 		in = new Scanner(System.in);
@@ -38,7 +39,7 @@ public class CaveExplorer {
 		{
 			n.autoMove();
 		}
-		inventory.updateMap();
+		inventory.updateMap(caves);
 	}
 
 }
