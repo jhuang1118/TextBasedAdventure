@@ -1,5 +1,7 @@
 package caveExplorer;
 
+import jasonYJasonZMinigame.Princess;
+
 public class CaveRoom {
 
 	private String description; 

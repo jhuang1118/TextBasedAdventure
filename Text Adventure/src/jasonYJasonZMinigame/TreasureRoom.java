@@ -1,4 +1,7 @@
-package caveExplorer;
+package jasonYJasonZMinigame;
+
+import caveExplorer.CaveExplorer;
+import caveExplorer.NPCRoom;
 
 public class TreasureRoom extends NPCRoom {
 

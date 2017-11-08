@@ -1,4 +1,9 @@
-package caveExplorer;
+package jasonYJasonZMinigame;
+
+import caveExplorer.CaveExplorer;
+import caveExplorer.CaveRoom;
+import caveExplorer.Door;
+import caveExplorer.NPCRoom;
 
 public class JasonZRoom extends NPCRoom {
 	

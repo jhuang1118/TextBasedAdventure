@@ -1,4 +1,7 @@
-package caveExplorer;
+package jasonYJasonZMinigame;
+
+import caveExplorer.CaveExplorer;
+import caveExplorer.NPC;
 
 public class Princess extends NPC {
 

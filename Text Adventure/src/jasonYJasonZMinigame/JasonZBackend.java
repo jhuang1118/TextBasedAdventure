@@ -1,7 +1,5 @@
 package jasonYJasonZMinigame;
 
-import caveExplorer.JasonZRoom;
-
 public class JasonZBackend extends JasonZRoom {
 
 	//set guns manually

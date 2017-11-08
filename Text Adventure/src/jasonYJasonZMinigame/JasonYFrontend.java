@@ -1,7 +1,5 @@
 package jasonYJasonZMinigame;
 
-import caveExplorer.JasonZRoom;
-
 public class JasonYFrontend extends JasonZRoom {
 
 	public JasonYFrontend(String description) {
