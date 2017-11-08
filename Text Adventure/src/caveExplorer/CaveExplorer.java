@@ -9,11 +9,11 @@ public class CaveExplorer {
 	public static CaveRoom currentRoom;
 	public static Inventory inventory;
 	public static boolean playing = true;
-	public static NPC[] npcs;
+	public static NPC[] police;
 	
 	public static void main(String[] args) {
 		in = new Scanner(System.in);
-		CaveRoom.setUpCaves(); // creates caves andstarting room
+		CaveRoom.setUpCaves(); // creates caves and starting room
 		inventory = new Inventory();
 		startExploring();
 	}
