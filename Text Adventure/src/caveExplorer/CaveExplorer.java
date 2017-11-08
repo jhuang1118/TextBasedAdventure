@@ -19,7 +19,7 @@ public class CaveExplorer {
 	}
 	public static void print(String s)
 	{
-		System.out.println(s); // consider replacing with the "printline thing in chatbot"
+		System.out.println(s); // consider replacing with the "print line thing in chatbot"
 	}
 	private static void startExploring() {
 		while(playing)
