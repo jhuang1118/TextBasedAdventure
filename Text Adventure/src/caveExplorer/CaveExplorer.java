@@ -5,37 +5,36 @@ import java.util.Scanner;
 public class CaveExplorer {
 
 	public static CaveRoom[][] caves;
-	public static Scanner in;
-	public static CaveRoom currentRoom;
+	public static Scanner in;//for user input
+	public static CaveRoom currentRoom;//changes as the user moves
 	public static Inventory inventory;
 	public static boolean playing = true;
 	public static NPC[] npcs;
 	
 	public static void main(String[] args) {
 		in = new Scanner(System.in);
-		CaveRoom.setUpCaves(); // creates caves andstarting room
+		CaveRoom.setUpCaves();//creates caves and starting room
 		inventory = new Inventory();
 		startExploring();
 	}
-	public static void print(String s)
-	{
-		System.out.println(s); // consider replacing with the "printline thing in chatbot"
+
+	public static void print(String s) {
+		System.out.println(s);//LATER: consider replacing with the more sophisticated "printMultiLine"
 	}
 	private static void startExploring() {
-		while(playing)
-		{
+		while(playing) {
 			moveNPCs();
 			print(inventory.getDescription());
-			System.out.println("You have $"+inventory.getCash());
 			print(currentRoom.getDescription());
 			print(currentRoom.getDirections());
-			print(" what would you like to do?");
+			print("What would you like to do");
 			currentRoom.interpretInput(in.nextLine());
 		}
+		
 	}
+
 	private static void moveNPCs() {
-		for(NPC n: npcs)
-		{
+		for(NPC n: npcs) {
 			n.autoMove();
 		}
 		inventory.updateMap();
