@@ -147,7 +147,7 @@ public class CaveRoom {
 		}
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		NPC testNPC = new NPC();
-		testNPC.setPosition(1,2);
+		testNPC.setPosition((int)(Math.random() * c.length),(int)(Math.random()* c.length));
 		CaveExplorer.police = new NPC[1];
 		CaveExplorer.police[0] = testNPC;
 		c[2][3] = new EthanRoomBackEnd("");
