@@ -134,7 +134,7 @@ public class CaveRoom {
 	 */
 	public static void setUpCaves()
 	{
-		CaveExplorer.caves = new NPCRoom[20][20];
+		CaveExplorer.caves = new NPCRoom[5][5];
 		CaveRoom[][] c = CaveExplorer.caves; // shortcut
 		for(int row = 0; row < c.length; row++)
 		{
@@ -143,15 +143,15 @@ public class CaveRoom {
 				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
 			}
 		}
-		c[0][2] = new JasonZRoom("TEST ROOM", 0, 2);
+		c[0][0] = new TreasureRoom("");
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		NPC testNPC = new NPC();
+		Princess testPNPC = new Princess();
 		CaveExplorer.npcs = new NPC[2];
 		CaveExplorer.npcs[0] = testNPC;
+		CaveExplorer.npcs[1] = testPNPC;
 		testNPC.setPosition(3,4);
-		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs[0] = testNPC;
-		testNPC.setPosition(3,4);
+		testPNPC.setPosition(c.length-1, c[c.length-1].length-1);
 		//Set Starting Room
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
@@ -189,16 +189,7 @@ public class CaveRoom {
 			CaveExplorer.currentRoom.leave(); 
 			CaveExplorer.currentRoom = borderingRooms[dir];
 			CaveExplorer.currentRoom.enter();
-			if(borderingRooms[dir] instanceof JasonZRoom)
-			{
-				borderingRooms[dir].
-				CaveExplorer.inventory.updateMap(borderingRooms[dir].newMap);
-			}
-			else
-			{
-				CaveExplorer.inventory.updateMap(CaveExplorer.caves);
-			}
-			
+			CaveExplorer.inventory.updateMap(CaveExplorer.caves);
 		}
 		else
 		{
