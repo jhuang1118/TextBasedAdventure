@@ -143,7 +143,6 @@ public class CaveRoom {
 				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
 			}
 		}
-		c[0][0] = new TreasureRoom("");
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		NPC testNPC = new NPC();
 		Princess testPNPC = new Princess();
