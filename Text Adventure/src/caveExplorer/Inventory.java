@@ -4,9 +4,12 @@ public class Inventory {
 	
 	private String map;
 	private static int hp;
+	private boolean isKidnapped = false;
+	
 	
 	public Inventory() {
 		updateMap();
+		
 	}
 	
 	public void updateMap() {
@@ -62,4 +65,10 @@ public class Inventory {
 		return hp;
 	}
 	
+	public void toggleIsKidnapped() {
+		isKidnapped = !isKidnapped;
+	}
+	public boolean getIsKidnapped() {
+		return isKidnapped;
+	}
 }
