@@ -4,10 +4,18 @@ public class Inventory {
 	
 	private String map;
 	private int cash;
+	private int money;
 	
+	public int getMoney() {
+		return money;
+	}
+	public void setMoney(int money) {
+		this.money = money;
+	}
 	public Inventory()
 	{
 		cash = 0;
+		setMoney(0);
 		updateMap();
 	}
 	public int getCash() {
@@ -34,7 +42,7 @@ public class Inventory {
 					//if a wall is present draw a line otherwise draw a \
 					if(cr.getDoor(CaveRoom.WEST) != null && cr.getDoor(CaveRoom.WEST).isOpen() )
 					{
-						text += "  ";
+						text += " ";
 					}
 					else
 					{
@@ -75,6 +83,6 @@ public class Inventory {
 
 	public String getDescription()
 	{
-		return map;
+		return map + "\n" + "Also you have " + getMoney() + " money \n";
 	}
 }
