@@ -4,6 +4,14 @@ import jasonYJasonZMinigame.JasonZGuns;
 
 public class Inventory {
 	
+	private boolean ID = false;
+	
+	public boolean isID() {
+		return ID;
+	}
+	public void setID(boolean iD) {
+		ID = iD;
+	}
 
 	private int money;
 	private String map;
