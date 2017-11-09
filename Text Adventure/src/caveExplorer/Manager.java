@@ -6,6 +6,7 @@ public class Manager extends NPC {
 	private NPCRoom[][] office;
 	private NPCRoom currentRoom;
 	
+	//checker
 	public Manager(NPCRoom[][] manCave, int row, int col)
 	{
 		this.office = manCave;
