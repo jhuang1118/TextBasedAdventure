@@ -5,7 +5,7 @@ public class Inventory {
 	private String map;
 	private static int hp;
 	private boolean isKidnapped = false;
-	
+	private boolean hasGun = false;
 	
 	public Inventory() {
 		updateMap();
@@ -71,4 +71,12 @@ public class Inventory {
 	public boolean getIsKidnapped() {
 		return isKidnapped;
 	}
+	
+	public void getHasGun() {
+		hasGun = !hasGun;
+	}
+	public boolean toggleHasGun() {
+		return hasGun;
+	}
+	
 }

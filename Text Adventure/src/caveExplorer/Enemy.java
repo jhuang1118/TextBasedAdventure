@@ -14,7 +14,7 @@ public class Enemy extends NPC {
 	
 	public Enemy() {
 		this.floor = CaveExplorer.caves;
-		this.activeDescription = "You have found your target, but they are not willing to give up without a fight. Press 'e' to fight her";
+		this.activeDescription = "A guard has arrived and is not willing to give up without a fight. Press 'e' to fight him";
 		this.inactiveDescription = "Your target has been knocked out; you can press 'g' to kidnap her";
 		this.currentCol = -1;
 		this.currentRow = -1;
@@ -34,17 +34,27 @@ public class Enemy extends NPC {
 	}
 	
 	public void interact() {
-		String[][] fightMoves = {{"punch","30"},{"neck", "50"},{"kick","25"},{"block","0"}};
-		CaveExplorer.print("F*** off, will ya?" + " Press '1', '2', '3', or '4' to punch, neck, kick, or block, respectively");
+		String[][] fightMoves = {{"punch","true"},{"slap", "true"},{"kick","true"},{"shoot","false"}};
+		CaveExplorer.print("Stop right there!" + " Press '0', '1', '2', or '3' to punch, slap, kick, or shoot, respectively");
 		String s = CaveExplorer.in.nextLine();
+		
+		int dmg = (int)(Math.random() * 21) + 10;
 		while(Inventory.getHP() > 0 && Enemy.getHP() > 0) {
-			
+			int chosenMove = Integer.parseInt(s);
+			if(fightMoves[chosenMove][0] == "true") {
+				
+			}
 		}
 		active = false;
 	}
 
+	private void setHP() {
+		enemyHp = 100;
+	}
+	
 	private static int getHP() {
 		return enemyHp;
 	}
+	
 	
 }
