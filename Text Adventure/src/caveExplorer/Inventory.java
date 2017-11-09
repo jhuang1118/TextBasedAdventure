@@ -3,7 +3,7 @@ package caveExplorer;
 import jasonYJasonZMinigame.JasonZGuns;
 
 public class Inventory {
-	
+	private boolean ID = false;
 	private String map;
 	private int cash;
 	private String[] defaultGuns = {"M16", "0"};
@@ -13,6 +13,12 @@ public class Inventory {
 	{
 		cash = 0;
 		updateMap(CaveExplorer.caves);
+	}
+	public boolean isID() {
+		return ID;
+	}
+	public void setID(boolean iD) {
+		ID = iD;
 	}
 	public int getCash() {
 		return cash;
