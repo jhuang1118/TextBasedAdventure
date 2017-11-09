@@ -18,7 +18,7 @@ public class HeistTimer {
 
 	public void copTimer() {
 		int delay = 1000;
-		int period = 1000;
+		int period = 1000; 
 		copTimer = new Timer();
 		interval = COP_SPAWN_TIME;
 		System.out.println(COP_SPAWN_TIME);
