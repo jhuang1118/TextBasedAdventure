@@ -136,24 +136,24 @@ public class CaveRoom {
 	 */
 	public static void setUpCaves()
 	{
-		CaveExplorer.caves = new NPCRoom[5][5];
-		CaveRoom[][] c = CaveExplorer.caves; // shortcut
-		for(int row = 0; row < c.length; row++)
+		CaveExplorer.caves = new NPCRoom[10][10];
+		CaveRoom[][] v = CaveExplorer.caves; // the vault room
+		for(int row = 0; row < v.length; row++)
 		{
-			for(int col = 0; col < c[row].length; col ++)
+			for(int col = 0; col < v[row].length; col ++)
 			{
-				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
+				v[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
 			}
 		}
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		NPC testNPC = new NPC();
-		testNPC.setPosition((int)(Math.random() * c.length),(int)(Math.random()* c.length));
+		testNPC.setPosition((int)(Math.random() * v.length),(int)(Math.random()* v.length));
 		CaveExplorer.police = new NPC[1];
 		CaveExplorer.police[0] = testNPC;
-		c[2][3] = new EthanRoomBackEnd("");
+		v[2][3] = new EthanRoomBackEnd("");
 		
 		//Set Starting Room
-		CaveExplorer.currentRoom = c[0][1];
+		CaveExplorer.currentRoom = v[0][1];
 		CaveExplorer.currentRoom.enter();
 		
 		//Set up doors
