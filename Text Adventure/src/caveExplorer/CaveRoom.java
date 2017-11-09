@@ -138,7 +138,7 @@ public class CaveRoom {
 	{
 		CaveExplorer.caves = new NPCRoom[10][10];
 		//CaveExplorer.caves = new CaveRoom[15][15];
-		//CaveRoom[][] m = CaveExplorer.caves;
+		//CaveRoom[][] m = CaveExplorer.caves; 
 		CaveRoom[][] c = CaveExplorer.caves; // the vault room
 		for(int row = 0; row < c.length; row++)
 		{
@@ -148,10 +148,11 @@ public class CaveRoom {
 			}
 		}
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
-		NPC testNPC = new NPC();
+		/* NPC testNPC = new NPC();
 		testNPC.setPosition((int)(Math.random() * c.length),(int)(Math.random()* c.length));
 		CaveExplorer.police = new NPC[1];
-		CaveExplorer.police[0] = testNPC;
+		CaveExplorer.police[0] = testNPC; */
+		
 		c[9][5] = new EthanRoomBackEnd("");
 		
 		//Set Starting Room
