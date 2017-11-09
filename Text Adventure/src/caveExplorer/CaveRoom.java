@@ -1,6 +1,7 @@
 package caveExplorer;
 
 import ethanDavidMinigame.EthanRoomBackEnd;
+import ethanDavidMinigame.VaultRoom;
 
 public class CaveRoom {
 
@@ -154,6 +155,7 @@ public class CaveRoom {
 		CaveExplorer.police[0] = testNPC; */
 		
 		c[9][5] = new EthanRoomBackEnd("");
+
 		
 		//Set Starting Room
 		CaveExplorer.currentRoom = c[0][1];
