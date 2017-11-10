@@ -32,14 +32,7 @@ public class Car {
 	}
 
 	public void interact() {
-		CaveExplorer.print("Lets interact! Type 'bye' to stop.");
-		String s = CaveExplorer.in.nextLine();
-		while(!s.equalsIgnoreCase("bye"))
-		{
-			CaveExplorer.print("Yeah... I don't do a whole lot.");
-			s = CaveExplorer.in.nextLine();
-		}
-		CaveExplorer.print("Later, friend!");
+		CaveExplorer.print("You're in! Quickly get to the safe point!");
 		active = false;
 	}
 
