@@ -1,20 +1,22 @@
 package johnsonDanielMinigame;
 
+import caveExplorer.CaveRoom;
+import caveExplorer.Merchant;
 import caveExplorer.NPCRoom;
 
 public class DanielRoom extends NPCRoom{
 
 	public DanielRoom(String description) {
 		super(description);
-		private int currentRow;
-		private int currentCol;
-		private NPCRoom currentRoom;
+		int currentRow;
+		int currentCol;
+		NPCRoom currentRoom;
 		
-		private CaveRoom[][] floor;
-		private boolean active;
-		private String activeDescription;
-		private String inactiveDescription;
-		private static int enemyHp;
+		CaveRoom[][] floor;
+		boolean active;
+		String activeDescription;
+		String inactiveDescription;
+		int enemyHp;
 		
 		public Merchant() {
 			this.floor = CaveExplorer.caves;

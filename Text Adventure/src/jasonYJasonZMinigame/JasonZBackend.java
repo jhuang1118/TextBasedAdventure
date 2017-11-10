@@ -1,6 +1,7 @@
 package jasonYJasonZMinigame;
 
 import caveExplorer.JasonZRoom;
+import caveExplorer.NPCRoom;
 
 public class JasonZBackend extends JasonZRoom {
 
@@ -9,17 +10,22 @@ public class JasonZBackend extends JasonZRoom {
 	public final static String[][] TYPE = {};
 	
 	public JasonZBackend(String description) {
-		super(description);
+		super(description, col, col);
 
 		
 	}
 	
-	public void createPolice(String type)
+	public void createPolice(String type, NPCRoom spawnPoint, int quantity)
 	{
 		
 	}
 
 	public void fire()
+	{
+		
+	}
+	
+	public void damage(String target)
 	{
 		
 	}
