@@ -8,6 +8,7 @@ public class JasonZBackend extends JasonZRoom {
 	//set guns manually
 	public final static String[][] GUNS = {};
 	public final static String[][] TYPE = {};
+	public int direction;
 	
 	public JasonZBackend(String description) {
 		super(description, col, col);
@@ -20,7 +21,7 @@ public class JasonZBackend extends JasonZRoom {
 		
 	}
 
-	public void fire()
+	public void attack(NPCRoom currentRoom)
 	{
 		
 	}
