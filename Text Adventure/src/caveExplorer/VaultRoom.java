@@ -16,11 +16,12 @@ public class VaultRoom extends NPCRoom {
 		return "You have reached the vault. Interact using 'e'";
 	}
 	public boolean canEnter() {
-		/*if(if have id or dynamite) {
+		if(CaveExplorer.inventory.isID()) {
 			return true;
-		}*/
-		System.out.print("\n It's impossible to open the vault with your bare hands. Maybe if you had the manager's key or dynamite...\n");
-		return false;
+		}else {
+			System.out.print("\n It's impossible to open the vault with your bare hands. Maybe if you had the manager's key or dynamite...\n");
+			return false;
+		}
 	}
 	public boolean isValid(String input) {
 		return validMoves().indexOf(input.toLowerCase()) > -1 && input.length() == 1;
