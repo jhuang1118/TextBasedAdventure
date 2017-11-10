@@ -49,7 +49,7 @@ public class Car {
 
 
 	public String getSymbol() {
-		return "P";
+		return "C";
 	}
 
 	public void setPosition(int row, int col) {
@@ -77,8 +77,19 @@ public class Car {
 		}
 		
 	}
-
+	
 	private int[] calculateMove() {
+		int[][] possibleMoves = {{0,-1}};
+		int[] newPosition = new int[1];
+		newPosition[0] = currentRow + possibleMoves[0][0];
+		return newPosition;
+	}
+	
+	private boolean enteredCar() {
+		return false;
+	}
+
+	/* private int[] calculateMove() {
 								//North East	South	West
 		int[][] possibleMoves = {{-1,0}, {0,1}, {1, 0},{0,-1}};
 		int index = (int)(Math.random() * possibleMoves.length);
@@ -92,7 +103,7 @@ public class Car {
 			newPosition[1] = currentCol + possibleMoves[index][1];
 		}
 		return newPosition;
-	}
+	} */
 
 }
 
