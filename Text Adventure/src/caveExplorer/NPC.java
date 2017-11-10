@@ -8,7 +8,7 @@ public class NPC {
 	private int currentCol;
 	private NPCRoom currentRoom; 
 	
-	//fields for interaction
+	//fields for interaction commment
 	private boolean active;
 	private String activeDescription;
 	private String inactiveDescription; 

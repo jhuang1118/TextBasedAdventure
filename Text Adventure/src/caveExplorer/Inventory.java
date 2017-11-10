@@ -1,30 +1,48 @@
 package caveExplorer;
 
+import jasonYJasonZMinigame.JasonZGuns;
+
 public class Inventory {
 	
-	private String map;
-	private int money;
+	private boolean ID = false;
 	
-	public int getMoney() {
-		return money;
+	public boolean isID() {
+		return ID;
 	}
-	public void setMoney(int money) {
-		this.money = money;
+	public void setID(boolean iD) {
+		ID = iD;
 	}
+
+	private String map;
+
+	private int cash;
+	private String[] defaultGuns = {"M16", "0"};
+	JasonZGuns currentGun = new JasonZGuns(defaultGuns);
+
+	private static int hp;
+
+
 	public Inventory()
 	{
-		setMoney(0);
-		updateMap();
+		setCash(0);
+		updateMap(CaveExplorer.caves);
 	}
-	public void updateMap() {
+	
+	public int getCash() {
+		return cash;
+	}
+	public void setCash(int cash) {
+		this.cash = cash;
+	}
+	public void updateMap(CaveRoom[][] caves) {
 		map = " ";
 		// make for. line across top:
-		for(int i = 0; i< CaveExplorer.caves[0].length -1; i++)
+		for(int i = 0; i< caves[0].length -1; i++)
 		{
 			map += "____";//4
 		}
 		map +="___ \n";//3
-		for(CaveRoom[] row: CaveExplorer.caves)
+		for(CaveRoom[] row: caves)
 		{
 			for(int i = 0; i< 3; i++)
 			{
@@ -71,9 +89,17 @@ public class Inventory {
 			}
 		}
 	}
-
 	public String getDescription()
 	{
-		return map + "\n" + "Also you have " + getMoney() + " money \n";
+		return map + "\n" + "Also you have " + getCash() + " cash \n";
 	}
+	public void updateHP() {
+		
+		hp = 100;
+	}
+	
+	public static int getHP() {
+		return hp;
+	}
+	
 }
