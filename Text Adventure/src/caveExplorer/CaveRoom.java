@@ -143,7 +143,6 @@ public class CaveRoom {
 		//CaveRoom[][] m = CaveExplorer.caves; 
 		CaveRoom[][] c = CaveExplorer.caves; // the vault room
 		CaveExplorer.caves = new NPCRoom[20][20];
-		CaveRoom[][] c = CaveExplorer.caves; // shortcut refs/remotes/origin/master
 		for(int row = 0; row < c.length; row++)
 		{
 			for(int col = 0; col < c[row].length; col ++)

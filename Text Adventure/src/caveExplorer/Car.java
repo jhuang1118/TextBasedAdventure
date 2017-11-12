@@ -1,6 +1,6 @@
 package caveExplorer;
 
-public class Car {
+public class Car extends NPC{
 
 	//fields needed to program navigation 
 	private CaveRoom[][] floor;
