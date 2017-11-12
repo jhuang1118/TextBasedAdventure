@@ -22,6 +22,10 @@ public class Car {
 		currentRoom = null; 
 		active = true;
 	}
+	
+	public boolean exitedVault() {
+		return false;
+	}
 
 	public boolean isActive() {
 		return active;
