@@ -19,9 +19,21 @@ public class Manager extends NPC {
 		}
 	}
 	
-	//When people dies
+	//When manager dies
 	public void death()
 	{
 		CaveExplorer.inventory.setID(this.ID);
+	}
+	
+	public String getDescription()
+	{
+		return "The manager is afraid press 'e' to interact.";
+		
+	}
+	
+	public String getInactiveDescription()
+	{
+		return "The manager is unresponsive.";
+		
 	}
 }
