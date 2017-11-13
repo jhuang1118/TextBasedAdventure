@@ -1,16 +1,13 @@
 package jasonYJasonZMinigame;
 
-import caveExplorer.JasonZRoom;
+public class JasonZBackend implements JasonYSupport {
 
-public class JasonZBackend extends JasonZRoom {
-
-	//set guns manually
-	public final static String[][] GUNS = {};
+	private JasonYSupport frontend;
+	public JasonZGuns[] guns;
 	public final static String[][] TYPE = {};
 	
-	public JasonZBackend(String description) {
-		super(description);
-
+	public JasonZBackend(JasonYSupport frontend) {
+		this.frontend = frontend;
 		
 	}
 	
