@@ -1,6 +1,7 @@
 package caveExplorer;
 
 import ethanDavidMinigame.EthanRoomBackEnd;
+import ethanDavidMinigame.VaultRoom;
 
 public class CaveRoom {
 	
@@ -137,13 +138,26 @@ public class CaveRoom {
 
 	public static void setUpCaves()
 	{
+		CaveExplorer.caves = new NPCRoom[10][10];
+		//CaveExplorer.caves = new CaveRoom[15][15];
+		//CaveRoom[][] m = CaveExplorer.caves; 
+		CaveRoom[][] c = CaveExplorer.caves; // the vault room
 		CaveExplorer.caves = new NPCRoom[20][20];
-		CaveRoom[][] c = CaveExplorer.caves; // shortcut
 		for(int row = 0; row < c.length; row++)
 		{
 			for(int col = 0; col < c[row].length; col ++)
 			{
 				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
+			}
+		}
+		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
+		/* NPC testNPC = new NPC();
+		testNPC.setPosition((int)(Math.random() * c.length),(int)(Math.random()* c.length));
+		CaveExplorer.police = new NPC[1];
+		CaveExplorer.police[0] = testNPC; */
+		
+		c[9][5] = new EthanRoomBackEnd("");
+
 
 		c[0][2] = new JasonZRoom("TEST ROOM", 0, 2);
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
