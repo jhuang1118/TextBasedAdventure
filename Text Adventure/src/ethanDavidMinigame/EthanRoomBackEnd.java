@@ -4,11 +4,14 @@ import caveExplorer.CaveExplorer;
 import caveExplorer.NPCRoom;
 
 /* INVALID CODE NEEDS TO BE MINIGAME*/
-public class EthanRoomBackEnd extends NPCRoom{
-	public EthanRoomBackEnd(String description) {
-		super(description);
-		// TODO Auto-generated constructor stub
+public class EthanRoomBackEnd implements DavidSupport{
+	
+	private EthanSupport frontend;
+	
+	public EthanRoomBackEnd(EthanSupport frontend) {
+		this.frontend = frontend;
 	}
+	
 	public boolean isValid(String input) {
 		return validMoves().indexOf(input.toLowerCase()) > -1 && input.length() == 1;
 	}
