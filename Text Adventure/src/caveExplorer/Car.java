@@ -23,9 +23,6 @@ public class Car extends NPC{
 		active = true;
 	}
 	
-	public boolean exitedVault() {
-		return false;
-	}
 
 	public boolean isActive() {
 		return active;
