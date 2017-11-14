@@ -33,7 +33,6 @@ public class Car extends NPC{
 	}
 
 	public void interact() {
-		CaveExplorer.print("You're in! Quickly get to the safe point!");
 		active = false;
 	}
 
