@@ -2,21 +2,26 @@ package ethanDavidMinigame;
 
 import caveExplorer.CaveExplorer;
 import caveExplorer.CaveRoom;
-import caveExplorer.Enemy;
-import caveExplorer.JasonZRoom;
-import caveExplorer.NPC;
-import caveExplorer.NPCRoom;
+import caveExplorer.Door;
 
 public class DavidRoomFrontEnd implements EthanSupport {
 	
+	public static CaveRoom[][] caves;
+	
 	private DavidSupport backend;
 	private int moveCount;
+	
+	public static final int NORTH = 0;
+	public static final int EAST = 1;
+	public static final int SOUTH = 2;
+	public static final int WEST = 3;
 	
 
 	public static void main(String[] args) {
 		/*DavidRoomFrontEnd game = new DavidRoomFrontEnd();
 		game.play(); */
 		displayBoard();
+
 	}
 	
 	private void play() {
@@ -46,22 +51,45 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		//spawn cash piles (randomly)
 		//spawn obstacles (randomly)
 		//if they choose the same random location choose somewhere else
-		CaveExplorer.caves = new NPCRoom[10][10];
+		CaveExplorer.caves = new CaveRoom[10][10];
 		CaveRoom[][] c = CaveExplorer.caves; 
 		for(int row = 0; row < c.length; row++)
 		{
 			for(int col = 0; col < c[row].length; col ++)
 			{
-				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
+				c[row][col] = new CaveRoom("This has coordinates "+ row +", " + col+".");
 			}
 		}
 		
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
 
-		c[0][1].setConnection(SOUTH, c[1][1], new Door());
-		c[1][1].setConnection(EAST, c[1][2], new Door()); 
+		setConnectionForAll();
+		CaveExplorer.inventory.updateMap(caves);
 		}
+	
+	public static void setConnectionForAll() {
+		CaveRoom[][] c = CaveExplorer.caves;
+		for(int row = 0; row< c.length-1; row++)
+		{
+			for(int col = 0; col < c.length-1; col++)
+			{
+				c[row][col].setConnection(SOUTH, c[row+1][col], new Door());
+				c[row][col].setConnection(EAST, c[row][col+1], new Door());
+			}
+		}
+		
+		for(int i = 0; i<c[c.length-1].length-1; i++)
+		{
+			c[c.length-1][i].setConnection(EAST, c[c.length-1][i+1], new Door());
+		}
+		
+		for(int i = 0; i< c.length-1; i++)
+		{
+			c[i][c[i].length-1].setConnection(SOUTH, c[i][c[i].length-1], new Door());
+		}
+	}
+
 
 	public DavidRoomFrontEnd() {
 		backend = new EthanRoomBackEnd(this);

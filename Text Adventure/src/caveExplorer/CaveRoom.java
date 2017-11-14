@@ -156,7 +156,7 @@ public class CaveRoom {
 		CaveExplorer.police = new NPC[1];
 		CaveExplorer.police[0] = testNPC; */
 		
-		c[9][5] = new EthanRoomBackEnd("");
+
 
 
 		c[0][2] = new JasonZRoom("TEST ROOM", 0, 2);
@@ -165,23 +165,20 @@ public class CaveRoom {
 		testNPC.setPosition(1,2);
 		CaveExplorer.police = new NPC[1];
 		CaveExplorer.police[0] = testNPC;
-		c[2][3] = new EthanRoomBackEnd("");
 		testNPC.setPosition(3,4);
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = testNPC;
 		//Set Starting Room
-
-		}
 		//3. Replace some default rooms with custom rooms (SAVE FOR LATER)
 		/*NPC testNPC = new NPC();
 		testNPC.setPosition(1,2);
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = testNPC;*/
 		
-		NPC enemy = new Enemy();
+		/*NPC enemy = new Enemy();
 		enemy.setPosition(1, 2);
 		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs[0] = enemy;
+		CaveExplorer.npcs[0] = enemy; */
 		
 		//4. Set starting room
 
@@ -192,7 +189,6 @@ public class CaveRoom {
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
 		c[1][1].setConnection(EAST, c[1][2], new Door());
 		}
-	}
 	
 	/**
 	 * override to add more moves
