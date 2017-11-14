@@ -1,19 +1,18 @@
 package jasonYJasonZMinigame;
 
-import caveExplorer.JasonZRoom;
 import caveExplorer.NPCRoom;
 
-public class JasonZBackend extends JasonZRoom {
+public class JasonZBackend implements JasonYSupport {
 
-	//set guns manually
-	public final static String[][] GUNS = {};
+	private JasonZSupport frontend;
+	public JasonZGuns[] guns;
 	public final static String[][] TYPE = {};
 	public int direction;
 	
-	public JasonZBackend(String description) {
-		super(description, col, col);
 
-		
+	public JasonZBackend(JasonZSupport frontend) {
+		this.frontend = frontend;
+
 	}
 	
 	public void createPolice(String type, NPCRoom spawnPoint, int quantity)
@@ -28,6 +27,60 @@ public class JasonZBackend extends JasonZRoom {
 	
 	public void damage(String target)
 	{
+		
+	}
+
+	@Override
+	public void createPolice() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void takeDamage() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void makeGuns() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void kickOff() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void changeDifficulty() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void increaseKillCount() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void changeSpawnTime() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void percentageDamageTaken() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void validInput() {
+		// TODO Auto-generated method stub
 		
 	}
 }

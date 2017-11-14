@@ -32,6 +32,8 @@ public class HeistTimer {
 	private static final int copSetInterval(int interval) {
 		if (interval == 1) {
 			copTimer.cancel();
+			//spawn in police car\
+			CaveExplorer.print("More ***ing cops came! Keep movign!");
 		}
 		return --interval;
 	}
@@ -52,6 +54,8 @@ public class HeistTimer {
 	private static final int vanSetInterval(int interval) {
 		if (interval == 1) {
 			vanTimer.cancel();
+			//make sure the van is actually there
+			CaveExplorer.print("The getaway van is here! Get to the van!");
 		}
 		return --interval;
 	}
