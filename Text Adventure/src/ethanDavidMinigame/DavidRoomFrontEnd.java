@@ -19,10 +19,9 @@ public class DavidRoomFrontEnd implements EthanSupport {
 			backend.startTimer();
 		}
 		printGameOverMessage(backend.victorious());
-		
 	}
 	
-	private void printGameOverMessage(Object victorious) {
+	public void printGameOverMessage(Object victorious) {
 		System.out.println("You're dead.");
 	}
 
@@ -36,7 +35,9 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 
 	public void displayBoard() {
-		// TODO Auto-generated method stub
+		//spawn cash piles (randomly)
+		//spawn obstacles (randomly)
+		//if they choose the same random location choose somewhere else
 		
 	}
 
