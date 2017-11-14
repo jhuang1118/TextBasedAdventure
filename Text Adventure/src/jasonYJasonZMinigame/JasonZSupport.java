@@ -2,7 +2,7 @@ package jasonYJasonZMinigame;
 
 public interface JasonZSupport {
 
-	void createMap();
+	void displayMap();
 	void follow();
 		//npcs in the map will move towards the player after played inputs a move
 	void rangeDisplay();
@@ -12,8 +12,6 @@ public interface JasonZSupport {
 		//createMap();
 		//populateMap();
 		//display it all
-	void populateMap();
-		//populates the map with cops
 	void killCounter();
 		//displays number of kills
 	void copCounter();

@@ -10,5 +10,5 @@ public interface JasonYSupport {
 	void increaseKillCount();
 	void changeSpawnTime();
 	void percentageDamageTaken();
-	
+	void validInput();
 }
