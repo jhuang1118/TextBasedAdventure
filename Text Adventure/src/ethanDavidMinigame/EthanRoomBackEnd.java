@@ -31,6 +31,8 @@ public class EthanRoomBackEnd implements DavidSupport{
 	public boolean isExited() {
 		return false;
 	}
+	
+	//NEED TO mANUALLY CREATE MAP
 
 	@Override
 	public boolean stillPlaying() {
