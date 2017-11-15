@@ -12,6 +12,7 @@ public class JasonZGuns {
 	public final static int AUTOMATIC = 0;
 	public final static int PISTOL = 1;
 	public final static int SUBMACHINE = 2;
+	public final static String[] NAMES = {};
 				//auto		pistol		sub machine gun 
 	public final static double[][] TYPE = {{4,14,30,4},{2,6,8,3},{3,8,20,4}};
 	//range, damage, magazines, fire rate 

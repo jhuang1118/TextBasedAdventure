@@ -85,14 +85,14 @@ public class JasonZBackend implements JasonYSupport {
 	public void validInput(String input, KeyEvent event) {
 		if(event.getKeyCode() >= 38 && event.getKeyCode() <= 40)
 		{
-			checkIfArrowKeys(event);
+			ArrowKeys(event);
 		}
 		
 		//if it is a valid input ....
 		
 	}
 
-	private void checkIfArrowKeys(KeyEvent event) {
+	private void ArrowKeys(KeyEvent event) {
 		direction = event.getKeyCode()%38;
 	}
 
