@@ -6,8 +6,10 @@ public class GameRoom {
 	private int col;
 	private boolean isObstacle;
 	
-	public GameRoom(){
+	public GameRoom(int row, int col){
 		isObstacle = false;
+		this.row = row;
+		this.col = col;
 	}
 
 	public int getRow() {
