@@ -6,10 +6,12 @@ import caveExplorer.NPCRoom;
 /* INVALID CODE NEEDS TO BE MINIGAME*/
 public class EthanRoomBackEnd implements DavidSupport{
 	
+	private int MONEYCUTOFF;
 	private EthanSupport frontend;
 	
 	public EthanRoomBackEnd(EthanSupport frontend) {
 		this.frontend = frontend;
+		MONEYCUTOFF = 100000;
 	}
 	
 	public boolean hitLaser() {
