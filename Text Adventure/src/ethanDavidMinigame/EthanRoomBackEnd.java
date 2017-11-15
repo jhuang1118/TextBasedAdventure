@@ -7,6 +7,7 @@ import caveExplorer.NPCRoom;
 public class EthanRoomBackEnd implements DavidSupport{
 	
 	private int MONEY_CUT_OFF;
+	private boolean cheating;
 	private EthanSupport frontend;
 	
 	public EthanRoomBackEnd(EthanSupport frontend) {
@@ -30,6 +31,13 @@ public class EthanRoomBackEnd implements DavidSupport{
 	
 	public boolean isExited() {
 		return false;
+	}
+	
+	public boolean cheat() {
+		if(!cheating) {
+			
+		}
+		return cheating;
 	}
 	
 	//NEED TO mANUALLY CREATE MAP
