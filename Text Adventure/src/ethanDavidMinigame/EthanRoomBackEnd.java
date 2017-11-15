@@ -26,16 +26,15 @@ public class EthanRoomBackEnd implements DavidSupport{
 		}
 	}
 	
+	//add an AI that attempts to change the laser locations?????
+	
 	public boolean isExited() {
 		return false;
 	}
 
 	@Override
 	public boolean stillPlaying() {
-		if(MONEY_CUT_OFF == 100000) {
-			return false;
-		}
-		return true;
+		return MONEY_CUT_OFF == 100000;
 	}
 
 	@Override
