@@ -8,6 +8,11 @@ public class EthanDavidCashPiles extends NPCRoom {
 		super(description);
 	}
 
+	public int value() {
+		return 0;
+		
+	}
+	
 	public String getContents() {
 		return "$";
 	}
