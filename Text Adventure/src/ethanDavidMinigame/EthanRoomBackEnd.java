@@ -15,7 +15,9 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 	
 	public boolean hitLaser() {
-		return false;
+		if(EthanDavidObstacles.isUserHit()) {
+			
+		}
 	}
 	
 	public void generateCash() {
