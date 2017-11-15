@@ -1,23 +1,37 @@
 package jasonYJasonZMinigame;
 
+import java.awt.event.KeyEvent;
+
 import caveExplorer.NPCRoom;
+import jasonYJasonZMinigame.JasonZSwat;
 
 public class JasonZBackend implements JasonYSupport {
 
 	private JasonZSupport frontend;
 	public JasonZGuns[] guns;
 	public final static String[][] TYPE = {};
+	public JasonZSwat[] Swat;
 	public int direction;
-	
+	public int quantity;
+	public int killCount;
+	public double spawnTime = 3;
+	public double[] difficulty = {1, 1.1, 1.3, 1.5, 2};
+	public String validinputs = "wasdf";
 
-	public JasonZBackend(JasonZSupport frontend) {
+	public JasonZBackend(JasonZSupport frontend, int difficulty) {
 		this.frontend = frontend;
-
+		changeDifficulty(difficulty);
+		Swat = new JasonZSwat[quantity];
+		
 	}
 	
-	public void createPolice(String type, NPCRoom spawnPoint, int quantity)
+	public void createPolice()
 	{
-		
+		for(int i =0; i<quantity; i++)
+		{
+			Swat[i] = new JasonZSwat();
+			Swat[i].makeGuns();
+		}
 	}
 
 	public void attack(NPCRoom currentRoom)
@@ -25,27 +39,9 @@ public class JasonZBackend implements JasonYSupport {
 		
 	}
 	
-	public void damage(String target)
+	public void damage(JasonZSwat target, double damage)
 	{
-		
-	}
-
-	@Override
-	public void createPolice() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void takeDamage() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void makeGuns() {
-		// TODO Auto-generated method stub
-		
+		target.hp -= damage;
 	}
 
 	@Override
@@ -55,32 +51,49 @@ public class JasonZBackend implements JasonYSupport {
 	}
 
 	@Override
-	public void changeDifficulty() {
-		// TODO Auto-generated method stub
+	public void changeDifficulty(int i) {
+		changeGunStats(difficulty[i]);
+		changeSpawnTime((spawnTime*difficulty[i]));
 		
+	}
+
+	private void changeGunStats(double d) {
+		double[][] gStats = JasonZGuns.TYPE;
+		double value = 0;
+		for(int row = 0; row< gStats.length; row++)
+		{
+			for(int col = 0; col< gStats[row].length; col++)
+			{
+				value = gStats[row][col] * d;
+				gStats[row][col] = value;
+				
+			}
+		}
 	}
 
 	@Override
 	public void increaseKillCount() {
-		// TODO Auto-generated method stub
+		this.killCount ++;
 		
 	}
 
-	@Override
-	public void changeSpawnTime() {
-		// TODO Auto-generated method stub
-		
+	public void changeSpawnTime(double spawnTime) {
+		this.spawnTime = spawnTime;
 	}
 
 	@Override
-	public void percentageDamageTaken() {
-		// TODO Auto-generated method stub
+	public void validInput(String input, KeyEvent event) {
+		if(event.getKeyCode() >= 38 && event.getKeyCode() <= 40)
+		{
+			checkIfArrowKeys(event);
+		}
+		
+		//if it is a valid input ....
 		
 	}
 
-	@Override
-	public void validInput() {
-		// TODO Auto-generated method stub
-		
+	private void checkIfArrowKeys(KeyEvent event) {
+		direction = event.getKeyCode()%38;
 	}
+
 }

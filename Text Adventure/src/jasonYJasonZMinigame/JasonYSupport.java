@@ -1,14 +1,15 @@
 package jasonYJasonZMinigame;
 
+import java.awt.event.KeyEvent;
+
 public interface JasonYSupport {
 	void createPolice();
-	void fire();
-	void takeDamage();
-	void makeGuns();
 	void kickOff();
-	void changeDifficulty();
 	void increaseKillCount();
 	void changeSpawnTime();
-	void percentageDamageTaken();
 	void validInput();
+	void changeDifficulty(int i);
+	void changeSpawnTime(double d);
+	void validInput(String input);
+	void validInput(String input, KeyEvent event);
 }
