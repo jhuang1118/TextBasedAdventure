@@ -21,7 +21,9 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 	
 	public void generateCash() {
-		
+		for(int i = 0; i < 10; i++) {
+			//add cash here
+		}
 	}
 	
 	public boolean isExited() {
@@ -30,8 +32,10 @@ public class EthanRoomBackEnd implements DavidSupport{
 
 	@Override
 	public boolean stillPlaying() {
-		// TODO Auto-generated method stub
-		return false;
+		if(MONEY_CUT_OFF == 100000) {
+			return false;
+		}
+		return true;
 	}
 
 	@Override
