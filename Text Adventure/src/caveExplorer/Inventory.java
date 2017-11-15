@@ -4,12 +4,13 @@ public class Inventory {
 	
 	private String map;
 	private static int hp;
-	private boolean isKidnapped = false;
-	private boolean hasGun = false;
+	private boolean isKidnapped;
+	private boolean hasGun; 
+	private int key;
 	
 	public Inventory() {
 		updateMap();
-		
+		hp = 100;
 	}
 	
 	public void updateMap() {
@@ -56,13 +57,12 @@ public class Inventory {
 		//return "There is nothing in your inventory.";
 	}
 	
-	public void updateHP() {
-		
-		hp = 100;
+	public void updateHP(int dmg) {
+		hp -= dmg;
 	}
 	
-	public static int getHP() {
-		return hp;
+	public  int getHP() {
+		return this.hp;
 	}
 	
 	public void toggleIsKidnapped() {
@@ -79,4 +79,12 @@ public class Inventory {
 		return hasGun;
 	}
 	
+	public int getKey() {
+		return key;
+		
+	}
+	
+	public void setKey(int num) {
+		key = num;
+	}
 }

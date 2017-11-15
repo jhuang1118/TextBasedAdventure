@@ -44,8 +44,8 @@ public class JohnsonBackEnd implements DanielSupport {
 			}
 		}
 		
-		locker[0][2] = "true";
-		locker[5][3] = "true";
+		locker[0][2] = "true"; //first locker has the person
+		locker[5][3] = "true"; //last locker has the bomb 
 	}
 	
 	
