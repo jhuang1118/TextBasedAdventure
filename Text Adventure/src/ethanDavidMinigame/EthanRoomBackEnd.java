@@ -26,8 +26,10 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 	
 	public void generateCash() {
+		int randMoney = (int)(10 * Math.random() * 1000);
 		for(int i = 0; i < 10; i++) {
-			//add cash here
+			new EthanDavidCashPiles(null);
+			//EthanDavidCashPiles.setValue(randMoney);
 		}
 	}
 	
@@ -43,8 +45,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 		}
 		return cheating;
 	}
-	
-	//NEED TO mANUALLY CREATE MAP
 
 	@Override
 	public boolean stillPlaying() {
