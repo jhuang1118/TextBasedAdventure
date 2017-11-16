@@ -24,15 +24,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 			//gameover
 		}
 	}
-	
-	public void generateCash() {
-		int randMoney = (int)(10 * Math.random() * 1000);
-		for(int i = 0; i < 10; i++) {
-			new EthanDavidCashPiles(null);
-			//EthanDavidCashPiles.setValue(randMoney);
-		}
-	}
-	
 	//add an AI that attempts to change the laser locations?????
 	
 	public boolean isExited() {
