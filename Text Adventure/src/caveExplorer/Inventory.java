@@ -13,7 +13,7 @@ public class Inventory {
 		ID = iD;
 	}
 
-	private String map;
+	private static String map;
 
 	private int cash;
 	private String[] defaultGuns = {"M16", "0"};
@@ -34,7 +34,7 @@ public class Inventory {
 	public void setCash(int cash) {
 		this.cash = cash;
 	}
-	public void updateMap(CaveRoom[][] caves) {
+	public static void updateMap(CaveRoom[][] caves) {
 		map = " ";
 		// make for. line across top:
 		for(int i = 0; i< caves[0].length -1; i++)

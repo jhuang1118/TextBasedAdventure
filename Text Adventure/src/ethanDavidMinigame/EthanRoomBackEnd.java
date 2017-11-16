@@ -10,6 +10,10 @@ public class EthanRoomBackEnd implements DavidSupport{
 	private boolean cheating;
 	private EthanSupport frontend;
 	
+	long startTime = System.currentTimeMillis();
+	long elapsedTime = System.currentTimeMillis() - startTime;
+	long elapsedSeconds = elapsedTime/1000;
+	
 	public EthanRoomBackEnd(EthanSupport frontend) {
 		this.frontend = frontend;
 		MONEY_CUT_OFF = 100000;
@@ -55,7 +59,12 @@ public class EthanRoomBackEnd implements DavidSupport{
 
 	@Override
 	public void startTimer() {
-		// TODO Auto-generated method stub
+		if(elapsedSeconds == 40 && amountOfMoney!= 10) {
+			
+		}
+		if(amountOfMoney == 10) {
+			
+		}
 		
 	}
 
