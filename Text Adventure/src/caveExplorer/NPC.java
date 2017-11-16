@@ -6,7 +6,7 @@ public class NPC {
 	private CaveRoom[][] floor;
 	private int currentRow; 
 	private int currentCol;
-	private NPCRoom currentRoom; 
+	private NPCRoom currentRoom;
 	
 	//fields for interaction commment
 	private boolean active;
@@ -14,9 +14,10 @@ public class NPC {
 	private String inactiveDescription; 
 	//you can add more
 	
+	public int[][] possibleMoves = {{-1,0}, {0,1}, {1, 0},{0,-1}};
 	
-	public NPC() {
-		this.floor = CaveExplorer.caves;
+	public NPC(CaveRoom[][] cave) {
+		this.floor = cave;
 		this.activeDescription = "There is a person standing in the room, waiting to talk to you. Press 'e' to talk";
 		this.inactiveDescription = "The person you spoke to earlier is standing here.";
 		this.currentCol = -1; 
@@ -30,6 +31,22 @@ public class NPC {
 	}
 	
 	
+
+	public int getCurrentRow() {
+		return currentRow;
+	}
+
+	public void setCurrentRow(int currentRow) {
+		this.currentRow = currentRow;
+	}
+
+	public int getCurrentCol() {
+		return currentCol;
+	}
+
+	public void setCurrentCol(int currentCol) {
+		this.currentCol = currentCol;
+	}
 
 	public void setActive(boolean active) {
 		this.active = active;
@@ -85,9 +102,8 @@ public class NPC {
 		
 	}
 
-	private int[] calculateMove() {
+	public int[] calculateMove(int userRow, int userCol) {
 								//North East	South	West
-		int[][] possibleMoves = {{-1,0}, {0,1}, {1, 0},{0,-1}};
 		int index = (int)(Math.random() * possibleMoves.length);
 		int[] newPosition = new int[2]; 
 		newPosition[0] = currentRow + possibleMoves[index][0];

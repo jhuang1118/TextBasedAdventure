@@ -25,12 +25,17 @@ public class JasonZBackend implements JasonYSupport {
 		
 	}
 	
-	public void createPolice()
+	public void createPolice(int row, int col)
 	{
 		for(int i =0; i<quantity; i++)
 		{
-			Swat[i] = new JasonZSwat();
-			Swat[i].makeGuns();
+			if(Swat[i] == null)
+			{
+				Swat[i] = new JasonZSwat();
+				Swat[i].makeGuns();
+				Swat[i].setPosition(row, col);
+				break;
+			}
 		}
 	}
 
@@ -39,6 +44,10 @@ public class JasonZBackend implements JasonYSupport {
 		
 	}
 	
+	public int firstPersonDir()
+	{
+		
+	}
 	public void damage(JasonZSwat target, double damage)
 	{
 		target.hp -= damage;
@@ -56,6 +65,7 @@ public class JasonZBackend implements JasonYSupport {
 		changeSpawnTime((spawnTime*difficulty[i]));
 		
 	}
+
 
 	private void changeGunStats(double d) {
 		double[][] gStats = JasonZGuns.TYPE;
