@@ -1,5 +1,6 @@
 package ethanDavidMinigame;
 
+import caveExplorer.CaveExplorer;
 import caveExplorer.NPCRoom;
 
 public class EthanDavidCashPiles extends NPCRoom {
@@ -10,7 +11,7 @@ public class EthanDavidCashPiles extends NPCRoom {
 		super(description);
 	}
 
-	public int getvalue() {
+	public int getValue() {
 		return value;
 	}
 	
@@ -20,5 +21,14 @@ public class EthanDavidCashPiles extends NPCRoom {
 	
 	public String getContents() {
 		return "$";
+	}
+	
+	public void generateCash() {
+		int randMoney = (int)(10 * Math.random() * 1000);
+		setValue(randMoney);
+	}
+	
+	public void addMoney() {
+		CaveExplorer.inventory.setCash(CaveExplorer.inventory.getCash() + getValue());
 	}
 }
