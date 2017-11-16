@@ -3,6 +3,7 @@ package ethanDavidMinigame;
 import caveExplorer.CaveExplorer;
 import caveExplorer.CaveRoom;
 import caveExplorer.Door;
+import caveExplorer.Inventory;
 
 public class DavidRoomFrontEnd implements EthanSupport {
 	
@@ -51,22 +52,19 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		//spawn cash piles (randomly)
 		//spawn obstacles (randomly)
 		//if they choose the same random location choose somewhere else
-		CaveExplorer.caves = new CaveRoom[10][10];
-		CaveRoom[][] c = CaveExplorer.caves; 
-		for(int row = 0; row < c.length; row++)
-		{
-			for(int col = 0; col < c[row].length; col ++)
-			{
-				c[row][col] = new CaveRoom("This has coordinates "+ row +", " + col+".");
-			}
-		}
-		
-		CaveExplorer.currentRoom = c[0][1];
-		CaveExplorer.currentRoom.enter();
-
-		setConnectionForAll();
-		CaveExplorer.inventory.updateMap(caves);
-		}
+				CaveExplorer.caves = new VaultRoom[5][5];
+				CaveRoom[][] c = CaveExplorer.caves;
+				for(int row =0; row < c.length; row ++) {
+					for(int col = 0; col < c[row].length; col++) {
+						c[row][col] = new VaultRoom("This cave has coordinates "+row+", "+col);
+					}
+				}
+				
+				//4.set starting room
+				CaveExplorer.currentRoom = c[0][1];
+				CaveExplorer.currentRoom.enter();
+				setConnectionForAll();
+	}
 	
 	public static void setConnectionForAll() {
 		CaveRoom[][] c = CaveExplorer.caves;
@@ -77,7 +75,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 				c[row][col].setConnection(SOUTH, c[row+1][col], new Door());
 				c[row][col].setConnection(EAST, c[row][col+1], new Door());
 			}
-		}
+		} 
 		
 		for(int i = 0; i<c[c.length-1].length-1; i++)
 		{
@@ -88,7 +86,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		{
 			c[i][c[i].length-1].setConnection(SOUTH, c[i][c[i].length-1], new Door());
 		}
-	}
+	} 
 
 
 	public DavidRoomFrontEnd() {
