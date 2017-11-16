@@ -70,7 +70,7 @@ public class JohnsonUnlockGame {
 		}
 		System.out.println("You have already pressed this button. You cannot press it again.");
 	}
-	
+	//
 	private String getValidUserInput() {
 		String input = CaveExplorer.in.nextLine();
 		String num1 = input.substring(0,1);
