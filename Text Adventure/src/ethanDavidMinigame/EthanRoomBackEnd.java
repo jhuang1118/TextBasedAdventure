@@ -18,12 +18,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 		this.frontend = frontend;
 		MONEY_CUT_OFF = 100000;
 	}
-	
-	public boolean hitLaser() {
-		if(EthanDavidObstacles.isUserHit()) {
-			//gameover
-		}
-	}
 	//add an AI that attempts to change the laser locations?????
 	
 	public boolean isExited() {
@@ -35,6 +29,10 @@ public class EthanRoomBackEnd implements DavidSupport{
 			
 		}
 		return cheating;
+	}
+	
+	public void generateRooms() {
+		
 	}
 
 	@Override
@@ -50,13 +48,9 @@ public class EthanRoomBackEnd implements DavidSupport{
 
 	@Override
 	public void startTimer() {
-		if(elapsedSeconds == 40 && amountOfMoney!= 10) {
+		if(elapsedSeconds == 40 /*&& Inventory.getMoney() == MONEY_CUT_OFF*/) {
 			
 		}
-		if(amountOfMoney == 10) {
-			
-		}
-		
 	}
 
 	@Override

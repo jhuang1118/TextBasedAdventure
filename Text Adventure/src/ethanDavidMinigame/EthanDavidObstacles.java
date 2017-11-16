@@ -1,13 +1,10 @@
 package ethanDavidMinigame;
 
-import caveExplorer.CaveRoom;
-
-public class EthanDavidObstacles extends CaveRoom {
+public class EthanDavidObstacles{
 	
 	boolean userHit;
 
 	public EthanDavidObstacles(String description) {
-		super(description);
 		setUserHit(false);
 	}
 	
@@ -18,8 +15,6 @@ public class EthanDavidObstacles extends CaveRoom {
 	public void setUserHit(boolean userHit) {
 		this.userHit = userHit;
 	}
-
-
 
 	public String getContents() {
 		return "---";
