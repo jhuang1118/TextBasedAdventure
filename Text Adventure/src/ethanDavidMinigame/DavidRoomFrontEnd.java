@@ -1,12 +1,10 @@
 package ethanDavidMinigame;
 
-import caveExplorer.CaveExplorer;
-import caveExplorer.CaveRoom;
-import caveExplorer.Door;
-
 public class DavidRoomFrontEnd implements EthanSupport {
 	
-	public static CaveRoom[][] caves;
+	private DavidEthanRoom[][] rooms;
+	private int currentRow;
+	private int currentCol;
 	
 	private DavidSupport backend;
 	
@@ -14,6 +12,8 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	public static final int EAST = 1;
 	public static final int SOUTH = 2;
 	public static final int WEST = 3;
+	
+	public static String map;
 	
 	public static void main(String[] args) {
 		DavidRoomFrontEnd game = new DavidRoomFrontEnd();
@@ -43,28 +43,33 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		
 	}
 
-	public static void displayBoard() {
+	public void displayBoard() {
 		//spawn cash piles (randomly)
 		//spawn obstacles (randomly)
 		//if they choose the same random location choose somewhere else
-				CaveExplorer.caves = new CaveRoom[5][5];
-				CaveRoom[][] c = CaveExplorer.caves;
-				for(int row = 0; row < c.length; row ++) {
-					for(int col = 0; col < c[row].length; col++) {
-						c[row][col] = new CaveRoom("This cave has coordinates "+row+", "+col);
-					}
+		for(int row = 0; row < rooms.length; row++) {
+			for(int col = 0; col < rooms[row].length; col++){
+				if(row == currentRow && col == currentCol) {
+					System.out.print("V");
 				}
+				else {
+					System.out.print(rooms[row][col]);
+				}
+			}
+			System.out.println("");
+		}
+		}	
 				
-				//4.set starting room
-				CaveExplorer.currentRoom = c[0][1];
-				CaveExplorer.currentRoom.enter();
-				c[0][1].setConnection(SOUTH, c[1][1], new Door());
-				c[1][1].setConnection(EAST, c[1][2], new Door()); 
-		caveExplorer.Inventory.updateMap(c);
-	}
+				
 
 	public DavidRoomFrontEnd() {
 		backend = new EthanRoomBackEnd(this);
+		rooms = new DavidEthanRoom[10][10];
+		for(DavidEthanRoom[] row: rooms) {
+			for(int col = 0; col < row.length; col++) {
+				row[col] = new DavidEthanRoom();
+			}
+		}
 	}
 
 }
