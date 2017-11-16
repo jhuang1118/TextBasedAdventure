@@ -5,7 +5,7 @@ public class NPCRoom extends CaveRoom {
 	private NPC car;
 	
 	public NPCRoom(String description) {
-		super(description);
+		super(description, row, col);
 		// TODO Auto-generated constructor stub
 	}
 	

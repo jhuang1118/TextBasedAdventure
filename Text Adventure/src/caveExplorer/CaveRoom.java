@@ -5,6 +5,22 @@ import ethanDavidMinigame.VaultRoom;
 
 public class CaveRoom {
 	
+	public static int getRow() {
+		return row;
+	}
+
+	public static void setRow(int row) {
+		CaveRoom.row = row;
+	}
+
+	public static int getCol() {
+		return col;
+	}
+
+	public static void setCol(int col) {
+		CaveRoom.col = col;
+	}
+
 	private String description;
 	private String directions;//tells you which door can be used
 	private String contents;//a symbol showing you what is in the room
@@ -13,6 +29,8 @@ public class CaveRoom {
 	
 	private CaveRoom[] borderingRooms;
 	private Door[] doors;
+	public static int row;
+	public static int col;
 	
 	//constants
 	public static final int NORTH = 0;
@@ -20,7 +38,9 @@ public class CaveRoom {
 	public static final int SOUTH = 2;
 	public static final int WEST = 3;
 	
-	public CaveRoom(String description) {
+	public CaveRoom(String description, int row, int col) {
+		this.row = row; 
+		this.col = col;
 		this.description = description;
 		setDefaultContents(" ");
 		contents = defaultContents;
