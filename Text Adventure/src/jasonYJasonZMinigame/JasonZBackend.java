@@ -24,7 +24,7 @@ public class JasonZBackend implements JasonYSupport {
 		Swat = new JasonZSwat[quantity];
 		
 	}
-	
+	 
 	public void createPolice(int row, int col)
 	{
 		for(int i =0; i<quantity; i++)

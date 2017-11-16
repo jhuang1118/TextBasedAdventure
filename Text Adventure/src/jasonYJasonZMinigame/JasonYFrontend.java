@@ -18,7 +18,7 @@ public class JasonYFrontend implements JasonZSupport {
 	public Door[] doors;
 	public GameRoom currentRoom;
 	
-	
+	 
 	public static final void main(String[] args) {
 		JasonYFrontend demo = new JasonYFrontend();
 		demo.play();

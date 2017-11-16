@@ -161,7 +161,7 @@ public class CaveRoom {
 		CaveRoom[][] c = CaveExplorer.caves;
 		CaveExplorer.caves = new NPCRoom[20][20];
 		for(int row = 0; row < c.length; row++)
-		{
+		{ 
 			for(int col = 0; col < c[row].length; col ++)
 			{
 				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
@@ -170,7 +170,7 @@ public class CaveRoom {
 
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		NPC testNPC = new NPC();
-		testNPC.setPosition(1,2);
+		testNPC.setPosition(1,2); 
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = testNPC;
 		

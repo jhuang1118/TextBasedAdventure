@@ -57,7 +57,7 @@ public class Inventory {
 					else
 					{
 						text += "|";
-					}
+					} 
 					if(i == 0)
 					{
 						text += "   ";
