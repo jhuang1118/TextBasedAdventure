@@ -44,6 +44,10 @@ public class JasonZBackend implements JasonYSupport {
 		
 	}
 	
+	public int firstPersonDir()
+	{
+		
+	}
 	public void damage(JasonZSwat target, double damage)
 	{
 		target.hp -= damage;
@@ -57,16 +61,11 @@ public class JasonZBackend implements JasonYSupport {
 
 	@Override
 	public void changeDifficulty(int i) {
-		changeCopStats(difficulty[i]);
 		changeGunStats(difficulty[i]);
 		changeSpawnTime((spawnTime*difficulty[i]));
 		
 	}
 
-	private void changeCopStats(double d) {
-		
-		
-	}
 
 	private void changeGunStats(double d) {
 		double[][] gStats = JasonZGuns.TYPE;

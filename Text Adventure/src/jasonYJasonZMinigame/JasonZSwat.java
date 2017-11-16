@@ -13,6 +13,7 @@ public class JasonZSwat extends NPC {
 	
 	public JasonZSwat()
 	{
+		//w.e the map is called.
 		super();
 		makeGuns();
 	}
