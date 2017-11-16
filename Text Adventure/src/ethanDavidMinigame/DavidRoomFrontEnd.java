@@ -9,16 +9,12 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	public static CaveRoom[][] caves;
 	
 	private DavidSupport backend;
-	private int moveCount;
 	
 	public static final int NORTH = 0;
 	public static final int EAST = 1;
 	public static final int SOUTH = 2;
 	public static final int WEST = 3;
 	
-	private int amountOfMoney;
-	
-
 	public static void main(String[] args) {
 		DavidRoomFrontEnd game = new DavidRoomFrontEnd();
 		game.play(); 
