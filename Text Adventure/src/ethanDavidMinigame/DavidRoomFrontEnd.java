@@ -50,7 +50,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		for(int row = 0; row < rooms.length; row++) {
 			for(int col = 0; col < rooms[row].length; col++){
 				if(row == currentRow && col == currentCol) {
-					System.out.print("V");
+					System.out.print("X");
 				}
 				else {
 					System.out.print(rooms[row][col]);

@@ -18,7 +18,7 @@ public class DavidEthanRoom {
 	
 	public String toString() {
 		if(containsTreasure) {
-			return "X";
+			return "$";
 		}
 		else {
 			return "O";
