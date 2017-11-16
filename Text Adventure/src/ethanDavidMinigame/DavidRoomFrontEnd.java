@@ -63,7 +63,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 				//4.set starting room
 				CaveExplorer.currentRoom = c[0][1];
 				CaveExplorer.currentRoom.enter();
-				setConnectionForAll();
+				//setConnectionForAll();
 	}
 	
 	public static void setConnectionForAll() {
