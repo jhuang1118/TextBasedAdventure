@@ -13,7 +13,7 @@ public class JasonZBackend implements JasonYSupport {
 	public JasonZSwat[] Swat;
 	public int direction;
 	public int quantity;
-	public int killCount;
+	public static int killCount;
 	public double spawnTime = 3;
 	public double[] difficulty = {1, 1.1, 1.3, 1.5, 2};
 	public String validinputs = "wasdf";

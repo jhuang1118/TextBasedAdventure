@@ -1,19 +1,23 @@
 package jasonYJasonZMinigame;
 
+import caveExplorer.CaveExplorer;
+import caveExplorer.CaveRoom;
+import caveExplorer.Door;
+
+import java.util.Scanner;
+
 public class JasonYFrontend implements JasonZSupport {
 	
+	public static Scanner in;//for user input
+	
 	private JasonYSupport backend;
-	public int killCounter;
 	public int copCounter;
 	public int neededKills;
-	public NPCs[] npc;//call the data type whatever Johnson called it
-	public GameRoom[][] map;
+	public JasonZSwat[] npc;//call the data type whatever Johnson called it
+	public CaveRoom[][] map;
+	public Door[] doors;
+	public GameRoom currentRoom;
 	
-	
-	public static final int NORTH = 0;
-	public static final int EAST = 1;
-	public static final int SOUTH = 2;
-	public static final int WEST = 3;
 	
 	public static final void main(String[] args) {
 		JasonYFrontend demo = new JasonYFrontend();
@@ -21,49 +25,20 @@ public class JasonYFrontend implements JasonZSupport {
 	}
 	
 	public JasonYFrontend() {
-		backend = new JasonZBackend(this);
-		createMap();
+		backend = new JasonZBackend(this, 1);
 	}
 
 	public void createMap() {
 		//creates the map
-		map = new GameRoom[10][10];
+		map = new CaveRoom[10][10];
 		for(int row = 0; row < map.length; row++) {
 			for(int col = 0; col < map[row].length; col++) {
 				map[row][col] = new GameRoom(row,col);
 			}
 		}
-	}
-	
-	public void displayMap() {
-		//displays the map
-		String[][] pic = new String[10][10];
-		drawVerticalLine(pic,0);
-		drawVerticalLine(pic,9);
-		drawHorizontalLine(pic,0);
-		drawHorizontalLine(pic,9);
-		print(pic);
-	}
-
-	private static void print(String[][] pic) {
-		for(String[] row: pic) {
-			for(String col : row) {
-				System.out.print(col);
-			}
-			System.out.println("");
-		}
-	}
-	
-	private static void drawVerticalLine(String[][] pic, int col) {
-		for(int i = 0; i < pic.length; i++) {
-			pic[i][col] = "|";
-		}
-	}
-	
-	private static void drawHorizontalLine(String[][] pic, int row) {
-		for(int i = 0; i < pic[row].length; i++) {
-			pic[row][i] = "-";
-		}
+		
+		currentRoom = (GameRoom) map[0][1];
+		currentRoom.enter();
 	}
 	
 	public void follow(){
@@ -76,16 +51,13 @@ public class JasonYFrontend implements JasonZSupport {
 	}
 	
 	public void play() {
-		//introduction();
-		//will go through a while loop
-		//displays final message when player wins or loses
-		//player wins when they have killed a number of cops
-		//player loses if they die
+		introduction();
+
 	}
 
 	public void killCounter() {
-		neededKills = neededKills - killCounter;
-		System.out.println("You have killed " + killCounter + " cops. You need to kill " + neededKills + "cops.");
+		neededKills = neededKills - JasonZBackend.killCount;
+		System.out.println("You have killed " + JasonZBackend.killCount + " cops. You need to kill " + neededKills + "cops.");
 		
 	}
 
@@ -99,7 +71,7 @@ public class JasonYFrontend implements JasonZSupport {
 		//once they enter the play button (in this case p):
 		//ask for difficulty
 		createMap();
-		displayMap();
+		CaveExplorer.inventory.updateMap(map);
 		//populateMap();
 		
 		
