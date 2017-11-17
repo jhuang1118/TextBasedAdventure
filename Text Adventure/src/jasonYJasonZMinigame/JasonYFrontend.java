@@ -14,12 +14,14 @@ public class JasonYFrontend implements JasonZSupport {
 	public int copCounter;
 	public int neededKills;
 	public JasonZSwat[] npc;
-	public CaveRoom[][] map;
+	public CaveRoom[][] caves;
+	public GameRoom[][] map;
 	public Door[] doors;
 	public String[] difficultyWords;
-	public GameRoom currentRoom;
+	public GameRoom currentMiniGameRoom;
 	 
 	public static final void main(String[] args) {
+		in = new Scanner(System.in);
 		JasonYFrontend demo = new JasonYFrontend();
 		demo.play();
 	}
@@ -30,17 +32,28 @@ public class JasonYFrontend implements JasonZSupport {
 		difficultyWords = temp;
 	}
 
-	public void createMap() {
+	public void createMap(int size) {
 		//creates the map
-		map = new CaveRoom[10][10];
-		for(int row = 0; row < map.length; row++) {
-			for(int col = 0; col < map[row].length; col++) {
-				map[row][col] = new GameRoom(row,col);
+		//get current position of player
+		map = new GameRoom[size*2][size*2];
+		caves = CaveExplorer.caves;
+		int[] coords = CaveExplorer.currentRoom.getCoordinates();
+		int[] startRoom = new int[2];
+		startRoom[0] = coords[0] - size;
+		startRoom[1] = coords[1] - size;
+		int[] finalRoom = new int[2];
+		finalRoom[0] = coords[0] + size;
+		finalRoom[1] = coords[1] + size;
+		int[][] startendrooms = new int[1][2];
+		startendrooms[0] = startRoom;
+		startendrooms[1] = finalRoom;
+		for(int i = 0; i < 2; i++) {
+			for(int row = startendrooms[i]; row < startRoom[i]+(size*2); row++) {
+				for(int col = startRoom[i]; ) {
+					
+				} 
 			}
 		}
-		
-		currentRoom = (GameRoom) map[0][1];
-		currentRoom.enter();
 	}
 	
 	public void follow(){
@@ -77,14 +90,20 @@ public class JasonYFrontend implements JasonZSupport {
 		System.out.println("Cops will spawn when you enter the game. Cops will continue to spawn after a "
 				+ "certian amount of time has passed when playing. You need to kill a number of cops to "
 				+ "win the game. If they kill you that's it.");
+		introTwo();
+	}
+	
+	public void introTwo() {
 		System.out.println("So do you want to play? Enter 'p' to play. Enter 'c' for controls");
 		String input = in.nextLine();
-		while(!isValid(input, "pc")) {
-			System.out.println("Valid inputs are 'p' and 'c'.");
-			input = in.nextLine();
-		}
-		if("pc".indexOf(input) == 2) {
-			controls();
+		while(!input.toLowerCase().equals("p")) {			
+			if(input.toLowerCase().equals("c")) {
+				controls();
+			}
+			else{
+				System.out.println("Valid inputs are 'p' and 'c'.");
+				input = in.nextLine();	
+			}
 		}
 		System.out.println("So what difficulty do you want to put it on? "
 				+ "The avaiable difficulties are 'easy', 'casual', 'hard', 'extreme', and 'hell'.");
@@ -105,11 +124,9 @@ public class JasonYFrontend implements JasonZSupport {
 		String input = in.nextLine();
 		while(!input.toLowerCase().equals("back")) {
 			System.out.println("So you want to go back or nah?");
+			input = in.nextLine();
 		}
-	}
-
-	private boolean isValid(String input, String string) {
-		return string.indexOf(input) > -1;
+		introTwo();
 	}
 
 	private boolean isValid(String s, String[] arr) {

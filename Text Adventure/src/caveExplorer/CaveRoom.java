@@ -5,6 +5,13 @@ import ethanDavidMinigame.VaultRoom;
 
 public class CaveRoom {
 	
+	public static int[] getCoordinates() {
+		int[] coords = new int[2];
+		coords[0] = row;
+		coords[1] = col;
+		return coords;
+	}
+	
 	public static int getRow() {
 		return row;
 	}
@@ -20,7 +27,7 @@ public class CaveRoom {
 	public static void setCol(int col) {
 		CaveRoom.col = col;
 	}
-
+	
 	private String description;
 	private String directions;//tells you which door can be used
 	private String contents;//a symbol showing you what is in the room
