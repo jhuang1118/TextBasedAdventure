@@ -68,9 +68,10 @@ public class EthanRoomBackEnd implements DavidSupport{
 
 	@Override
 	public void startTimer() {
-		if(elapsedSeconds == 40) {
-			
-		}
+		Timer timer = new Timer();
+	    int delay = 1000;
+		int period = 1000;
+		EthanSupport.displayTimer();
 	}
 
 	@Override
