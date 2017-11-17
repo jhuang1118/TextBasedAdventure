@@ -31,6 +31,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 				randNum2 = (int)(Math.random() * ROOM_LENGTH);
 			}
 			Room[randNum1][randNum2].setContainsTreasure(true);
+			Room[randNum1][randNum2].setMoney((int)(Math.random() * 1000));
 		}
 	}
 	//add an AI that attempts to change the laser locations?????
