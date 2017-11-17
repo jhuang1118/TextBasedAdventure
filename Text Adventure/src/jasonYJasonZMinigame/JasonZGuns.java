@@ -40,4 +40,8 @@ public class JasonZGuns {
 	{
 		return (dmg * rateOfFire);
 	}
+
+	public int getRange() {
+		return (int) range;
+	}
 }

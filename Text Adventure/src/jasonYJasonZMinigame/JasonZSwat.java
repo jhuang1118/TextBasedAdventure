@@ -3,18 +3,21 @@ package jasonYJasonZMinigame;
 import caveExplorer.CaveExplorer;
 import caveExplorer.CaveRoom;
 import caveExplorer.NPC;
+import caveExplorer.NPCRoom;
 
 public class JasonZSwat extends NPC {
 
 	public JasonZGuns gun;
 	public int hp = 100;
 	public int armor = 70;
+	public int index;
 	
 	
-	public JasonZSwat()
+	public JasonZSwat(NPCRoom[][] floor,int index)
 	{
 		//w.e the map is called.
-		super();
+		super(floor);
+		this.index = index;
 		makeGuns();
 	}
 	public void makeGuns() {
