@@ -13,16 +13,14 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	public static final int SOUTH = 2;
 	public static final int WEST = 3;
 	
-	public static String map;
-	
 	public static void main(String[] args) {
 		DavidRoomFrontEnd game = new DavidRoomFrontEnd();
 		game.play(); 
 	}
 	
 	private void play() {
+		displayBoard();
 		while(backend.stillPlaying()) {
-			displayBoard();
 			String input = backend.getValidUserInput();
 			respondToInput(input);
 			backend.startTimer();
@@ -59,9 +57,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 			System.out.println("");
 		}
 		}	
-				
-				
-
+	
 	public DavidRoomFrontEnd() {
 		backend = new EthanRoomBackEnd(this);
 		rooms = new DavidEthanRoom[10][10];
@@ -70,6 +66,18 @@ public class DavidRoomFrontEnd implements EthanSupport {
 				row[col] = new DavidEthanRoom();
 			}
 		}
+	}
+
+	@Override
+	public void displayCheating() {
+		System.out.println(" ");
+		
+	}
+
+	@Override
+	public DavidEthanRoom[][] getRooms() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
