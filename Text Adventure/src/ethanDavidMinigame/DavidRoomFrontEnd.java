@@ -22,6 +22,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	public static Scanner in;
 	
 	public static void main(String[] args) {
+		in = new Scanner(System.in);
 		DavidRoomFrontEnd game = new DavidRoomFrontEnd();
 		game.play(); 
 	}
@@ -29,8 +30,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	private void play() {
 		displayBoard();
 		while(backend.stillPlaying()) {
-			String input = backend.getValidUserInput();
-			respondToInput(input);
+			respondToInput(in.nextLine());
 			backend.startTimer();
 		}
 		printGameOverMessage(backend.victorious());
