@@ -166,7 +166,7 @@ public class CaveRoom {
 	public static void setUpCaves()
 	{ 
 		CaveRoom[][] c = CaveExplorer.caves;
-		CaveExplorer.caves = new NPCRoom[20][20];
+		c = new NPCRoom[20][20];
 		for(int row = 0; row < c.length; row++)
 		{ 
 			for(int col = 0; col < c[row].length; col ++)
@@ -214,6 +214,8 @@ public class CaveRoom {
 		if(borderingRooms[dir] != null && doors[dir] != null && doors[dir].isOpen()){
 			CaveExplorer.currentRoom.leave(); 
 			CaveExplorer.currentRoom = borderingRooms[dir];
+			row = borderingRooms[dir].row;
+			col = borderingRooms[dir].col;
 			CaveExplorer.currentRoom.enter();
 		}
 		else {

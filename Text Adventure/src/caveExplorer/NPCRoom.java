@@ -2,8 +2,12 @@ package caveExplorer;
 
 public class NPCRoom extends CaveRoom {
 
-	private NPC car;
+	private NPC npc;
 	
+	public NPC getNpc() {
+		return npc;
+	}
+
 	public NPCRoom(String description) {
 		super(description, row, col);
 		// TODO Auto-generated constructor stub
@@ -14,8 +18,8 @@ public class NPCRoom extends CaveRoom {
 		return npc == null;
 	}
 	
-	public void enterNPC(Car car) {
-		this.npc = car;
+	public void enterNPC(NPC npc) {
+		this.npc = npc;
 	}
 	
 	public void leaveNPC()
