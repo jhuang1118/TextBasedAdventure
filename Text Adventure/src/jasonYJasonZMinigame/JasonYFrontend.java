@@ -13,11 +13,11 @@ public class JasonYFrontend implements JasonZSupport {
 	private JasonYSupport backend;
 	public int copCounter;
 	public int neededKills;
-	public JasonZSwat[] npc;//call the data type whatever Johnson called it
+	public JasonZSwat[] npc;
 	public CaveRoom[][] map;
 	public Door[] doors;
+	public String[] difficultyWords;
 	public GameRoom currentRoom;
-	
 	 
 	public static final void main(String[] args) {
 		JasonYFrontend demo = new JasonYFrontend();
@@ -26,6 +26,8 @@ public class JasonYFrontend implements JasonZSupport {
 	
 	public JasonYFrontend() {
 		backend = new JasonZBackend(this, 1);
+		String[] temp = {"easy", "casual", "hard", "extreme", "hell"};
+		difficultyWords = temp;
 	}
 
 	public void createMap() {
@@ -70,11 +72,72 @@ public class JasonYFrontend implements JasonZSupport {
 		//will ask player for input : p to play and c for controls (something like that)
 		//once they enter the play button (in this case p):
 		//ask for difficulty
+		System.out.println("Welcome to 'Shoot'em Cops'!");
+		System.out.println("That's right! In this game you shoot cops!");
+		System.out.println("Cops will spawn when you enter the game. Cops will continue to spawn after a "
+				+ "certian amount of time has passed when playing. You need to kill a number of cops to "
+				+ "win the game. If they kill you that's it.");
+		System.out.println("So do you want to play? Enter 'p' to play. Enter 'c' for controls");
+		String input = in.nextLine();
+		while(!isValid(input, "pc")) {
+			System.out.println("Valid inputs are 'p' and 'c'.");
+			input = in.nextLine();
+		}
+		if("pc".indexOf(input) == 2) {
+			controls();
+		}
+		System.out.println("So what difficulty do you want to put it on? "
+				+ "The avaiable difficulties are 'easy', 'casual', 'hard', 'extreme', and 'hell'.");
+		input = in.nextLine();
+		while(!isValid(input, difficultyWords)) {
+			System.out.println("The avaiable difficulties are 'easy', 'casual', 'hard', 'extreme', and 'hell'.");
+			input = in.nextLine();
+		}				
+		int index = returnIndex(input,difficultyWords);
 		createMap();
 		CaveExplorer.inventory.updateMap(map);
-		//populateMap();
-		
-		
+		populateMap(index);
+	}
+
+	private void controls() {
+		System.out.println("The controls to this game are 'w', 'a', 's', 'd' to move up, left, down, and right "
+				+ "respectively. You can also press 'f' to shoot. Enter back to go back.");//'f' or whatever key Jason used for fire input
+		String input = in.nextLine();
+		while(!input.toLowerCase().equals("back")) {
+			System.out.println("So you want to go back or nah?");
+		}
+	}
+
+	private boolean isValid(String input, String string) {
+		return string.indexOf(input) > -1;
+	}
+
+	private boolean isValid(String s, String[] arr) {
+		for(int i = 0; i < arr.length; i++) {
+			if(arr[i].equals(s.toLowerCase())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private int returnIndex(String s, String[] arr) {
+		for(int i = 0; i < arr.length; i++) {
+			if(arr[i].equals(s.toLowerCase())) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	private void populateMap(int mode) {
+		int baseNum = (int)(Math.random() * 50);
+		int spawnNum = (int) (baseNum * JasonZBackend.difficulty[mode]);
+		for(int i = 0; i < spawnNum; i++) {
+			int randomRow = (int)(Math.random() * 10);
+			int randomCol = (int)(Math.random() * 10);
+			JasonZBackend.createPolice(randomRow, randomCol);
+		}
 	}
 	
 	

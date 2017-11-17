@@ -10,12 +10,12 @@ public class JasonZBackend implements JasonYSupport {
 	private JasonZSupport frontend;
 	public JasonZGuns[] guns;
 	public final static String[][] TYPE = {};
-	public JasonZSwat[] Swat;
+	public static JasonZSwat[] Swat;
 	public int direction;
-	public int quantity;
+	public static int quantity;
 	public static int killCount;
 	public double spawnTime = 3;
-	public double[] difficulty = {1, 1.1, 1.3, 1.5, 2};
+	public static double[] difficulty = {1, 1.1, 1.3, 1.5, 2};
 	public String validinputs = "wasdf";
 
 	public JasonZBackend(JasonZSupport frontend, int difficulty) {
@@ -25,7 +25,7 @@ public class JasonZBackend implements JasonYSupport {
 		
 	}
 	 
-	public void createPolice(int row, int col)
+	public static void createPolice(int row, int col)
 	{
 		for(int i =0; i<quantity; i++)
 		{
