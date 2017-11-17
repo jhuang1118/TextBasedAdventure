@@ -94,7 +94,7 @@ public class JohnsonUnlockGame {
 		return "012345";
 	}
 	private void displayChancesLeft(int numChances) {
-		System.out.println(numChances);
+		System.out.println("You have " + numChances + " chances left.");
 		
 	}
 

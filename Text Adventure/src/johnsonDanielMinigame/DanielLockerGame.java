@@ -3,6 +3,8 @@ package johnsonDanielMinigame;
 public class DanielLockerGame {
 
 	private DanielLocker[][] theLockers;
+	int[] rows = {1,3};
+	int[] cols = {1,3,5};
 
 	public DanielLockerGame() {
 		theLockers = new DanielLocker[6][6];
@@ -23,11 +25,10 @@ public class DanielLockerGame {
 		arr[row][col] = new DanielLocker();
 	}
 	public void play() {
-		int[] rows = {1,3};
-		int[] cols = {1,3,5};
 		int rowSelected = generateRandNum(0,rows.length-1);
 		int colSelected = generateRandNum(0,cols.length-1);
 		
+		createThing(rowSelected, colSelected);
 		
 		
 		
@@ -47,8 +48,34 @@ public class DanielLockerGame {
 	}
 
 	
+	private void createThing(int rowSelected, int colSelected) {
+		theLockers[rowSelected][colSelected].setPerson(true);
+		theLockers[rowSelected][colSelected].setEmpty(false);
+		
+		
+		
+		int[] options = generateRandNumExcept(rowSelected, colSelected);
+		theLockers[options[0]][options[1]].setBomb(true);
+		theLockers[options[0]][options[1]].setEmpty(false);
+	}
+
 	private int generateRandNum(int min, int max) {
 		return (int)(Math.random()*(max - min + 1));		
+	}
+	
+	private int[] generateRandNumExcept(int exceptRow, int exceptCol) {
+		int[] arr  = new int[2]; 
+		int bombRow = generateRandNum(0,rows.length-1);
+		int bombCol = generateRandNum(0,cols.length-1);
+		
+		while(bombRow == exceptRow && bombCol == exceptCol) {
+			bombRow = generateRandNum(0,rows.length-1);
+			bombCol = generateRandNum(0,cols.length-1);
+		}
+		arr[0] = bombRow;
+		arr[1] = bombCol;
+		
+		return arr;
 	}
 
 	private void printGG() {
@@ -56,17 +83,17 @@ public class DanielLockerGame {
 	}
 
 	private String getValidUserInput() {
-		// TODO Auto-generated method stub
-		return null;
+		// write a method to see if the user's input is part of wasd and if it isn't, then you give them an error message
 	}
 
 	private void answer(String input) {
-		// TODO Auto-generated method stub
+		// write a method to interpret the input. For example, if the guy moves left then his col would shift left 1. If he 
+		// is one tile away, then 
 		
 	}
 
 	private void displayKeysLeft(int keys) {
-		
+		System.out.println("You have " + keys + " keys left.");
 	}
 
 	private void displayBoard() {
