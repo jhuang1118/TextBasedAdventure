@@ -11,7 +11,7 @@ public class CaveRoom {
 		coords[1] = col;
 		return coords;
 	}
-	
+	 
 	public static int getRow() {
 		return row;
 	}

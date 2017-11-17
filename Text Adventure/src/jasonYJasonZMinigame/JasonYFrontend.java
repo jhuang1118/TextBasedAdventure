@@ -80,7 +80,7 @@ public class JasonYFrontend implements JasonZSupport {
 		//displays the number of cops in the map
 		System.out.println("There are " + copCounter + " in the area.");
 	}
-
+ 
 	public void introduction() {
 		//will ask player for input : p to play and c for controls (something like that)
 		//once they enter the play button (in this case p):
