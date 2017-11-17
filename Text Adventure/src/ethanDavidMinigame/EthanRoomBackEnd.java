@@ -24,6 +24,10 @@ public class EthanRoomBackEnd implements DavidSupport{
 		currMoney = 0;
 	}
 	
+	public void createLasers() {
+		
+	}
+	
 	public void createMoney() {
 		int ROOM_LENGTH = frontend.getRooms().length;
 		DavidEthanRoom[][] Room = frontend.getRooms();
