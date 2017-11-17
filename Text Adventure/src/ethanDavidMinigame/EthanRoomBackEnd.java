@@ -7,6 +7,7 @@ import caveExplorer.NPCRoom;
 public class EthanRoomBackEnd implements DavidSupport{
 	
 	private int MONEY_CUT_OFF;
+	private int currMoney;
 	private boolean cheating;
 	private EthanSupport frontend;
 	
