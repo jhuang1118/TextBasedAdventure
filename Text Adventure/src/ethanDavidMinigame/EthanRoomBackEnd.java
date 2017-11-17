@@ -1,5 +1,7 @@
 package ethanDavidMinigame;
 
+import java.util.Timer;
+
 import caveExplorer.CaveExplorer;
 import caveExplorer.NPCRoom;
 
@@ -10,6 +12,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 	private int currMoney;
 	private boolean cheating;
 	private EthanSupport frontend;
+	private Timer timer;
 	
 	long startTime = System.currentTimeMillis();
 	long elapsedTime = System.currentTimeMillis() - startTime;
@@ -18,6 +21,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 	public EthanRoomBackEnd(EthanSupport frontend) {
 		this.frontend = frontend;
 		MONEY_CUT_OFF = 100000;
+		currMoney = 0;
 	}
 	
 	public void createMoney() {
@@ -48,7 +52,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 	
 	public void generateRooms() {
-		
+		currMoney = MONEY_CUT_OFF;
 	}
 
 	@Override
@@ -64,7 +68,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 
 	@Override
 	public void startTimer() {
-		if(elapsedSeconds == 40 /*&& Inventory.getMoney() == MONEY_CUT_OFF*/) {
+		if(elapsedSeconds == 40) {
 			
 		}
 	}

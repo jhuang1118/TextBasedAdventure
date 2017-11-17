@@ -6,7 +6,7 @@ public class DavidEthanRoom {
 	private int money;
 	
 	public DavidEthanRoom() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public int getMoney() {

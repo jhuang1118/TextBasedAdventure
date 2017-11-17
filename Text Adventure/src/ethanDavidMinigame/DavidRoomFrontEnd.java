@@ -50,8 +50,15 @@ public class DavidRoomFrontEnd implements EthanSupport {
 			input = in.nextLine();
 		}
 		int direction = validMoves().indexOf(input);
+		System.out.println("I have acknowledged ur input");
+		goToRoom(direction);
 	}
 	
+	private void goToRoom(int dir) {
+		
+		
+	}
+
 	private boolean isValid(String input) {
 		return validMoves().indexOf(input) > -1 && input.length() == 1;
 	}

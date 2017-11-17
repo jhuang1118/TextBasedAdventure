@@ -6,4 +6,9 @@ public interface EthanSupport {
 	DavidEthanRoom[][] getRooms();
 	
 	void changeRoom();
+
+	static void displayTimer() {
+		// TODO Auto-generated method stub
+		
+	}
 }
