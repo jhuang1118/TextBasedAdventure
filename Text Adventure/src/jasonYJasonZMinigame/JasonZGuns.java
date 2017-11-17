@@ -36,6 +36,11 @@ public class JasonZGuns {
 		this.ammo = this.maxAmmo;
 	}
 	
+	public void decreaseAmmo()
+	{
+		this.ammo -= rateOfFire;
+	}
+	
 	public double trueDamage()
 	{
 		return (dmg * rateOfFire);

@@ -38,26 +38,41 @@ public class JasonZBackend implements JasonYSupport {
 		int counter = 0;
 		for(int row = currentRow; currentRow < (currentRow + range); row ++)
 		{
-			validRooms[0][counter] = floor[row][currentCol];
-			counter ++;
+			if(row < floor.length)
+			{
+				validRooms[0][counter] = floor[row][currentCol];
+				counter ++;
+			}
+			
 		}
 		counter = 0;
 		for(int row = currentRow; currentRow > (currentRow - range); row --)
 		{
-			validRooms[2][counter] = floor[row][currentCol];
-			counter ++;
+			if( row > 0)
+			{
+				validRooms[2][counter] = floor[row][currentCol];
+				counter ++;
+			}
 		}
 		counter = 0;
 		for(int col = currentCol; col< (col + range); col ++)
 		{
-			validRooms[1][counter] = floor[currentRow][col];
-			counter ++;
+			if(col < floor[currentRow].length)
+			{
+				validRooms[1][counter] = floor[currentRow][col];
+				counter ++;
+			}
+			
 		}
 		counter = 0;
 		for(int col = currentCol; col > (col - range); col --)
 		{
-			validRooms[3][counter] = floor[currentRow][col];
-			counter ++;
+			if(col > 0)
+			{
+				validRooms[3][counter] = floor[currentRow][col];
+				counter ++;
+			}
+			
 		}
 	}
 
