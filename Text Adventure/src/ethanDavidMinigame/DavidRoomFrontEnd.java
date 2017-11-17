@@ -46,18 +46,18 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	
 	public void respondToInput(String input) {
 		while(!isValid(input)) {
-			System.out.println("You can not do that. You must type 'w,a,s, or d.' You still have " + (40 - elapsedSeconds) + " seconds left.");
+			System.out.println("You can't do that. You must type 'w,a,s, or d.' You still have " + (40 - elapsedSeconds) + " seconds left.");
 			input = in.nextLine();
 		}
 		int direction = validMoves().indexOf(input);
 	}
 	
-	public String validMoves() {
-		return "wdsa";
-	}
-	
 	private boolean isValid(String input) {
 		return validMoves().indexOf(input) > -1 && input.length() == 1;
+	}
+	
+	public String validMoves() {
+		return "wdsa";
 	}
 
 	public void displayBoard() {
@@ -86,6 +86,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 				row[col] = new DavidEthanRoom();
 			}
 		}
+		changeRoom();
 	}
 
 	@Override
@@ -97,7 +98,12 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	@Override
 	public DavidEthanRoom[][] getRooms() {
 		// TODO Auto-generated method stub
-		return null;
+		return rooms;
+	}
+	
+	public void changeRoom() {
+		EthanRoomBackEnd back = new EthanRoomBackEnd(this);
+		back.createMoney();
 	}
 
 }
