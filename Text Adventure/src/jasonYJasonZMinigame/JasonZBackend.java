@@ -3,7 +3,6 @@ package jasonYJasonZMinigame;
 import java.awt.event.KeyEvent;
 
 import caveExplorer.CaveExplorer;
-import caveExplorer.CaveRoom;
 import caveExplorer.NPCRoom;
 import jasonYJasonZMinigame.JasonZSwat;
 
@@ -18,7 +17,6 @@ public class JasonZBackend implements JasonYSupport {
 	public static int killCount;
 	public double spawnTime = 3;
 	public static double[] difficulty = {1, 1.1, 1.3, 1.5, 2};
-	public String validinputs = "wasdf";
 	public NPCRoom[][] validRooms;//north, east, south, west.
 	public static NPCRoom[][] cave;
 
@@ -89,6 +87,11 @@ public class JasonZBackend implements JasonYSupport {
 			}
 		}
 	}
+	
+	public int damagePlayers(int userHP, JasonZSwat damager)
+	{
+		return userHP -= damager.gun.trueDamage();
+	}
 
 	private static int checkNullCops() {
 		for(int i = 0; i<Swat.length; i++)
@@ -101,7 +104,7 @@ public class JasonZBackend implements JasonYSupport {
 		return 0;
 	}
 
-	public void attack(NPCRoom currentRoom)
+	public void attack()
 	{
 		JasonZSwat target = firstPersonDir();
 		damage(target, gun.trueDamage());
@@ -167,7 +170,17 @@ public class JasonZBackend implements JasonYSupport {
 		{
 			ArrowKeys(event);
 		}
-		
+		else 
+		{
+			if( input.equals("f"))
+			{
+				attack();
+			}
+			else
+			{
+				CaveExplorer.currentRoom.interpretInput(input);
+			}
+		}
 		//if it is a valid input ....
 		
 	}
