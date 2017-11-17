@@ -1,6 +1,8 @@
 package ethanDavidMinigame;
 
 import java.util.Timer;
+import java.util.TimerTask;
+
 
 import caveExplorer.CaveExplorer;
 import caveExplorer.NPCRoom;
@@ -12,6 +14,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 	private int currMoney;
 	private boolean cheating;
 	private EthanSupport frontend;
+	private TimerTask task;
 	private Timer timer;
 	
 	long startTime = System.currentTimeMillis();
@@ -70,13 +73,24 @@ public class EthanRoomBackEnd implements DavidSupport{
 		return null;
 	}
 
+	private void loseGame() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	@Override
 	public void startTimer() {
 		Timer timer = new Timer();
-	    int delay = 1000;
-		int period = 1000;
-		EthanSupport.displayTimer();
+		TimerTask task = new TimerTask(){
+	        public void run(){
+	            //lose game.
+	        }
+	    };
+	    long MILLISECONDS = 1000;
+	    timer.schedule(task , MILLISECONDS * 45);
+	    EthanSupport.displayTimer();
 	}
+	
 
 	@Override
 	public Object victorious() {
