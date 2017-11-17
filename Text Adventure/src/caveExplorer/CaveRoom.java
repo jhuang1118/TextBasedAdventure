@@ -158,8 +158,6 @@ public class CaveRoom {
 		
 		c[9][5] = new EthanRoomBackEnd("");
 
-
-		c[0][2] = new JasonZRoom("TEST ROOM", 0, 2);
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		NPC testNPC = new NPC();
 		testNPC.setPosition(1,2);
@@ -171,17 +169,11 @@ public class CaveRoom {
 		CaveExplorer.npcs[0] = testNPC;
 		//Set Starting Room
 
-		}
 		//3. Replace some default rooms with custom rooms (SAVE FOR LATER)
 		/*NPC testNPC = new NPC();
 		testNPC.setPosition(1,2);
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = testNPC;*/
-		
-		NPC enemy = new Enemy();
-		enemy.setPosition(1, 2);
-		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs[0] = enemy;
 		
 		//4. Set starting room
 
@@ -191,7 +183,6 @@ public class CaveRoom {
 		//5. Set up doors 
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
 		c[1][1].setConnection(EAST, c[1][2], new Door());
-		}
 	}
 	
 	/**
@@ -219,15 +210,7 @@ public class CaveRoom {
 			CaveExplorer.currentRoom.leave(); 
 			CaveExplorer.currentRoom = borderingRooms[dir];
 			CaveExplorer.currentRoom.enter();
-			if(borderingRooms[dir] instanceof JasonZRoom)
-			
-				borderingRooms[dir].
-				CaveExplorer.inventory.updateMap(borderingRooms[dir].newMap);
-			}
-			else 
-			{
-				CaveExplorer.inventory.updateMap(CaveExplorer.caves);
-			}
+			CaveExplorer.inventory.updateMap(CaveExplorer.caves);
 			
 		}
 		/* else
@@ -235,7 +218,7 @@ public class CaveRoom {
 			System.err.println("You can't do that");
 
 		} */
-
+	}
 	/**
 	 * returns the OPPOSITE direction
 	 * 		oD(0) returns 2
