@@ -14,6 +14,10 @@ public class ToDo  {
     	public void run() {
     		secPassed++;
     		System.out.println(secPassed + " secs passed");
+    		if(secPassed == 5) {
+    			System.out.println("5 sec passed. end.");
+    			timer.cancel();
+    		}
     	}
     };
   }
