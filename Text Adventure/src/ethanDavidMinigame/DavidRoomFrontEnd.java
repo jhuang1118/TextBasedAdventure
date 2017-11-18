@@ -8,10 +8,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	private int currentRow;
 	private int currentCol;
 	
-	long startTime = System.currentTimeMillis();
-	long elapsedTime = System.currentTimeMillis() - startTime;
-	long elapsedSeconds = elapsedTime/1000;
-	
 	private DavidSupport backend;
 	
 	public static final int NORTH = 0;

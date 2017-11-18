@@ -17,10 +17,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 	private TimerTask task;
 	private Timer timer;
 	
-	long startTime = System.currentTimeMillis();
-	long elapsedTime = System.currentTimeMillis() - startTime;
-	long elapsedSeconds = elapsedTime/1000;
-	
 	public EthanRoomBackEnd(EthanSupport frontend) {
 		this.frontend = frontend;
 		MONEY_CUT_OFF = 100000;
