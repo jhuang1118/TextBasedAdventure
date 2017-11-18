@@ -42,7 +42,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	
 	public void respondToInput(String input) {
 		while(!isValid(input)) {
-			System.out.println("You can't do that. You must type 'w,a,s, or d.' You still have " + (40 - elapsedSeconds) + " seconds left.");
+			System.out.println("You can't do that. You must type 'w,a,s, or d.' You still have " + " seconds left.");
 			input = in.nextLine();
 		}
 		int direction = validMoves().indexOf(input);
