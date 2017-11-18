@@ -16,11 +16,13 @@ public class EthanRoomBackEnd implements DavidSupport{
 	private EthanSupport frontend;
 	private TimerTask task;
 	private Timer timer;
+	private int secPassed;
 	
 	public EthanRoomBackEnd(EthanSupport frontend) {
 		this.frontend = frontend;
 		MONEY_CUT_OFF = 100000;
 		currMoney = 0;
+		secPassed = 0;
 	}
 	
 	public void createLasers() {
@@ -76,16 +78,22 @@ public class EthanRoomBackEnd implements DavidSupport{
 	
 	@Override
 	public void startTimer() {
-		Timer timer = new Timer();
-		TimerTask task = new TimerTask(){
-	        public void run(){
-	            //lose game.
-	        }
-	    };
-	    long MILLISECONDS = 1000;
-	    timer.schedule(task , MILLISECONDS * 45);
+		 task = new TimerTask() {
+		    	public void run() {
+		    		secPassed++;
+		    		System.out.println(secPassed + " secs passed");
+		    		if(secPassed == 5) {
+		    			System.out.println("5 sec passed. end.");
+		    			timer.cancel();
+		    		}
+		    	}
+		    };
 	    EthanSupport.displayTimer();
-	    //
+	    //display timer needs: 
+	    /*
+	     * ToDo timerthing = new ToDo();
+			timerthing.scheduleAtFixedRate(task, 1000, 1000); 1000 milliseconds = 1
+	     */
 	}
 	
 
