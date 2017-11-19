@@ -46,17 +46,11 @@ public class DavidRoomFrontEnd implements EthanSupport {
 			input = in.nextLine();
 		}
 		int direction = validMoves().indexOf(input);
-		System.out.println("I have acknowledged ur input");
-		goToRoom(direction);
-	}
-	
-	public static String toDirection(int dir) {
-		String[] direction = {"the North","the East","the South","the West"};
-		return direction[dir];
+		System.out.println(input);
+		//goToRoom(direction);
 	}
 	
 	private void goToRoom(int dir) {
-		
 		
 	}
 
