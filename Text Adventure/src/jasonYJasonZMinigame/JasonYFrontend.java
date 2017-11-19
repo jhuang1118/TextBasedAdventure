@@ -73,8 +73,9 @@ public class JasonYFrontend implements JasonZSupport {
 	}
 	
 	public void rangeDisplay() {
-		//colors in a number of boxes based on the range of the gun
+		//colors in a number of boxes in all diretions based on the range of the gun
 		//should be colored red 
+		//grab the players coordinates
 	}
 	
 	public void play() {
