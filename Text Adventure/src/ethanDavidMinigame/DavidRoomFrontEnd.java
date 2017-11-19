@@ -42,11 +42,11 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	
 	public void respondToInput(String input) {
 		while(!isValid(input)) {
-			System.out.println("You can't do that. You must type 'w,a,s, or d.' You still have " + " seconds left.");
+			System.out.println("You can't do that. You must type 'w,a,s, or d.' You still have " +  " seconds left.");
 			input = in.nextLine();
 		}
 		int direction = validMoves().indexOf(input);
-		System.out.println(input);
+		System.out.println(direction);
 		//goToRoom(direction);
 	}
 	
