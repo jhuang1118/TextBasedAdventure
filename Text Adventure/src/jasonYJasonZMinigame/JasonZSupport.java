@@ -2,7 +2,7 @@ package jasonYJasonZMinigame;
 
 public interface JasonZSupport {
 
-	void createMap();
+	void createMap(int size);
 	void follow();
 		//npcs in the map will move towards the player after played inputs a move
 	void rangeDisplay();

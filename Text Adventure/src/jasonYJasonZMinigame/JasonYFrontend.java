@@ -27,7 +27,7 @@ public class JasonYFrontend implements JasonZSupport {
 	}
 	
 	public JasonYFrontend() {
-		backend = new JasonZBackend(this, 1);
+		backend = new JasonZBackend(this, 1,]);
 		String[] temp = {"easy", "casual", "hard", "extreme", "hell"};
 		difficultyWords = temp;
 	}
@@ -47,10 +47,16 @@ public class JasonYFrontend implements JasonZSupport {
 		int[][] startendrooms = new int[1][2];
 		startendrooms[0] = startRoom;
 		startendrooms[1] = finalRoom;
-		for(int i = 0; i < 2; i++) {
-			for(int row = startendrooms[i]; row < startRoom[i]+(size*2); row++) {
-				for(int col = startRoom[i]; ) {
-					
+		int mapRow = 0;
+		int mapCol = 0;
+		while(mapRow < size*2) {
+			for(int row = startendrooms[1][0]; row < startendrooms[2][0]; row++) {
+				for(int col = startendrooms[1][1]; col < startendrooms[2][1]; col++) {
+					map[mapRow][mapCol] = (GameRoom) caves[row][col];
+					mapCol++;
+					if(mapCol > size*2) {
+						mapCol = 0;
+					}
 				} 
 			}
 		}
@@ -58,6 +64,12 @@ public class JasonYFrontend implements JasonZSupport {
 	
 	public void follow(){
 		//npcs in the map will move towards the player after played inputs a move
+		//grab the coordinates of the player
+		//run a for each loop
+		//in that loop grab the coordinates of cops
+		//based on the row or col
+		//either add one or minus one
+		//if the new coordinate has an obstacle,redo
 	}
 	
 	public void rangeDisplay() {
@@ -67,7 +79,6 @@ public class JasonYFrontend implements JasonZSupport {
 	
 	public void play() {
 		introduction();
-
 	}
 
 	public void killCounter() {
@@ -113,7 +124,7 @@ public class JasonYFrontend implements JasonZSupport {
 			input = in.nextLine();
 		}				
 		int index = returnIndex(input,difficultyWords);
-		createMap();
+		createMap(2);
 		CaveExplorer.inventory.updateMap(map);
 		populateMap(index);
 	}
@@ -155,7 +166,5 @@ public class JasonYFrontend implements JasonZSupport {
 			int randomCol = (int)(Math.random() * 10);
 			JasonZBackend.createPolice(randomRow, randomCol);
 		}
-	}
-	
-	
+	}	
 }
