@@ -10,10 +10,13 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	
 	private DavidSupport backend;
 	
+	private String defaultContents;
+	
 	public static Scanner in;
 	
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		in = new Scanner(System.in);
+		setDefaultContents("O");
 		DavidRoomFrontEnd game = new DavidRoomFrontEnd();
 		game.play(); 
 	}
@@ -85,7 +88,14 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	@Override
 	public void displayCheating() {
 		System.out.println(" ");
-		
+	}
+
+	public String getDefaultContents() {
+		return defaultContents;
+	}
+
+	public void setDefaultContents(String defaultContents) {
+		this.defaultContents = defaultContents;
 	}
 
 	@Override
