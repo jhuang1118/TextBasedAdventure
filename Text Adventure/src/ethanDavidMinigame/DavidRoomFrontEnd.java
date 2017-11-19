@@ -10,11 +10,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	
 	private DavidSupport backend;
 	
-	public static final int NORTH = 0;
-	public static final int EAST = 1;
-	public static final int SOUTH = 2;
-	public static final int WEST = 3;
-	
 	public static Scanner in;
 	
 	public static void main(String[] args) {
@@ -47,7 +42,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		}
 		int direction = validMoves().indexOf(input);
 		System.out.println(direction);
-		//goToRoom(direction);
+		goToRoom(direction);
 	}
 	
 	private void goToRoom(int dir) {
@@ -75,10 +70,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 			System.out.println("");
 		}
 		}	
-	
-	public void updateBoard() {
-		
-	}
 	
 	public DavidRoomFrontEnd() {
 		backend = new EthanRoomBackEnd(this);
