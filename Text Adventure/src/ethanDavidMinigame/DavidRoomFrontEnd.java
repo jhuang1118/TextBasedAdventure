@@ -50,6 +50,11 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		goToRoom(direction);
 	}
 	
+	public static String toDirection(int dir) {
+		String[] direction = {"the North","the East","the South","the West"};
+		return direction[dir];
+	}
+	
 	private void goToRoom(int dir) {
 		
 		
