@@ -4,6 +4,7 @@ import caveExplorer.CaveExplorer;
 import caveExplorer.CaveRoom;
 import caveExplorer.Door;
 import caveExplorer.NPCRoom;
+import java.awt.event.KeyEvent;
 
 import java.util.Scanner;
 
@@ -83,7 +84,10 @@ public class JasonYFrontend implements JasonZSupport {
 	public void play() {
 		introduction();
 		while(hp != 0 || neededKills != 0) {
-			
+			System.out.println("What would you like to do");
+			KeyEvent answer = in.nextLine();
+			backend.validInput(in.nextLine(), event);
+			follow();
 		}
 		if(hp == 0) {
 			System.out.println("GAME OVER!");
