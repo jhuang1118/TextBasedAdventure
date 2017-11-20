@@ -29,9 +29,17 @@ public class EthanRoomBackEnd implements DavidSupport{
 		DavidEthanRoom[][] Room = frontend.getRooms();
 		for(int i = 0; i < 5; i++) {
 			int[] randArr = randNums(Room, ROOM_LENGTH);
+		/*	if(randArr[0]+1 <= ROOM_LENGTH && randArr[1]+1 <= Room[ROOM_LENGTH].length) {
+				//to check for AIOOBE
+				Room[randArr[0]+1][randArr[1]+1] = new EthanDavidObstacles();
+			}*/
 			Room[randArr[0]][randArr[1]] = new EthanDavidObstacles();
 		}
 	}
+	public void setCheating(boolean cheating) {
+		this.cheating = cheating;
+	}
+
 	public int getCurrMoney() {
 		return currMoney;
 	}
@@ -89,7 +97,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 
 	public void cheat() {
-		if(!cheating) {
+		if(cheating) {
 			currMoney = MONEY_CUT_OFF;
 		}
 		
