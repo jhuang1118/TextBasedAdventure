@@ -18,11 +18,9 @@ public class JasonZSwat extends NPC {
 		//w.e the map is called.
 		super(floor);
 		this.index = index;
-		makeGuns();
 	}
-	public void makeGuns() {
+	public void makeGuns(String[] info) {
 		// random decider for guns;
-		String[] info = {"M16", "1"};
 		this.gun = new JasonZGuns(info);
 	}
 	

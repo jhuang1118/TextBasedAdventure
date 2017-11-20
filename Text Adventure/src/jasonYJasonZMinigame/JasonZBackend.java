@@ -10,7 +10,7 @@ public class JasonZBackend implements JasonYSupport {
 
 	private JasonZSupport frontend;
 	public JasonZGuns gun;
-	public final static String[][] TYPE = {};
+	public final static String[][] TYPE = {{"M16", "0"}, {"AR15","0"},{"Beretta 9000", "1"}, {"Beretta Cheetah", "1"}, {"Calico M960", "2"},{"Jatimatic","2"}};
 	public static JasonZSwat[] Swat;
 	public int direction = 0;
 	public static int quantity;
@@ -81,7 +81,7 @@ public class JasonZBackend implements JasonYSupport {
 			if(Swat[i] == null)
 			{
 				Swat[i] = new JasonZSwat(cave, checkNullCops());
-				Swat[i].makeGuns();
+				Swat[i].makeGuns(TYPE[(int) (Math.random()*TYPE.length)]);
 				Swat[i].setPosition(row, col);
 				break;
 			}
