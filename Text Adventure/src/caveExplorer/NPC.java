@@ -32,7 +32,12 @@ public class NPC {
 		return active;
 	}
 	
-	
+	public int[] getCoords() {
+		int[] coords = new int[2];
+		coords[0] = currentRow;
+		coords[1] = currentCol;
+		return coords;
+	}
 
 	public int getCurrentRow() {
 		return currentRow;

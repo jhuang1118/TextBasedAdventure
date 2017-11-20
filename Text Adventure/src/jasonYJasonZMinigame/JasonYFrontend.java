@@ -65,17 +65,6 @@ public class JasonYFrontend implements JasonZSupport {
 		}
 	}
 	
-	public void follow(){
-		//npcs in the map will move towards the player after played inputs a move
-		//grab the coordinates of the player
-		//run a for each loop
-		//in that loop grab the coordinates of cops
-		//based on the row or col
-		//either add one or minus one
-		//if the new coordinate has an obstacle,redo
-		
-	}
-	
 	public void rangeDisplay() {
 		//colors in a number of boxes in all directions based on the range of the gun
 		//should be colored red 
@@ -86,9 +75,8 @@ public class JasonYFrontend implements JasonZSupport {
 		introduction();
 		while(hp != 0 || neededKills != 0) {
 			System.out.println("What would you like to do");
-			KeyEvent answer = in.nextLine();
-			backend.validInput(in.nextLine(), event);
-			follow();
+			backend.validInput(in.nextLine(), );
+			calculateMove();
 		}
 		if(hp == 0) {
 			System.out.println("GAME OVER!");
@@ -142,7 +130,7 @@ public class JasonYFrontend implements JasonZSupport {
 		}				
 		int index = returnIndex(input,difficultyWords);
 		createMap(2);
-		CaveExplorer.inventory.updateMap(map);
+		CaveExplorer.inventory.updateMap(map); 
 		populateMap(index);
 	}
 
