@@ -27,8 +27,9 @@ public class EthanRoomBackEnd implements DavidSupport{
 	
 	public void createLasers() {
 		int ROOM_LENGTH = frontend.getRooms().length;
+		int[] randArray = new int[2];
 		DavidEthanRoom[][] Room = frontend.getRooms();
-		for(int i = 0; i < ROOM_LENGTH; i++) {
+		for(int i = 0; i < ROOM_LENGTH/2; i++) {
 			int randNum1 = (int)(Math.random() * ROOM_LENGTH);
 			int randNum2 = (int)(Math.random() * ROOM_LENGTH);
 			while(checkSpecialRoom(Room, randNum1, randNum2)) {
@@ -42,19 +43,27 @@ public class EthanRoomBackEnd implements DavidSupport{
 	public void createMoney() {
 		int ROOM_LENGTH = frontend.getRooms().length;
 		DavidEthanRoom[][] Room = frontend.getRooms();
-		for(int i = 0; i < ROOM_LENGTH; i++) {
-			int randNum1 = (int)(Math.random() * ROOM_LENGTH);
-			int randNum2 = (int)(Math.random() * ROOM_LENGTH);
-			while(checkSpecialRoom(Room, randNum1, randNum2)) {
-				randNum1 = (int)(Math.random() * ROOM_LENGTH);
-				randNum2 = (int)(Math.random() * ROOM_LENGTH);
-			}
-			Room[randNum1][randNum2].setContainsTreasure(true);
-			Room[randNum1][randNum2].setMoney((int)(Math.random() * 1000));
+		int[] randArr = randNums(Room, ROOM_LENGTH);
+			Room[randArr[0]][randArr[1]].setContainsTreasure(true);
+			Room[randArr[0]][randArr[1]].setMoney((int)(Math.random() * 1000));
 			createLasers();
-		}
 	}
 	//add an AI that attempts to change the laser locations?????
+	
+	public int[] randNums(DavidEthanRoom[][] room, int length) {
+		int[] myArr = new int[2];
+		for(int i = 0; i < length; i++) {
+			int randNum1 = (int)(Math.random() * length);
+			int randNum2 = (int)(Math.random() * length);
+			while(checkSpecialRoom(room, randNum1, randNum2)) {
+				randNum1 = (int)(Math.random() * length);
+				randNum2 = (int)(Math.random() * length);
+			}
+		myArr[0] = randNum1;
+		myArr[1] = randNum2;
+		}
+		return myArr;
+	}
 	
 	public boolean checkSpecialRoom(DavidEthanRoom[][] room, int num1, int num2) {
 		return room[num1][num2].isContainsTreasure();
