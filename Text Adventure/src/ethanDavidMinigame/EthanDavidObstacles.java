@@ -7,6 +7,7 @@ public class EthanDavidObstacles extends DavidEthanRoom{
 	public EthanDavidObstacles() {
 		setUserHit(false);
 	}
+	
 
 	public boolean isUserHit() {
 		return userHit;

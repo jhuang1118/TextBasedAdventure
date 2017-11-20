@@ -1,7 +1,10 @@
 package ethanDavidMinigame;
 
-import caveExplorer.NPC;
+public class EthanAlarmAI{
+	boolean isActivated;
+	//AI that will combat USER
 
-public class EthanAlarmAI extends NPC{
-	//robot that is a moving alarm?
+	public EthanAlarmAI(boolean isActivated) {
+		this.isActivated = isActivated;
+	}
 }

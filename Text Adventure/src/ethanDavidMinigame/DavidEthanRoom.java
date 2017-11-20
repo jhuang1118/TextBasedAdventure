@@ -2,6 +2,9 @@ package ethanDavidMinigame;
 
 public class DavidEthanRoom {
 
+	private boolean userIn;
+	private boolean containsTreasure;
+	private int money;
 	
 	public boolean isUserIn() {
 		return userIn;
@@ -10,19 +13,6 @@ public class DavidEthanRoom {
 	public void setUserIn(boolean userIn) {
 		this.userIn = userIn;
 	}
-
-	public boolean isContainLaser() {
-		return containLaser;
-	}
-
-	public void setContainLaser(boolean containLaser) {
-		this.containLaser = containLaser;
-	}
-
-	private boolean userIn;
-	private boolean containLaser;
-	private boolean containsTreasure;
-	private int money;
 	
 	public DavidEthanRoom() {
 		

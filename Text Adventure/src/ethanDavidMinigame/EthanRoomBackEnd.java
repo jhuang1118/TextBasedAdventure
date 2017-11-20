@@ -7,7 +7,6 @@ import java.util.TimerTask;
 import caveExplorer.CaveExplorer;
 import caveExplorer.NPCRoom;
 
-/* INVALID CODE NEEDS TO BE MINIGAME*/
 public class EthanRoomBackEnd implements DavidSupport{
 	
 	private int MONEY_CUT_OFF;
@@ -40,7 +39,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 		for(int i = 0; i < ROOM_LENGTH; i++) {
 			int[] randArr = randNums(Room, ROOM_LENGTH);
 			Room[randArr[0]][randArr[1]].setContainsTreasure(true);
-			Room[randArr[0]][randArr[1]].setMoney((int)(Math.random() * 1000));
+			Room[randArr[0]][randArr[1]].setMoney(1000 + (int)(Math.random() * 1000));
 		}
 		createLasers();
 	}
@@ -72,13 +71,19 @@ public class EthanRoomBackEnd implements DavidSupport{
 		}
 	}
 	
-	public void generateRooms() {
-		currMoney = MONEY_CUT_OFF;
-	}
-
 	@Override
 	public boolean stillPlaying() {
+		if(MONEY_CUT_OFF/4 == currMoney) {
+			activateAI();
+			System.out.println("The security has launched it's ai to prevent you from earning more $!");
+			
+		}
 		return MONEY_CUT_OFF == 100000;
+	}
+
+	private void activateAI() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -88,7 +93,9 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 
 	private void loseGame() {
-		// TODO Auto-generated method stub
+		if(true) {
+			//player hit laser, they lose or timer runs out`.
+		}
 		
 	}
 	
@@ -117,6 +124,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 	@Override
 	public Object victorious() {
 		// TODO Auto-generated method stub
-		return null;
+		return stillPlaying() == true	;
 	}
 }
