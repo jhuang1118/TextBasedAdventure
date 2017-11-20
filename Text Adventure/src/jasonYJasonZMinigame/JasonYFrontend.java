@@ -3,6 +3,7 @@ package jasonYJasonZMinigame;
 import caveExplorer.CaveExplorer;
 import caveExplorer.CaveRoom;
 import caveExplorer.Door;
+import caveExplorer.NPCRoom;
 
 import java.util.Scanner;
 
@@ -13,13 +14,13 @@ public class JasonYFrontend implements JasonZSupport {
 	private JasonYSupport backend;
 	public int copCounter;
 	public int neededKills;
+	public int hp;
 	public JasonZSwat[] npc;
 	public CaveRoom[][] caves;
-	public GameRoom[][] map;
+	public NPCRoom[][] map;
 	public Door[] doors;
 	public String[] difficultyWords;
-	public GameRoom currentMiniGameRoom;
-	 
+	
 	public static final void main(String[] args) {
 		in = new Scanner(System.in);
 		JasonYFrontend demo = new JasonYFrontend();
@@ -27,15 +28,16 @@ public class JasonYFrontend implements JasonZSupport {
 	}
 	
 	public JasonYFrontend() {
-		backend = new JasonZBackend(this, 1,]);
+		backend = new JasonZBackend(this, 1, map);
 		String[] temp = {"easy", "casual", "hard", "extreme", "hell"};
 		difficultyWords = temp;
+		hp = 100;
 	}
 
 	public void createMap(int size) {
 		//creates the map
 		//get current position of player
-		map = new GameRoom[size*2][size*2];
+		map = new NPCRoom[size*2][size*2];
 		caves = CaveExplorer.caves;
 		int[] coords = CaveExplorer.currentRoom.getCoordinates();
 		int[] startRoom = new int[2];
@@ -52,7 +54,7 @@ public class JasonYFrontend implements JasonZSupport {
 		while(mapRow < size*2) {
 			for(int row = startendrooms[1][0]; row < startendrooms[2][0]; row++) {
 				for(int col = startendrooms[1][1]; col < startendrooms[2][1]; col++) {
-					map[mapRow][mapCol] = (GameRoom) caves[row][col];
+					map[mapRow][mapCol] = (NPCRoom) caves[row][col];
 					mapCol++;
 					if(mapCol > size*2) {
 						mapCol = 0;
@@ -73,13 +75,22 @@ public class JasonYFrontend implements JasonZSupport {
 	}
 	
 	public void rangeDisplay() {
-		//colors in a number of boxes in all diretions based on the range of the gun
+		//colors in a number of boxes in all directions based on the range of the gun
 		//should be colored red 
 		//grab the players coordinates
 	}
 	
 	public void play() {
 		introduction();
+		while(hp != 0 || neededKills != 0) {
+			
+		}
+		if(hp == 0) {
+			System.out.println("GAME OVER!");
+		}
+		if(neededKills == 0) {
+			System.out.println("Congrats! You've won the game!");
+		}
 	}
 
 	public void killCounter() {
