@@ -45,23 +45,22 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		System.out.println(direction);
 		goToRoom(direction);
 		displayBoard();
-		System.out.println("You are now at " + rooms[currentRow][currentCol]);
 		displayMoney();
 	}
 	
 	private void goToRoom(int dir) {
 		for(int row = 0; row < rooms.length; row++) {
-			for(int col = 0; col < rooms[row].length; col++) {
-				if(dir == 0 && currentRow > rooms.length) {
+			for(int col = 0; col < rooms[row].length -1 ; col++) {
+				if(dir == 0 && currentRow > 0) {
 					currentRow--;
 				}
-				if(dir == 1 && currentCol > rooms[row].length) {
+				if(dir == 1 && currentCol < rooms[row].length) {
 					currentCol++;
 				}
 				if(dir == 2 && currentRow < rooms.length) {
 					currentRow++;
 				}
-				if(dir == 3 && currentCol < rooms[row].length) {
+				if(dir == 3 && currentCol > 0) {
 					currentCol--;
 				}
 			}
