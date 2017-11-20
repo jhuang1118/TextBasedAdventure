@@ -32,6 +32,14 @@ public class EthanRoomBackEnd implements DavidSupport{
 			Room[randArr[0]][randArr[1]] = new EthanDavidObstacles();
 		}
 	}
+	public int getCurrMoney() {
+		return currMoney;
+	}
+
+	public void setCurrMoney(int currMoney) {
+		this.currMoney = currMoney;
+	}
+
 	//idea add powerups.
 	public void createMoney() {
 		int ROOM_LENGTH = frontend.getRooms().length;
