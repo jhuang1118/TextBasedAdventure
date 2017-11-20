@@ -35,7 +35,7 @@ public class Enemy extends NPC {
 	
 	public void interact() {
 		String[][] fightMoves = {{"punch","30"},{"neck", "50"},{"kick","25"},{"block","0"}};
-		CaveExplorer.print("F*** off, will ya?" + " Press '1', '2', '3', or '4' to punch, neck, kick, or block, respectively");
+		CaveExplorer.print("Fack off, will ya?!" + " Press '1', '2', '3', or '4' to punch, neck, kick, or block, respectively");
 		String s = CaveExplorer.in.nextLine();
 		while(Inventory.getHP() > 0 && Enemy.getHP() > 0) {
 			

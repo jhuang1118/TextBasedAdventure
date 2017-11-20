@@ -1,5 +1,7 @@
 package caveExplorer;
 
+import jasonYJasonZMinigame.JasonYFrontend;
+
 public class NPC {
 
 	//fields needed to program navigation 
@@ -98,6 +100,11 @@ public class NPC {
 			int newRow = move[0];
 			int newCol = move[1];
 			setPosition(newRow, newCol);
+			int playerRow = currentRoom.getRow();
+			int playerCol = currentRoom.getCol();
+			if(newRow == playerRow && newCol == playerCol) {
+				JasonYFrontend.play();
+			}
 		}
 		
 	}
