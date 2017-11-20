@@ -73,6 +73,7 @@ public class JasonYFrontend implements JasonZSupport {
 		//based on the row or col
 		//either add one or minus one
 		//if the new coordinate has an obstacle,redo
+		
 	}
 	
 	public void rangeDisplay() {
