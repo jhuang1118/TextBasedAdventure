@@ -27,16 +27,10 @@ public class EthanRoomBackEnd implements DavidSupport{
 	
 	public void createLasers() {
 		int ROOM_LENGTH = frontend.getRooms().length;
-		int[] randArray = new int[2];
 		DavidEthanRoom[][] Room = frontend.getRooms();
-		for(int i = 0; i < ROOM_LENGTH/2; i++) {
-			int randNum1 = (int)(Math.random() * ROOM_LENGTH);
-			int randNum2 = (int)(Math.random() * ROOM_LENGTH);
-			while(checkSpecialRoom(Room, randNum1, randNum2)) {
-				randNum1 = (int)(Math.random() * ROOM_LENGTH);
-				randNum2 = (int)(Math.random() * ROOM_LENGTH);
-			}
-			Room[randNum1][randNum2] = new EthanDavidObstacles();
+		for(int i = 0; i < ROOM_LENGTH; i++) {
+			int[] randArr = randNums(Room, ROOM_LENGTH);
+			Room[randArr[0]][randArr[1]] = new EthanDavidObstacles();
 		}
 	}
 	//idea add powerups.
