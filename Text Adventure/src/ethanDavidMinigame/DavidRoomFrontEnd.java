@@ -20,6 +20,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	
 	private void play() {
 		displayBoard();
+		displayMoney();
 		while(backend.stillPlaying()) {
 			respondToInput(in.nextLine());
 			backend.startTimer();
@@ -45,6 +46,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		goToRoom(direction);
 		displayBoard();
 		System.out.println("You are now at " + rooms[currentRow][currentCol]);
+		displayMoney();
 	}
 	
 	private void goToRoom(int dir) {
@@ -113,6 +115,12 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	public void changeRoom() {
 		EthanRoomBackEnd back = new EthanRoomBackEnd(this);
 		back.createMoney();
+	}
+
+	@Override
+	public void displayMoney() {
+		System.out.println("You have collected " + currMoney 
+				+ " money. You still need to collect " + (MONEY_CUT_OFF - currMoney) + " money");
 	}
 
 }
