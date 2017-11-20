@@ -16,8 +16,8 @@ public class EthanDavidObstacles extends DavidEthanRoom{
 		this.userHit = userHit;
 	}
 
-	public String getContents() {
-		return "---";
+	public String toString() {
+		return "L";
 	}
 
 }
