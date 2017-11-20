@@ -44,7 +44,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 	public void createMoney() {
 		int ROOM_LENGTH = frontend.getRooms().length;
 		DavidEthanRoom[][] Room = frontend.getRooms();
-		for(int i = 0; i < ROOM_LENGTH; i++) {
+		for(int i = 0; i < ROOM_LENGTH*3; i++) {
 			int[] randArr = randNums(Room, ROOM_LENGTH);
 			Room[randArr[0]][randArr[1]].setContainsTreasure(true);
 			Room[randArr[0]][randArr[1]].setMoney(1000 + (int)(Math.random() * 1000));
@@ -71,6 +71,11 @@ public class EthanRoomBackEnd implements DavidSupport{
 	
 	public boolean checkSpecialRoom(DavidEthanRoom[][] room, int num1, int num2) {
 		return room[num1][num2].isContainsTreasure();
+	}
+	
+	public void recieveMoney() {
+		//if user in
+	//	return room w/ money;
 	}
 	
 	public void powerups() {
@@ -141,6 +146,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 	@Override
 	public Object victorious() {
 		// TODO Auto-generated method stub
-		return stillPlaying() == true	;
+		return stillPlaying() == true;
 	}
 }
