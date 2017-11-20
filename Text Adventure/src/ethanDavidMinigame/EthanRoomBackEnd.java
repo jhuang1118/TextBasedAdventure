@@ -28,7 +28,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 	public void createLasers() {
 		int ROOM_LENGTH = frontend.getRooms().length;
 		DavidEthanRoom[][] Room = frontend.getRooms();
-		for(int i = 0; i < ROOM_LENGTH; i++) {
+		for(int i = 0; i < 5; i++) {
 			int[] randArr = randNums(Room, ROOM_LENGTH);
 			Room[randArr[0]][randArr[1]] = new EthanDavidObstacles();
 		}
@@ -44,6 +44,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 		}
 		createLasers();
 	}
+	//bug not adding all the $ and L?
 	//add an AI that attempts to change the laser locations?????
 	
 	public int[] randNums(DavidEthanRoom[][] room, int length) {
