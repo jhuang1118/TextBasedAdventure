@@ -43,6 +43,9 @@ public class DavidRoomFrontEnd implements EthanSupport {
 			System.out.println("You can't do that. You must type 'w,a,s, or d.' You still have " +  " seconds left.");
 			input = in.nextLine();
 		}
+		if(input.equals("e")) {
+			displayCheating();
+		}
 		int direction = validMoves().indexOf(input);
 		System.out.println(direction);
 		goToRoom(direction);
@@ -74,7 +77,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	public String validMoves() {
-		return "wdsa";
+		return "wdsae";
 	}
 
 	public void displayBoard() {
@@ -107,6 +110,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		EthanRoomBackEnd cheating = new EthanRoomBackEnd(this);
 		cheating.setCheating(true);
 		cheating.cheat();
+		System.out.println(cheating.getCurrMoney());
 		System.out.println("You have typed in the cheat code");
 	}
 
