@@ -65,6 +65,15 @@ public class EthanRoomBackEnd implements DavidSupport{
 		return room[num1][num2].isContainsTreasure();
 	}
 	
+	public void powerups() {
+		closeToPowerUp();
+	}
+	
+	private boolean closeToPowerUp() {
+		// within 2 tiles across or above?
+		return false;
+	}
+
 	public void cheat() {
 		if(!cheating) {
 			currMoney = MONEY_CUT_OFF;
