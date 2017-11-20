@@ -4,10 +4,10 @@ public class EthanDavidObstacles extends DavidEthanRoom{
 	
 	boolean userHit;
 
-	public EthanDavidObstacles(String description) {
+	public EthanDavidObstacles() {
 		setUserHit(false);
 	}
-	
+
 	public boolean isUserHit() {
 		return userHit;
 	}
