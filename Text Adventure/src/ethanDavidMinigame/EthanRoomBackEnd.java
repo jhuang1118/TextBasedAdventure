@@ -26,16 +26,25 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 	
 	public void createLasers() {
+		int ROOM_LENGTH = frontend.getRooms().length;
 		
+		for(int i = 0; i < ROOM_LENGTH; i++) {
+			int randNum1 = (int)(Math.random() * ROOM_LENGTH);
+			int randNum2 = (int)(Math.random() * ROOM_LENGTH);
+			/*while(Room[randNum1][randNum1].isContainsTreasure()) {
+				randNum1 = (int)(Math.random() * ROOM_LENGTH);
+				randNum2 = (int)(Math.random() * ROOM_LENGTH);
+			}*/
+		}
 	}
-	
+	//idea add powerups.
 	public void createMoney() {
 		int ROOM_LENGTH = frontend.getRooms().length;
 		DavidEthanRoom[][] Room = frontend.getRooms();
 		for(int i = 0; i < ROOM_LENGTH; i++) {
 			int randNum1 = (int)(Math.random() * ROOM_LENGTH);
 			int randNum2 = (int)(Math.random() * ROOM_LENGTH);
-			while(Room[randNum1][randNum1].isContainsTreasure()) {
+			while(checkSpecialRoom(Room, randNum1, randNum2)) {
 				randNum1 = (int)(Math.random() * ROOM_LENGTH);
 				randNum2 = (int)(Math.random() * ROOM_LENGTH);
 			}
@@ -45,8 +54,8 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 	//add an AI that attempts to change the laser locations?????
 	
-	public boolean isExited() {
-		return false;
+	public boolean checkSpecialRoom(DavidEthanRoom[][] room, int num1, int num2) {
+		return room[num1][num2].isContainsTreasure();
 	}
 	
 	public void cheat() {
