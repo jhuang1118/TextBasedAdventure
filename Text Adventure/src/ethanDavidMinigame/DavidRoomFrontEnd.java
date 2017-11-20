@@ -119,8 +119,10 @@ public class DavidRoomFrontEnd implements EthanSupport {
 
 	@Override
 	public void displayMoney() {
-		System.out.println("You have collected " + currMoney 
-				+ " money. You still need to collect " + (MONEY_CUT_OFF - currMoney) + " money");
+		EthanRoomBackEnd moneyDisplay = new EthanRoomBackEnd(this);
+		System.out.println("You have collected " +  moneyDisplay.getCurrMoney()
+				+ " money. You still need to collect " + (moneyDisplay.MONEY_CUT_OFF - moneyDisplay.getCurrMoney())
+				+ " money");
 	}
 
 }
