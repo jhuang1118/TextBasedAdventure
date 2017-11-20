@@ -73,9 +73,10 @@ public class EthanRoomBackEnd implements DavidSupport{
 		return room[num1][num2].isContainsTreasure();
 	}
 	
-	public void recieveMoney() {
-		//if user in
-	//	return room w/ money;
+	public void recieveMoney(DavidEthanRoom[][] room, int row, int col) {
+		int moneyCount = room[row][col].getMoney();
+		currMoney += moneyCount;
+		frontend.displayMoney();
 	}
 	
 	public void powerups() {
@@ -91,6 +92,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 		if(!cheating) {
 			currMoney = MONEY_CUT_OFF;
 		}
+		
 	}
 	
 	@Override
