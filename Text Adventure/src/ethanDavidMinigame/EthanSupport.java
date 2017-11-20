@@ -11,4 +11,6 @@ public interface EthanSupport {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	displayMoney();
 }
