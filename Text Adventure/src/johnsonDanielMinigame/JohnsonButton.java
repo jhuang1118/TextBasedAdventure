@@ -35,5 +35,10 @@ public class JohnsonButton {
 		color = "G";
 		trigger = false;
 	}
-
+	public String toString() {
+		if(revealed) {
+			return color;
+		}else
+			return "O";
+	}
 }

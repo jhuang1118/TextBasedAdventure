@@ -1,13 +1,20 @@
 package johnsonDanielMinigame;
 
-import caveExplorer.CaveExplorer;
+import java.util.Scanner;
+
+//import caveExplorer.CaveExplorer;
 
 public class JohnsonUnlockGame {
+	public static Scanner inputSource = new Scanner(System.in);
 	
 	private JohnsonButton[][] theButtons;
+	private int chances;
+	private boolean won;
 	
 	public JohnsonUnlockGame() {
 		theButtons = new JohnsonButton[6][6];
+		chances = theButtons.length;
+		won = false;
 		for(int row = 0; row < theButtons.length; row++) {
 			for(int col = 0; col < theButtons[row].length; col++) {
 				theButtons[row][col] = new JohnsonButton();
@@ -21,14 +28,14 @@ public class JohnsonUnlockGame {
 	}
 	
 	public void play(){
-		int row = (int)Math.random()*theButtons.length;
-		int col = (int)Math.random()* theButtons[0].length;
+		int row = (int)(Math.random()*(theButtons.length -1));
+		int col = (int)(Math.random()* (theButtons[row].length -1));
 		//JohnsonButton rightButton = theButtons[row][col];
-		int chances = theButtons.length;
+		
 	    setColors(row, col);
 	    System.out.println("You have to find the button to unlock the locker. Each square will indicate a 'R', 'Y', or 'G' when you move to it."
 	    		+ "\n" + " R means you are very close, Y means you are somewhat close, and G means you are not close to it."
-	    				+ " To play, please enter 2 numbers: the row of the button you wish to press and the column of the button you wish to press");
+	    				+ " To play, please enter 2 numbers: the row of the button you wish to press \n and the column of the button you wish to press");
 	   while(chances > 0){
 	        displayBoard();
 	        displayChancesLeft(chances);
@@ -38,14 +45,19 @@ public class JohnsonUnlockGame {
 	        
 	        chances--;
 	    }
-	        printGameOverMessage();
+	        printGameOverMessage(row, col);
 	}
 
-	private void printGameOverMessage() {
-		System.out.println("Sorry, you used all your chances and haven't found the right button!");
-		
+	private void printGameOverMessage(int row, int col) {
+		if(won) {
+			System.out.println("You won the game!!!");
+		}else {
+			System.out.println("Sorry, you used all your chances and haven't found the right button! The right button was at " + row + " , " + col);
+		}
 	}
-
+	public String getInput() {
+		return inputSource.nextLine();
+	}
 	private void respondToInput(String input) {
 		int num1 = Integer.parseInt(input.substring(0,1));
 		int num2 = Integer.parseInt(input.substring(1,2));
@@ -54,14 +66,17 @@ public class JohnsonUnlockGame {
 			String colorOfSquare = currentButton.getColor();
 			theButtons[num1][num2].setRevealed(true);
 			if(colorOfSquare == "B") {
-				System.out.println("You won the game!!!");
 				currentButton.setTrigger(true);
+				won = true;
+				chances = 0;
 			}
 			if(colorOfSquare == "R") {
 				System.out.println("You are very close to the right button!!");
+				chances += 2;
 			}
 			if(colorOfSquare == "Y") {
 				System.out.println("You are kind of close to the right button!");
+				chances++;
 			}
 			if(colorOfSquare == "G") {
 				System.out.println("You are not that close. I suggest you pick a button elsewhere.");
@@ -70,14 +85,15 @@ public class JohnsonUnlockGame {
 		}
 		System.out.println("You have already pressed this button. You cannot press it again.");
 	}
-	//
-	private String getValidUserInput() {
-		String input = CaveExplorer.in.nextLine();
+	public String getValidUserInput() {
+		String input = getInput();
 		String num1 = input.substring(0,1);
 		String num2 = input.substring(1,2);
-		if(!(isValid(num1) && isValid(num2))) {
+		
+		if((!(isValid(num1) && isValid(num2)) || input.length() != 2)) {
 			printValidMoves();
-			CaveExplorer.in.nextLine();
+			System.out.println("Please follow directions. Remember, do not include commas!");
+			input = getInput();
 		}
 		return input;
 		
@@ -99,8 +115,12 @@ public class JohnsonUnlockGame {
 	}
 
 	private void displayBoard() {
-		// TODO Auto-generated method stub
-		
+		for(int row = 0; row < theButtons.length; row++) {
+			for(int col = 0; col < theButtons[row].length; col++) {
+				System.out.print(theButtons[row][col]);
+			}
+			System.out.println("");
+		}
 	}
 
 	private void setColors(int targetRow, int targetCol) {
