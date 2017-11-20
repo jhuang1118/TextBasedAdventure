@@ -9,6 +9,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	private int currentCol;
 	
 	public static DavidEthanRoom currentRoom;
+	public EthanRoomBackEnd ethanRoom;
 	
 	private DavidSupport backend;
 	
@@ -96,6 +97,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	
 	public DavidRoomFrontEnd() {
 		backend = new EthanRoomBackEnd(this);
+		ethanRoom = new EthanRoomBackEnd(this);
 		rooms = new DavidEthanRoom[5][15];
 		for(DavidEthanRoom[] row: rooms) {
 			for(int col = 0; col < row.length; col++) {
@@ -108,9 +110,9 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	@Override
 	public void displayCheating() {
 		EthanRoomBackEnd cheating = new EthanRoomBackEnd(this);
-		cheating.setCheating(true);
-		cheating.cheat();
-		System.out.println(cheating.getCurrMoney());
+		ethanRoom.setCheating(true);
+		ethanRoom.cheat();
+		System.out.println(ethanRoom.getCurrMoney());
 		System.out.println("You have typed in the cheat code");
 	}
 
@@ -128,8 +130,8 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	@Override
 	public void displayMoney() {
 		EthanRoomBackEnd moneyDisplay = new EthanRoomBackEnd(this);
-		System.out.println("You have collected " +  moneyDisplay.getCurrMoney()
-				+ " money. You still need to collect " + (moneyDisplay.MONEY_CUT_OFF - moneyDisplay.getCurrMoney())
+		System.out.println("You have collected " +  ethanRoom.getCurrMoney()
+				+ " money. You still need to collect " + (ethanRoom.MONEY_CUT_OFF - ethanRoom.getCurrMoney())
 				+ " money");
 	}
 
