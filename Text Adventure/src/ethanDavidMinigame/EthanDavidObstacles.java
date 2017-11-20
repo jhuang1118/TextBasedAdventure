@@ -1,6 +1,6 @@
 package ethanDavidMinigame;
 
-public class EthanDavidObstacles{
+public class EthanDavidObstacles extends DavidEthanRoom{
 	
 	boolean userHit;
 
