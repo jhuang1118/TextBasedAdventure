@@ -18,14 +18,17 @@ public class JasonZBackend implements JasonYSupport {
 	public double spawnTime = 3;
 	public static double[] difficulty = {1, 1.1, 1.3, 1.5, 2};
 	public NPCRoom[][] validRooms;//north, east, south, west.
-	public static NPCRoom[][] cave;
+	public static NPCRoom[][] cave = (NPCRoom[][]) CaveExplorer.caves;
 
 	public JasonZBackend(JasonZSupport frontend, int difficulty, NPCRoom[][] floor) {
 		this.frontend = frontend;
 		changeDifficulty(difficulty);
 		Swat = new JasonZSwat[quantity];
-		setValidRooms(floor);
-		cave = floor;
+		this.gun = new JasonZGuns(TYPE[0]);
+		//setValidRooms(floor);
+		//cave = floor;
+		
+		setValidRooms(cave);
 	}
 	 
 	private void setValidRooms(NPCRoom[][] floor) {
@@ -165,21 +168,14 @@ public class JasonZBackend implements JasonYSupport {
 	}
 
 	@Override
-	public void validInput(String input, KeyEvent event) {
-		if(event.getKeyCode() >= 38 && event.getKeyCode() <= 40)
+	public void validInput(String input, int direction) {
+		if( input.equals("f"))
 		{
-			ArrowKeys(event);
+			attack();
 		}
-		else 
+		else
 		{
-			if( input.equals("f"))
-			{
-				attack();
-			}
-			else
-			{
-				CaveExplorer.currentRoom.interpretInput(input);
-			}
+			CaveExplorer.currentRoom.interpretInput(input);
 		}
 		//if it is a valid input ....
 		

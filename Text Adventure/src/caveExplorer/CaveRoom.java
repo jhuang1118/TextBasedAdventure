@@ -75,11 +75,9 @@ public class CaveRoom {
 				doorFound = true;
 				directions += "There is a " + doors[i].getDescription() 
 				+ " to the " + toDirection(i) + ". " + doors[i].getDetails() + "\n";
-				System.out.println(directions);
 			}
 		}
 		directions = "You're trapped in this room!";
-		System.out.println(directions);
 	}
 	
 	/**
@@ -164,31 +162,46 @@ public class CaveRoom {
 	 */
 
 	public static void setUpCaves()
-	{ 
-		CaveRoom[][] c = CaveExplorer.caves;
-		c = new NPCRoom[20][20];
+	{
+		CaveExplorer.caves = new NPCRoom[20][20];
+		CaveRoom[][] c = CaveExplorer.caves; // shortcut
 		for(int row = 0; row < c.length; row++)
-		{ 
+		{
 			for(int col = 0; col < c[row].length; col ++)
 			{
 				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
 			}
 		}
 
-		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
-		NPC testNPC = new NPC(c);
-		testNPC.setPosition(1,2); 
-		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs[0] = testNPC;
 		
-		//4. Set starting room
-
+		//Set Starting Room
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
 		
-		//5. Set up doors 
-		c[0][1].setConnection(SOUTH, c[1][1], new Door());
-		c[1][1].setConnection(EAST, c[1][2], new Door());
+		//Set up doors
+		setConnectionForAll();
+	}
+	
+	private static void setConnectionForAll() {
+		CaveRoom[][] c = CaveExplorer.caves;
+		for(int row = 0; row< c.length-1; row++)
+		{
+			for(int col = 0; col < c.length-1; col++)
+			{
+				c[row][col].setConnection(SOUTH, c[row+1][col], new Door());
+				c[row][col].setConnection(EAST, c[row][col+1], new Door());
+			}
+		}
+		
+		for(int i = 0; i<c[c.length-1].length-1; i++)
+		{
+			c[c.length-1][i].setConnection(EAST, c[c.length-1][i+1], new Door());
+		}
+		
+		for(int i = 0; i< c.length-1; i++)
+		{
+			c[i][c[i].length-1].setConnection(SOUTH, c[i][c[i].length-1], new Door());
+		}
 	}
 	
 	/**
