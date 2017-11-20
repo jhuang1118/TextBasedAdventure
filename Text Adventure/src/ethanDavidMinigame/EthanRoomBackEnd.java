@@ -49,11 +49,10 @@ public class EthanRoomBackEnd implements DavidSupport{
 		return false;
 	}
 	
-	public boolean cheat() {
+	public void cheat() {
 		if(!cheating) {
-			
+			currMoney = MONEY_CUT_OFF;
 		}
-		return cheating;
 	}
 	
 	public void generateRooms() {
@@ -82,9 +81,10 @@ public class EthanRoomBackEnd implements DavidSupport{
 		    	public void run() {
 		    		secPassed++;
 		    		System.out.println(secPassed + " secs passed");
-		    		if(secPassed == 5) {
-		    			System.out.println("5 sec passed. end.");
+		    		if(secPassed == 45) {
+		    			System.out.println("You got trapped in the vaultroom.");
 		    			timer.cancel();
+		    			loseGame();
 		    		}
 		    	}
 		    };
