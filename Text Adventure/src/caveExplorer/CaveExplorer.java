@@ -40,6 +40,7 @@ public class CaveExplorer {
 	}
 
 	private static void moveNPCs() {
+<<<<<<< HEAD
 
 		if(police != null)
 		{
@@ -49,6 +50,14 @@ public class CaveExplorer {
 			}
 		}
 		
+=======
+		if(police != null) {
+			for(NPC n: police)
+			{
+				n.autoMove();
+			}	
+		}
+>>>>>>> branch 'master' of https://github.com/jhuang1118/TextBasedAdventure.git
 		inventory.updateMap(caves);
 	}
 
