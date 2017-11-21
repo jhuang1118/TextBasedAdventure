@@ -87,6 +87,21 @@ public class JohnsonUnlockGame {
 	}
 	public String getValidUserInput() {
 		String input = getInput();
+		boolean checkingInput = true;
+		while(checkingInput)
+		{
+			if(input.length()<2 || input == null)
+			{
+				checkingInput = true;
+				System.out.println("Please follow directions. Remember, do not include commas!");
+				input = getInput();
+			}
+			else
+			{
+				checkingInput = false;
+			}
+		}
+		
 		String num1 = input.substring(0,1);
 		String num2 = input.substring(1,2);
 		
