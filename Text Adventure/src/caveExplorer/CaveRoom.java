@@ -1,8 +1,5 @@
 package caveExplorer;
 
-import ethanDavidMinigame.EthanRoomBackEnd;
-import ethanDavidMinigame.VaultRoom;
-
 public class CaveRoom {
 	
 	public static int[] getCoordinates() {
@@ -77,7 +74,6 @@ public class CaveRoom {
 				+ " to the " + toDirection(i) + ". " + doors[i].getDetails() + "\n";
 			}
 		}
-		directions = "You're trapped in this room!";
 	}
 	
 	/**
@@ -173,6 +169,8 @@ public class CaveRoom {
 			}
 		}
 		
+		CaveExplorer.currentRoom = c[0][1];
+		CaveExplorer.currentRoom.enter();
 		//Set up doors
 		setConnectionForAll();
 	}

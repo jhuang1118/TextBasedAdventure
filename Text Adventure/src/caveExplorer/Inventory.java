@@ -52,7 +52,7 @@ public class Inventory {
 					//if a wall is present draw a line otherwise draw a \
 					if(cr.getDoor(CaveRoom.WEST) != null && cr.getDoor(CaveRoom.WEST).isOpen() )
 					{
-						text += "  ";
+						text += " ";
 					}
 					else
 					{
