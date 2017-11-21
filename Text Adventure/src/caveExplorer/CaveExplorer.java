@@ -2,6 +2,8 @@ package caveExplorer;
 
 import java.util.Scanner;
 
+import jasonYJasonZMinigame.JasonYFrontend;
+
 public class CaveExplorer {
 
 	public static CaveRoom[][] caves; 
@@ -34,9 +36,8 @@ public class CaveExplorer {
 			print(currentRoom.getDescription());
 			print(currentRoom.getDirections());
 			print("What would you like to do");
-			currentRoom.interpretInput(in.nextLine());
-		}
-		
+			currentRoom.interpretInput(in.nextLine());		
+		}	
 	}
 
 	private static void moveNPCs() {

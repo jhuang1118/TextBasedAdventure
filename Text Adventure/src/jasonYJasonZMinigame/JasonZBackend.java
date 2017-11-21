@@ -9,7 +9,7 @@ import jasonYJasonZMinigame.JasonZSwat;
 public class JasonZBackend implements JasonYSupport {
 
 	private JasonZSupport frontend;
-	public JasonZGuns gun;
+	public static JasonZGuns gun;
 	public final static String[][] TYPE = {{"M16", "0"}, {"AR15","0"},{"Beretta 9000", "1"}, {"Beretta Cheetah", "1"}, {"Calico M960", "2"},{"Jatimatic","2"}};
 	public static JasonZSwat[] Swat;
 	public int direction = 0;
@@ -166,7 +166,7 @@ public class JasonZBackend implements JasonYSupport {
 	}
 
 	@Override
-	public void validInput(String input, int direction) {
+	public void validInput(String input) {
 		if( input.equals("f"))
 		{
 			attack();

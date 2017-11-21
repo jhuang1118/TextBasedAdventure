@@ -108,7 +108,8 @@ public class NPC {
 			int playerRow = currentRoom.getRow();
 			int playerCol = currentRoom.getCol();
 			if(newRow == playerRow && newCol == playerCol) {
-				JasonYFrontend.play();
+				JasonYFrontend demo = new JasonYFrontend();
+				demo.play();
 			}
 		}
 		

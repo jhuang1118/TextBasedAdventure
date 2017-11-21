@@ -4,6 +4,8 @@ import caveExplorer.CaveExplorer;
 import caveExplorer.CaveRoom;
 import caveExplorer.Door;
 import caveExplorer.NPCRoom;
+
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import java.util.Scanner;
@@ -65,17 +67,26 @@ public class JasonYFrontend implements JasonZSupport {
 		}
 	}
 	
-	public void rangeDisplay() {
+//	public void rangeDisplay() {
 		//colors in a number of boxes in all directions based on the range of the gun
 		//should be colored red 
 		//grab the players coordinates
-	}
+//		int[] coords = CaveExplorer.currentRoom.getCoordinates();
+//		int range = JasonZBackend.gun.getRange();
+//		for(int i = 0; i < range; i++) {
+//			map[coords[0]+i][coords[1]] = " | ";//down
+//			map[coords[0]-i][coords[1]] = " | ";//up
+//			map[coords[0]][coords[1]+1] = " - ";//right
+//			map[coords[0]][coords[1]-1] = " - ";//left
+//		}
+//	}
 	
 	public void play() {
 		introduction();
 		while(hp != 0 || neededKills != 0) {
-			System.out.println("What would you like to do");
-			backend.validInput(in.nextLine(), );
+			System.out.println("What would you like to do?");
+			String input = in.nextLine();
+			backend.validInput(in.nextLine());
 			int[] coords = CaveExplorer.currentRoom.getCoordinates();
 			JasonZSwat.calculateMove(coords[0], coords[1]);
 		}

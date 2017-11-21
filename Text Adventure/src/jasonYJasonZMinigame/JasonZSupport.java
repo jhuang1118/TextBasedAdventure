@@ -3,7 +3,7 @@ package jasonYJasonZMinigame;
 public interface JasonZSupport {
 
 	void createMap(int size);
-	void rangeDisplay();
+//	void rangeDisplay();
 		//colors in a number of boxes based on the range of the gun
 		//should be colored red 
 	void play();

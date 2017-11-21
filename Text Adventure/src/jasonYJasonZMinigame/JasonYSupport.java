@@ -7,5 +7,5 @@ public interface JasonYSupport {
 	void increaseKillCount();
 	void changeDifficulty(int i);
 	void changeSpawnTime(double d);
-	void validInput(String input, int direction);
+	void validInput(String input);
 }
