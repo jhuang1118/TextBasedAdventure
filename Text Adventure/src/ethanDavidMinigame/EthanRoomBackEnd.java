@@ -97,26 +97,13 @@ public class EthanRoomBackEnd implements DavidSupport{
 		currMoney += moneyCount;
 		frontend.displayMoney();
 	}
-	
-	public void powerups() {
-		closeToPowerUp();
-	}
-	
-	private boolean closeToPowerUp() {
-		//checks if player is 2 tiles north, south, west, or east
-		if() {//if player close...
-			
-		}
-		return false;
-	}
 
 	public void cheat() {
 		DavidRoomFrontEnd cheating1 = new DavidRoomFrontEnd();
 		if(cheating) {
 			currMoney = MONEY_CUT_OFF;
 			cheating1.displayMoney();
-		}
-		
+		}	
 	}
 	
 	@Override
@@ -141,10 +128,9 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 
 	private void loseGame() {
-		if(true) {
-			//player hit laser, they lose or timer runs out`.
-		}
-		
+		if(EthanDavidObstacles.isUserHit()) {
+			//lose game.
+		}	
 	}
 	
 	@Override
@@ -167,7 +153,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 			timerthing.scheduleAtFixedRate(task, 1000, 1000); 1000 milliseconds = 1
 	     */
 	}
-	
 
 	@Override
 	public Object victorious() {
