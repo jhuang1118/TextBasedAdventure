@@ -22,9 +22,9 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	private void play() {
-		displayBoard();
-		displayMoney();
 		while(backend.stillPlaying()) {
+			displayBoard();
+			displayMoney();
 			respondToInput(in.nextLine());
 			backend.startTimer();
 		}
@@ -49,8 +49,8 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		}
 		int direction = validMoves().indexOf(input);
 		System.out.println(direction);
-		goToRoom(direction);
 		displayBoard();
+		goToRoom(direction);
 		displayMoney();
 	}
 	
@@ -70,7 +70,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 					currentCol--;
 				}
 			}
-		}	
+		}
 	}
 
 	private boolean isValid(String input) {
