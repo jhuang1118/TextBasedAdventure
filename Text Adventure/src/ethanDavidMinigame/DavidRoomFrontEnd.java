@@ -55,8 +55,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	private void goToRoom(int dir) {
-//		for(int row = 0; row < rooms.length; row++) {
-//			for(int col = 0; col < rooms[row].length; col++) {
 				if(dir == 0 && currentRow > 0) {
 					currentRow--;
 				}
@@ -69,8 +67,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 				if(dir == 3 && currentCol > 0) {
 					currentCol--;
 				}
-//			}
-//		}
 	}
 
 	private boolean isValid(String input) {
