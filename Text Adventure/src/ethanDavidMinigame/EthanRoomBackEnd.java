@@ -118,7 +118,10 @@ public class EthanRoomBackEnd implements DavidSupport{
 
 	private void activateAI() {
 		// TODO Auto-generated method stub
-		
+		/**
+		 * override to create response to keys other than wdsa
+		 * @param direction
+		 */
 	}
 
 	@Override
