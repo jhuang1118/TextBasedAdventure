@@ -77,7 +77,6 @@ public class CaveRoom {
 				+ " to the " + toDirection(i) + ". " + doors[i].getDetails() + "\n";
 			}
 		}
-		directions = "You're trapped in this room!";
 	}
 	
 	/**
