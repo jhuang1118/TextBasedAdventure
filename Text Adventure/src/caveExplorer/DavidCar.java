@@ -1,6 +1,6 @@
 package caveExplorer;
 
-public class Car extends NPC{
+public class DavidCar extends NPC{
 
 	//fields needed to program navigation 
 	private CaveRoom[][] floor;
@@ -14,7 +14,7 @@ public class Car extends NPC{
 	//you can add more
 	
 	
-	public Car() {
+	public DavidCar() {
 		this.floor = CaveExplorer.caves;
 		this.activeDescription = "You have reached your car! Quickly press 'e' to enter the get-away car!";
 		this.currentCol = -1; 
