@@ -58,11 +58,10 @@ public class EthanRoomBackEnd implements DavidSupport{
 		this.currMoney = currMoney;
 	}
 
-	//idea add powerups.
 	public void createMoney() {
 		int ROOM_LENGTH = frontend.getRooms().length;
 		DavidEthanRoom[][] Room = frontend.getRooms();
-		for(int i = 0; i < ROOM_LENGTH*3; i++) {
+		for(int i = 0; i < ROOM_LENGTH*2; i++) {
 			int[] randArr = randNums(Room, ROOM_LENGTH);
 			Room[randArr[0]][randArr[1]].setContainsTreasure(true);
 			Room[randArr[0]][randArr[1]].setMoney(1000 + (int)(Math.random() * 1000));
@@ -71,11 +70,10 @@ public class EthanRoomBackEnd implements DavidSupport{
 		createLasers();
 	}
 	//bug not adding all the $ and L?
-	//add an AI that attempts to change the laser locations?????
 	
 	public int[] randNums(DavidEthanRoom[][] room, int length) {
 		int[] myArr = new int[2];
-		for(int i = 0; i < length; i++) {
+		//for(int i = 0; i < length; i++) {
 			int randNum1 = (int)(Math.random() * length);
 			int randNum2 = (int)(Math.random() * room[length-1].length);
 			while(checkSpecialRoom(room, randNum1, randNum2)) {
@@ -84,11 +82,15 @@ public class EthanRoomBackEnd implements DavidSupport{
 			}
 		myArr[0] = randNum1;
 		myArr[1] = randNum2;
-		}
+	//	}
 		return myArr;
 	}
 	//every 5 moves add laser
 	public boolean checkSpecialRoom(DavidEthanRoom[][] room, int num1, int num2) {
+		return room[num1][num2].isContainsTreasure();
+	}
+	
+	public boolean checkSpecialRoom1(EthanDavidPowerUp[][] room, int num1, int num2) {
 		return room[num1][num2].isContainsTreasure();
 	}
 	
