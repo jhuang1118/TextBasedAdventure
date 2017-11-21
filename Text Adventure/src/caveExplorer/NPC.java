@@ -16,7 +16,7 @@ public class NPC {
 	private String inactiveDescription; 
 	//you can add more
 	
-	public int[][] possibleMoves = {{-1,0}, {0,1}, {1, 0},{0,-1}};
+	public static int[][] possibleMoves = {{-1,0}, {0,1}, {1, 0},{0,-1}};
 	
 	public NPC(CaveRoom[][] cave) {
 		this.floor = cave;

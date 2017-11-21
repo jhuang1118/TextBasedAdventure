@@ -18,7 +18,7 @@ public class JasonZBackend implements JasonYSupport {
 	public double spawnTime = 3;
 	public static double[] difficulty = {1, 1.1, 1.3, 1.5, 2};
 	public NPCRoom[][] validRooms;//north, east, south, west.
-	public NPCRoom[][] cave;
+	public static NPCRoom[][] cave;
 	
 	public JasonZBackend(JasonZSupport frontend, int difficulty, NPCRoom[][] floor) {
 		this.frontend = frontend;

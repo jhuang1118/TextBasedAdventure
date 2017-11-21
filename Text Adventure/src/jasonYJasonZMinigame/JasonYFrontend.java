@@ -76,7 +76,8 @@ public class JasonYFrontend implements JasonZSupport {
 		while(hp != 0 || neededKills != 0) {
 			System.out.println("What would you like to do");
 			backend.validInput(in.nextLine(), );
-			calculateMove();
+			int[] coords = CaveExplorer.currentRoom.getCoordinates();
+			JasonZSwat.calculateMove(coords[0], coords[1]);
 		}
 		if(hp == 0) {
 			System.out.println("GAME OVER!");
