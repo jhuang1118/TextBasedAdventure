@@ -40,10 +40,11 @@ public class CaveExplorer {
 	}
 
 	private static void moveNPCs() {
-
-		for(NPC n: police)
-		{
-			n.autoMove();
+		if(police != null) {
+			for(NPC n: police)
+			{
+				n.autoMove();
+			}	
 		}
 		inventory.updateMap(caves);
 	}
