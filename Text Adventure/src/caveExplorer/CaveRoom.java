@@ -143,7 +143,7 @@ public class CaveRoom {
 
 	public static void setUpCaves()
 	{
-		CaveExplorer.caves = new CaveRoom[10][10];
+		CaveExplorer.caves = new CaveRoom[20][20];
 		//CaveExplorer.caves = new CaveRoom[15][15];
 		//CaveRoom[][] m = CaveExplorer.caves; 
 		CaveRoom[][] c = CaveExplorer.caves; // the vault room
@@ -187,10 +187,34 @@ public class CaveRoom {
 		CaveExplorer.currentRoom.enter();
 		
 		//5. Set up doors 
+		
+		setupStore();
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
 		c[1][1].setConnection(EAST, c[1][2], new Door());
 	}
 	
+	private static void setupStore() {
+		for(int i = 18; i>15; i--)
+		{
+			for( int e = 0; e< 20; e++)
+			{
+				CaveExplorer.caves[i][e].setConnection(NORTH, CaveExplorer.caves[i][e], new Door());
+			}
+		}
+		//horizontal doors
+		for(int i = 19; i>15; i--)
+		{
+			for( int e =0; e<19; e++)
+			{
+				CaveExplorer.caves[i][e].setConnection(EAST, CaveExplorer.caves[i][e+1], new Door());
+			}
+		}
+		//vertical doors
+		//doors
+		CaveExplorer.caves[16][10].setConnection(NORTH, CaveExplorer.caves[15][10], new Door());
+		CaveExplorer.caves[16][9].setConnection(NORTH, CaveExplorer.caves[15][10], new Door());
+	}
+
 	/**
 	 * override to add more moves
 	 * @return
