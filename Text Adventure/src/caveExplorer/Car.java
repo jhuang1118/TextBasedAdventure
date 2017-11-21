@@ -23,9 +23,6 @@ public class Car extends NPC{
 		active = true;
 	}
 	
-	public boolean exitedVault() {
-		return false;
-	}
 
 	public boolean isActive() {
 		return active;
@@ -36,7 +33,6 @@ public class Car extends NPC{
 	}
 
 	public void interact() {
-		CaveExplorer.print("You're in! Quickly get to the safe point!");
 		active = false;
 	}
 
@@ -85,22 +81,6 @@ public class Car extends NPC{
 	private boolean enteredCar() {
 		return false;
 	}
-
-	/* private int[] calculateMove() {
-								//North East	South	West
-		int[][] possibleMoves = {{-1,0}, {0,1}, {1, 0},{0,-1}};
-		int index = (int)(Math.random() * possibleMoves.length);
-		int[] newPosition = new int[2]; 
-		newPosition[0] = currentRow + possibleMoves[index][0];
-		newPosition[1] = currentCol + possibleMoves[index][1];
-		while(currentRoom.getDoor(index) == null || !(CaveExplorer.caves[newPosition[0]][newPosition[1]] instanceof NPCRoom))
-		{
-			index = (int) (Math.random() * possibleMoves.length);
-			newPosition[0] = currentRow + possibleMoves[index][0];
-			newPosition[1] = currentCol + possibleMoves[index][1];
-		}
-		return newPosition;
-	} */
 
 }
 

@@ -17,6 +17,8 @@ public class VaultRoom extends NPCRoom {
 	}
 	public boolean canEnter() {
 		if(CaveExplorer.inventory.isID()) {
+			System.out.print("\n You open the vault and enter.");
+			//initiate vaultroom game.
 			return true;
 		}else {
 			System.out.print("\n It's impossible to open the vault with your bare hands. Maybe if you had the manager's key or dynamite...\n");

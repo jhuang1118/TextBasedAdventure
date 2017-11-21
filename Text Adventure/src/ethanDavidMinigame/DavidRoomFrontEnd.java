@@ -1,31 +1,138 @@
 package ethanDavidMinigame;
 
-import caveExplorer.CaveExplorer;
-import caveExplorer.CaveRoom;
-import caveExplorer.NPCRoom;
+import java.util.Scanner;
 
-public class DavidRoomFrontEnd extends NPCRoom {
+public class DavidRoomFrontEnd implements EthanSupport {
 	
-	public int index;
-
-	public DavidRoomFrontEnd(String description) {
-		super(description);
-		// TODO Auto-generated constructor stub
+	private DavidEthanRoom[][] rooms;
+	private int currentRow;
+	private int currentCol;
+	
+	public static DavidEthanRoom currentRoom;
+	public EthanRoomBackEnd ethanRoom;
+	
+	private DavidSupport backend;
+	
+	public static Scanner in;
+	
+	public static void main(String[] args) {
+		in = new Scanner(System.in);
+		DavidRoomFrontEnd game = new DavidRoomFrontEnd();
+		game.play(); 
 	}
 	
-	
-	/* public void spawnPolice() {
-		int numberOfPolice = (int)(Math.random() * 5) + 3;
-		int policeOnSite = 0;
-		while(policeOnSite != numberOfPolice) {
-			CaveRoom[][] c = CaveExplorer.caves;
-			int index = (int)(Math.random() * c.length);
-			while(index == cRIndex) {
-				index = (int)(Math.random() * c.length);
-			}
-			c[index][index] = new DavidRoomFrontEnd("Police!");
-			policeOnSite++;
+	private void play() {
+		displayBoard();
+		displayMoney();
+		while(backend.stillPlaying()) {
+			respondToInput(in.nextLine());
+			backend.startTimer();
 		}
-	} */
+		printGameOverMessage(backend.victorious());
+	}
 	
+	public void printGameOverMessage(Object victorious) {
+		System.out.println("You're dead.");
+	}
+
+	public void displayTimer() {
+		System.out.println("You have 40 seconds to collect money!");
+	}
+	
+	public void respondToInput(String input) {
+		while(!isValid(input)) {
+			System.out.println("You can't do that. You must type 'w,a,s, or d.' You still have " +  " seconds left.");
+			input = in.nextLine();
+		}
+		if(input.equals("e")) {
+			displayCheating();
+		}
+		int direction = validMoves().indexOf(input);
+		System.out.println(direction);
+		goToRoom(direction);
+		displayBoard();
+		displayMoney();
+	}
+	
+	private void goToRoom(int dir) {
+		for(int row = 0; row < rooms.length; row++) {
+			for(int col = 0; col < rooms[row].length; col++) {
+				if(dir == 0 && currentRow > 0) {
+					currentRow--;
+				}
+				if(dir == 1 && currentCol < rooms[row].length) {
+					currentCol++;
+				}
+				if(dir == 2 && currentRow < rooms.length) {
+					currentRow++;
+				}
+				if(dir == 3 && currentCol > 0) {
+					currentCol--;
+				}
+			}
+		}	
+	}
+
+	private boolean isValid(String input) {
+		return validMoves().indexOf(input) > -1 && input.length() == 1;
+	}
+	
+	public String validMoves() {
+		return "wdsae";
+	}
+
+	public void displayBoard() {
+		for(int row = 0; row < rooms.length; row++) {
+			for(int col = 0; col < rooms[row].length; col++) {
+				if(row == currentRow && col == currentCol) {
+					System.out.print("X");
+				}
+				else {
+					System.out.print(rooms[row][col]);
+				}
+			}
+			System.out.println("");
+		}
+		}	
+	
+	public DavidRoomFrontEnd() {
+		backend = new EthanRoomBackEnd(this);
+		ethanRoom = new EthanRoomBackEnd(this);
+		rooms = new DavidEthanRoom[5][15];
+		for(DavidEthanRoom[] row: rooms) {
+			for(int col = 0; col < row.length; col++) {
+				row[col] = new DavidEthanRoom();
+			}
+		}
+		changeRoom();
+	}
+
+	@Override
+	public void displayCheating() {
+		EthanRoomBackEnd cheating = new EthanRoomBackEnd(this);
+		ethanRoom.setCheating(true);
+		ethanRoom.cheat();
+		System.out.println(ethanRoom.getCurrMoney());
+		System.out.println("You have typed in the cheat code");
+	}
+
+	@Override
+	public DavidEthanRoom[][] getRooms() {
+		// TODO Auto-generated method stub
+		return rooms;
+	}
+	
+	public void changeRoom() {
+		EthanRoomBackEnd back = new EthanRoomBackEnd(this);
+		back.createMoney();
+	}
+
+	@Override
+	public void displayMoney() {
+		EthanRoomBackEnd moneyDisplay = new EthanRoomBackEnd(this);
+		System.out.println("You have collected " +  ethanRoom.getCurrMoney()
+				+ " money. You still need to collect " + (ethanRoom.MONEY_CUT_OFF - ethanRoom.getCurrMoney())
+				+ " money");
+	}
+
 }
