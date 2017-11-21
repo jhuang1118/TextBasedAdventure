@@ -77,10 +77,10 @@ public class EthanRoomBackEnd implements DavidSupport{
 		int[] myArr = new int[2];
 		for(int i = 0; i < length; i++) {
 			int randNum1 = (int)(Math.random() * length);
-			int randNum2 = (int)(Math.random() * length);
+			int randNum2 = (int)(Math.random() * room[length-1].length);
 			while(checkSpecialRoom(room, randNum1, randNum2)) {
 				randNum1 = (int)(Math.random() * length);
-				randNum2 = (int)(Math.random() * length);
+				randNum2 = (int)(Math.random() * room[length-1].length);
 			}
 		myArr[0] = randNum1;
 		myArr[1] = randNum2;
