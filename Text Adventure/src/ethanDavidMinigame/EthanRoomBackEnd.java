@@ -87,14 +87,14 @@ public class EthanRoomBackEnd implements DavidSupport{
 		}
 		return myArr;
 	}
-	
+	//every 5 moves add laser
 	public boolean checkSpecialRoom(DavidEthanRoom[][] room, int num1, int num2) {
 		return room[num1][num2].isContainsTreasure();
 	}
 	
 	public void recieveMoney(DavidEthanRoom[][] room, int row, int col) {
 		int moneyCount = room[row][col].getMoney();
-		room[row][col].setContainsTreasure(false);
+		room[row][].setContainsTreasure(false);
 		currMoney += moneyCount;
 		frontend.displayMoney();
 	}
