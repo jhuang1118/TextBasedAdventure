@@ -94,7 +94,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 	
 	public void recieveMoney(DavidEthanRoom[][] room, int row, int col) {
 		int moneyCount = room[row][col].getMoney();
-		room[row][].setContainsTreasure(false);
+		room[row][col].setContainsTreasure(false);
 		currMoney += moneyCount;
 		frontend.displayMoney();
 	}
