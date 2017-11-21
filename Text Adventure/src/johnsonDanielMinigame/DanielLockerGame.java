@@ -1,5 +1,7 @@
 package johnsonDanielMinigame;
 
+import caveExplorer.CaveExplorer;
+
 public class DanielLockerGame {
 
 	private DanielLocker[][] theLockers;
@@ -83,7 +85,18 @@ public class DanielLockerGame {
 	}
 
 	private String getValidUserInput() {
+		String tempInput = CaveExplorer.in.nextLine();
+		if(validInput(tempInput)==true) {
+			
+		}
+		
+		
 		// write a method to see if the user's input is part of wasd and if it isn't, then you give them an error message
+	}
+
+	private boolean validInput(String input) {
+		
+		return false;
 	}
 
 	private void answer(String input) {
