@@ -59,28 +59,24 @@ public class DavidRoomFrontEnd implements EthanSupport {
 					currentRow--;
 					if(rooms[currentRow][currentRow].isContainsTreasure()) {
 						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
-						//System.out.println("You are on top of money");
 					}
 				}
 				if(dir == 1 && currentCol < rooms[0].length) {
 					currentCol++;
 					if(rooms[currentRow][currentRow].isContainsTreasure()) {
 						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
-						//System.out.println("You are on top of money");
 					}
 				}
 				if(dir == 2 && currentRow < rooms.length) {
 					currentRow++;
 					if(rooms[currentRow][currentRow].isContainsTreasure()) {
 						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
-						//System.out.println("You are on top of money");
 					}
 				}
 				if(dir == 3 && currentCol > 0) {
 					currentCol--;
 					if(rooms[currentRow][currentRow].isContainsTreasure()) {
 						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
-						//System.out.println("You are on top of money");
 					}
 				}
 			
