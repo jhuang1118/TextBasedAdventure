@@ -24,16 +24,26 @@ public class EthanRoomBackEnd implements DavidSupport{
 		secPassed = 0;
 	}
 	
+	public void createPowerUps() {
+		int ROOM_LENGTH = frontend.getRooms().length;
+		DavidEthanRoom[][] Room = frontend.getRooms();
+		for(int i = 0; i < 5; i++) {
+			int[] randArr = randNums(Room, ROOM_LENGTH);
+			if(randArr[0]+1 <= ROOM_LENGTH-1 && randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
+				Room[randArr[0]+1][randArr[1]+1] = new EthanDavidPowerUp(false);
+			}
+		}
+	}
+	
 	public void createLasers() {
 		int ROOM_LENGTH = frontend.getRooms().length;
 		DavidEthanRoom[][] Room = frontend.getRooms();
 		for(int i = 0; i < 5; i++) {
 			int[] randArr = randNums(Room, ROOM_LENGTH);
 			if(randArr[0]+1 <= ROOM_LENGTH-1 && randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
-				//to check for AIOOBE
+				//to check for AIOOBE and to prevent laser from starting at 0,0
 				Room[randArr[0]+1][randArr[1]+1] = new EthanDavidObstacles();
 			}
-			//Room[randArr[0]][randArr[1]] = new EthanDavidObstacles();
 		}
 	}
 	public void setCheating(boolean cheating) {
@@ -57,6 +67,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 			Room[randArr[0]][randArr[1]].setContainsTreasure(true);
 			Room[randArr[0]][randArr[1]].setMoney(1000 + (int)(Math.random() * 1000));
 		}
+		createPowerUps();
 		createLasers();
 	}
 	//bug not adding all the $ and L?
@@ -92,13 +103,18 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 	
 	private boolean closeToPowerUp() {
-		// within 2 tiles across or above?
+		//checks if player is 2 tiles north, south, west, or east
+		if() {//if player close...
+			
+		}
 		return false;
 	}
 
 	public void cheat() {
+		DavidRoomFrontEnd cheating1 = new DavidRoomFrontEnd();
 		if(cheating) {
 			currMoney = MONEY_CUT_OFF;
+			cheating1.displayMoney();
 		}
 		
 	}
