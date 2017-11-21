@@ -2,6 +2,7 @@ package caveExplorer;
 
 import ethanDavidMinigame.EthanRoomBackEnd;
 import ethanDavidMinigame.VaultRoom;
+import johnsonDanielMinigame.MiniGameStarter;
 
 public class CaveRoom {
 	
@@ -48,11 +49,15 @@ public class CaveRoom {
 				doorFound = true;
 				directions += "There is a " + doors[i].getDescription() 
 				+ " to the " + toDirection(i) + ". " + doors[i].getDetails() + "\n";
-				System.out.println(directions);
+				
 			}
 		}
-		directions = "You're trapped in this room!";
-		System.out.println(directions);
+		
+		if(!doorFound) {
+			directions = "You're trapped in this room!";
+		}
+		
+
 	}
 	
 	/**
@@ -138,11 +143,11 @@ public class CaveRoom {
 
 	public static void setUpCaves()
 	{
-		CaveExplorer.caves = new NPCRoom[10][10];
+		CaveExplorer.caves = new CaveRoom[10][10];
 		//CaveExplorer.caves = new CaveRoom[15][15];
 		//CaveRoom[][] m = CaveExplorer.caves; 
 		CaveRoom[][] c = CaveExplorer.caves; // the vault room
-		CaveExplorer.caves = new NPCRoom[20][20];
+		
 		for(int row = 0; row < c.length; row++)
 		{
 			for(int col = 0; col < c[row].length; col ++)
@@ -157,6 +162,7 @@ public class CaveRoom {
 		CaveExplorer.police[0] = testNPC; */
 		
 		c[9][5] = new EthanRoomBackEnd("");
+		c[1][1] = new MiniGameStarter("");
 
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		NPC testNPC = new NPC();
