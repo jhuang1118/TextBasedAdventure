@@ -40,25 +40,13 @@ public class CaveExplorer {
 	}
 
 	private static void moveNPCs() {
-<<<<<<< HEAD
-
-		if(police != null)
-		{
-			for(NPC n: police)
-			{
-				n.autoMove();
-			}
-		}
-		
-=======
 		if(police != null) {
 			for(NPC n: police)
 			{
 				n.autoMove();
 			}	
 		}
->>>>>>> branch 'master' of https://github.com/jhuang1118/TextBasedAdventure.git
-		inventory.updateMap(caves);
+		Inventory.updateMap(caves);
 	}
 
 }
