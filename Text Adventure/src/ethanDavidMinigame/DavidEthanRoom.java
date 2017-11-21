@@ -39,7 +39,7 @@ public class DavidEthanRoom {
 			return "$";
 		}
 		else {
-			return "O";
+			return " ";
 		}
 	}
 

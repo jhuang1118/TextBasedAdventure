@@ -48,19 +48,19 @@ public class DavidRoomFrontEnd implements EthanSupport {
 			displayCheating();
 		}
 		int direction = validMoves().indexOf(input);
-		System.out.println(direction);
-		displayBoard();
+//		System.out.println(direction);
+//		displayBoard();
 		goToRoom(direction);
-		displayMoney();
+//		displayMoney();
 	}
 	
 	private void goToRoom(int dir) {
-		for(int row = 0; row < rooms.length; row++) {
-			for(int col = 0; col < rooms[row].length; col++) {
+//		for(int row = 0; row < rooms.length; row++) {
+//			for(int col = 0; col < rooms[row].length; col++) {
 				if(dir == 0 && currentRow > 0) {
 					currentRow--;
 				}
-				if(dir == 1 && currentCol < rooms[row].length) {
+				if(dir == 1 && currentCol < rooms[0].length) {
 					currentCol++;
 				}
 				if(dir == 2 && currentRow < rooms.length) {
@@ -69,8 +69,8 @@ public class DavidRoomFrontEnd implements EthanSupport {
 				if(dir == 3 && currentCol > 0) {
 					currentCol--;
 				}
-			}
-		}
+//			}
+//		}
 	}
 
 	private boolean isValid(String input) {
