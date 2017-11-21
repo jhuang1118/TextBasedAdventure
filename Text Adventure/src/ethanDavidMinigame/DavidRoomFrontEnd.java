@@ -55,6 +55,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	private void goToRoom(int dir) {
+		
 				if(dir == 0 && currentRow > 0) {
 					currentRow--;
 				}
@@ -66,6 +67,9 @@ public class DavidRoomFrontEnd implements EthanSupport {
 				}
 				if(dir == 3 && currentCol > 0) {
 					currentCol--;
+				}
+				if(rooms[currentRow][currentRow].isContainsTreasure()) {
+					ethanRoom.recieveMoney(rooms, currentRow, currentCol);
 				}
 	}
 
