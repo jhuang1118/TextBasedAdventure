@@ -26,7 +26,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 			displayBoard();
 			displayMoney();
 			respondToInput(in.nextLine());
-			backend.startTimer();
+			//backend.startTimer();
 		}
 		printGameOverMessage(backend.victorious());
 	}
@@ -35,9 +35,9 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		System.out.println("You're dead.");
 	}
 
-	public void displayTimer() {
+	/*public void displayTimer() {
 		System.out.println("You have 40 seconds to collect money!");
-	}
+	} */
 	
 	public void respondToInput(String input) {
 		while(!isValid(input)) {
