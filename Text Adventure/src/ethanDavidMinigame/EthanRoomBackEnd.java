@@ -113,7 +113,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 			System.out.println("The security has launched it's ai to prevent you from earning more $!");
 			
 		}
-		return MONEY_CUT_OFF == 100000;
+		return true;
 	}
 
 	private void activateAI() {
