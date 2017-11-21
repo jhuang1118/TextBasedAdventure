@@ -169,12 +169,13 @@ public class CaveRoom {
 			}
 		}
 		
+		
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
 		//Set up doors
 		setConnectionForAll();
 	}
-	
+
 	private static void setConnectionForAll() {
 		CaveRoom[][] c = CaveExplorer.caves;
 		for(int row = 0; row< c.length-1; row++)
