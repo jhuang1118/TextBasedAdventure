@@ -4,6 +4,15 @@ public class DavidEthanRoom {
 
 	private boolean userIn;
 	private boolean containsTreasure;
+	private boolean containsLaser;
+	public boolean isContainsLaser() {
+		return containsLaser;
+	}
+
+	public void setContainsLaser(boolean containsLaser) {
+		this.containsLaser = containsLaser;
+	}
+
 	private int money;
 	
 	public boolean isUserIn() {
@@ -38,9 +47,10 @@ public class DavidEthanRoom {
 		if(containsTreasure) {
 			return "$";
 		}
-		else {
-			return " ";
+		if(containsLaser) {
+			return "L";
 		}
+		return " ";
 	}
 
 }
