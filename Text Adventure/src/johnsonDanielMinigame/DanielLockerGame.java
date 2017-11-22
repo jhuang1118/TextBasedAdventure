@@ -95,24 +95,14 @@ public class DanielLockerGame {
 	}
 
 	private String getValidUserInput() {
-		String input = 
+		String input = CaveExplorer.in.nextLine();
 		
 		while(!validInput(input)) {
 			System.out.print("Please enter 'w', 'a', 's', 'd'.");
-		}
-		String num1 = input.substring(0,1);
-		String num2 = input.substring(1,2);
-		while(((isValid(num1) == false || isValid(num2) == false))) {
-			printValidMoves();
-			System.out.print("Please enter a valid input. Just numbers, no letters or weird symbols!");
-			input = getInput();
+			input = CaveExplorer.in.nextLine();
 			return input;
 		}
-		
 		return input;
-		
-		
-		// write a method to see if the user's input is part of wasd and if it isn't, then you give them an error message
 	}
 
 	private boolean validInput(String input) {
@@ -138,8 +128,8 @@ public class DanielLockerGame {
 		
 	}
 	private void answer(String input) {
-		// write a method to interpret the input. For example, if the guy moves left then his col would shift left 1. If he 
-		// is one tile away, then 
+		String[] directions = {"w","a","s","d"};
+		
 		
 	}
 
