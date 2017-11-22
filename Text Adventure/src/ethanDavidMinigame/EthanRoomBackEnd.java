@@ -140,27 +140,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 		setLost(true);
 		stillPlaying();
 	}
-	
-	@Override
-	public void startTimer() {
-		 task = new TimerTask() {
-		    	public void run() {
-		    		secPassed++;
-		    		System.out.println(secPassed + " secs passed");
-		    		if(secPassed == 45) {
-		    			System.out.println("You got trapped in the vaultroom.");
-		    			timer.cancel();
-		    			loseGame();
-		    		}
-		    	}
-		    };
-	    EthanSupport.displayTimer();
-	    //display timer needs: 
-	    /*
-	     * ToDo timerthing = new ToDo();
-			timerthing.scheduleAtFixedRate(task, 1000, 1000); 1000 milliseconds = 1
-	     */
-	}
 
 	@Override
 	public Object victorious() {
