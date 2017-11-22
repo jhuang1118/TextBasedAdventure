@@ -147,6 +147,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		EthanRoomBackEnd back = new EthanRoomBackEnd(this);
 		back.createMoney(0, true);
 		back.createLasers(0, true);
+		back.createPowerUps();
 	}
 
 	@Override

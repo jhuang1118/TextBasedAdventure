@@ -32,7 +32,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 		for(int i = 0; i < 5; i++) {
 			int[] randArr = randNums(Room, ROOM_LENGTH);
 			if(randArr[0]+1 <= ROOM_LENGTH-1 && randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
-				Room[randArr[0]+1][randArr[1]+1] = new EthanDavidPowerUp(false);
+				Room[randArr[0]+1][randArr[1]+1].setContainsPowerup(true);
 			}
 		}
 	}
@@ -73,7 +73,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 			Room[randArr[0]][randArr[1]].setContainsTreasure(true);
 			Room[randArr[0]][randArr[1]].setMoney(2500 + (int)(Math.random() * 10000));
 		}
-	//	createPowerUps();
 	}
 	//bug not adding all the $ and L?
 	

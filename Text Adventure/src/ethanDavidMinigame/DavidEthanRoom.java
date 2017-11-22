@@ -5,6 +5,15 @@ public class DavidEthanRoom {
 	private boolean userIn;
 	private boolean containsTreasure;
 	private boolean containsLaser;
+	private boolean containsPowerup;
+	public boolean isContainsPowerup() {
+		return containsPowerup;
+	}
+
+	public void setContainsPowerup(boolean containsPowerup) {
+		this.containsPowerup = containsPowerup;
+	}
+
 	public boolean isContainsLaser() {
 		return containsLaser;
 	}
@@ -49,6 +58,9 @@ public class DavidEthanRoom {
 		}
 		if(containsLaser) {
 			return "L";
+		}
+		if(containsPowerup) {
+			return "P";
 		}
 		return " ";
 	}
