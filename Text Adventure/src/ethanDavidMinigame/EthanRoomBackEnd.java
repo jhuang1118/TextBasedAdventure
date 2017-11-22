@@ -13,16 +13,12 @@ public class EthanRoomBackEnd implements DavidSupport{
 	private int currMoney;
 	private boolean cheating;
 	private EthanSupport frontend;
-	private TimerTask task;
-	private Timer timer;
-	private int secPassed;
 	private boolean lost;
 	
 	public EthanRoomBackEnd(EthanSupport frontend) {
 		this.frontend = frontend;
 		MONEY_CUT_OFF = 100000;
 		currMoney = 0;
-		secPassed = 0;
 		lost = false;
 	}
 	
@@ -46,7 +42,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 		for(int i = 0; i < 5; i++) {
 			int[] randArr = randNums(Room, ROOM_LENGTH);
 			if(randArr[0]+1 <= ROOM_LENGTH-1 && randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
-				Room[randArr[0]+1][randArr[1]+1].setContainsLaser(true);
+				Room[randArr[0]][randArr[1]+1].setContainsLaser(true);
 			}
 		}
 	}
@@ -122,7 +118,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 	public boolean stillPlaying() {
 		System.out.println("lost is " + lost);
 		if(lost == true) {
-			System.out.println("went in loop./");
+			System.out.println("went in loop.");
 			return false;
 		}
 		return !(currMoney >= 100000) || !lost;
