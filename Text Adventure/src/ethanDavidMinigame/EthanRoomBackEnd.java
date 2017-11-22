@@ -24,16 +24,26 @@ public class EthanRoomBackEnd implements DavidSupport{
 		secPassed = 0;
 	}
 	
+	public void createPowerUps() {
+		int ROOM_LENGTH = frontend.getRooms().length;
+		DavidEthanRoom[][] Room = frontend.getRooms();
+		for(int i = 0; i < 5; i++) {
+			int[] randArr = randNums(Room, ROOM_LENGTH);
+			if(randArr[0]+1 <= ROOM_LENGTH-1 && randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
+				Room[randArr[0]+1][randArr[1]+1] = new EthanDavidPowerUp(false);
+			}
+		}
+	}
+	
 	public void createLasers() {
 		int ROOM_LENGTH = frontend.getRooms().length;
 		DavidEthanRoom[][] Room = frontend.getRooms();
 		for(int i = 0; i < 5; i++) {
 			int[] randArr = randNums(Room, ROOM_LENGTH);
 			if(randArr[0]+1 <= ROOM_LENGTH-1 && randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
-				//to check for AIOOBE
+				//to check for AIOOBE and to prevent laser from starting at 0,0
 				Room[randArr[0]+1][randArr[1]+1] = new EthanDavidObstacles();
 			}
-			//Room[randArr[0]][randArr[1]] = new EthanDavidObstacles();
 		}
 	}
 	public void setCheating(boolean cheating) {
@@ -48,74 +58,60 @@ public class EthanRoomBackEnd implements DavidSupport{
 		this.currMoney = currMoney;
 	}
 
-	//idea add powerups.
 	public void createMoney() {
 		int ROOM_LENGTH = frontend.getRooms().length;
 		DavidEthanRoom[][] Room = frontend.getRooms();
-		for(int i = 0; i < ROOM_LENGTH*3; i++) {
+		for(int i = 0; i < ROOM_LENGTH*2; i++) {
 			int[] randArr = randNums(Room, ROOM_LENGTH);
 			Room[randArr[0]][randArr[1]].setContainsTreasure(true);
 			Room[randArr[0]][randArr[1]].setMoney(1000 + (int)(Math.random() * 1000));
 		}
+		createPowerUps();
 		createLasers();
 	}
 	//bug not adding all the $ and L?
-	//add an AI that attempts to change the laser locations?????
 	
 	public int[] randNums(DavidEthanRoom[][] room, int length) {
 		int[] myArr = new int[2];
-		for(int i = 0; i < length; i++) {
+		//for(int i = 0; i < length; i++) {
 			int randNum1 = (int)(Math.random() * length);
-			int randNum2 = (int)(Math.random() * length);
+			int randNum2 = (int)(Math.random() * room[length-1].length);
 			while(checkSpecialRoom(room, randNum1, randNum2)) {
 				randNum1 = (int)(Math.random() * length);
-				randNum2 = (int)(Math.random() * length);
+				randNum2 = (int)(Math.random() * room[length-1].length);
 			}
 		myArr[0] = randNum1;
 		myArr[1] = randNum2;
-		}
+	//	}
 		return myArr;
 	}
-	
+	//every 5 moves add laser
 	public boolean checkSpecialRoom(DavidEthanRoom[][] room, int num1, int num2) {
+		return room[num1][num2].isContainsTreasure();
+	}
+	
+	public boolean checkSpecialRoom1(EthanDavidPowerUp[][] room, int num1, int num2) {
 		return room[num1][num2].isContainsTreasure();
 	}
 	
 	public void recieveMoney(DavidEthanRoom[][] room, int row, int col) {
 		int moneyCount = room[row][col].getMoney();
+		room[row][col].setContainsTreasure(false);
 		currMoney += moneyCount;
 		frontend.displayMoney();
 	}
-	
-	public void powerups() {
-		closeToPowerUp();
-	}
-	
-	private boolean closeToPowerUp() {
-		// within 2 tiles across or above?
-		return false;
-	}
 
 	public void cheat() {
+		DavidRoomFrontEnd cheating1 = new DavidRoomFrontEnd();
 		if(cheating) {
 			currMoney = MONEY_CUT_OFF;
-		}
-		
+			cheating1.displayMoney();
+		}	
 	}
 	
 	@Override
 	public boolean stillPlaying() {
-		if(MONEY_CUT_OFF/4 == currMoney) {
-			activateAI();
-			System.out.println("The security has launched it's ai to prevent you from earning more $!");
-			
-		}
-		return MONEY_CUT_OFF == 100000;
-	}
-
-	private void activateAI() {
-		// TODO Auto-generated method stub
-		
+		return !(currMoney == 100000);
 	}
 
 	@Override
@@ -125,10 +121,9 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 
 	private void loseGame() {
-		if(true) {
-			//player hit laser, they lose or timer runs out`.
-		}
-		
+		if(EthanDavidObstacles.isUserHit()) {
+			//lose game.
+		}	
 	}
 	
 	@Override
@@ -151,7 +146,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 			timerthing.scheduleAtFixedRate(task, 1000, 1000); 1000 milliseconds = 1
 	     */
 	}
-	
 
 	@Override
 	public Object victorious() {

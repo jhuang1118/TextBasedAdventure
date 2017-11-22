@@ -14,7 +14,7 @@ public class NPCRoom extends CaveRoom {
 		return npc == null;
 	}
 	
-	public void enterNPC(Car car) {
+	public void enterNPC(DavidCar car) {
 		this.npc = car;
 	}
 	

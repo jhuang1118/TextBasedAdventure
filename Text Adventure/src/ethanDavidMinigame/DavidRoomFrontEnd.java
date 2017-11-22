@@ -22,11 +22,11 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	private void play() {
-		displayBoard();
-		displayMoney();
 		while(backend.stillPlaying()) {
+			displayBoard();
+			displayMoney();
 			respondToInput(in.nextLine());
-			backend.startTimer();
+			//backend.startTimer();
 		}
 		printGameOverMessage(backend.victorious());
 	}
@@ -35,9 +35,9 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		System.out.println("You're dead.");
 	}
 
-	public void displayTimer() {
+	/*public void displayTimer() {
 		System.out.println("You have 40 seconds to collect money!");
-	}
+	} */
 	
 	public void respondToInput(String input) {
 		while(!isValid(input)) {
@@ -48,29 +48,38 @@ public class DavidRoomFrontEnd implements EthanSupport {
 			displayCheating();
 		}
 		int direction = validMoves().indexOf(input);
-		System.out.println(direction);
+//		System.out.println(direction);
+//		displayBoard();
 		goToRoom(direction);
-		displayBoard();
-		displayMoney();
+//		displayMoney();
 	}
 	
 	private void goToRoom(int dir) {
-		for(int row = 0; row < rooms.length; row++) {
-			for(int col = 0; col < rooms[row].length; col++) {
 				if(dir == 0 && currentRow > 0) {
 					currentRow--;
+					if(rooms[currentRow][currentRow].isContainsTreasure()) {
+						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
+					}
 				}
-				if(dir == 1 && currentCol < rooms[row].length) {
+				if(dir == 1 && currentCol < rooms[0].length) {
 					currentCol++;
+					if(rooms[currentRow][currentRow].isContainsTreasure()) {
+						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
+					}
 				}
 				if(dir == 2 && currentRow < rooms.length) {
 					currentRow++;
+					if(rooms[currentRow][currentRow].isContainsTreasure()) {
+						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
+					}
 				}
 				if(dir == 3 && currentCol > 0) {
 					currentCol--;
+					if(rooms[currentRow][currentRow].isContainsTreasure()) {
+						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
+					}
 				}
-			}
-		}	
+			
 	}
 
 	private boolean isValid(String input) {
