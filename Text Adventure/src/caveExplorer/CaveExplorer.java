@@ -36,12 +36,11 @@ public class CaveExplorer {
 			print(currentRoom.getDescription());
 			print(currentRoom.getDirections());
 			print("What would you like to do");
-			currentRoom.interpretInput(in.nextLine());		
-		}	
+			currentRoom.interpretInput(in.nextLine());
+		}
 	}
 
 	private static void moveNPCs() {
-
 		if(police != null)
 		{
 			for(NPC n: police)

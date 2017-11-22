@@ -2,6 +2,7 @@ package caveExplorer;
 
 import ethanDavidMinigame.EthanRoomBackEnd;
 import ethanDavidMinigame.VaultRoom;
+import johnsonDanielMinigame.MiniGameStarter;
 
 public class CaveRoom {
 	
@@ -75,6 +76,10 @@ public class CaveRoom {
 				doorFound = true;
 				directions += "There is a " + doors[i].getDescription() 
 				+ " to the " + toDirection(i) + ". " + doors[i].getDetails() + "\n";
+			}
+		
+			if(!doorFound) {
+				directions = "You're trapped in this room!";
 			}
 		}
 	}
@@ -173,10 +178,21 @@ public class CaveRoom {
 		}
 
 		
-		//Set Starting Room
+		c[9][5] = new EthanRoomBackEnd("");
+		c[1][1] = new MiniGameStarter("");
+
+		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
+		NPC testNPC = new NPC(c);
+		testNPC.setPosition(1,2);
+		CaveExplorer.police = new NPC[1];
+		CaveExplorer.police[0] = testNPC;
+		c[2][3] = new EthanRoomBackEnd("");
+		testNPC.setPosition(3,4);
+		CaveExplorer.npcs = new NPC[1];
+		CaveExplorer.npcs[0] = testNPC;
+
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
-		
 		//Set up doors
 		setConnectionForAll();
 	}
@@ -201,8 +217,35 @@ public class CaveRoom {
 		{
 			c[i][c[i].length-1].setConnection(SOUTH, c[i][c[i].length-1], new Door());
 		}
+		//5. Set up doors 
+		
+		setupStore();
+		c[0][1].setConnection(SOUTH, c[1][1], new Door());
+		c[1][1].setConnection(EAST, c[1][2], new Door());
 	}
 	
+	private static void setupStore() {
+		for(int i = 18; i>15; i--)
+		{
+			for( int e = 0; e< 20; e++)
+			{
+				CaveExplorer.caves[i][e].setConnection(NORTH, CaveExplorer.caves[i][e], new Door());
+			}
+		}
+		//horizontal doors
+		for(int i = 19; i>15; i--)
+		{
+			for( int e =0; e<19; e++)
+			{
+				CaveExplorer.caves[i][e].setConnection(EAST, CaveExplorer.caves[i][e+1], new Door());
+			}
+		}
+		//vertical doors
+		//doors
+		CaveExplorer.caves[16][10].setConnection(NORTH, CaveExplorer.caves[15][10], new Door());
+		CaveExplorer.caves[16][9].setConnection(NORTH, CaveExplorer.caves[15][10], new Door());
+	}
+
 	/**
 	 * override to add more moves
 	 * @return
@@ -234,13 +277,12 @@ public class CaveRoom {
 				CaveExplorer.inventory.updateMap(CaveExplorer.caves);
 		}
 			
-		}
+	}
 		/* else
 		{
 			System.err.println("You can't do that");
 
 		} */
-
 	/**
 	 * returns the OPPOSITE direction
 	 * 		oD(0) returns 2
