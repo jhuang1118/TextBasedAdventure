@@ -30,10 +30,10 @@ public class CaveExplorer {
 	private static void startExploring() {
 		while(playing) {
 			moveNPCs();
+			print("What would you like to do");
 			print(inventory.getDescription());
 			print(currentRoom.getDescription());
 			print(currentRoom.getDirections());
-			print("What would you like to do");
 			currentRoom.interpretInput(in.nextLine());
 		}
 		
@@ -45,7 +45,7 @@ public class CaveExplorer {
 		{
 			n.autoMove();
 		}
-		inventory.updateMap(caves);
+	inventory.updateMap(caves);
 	}
 
 }

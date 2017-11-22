@@ -2,7 +2,7 @@ package caveExplorer;
 
 public class NPCRoom extends CaveRoom {
 
-	private NPC car;
+	private NPC npc;
 	
 	public NPCRoom(String description) {
 		super(description);
@@ -14,8 +14,8 @@ public class NPCRoom extends CaveRoom {
 		return npc == null;
 	}
 	
-	public void enterNPC(DavidCar car) {
-		this.npc = car;
+	public void enterNPC(NPC npc) {
+		this.npc = npc;
 	}
 	
 	public void leaveNPC()

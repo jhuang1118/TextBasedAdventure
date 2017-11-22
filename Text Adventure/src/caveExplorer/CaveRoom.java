@@ -2,6 +2,7 @@ package caveExplorer;
 
 import ethanDavidMinigame.EthanRoomBackEnd;
 import ethanDavidMinigame.VaultRoom;
+import johnsonDanielMinigame.MiniGameStarter;
 
 public class CaveRoom {
 	
@@ -48,11 +49,15 @@ public class CaveRoom {
 				doorFound = true;
 				directions += "There is a " + doors[i].getDescription() 
 				+ " to the " + toDirection(i) + ". " + doors[i].getDetails() + "\n";
-				System.out.println(directions);
+				
 			}
 		}
-		directions = "You're trapped in this room!";
-		System.out.println(directions);
+		
+		if(!doorFound) {
+			directions = "You're trapped in this room!";
+		}
+		
+
 	}
 	
 	/**
@@ -138,11 +143,11 @@ public class CaveRoom {
 
 	public static void setUpCaves()
 	{
-		CaveExplorer.caves = new NPCRoom[10][10];
+		CaveExplorer.caves = new CaveRoom[20][20];
 		//CaveExplorer.caves = new CaveRoom[15][15];
 		//CaveRoom[][] m = CaveExplorer.caves; 
 		CaveRoom[][] c = CaveExplorer.caves; // the vault room
-		CaveExplorer.caves = new NPCRoom[20][20];
+		
 		for(int row = 0; row < c.length; row++)
 		{
 			for(int col = 0; col < c[row].length; col ++)
@@ -156,10 +161,12 @@ public class CaveRoom {
 		CaveExplorer.police = new NPC[1];
 		CaveExplorer.police[0] = testNPC; */
 		
+<<<<<<< HEAD
 
+=======
+		c[9][5] = new EthanRoomBackEnd("");
+		c[1][1] = new MiniGameStarter("");
 
-
-		c[0][2] = new JasonZRoom("TEST ROOM", 0, 2);
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		NPC testNPC = new NPC();
 		testNPC.setPosition(1,2);
@@ -173,23 +180,44 @@ public class CaveRoom {
 		/*NPC testNPC = new NPC();
 		testNPC.setPosition(1,2);
 		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs[0] = testNPC;*/
-		
+		CaveExplorer.npcs[0] = testNPC;*/	
 		/*NPC enemy = new Enemy();
 		enemy.setPosition(1, 2);
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = enemy; */
-		
 		//4. Set starting room
-
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
-		
+
 		//5. Set up doors 
+		
+		setupStore();
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
 		c[1][1].setConnection(EAST, c[1][2], new Door());
 		}
 	
+	private static void setupStore() {
+		for(int i = 18; i>15; i--)
+		{
+			for( int e = 0; e< 20; e++)
+			{
+				CaveExplorer.caves[i][e].setConnection(NORTH, CaveExplorer.caves[i][e], new Door());
+			}
+		}
+		//horizontal doors
+		for(int i = 19; i>15; i--)
+		{
+			for( int e =0; e<19; e++)
+			{
+				CaveExplorer.caves[i][e].setConnection(EAST, CaveExplorer.caves[i][e+1], new Door());
+			}
+		}
+		//vertical doors
+		//doors
+		CaveExplorer.caves[16][10].setConnection(NORTH, CaveExplorer.caves[15][10], new Door());
+		CaveExplorer.caves[16][9].setConnection(NORTH, CaveExplorer.caves[15][10], new Door());
+	}
+
 	/**
 	 * override to add more moves
 	 * @return
@@ -215,15 +243,7 @@ public class CaveRoom {
 			CaveExplorer.currentRoom.leave(); 
 			CaveExplorer.currentRoom = borderingRooms[dir];
 			CaveExplorer.currentRoom.enter();
-			if(borderingRooms[dir] instanceof JasonZRoom)
-			
-				borderingRooms[dir].
-				CaveExplorer.inventory.updateMap(borderingRooms[dir].newMap);
-			}
-			else 
-			{
-				CaveExplorer.inventory.updateMap(CaveExplorer.caves);
-			}
+			CaveExplorer.inventory.updateMap(CaveExplorer.caves);
 			
 		}
 		/* else
@@ -231,7 +251,7 @@ public class CaveRoom {
 			System.err.println("You can't do that");
 
 		} */
-
+	}
 	/**
 	 * returns the OPPOSITE direction
 	 * 		oD(0) returns 2
