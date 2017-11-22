@@ -6,7 +6,7 @@ import caveExplorer.NPCRoom;
 /* INVALID CODE NEEDS TO BE MINIGAME*/
 public class EthanRoomBackEnd extends NPCRoom{
 	public EthanRoomBackEnd(String description) {
-		super(description);
+		super(description, row, col);
 		// TODO Auto-generated constructor stub
 	}
 	public boolean isValid(String input) {

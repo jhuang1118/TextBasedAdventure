@@ -8,7 +8,7 @@ public class NPCRoom extends CaveRoom {
 		return npc;
 	}
 
-	public NPCRoom(String description) {
+	public NPCRoom(String description, int row, int col) {
 		super(description, row, col);
 		// TODO Auto-generated constructor stub
 	}

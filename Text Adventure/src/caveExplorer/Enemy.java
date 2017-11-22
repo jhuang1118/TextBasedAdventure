@@ -21,7 +21,10 @@ public class Enemy extends NPC {
 		currentRoom = null;
 		active = true;
 	}
-	
+	public void interact()
+	{
+		
+	}
 	public String getDescription() {
 		return activeDescription;
 	}

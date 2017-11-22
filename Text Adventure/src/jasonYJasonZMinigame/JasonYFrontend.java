@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 
 import java.util.Scanner;
 
-public class JasonYFrontend implements JasonZSupport {
+public class JasonYFrontend extends NPCRoom implements JasonZSupport{
 	
 	public static Scanner in;//for user input
 	
@@ -23,14 +23,20 @@ public class JasonYFrontend implements JasonZSupport {
 	public NPCRoom[][] map;
 	public Door[] doors;
 	public String[] difficultyWords;
+	public int row; 
+	public int col;
 	
 	public static final void main(String[] args) {
 		in = new Scanner(System.in);
-		JasonYFrontend demo = new JasonYFrontend();
+		JasonYFrontend demo = new JasonYFrontend(0, 0);
 		demo.play();
 	}
 	
-	public JasonYFrontend() {
+	public JasonYFrontend(int row, int col) {
+		super("",row, col);
+		this.row = row; 
+		this.col = col;
+		createMap(2);
 		backend = new JasonZBackend(this, 1, map);
 		String[] temp = {"easy", "casual", "hard", "extreme", "hell"};
 		difficultyWords = temp;
@@ -40,31 +46,28 @@ public class JasonYFrontend implements JasonZSupport {
 	public void createMap(int size) {
 		//creates the map
 		//get current position of player
-		map = new NPCRoom[size*2][size*2];
+		map = new NPCRoom[(size*2)+1][(size*2)+1];
 		caves = CaveExplorer.caves;
-		int[] coords = CaveExplorer.currentRoom.getCoordinates();
+		int[] coords = new int[2];
+		coords[0] = row;
+		coords[1] = col;
 		int[] startRoom = new int[2];
 		startRoom[0] = coords[0] - size;
 		startRoom[1] = coords[1] - size;
 		int[] finalRoom = new int[2];
 		finalRoom[0] = coords[0] + size;
 		finalRoom[1] = coords[1] + size;
-		int[][] startendrooms = new int[1][2];
-		startendrooms[0] = startRoom;
-		startendrooms[1] = finalRoom;
 		int mapRow = 0;
 		int mapCol = 0;
-		while(mapRow < size*2) {
-			for(int row = startendrooms[1][0]; row < startendrooms[2][0]; row++) {
-				for(int col = startendrooms[1][1]; col < startendrooms[2][1]; col++) {
-					map[mapRow][mapCol] = (NPCRoom) caves[row][col];
-					mapCol++;
-					if(mapCol > size*2) {
-						mapCol = 0;
-					}
-				} 
+		for(int row = startRoom[0]; row < finalRoom[0]+1 ; row++) {
+			for(int col = startRoom[1]; col < finalRoom[1]+1; col++) {
+				map[mapRow][mapCol] = (NPCRoom) caves[row][col];
+				mapCol++;
 			}
+			mapRow ++;
+			mapCol = 0;
 		}
+		CaveExplorer.inventory.updateMap((CaveRoom[][])map);
 	}
 	
 //	public void rangeDisplay() {
@@ -88,7 +91,10 @@ public class JasonYFrontend implements JasonZSupport {
 			String input = in.nextLine();
 			backend.validInput(in.nextLine());
 			int[] coords = CaveExplorer.currentRoom.getCoordinates();
-			JasonZSwat.calculateMove(coords[0], coords[1]);
+			for( JasonZSwat p: npc)
+			{
+				p.calculateMove(coords[0], coords[1]);
+			}
 		}
 		if(hp == 0) {
 			System.out.println("GAME OVER!");

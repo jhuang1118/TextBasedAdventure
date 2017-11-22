@@ -2,6 +2,7 @@ package caveExplorer;
 
 import ethanDavidMinigame.EthanRoomBackEnd;
 import ethanDavidMinigame.VaultRoom;
+import jasonYJasonZMinigame.JasonYFrontend;
 import johnsonDanielMinigame.MiniGameStarter;
 
 public class CaveRoom {
@@ -173,13 +174,14 @@ public class CaveRoom {
 		{
 			for(int col = 0; col < c[row].length; col ++)
 			{
-				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
+				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".", row, col);
 			}
 		}
 
 		
 		c[9][5] = new EthanRoomBackEnd("");
-		c[1][1] = new MiniGameStarter("");
+		//c[1][1] = new MiniGameStarter("");
+		c[10][10] = new JasonYFrontend(10, 10);
 
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		NPC testNPC = new NPC(c);
