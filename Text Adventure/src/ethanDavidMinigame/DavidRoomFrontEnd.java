@@ -48,34 +48,31 @@ public class DavidRoomFrontEnd implements EthanSupport {
 			displayCheating();
 		}
 		int direction = validMoves().indexOf(input);
-//		System.out.println(direction);
-//		displayBoard();
 		goToRoom(direction);
-//		displayMoney();
 	}
 	
 	private void goToRoom(int dir) {
 				if(dir == 0 && currentRow > 0) {
 					currentRow--;
-					if(rooms[currentRow][currentRow].isContainsTreasure()) {
+					if(rooms[currentRow][currentCol].isContainsTreasure()) {
 						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
 					}
 				}
 				if(dir == 1 && currentCol < rooms[0].length) {
 					currentCol++;
-					if(rooms[currentRow][currentRow].isContainsTreasure()) {
+					if(rooms[currentRow][currentCol].isContainsTreasure()) {
 						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
 					}
 				}
 				if(dir == 2 && currentRow < rooms.length) {
 					currentRow++;
-					if(rooms[currentRow][currentRow].isContainsTreasure()) {
+					if(rooms[currentRow][currentCol].isContainsTreasure()) {
 						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
 					}
 				}
 				if(dir == 3 && currentCol > 0) {
 					currentCol--;
-					if(rooms[currentRow][currentRow].isContainsTreasure()) {
+					if(rooms[currentRow][currentCol].isContainsTreasure()) {
 						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
 					}
 				}
