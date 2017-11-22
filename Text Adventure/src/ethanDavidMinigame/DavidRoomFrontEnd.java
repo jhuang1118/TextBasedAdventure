@@ -109,7 +109,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 
 	@Override
 	public void displayCheating() {
-		EthanRoomBackEnd cheating = new EthanRoomBackEnd(this);
 		ethanRoom.setCheating(true);
 		ethanRoom.cheat();
 		System.out.println(ethanRoom.getCurrMoney());
