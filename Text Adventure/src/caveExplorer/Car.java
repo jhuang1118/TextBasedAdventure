@@ -1,6 +1,6 @@
 package caveExplorer;
 
-public class NPC {
+public class Car extends NPC{
 
 	//fields needed to program navigation 
 	private CaveRoom[][] floor;
@@ -8,42 +8,35 @@ public class NPC {
 	private int currentCol;
 	private NPCRoom currentRoom; 
 	
-	//fields for interaction commment
+	//fields for interaction
 	private boolean active;
 	private String activeDescription;
-	private String inactiveDescription; 
 	//you can add more
 	
 	
-	public NPC() {
+	public Car() {
 		this.floor = CaveExplorer.caves;
-		this.activeDescription = "There is a person standing in the room, waiting to talk to you. Press 'e' to talk";
-		this.inactiveDescription = "The person you spoke to earlier is standing here.";
+		this.activeDescription = "You have reached your car! Quickly press 'e' to enter the get-away car!";
 		this.currentCol = -1; 
 		this.currentRow = -1;
 		currentRoom = null; 
 		active = true;
+	}
+	
+	public boolean exitedVault() {
+		return false;
 	}
 
 	public boolean isActive() {
 		return active;
 	}
 	
-	
-
 	public void setActive(boolean active) {
 		this.active = active;
 	}
 
 	public void interact() {
-		CaveExplorer.print("Lets interact! Type 'bye' to stop.");
-		String s = CaveExplorer.in.nextLine();
-		while(!s.equalsIgnoreCase("bye"))
-		{
-			CaveExplorer.print("Yeah... I don't do a whole lot.");
-			s = CaveExplorer.in.nextLine();
-		}
-		CaveExplorer.print("Later, friend!");
+		CaveExplorer.print("You're in! Quickly get to the safe point!");
 		active = false;
 	}
 
@@ -51,12 +44,9 @@ public class NPC {
 		return activeDescription;
 	}
 
-	public String getInactiveDescription() {
-		return inactiveDescription;
-	}
 
 	public String getSymbol() {
-		return "P";
+		return "C";
 	}
 
 	public void setPosition(int row, int col) {
@@ -84,25 +74,34 @@ public class NPC {
 		}
 		
 	}
-
+	
 	private int[] calculateMove() {
+		int[][] possibleMoves = {{0,-1}};
+		int[] newPosition = new int[1];
+		newPosition[0] = currentRow + possibleMoves[0][0];
+		return newPosition;
+	}
+	
+	private boolean enteredCar() {
+		return false;
+	}
+
+	/* private int[] calculateMove() {
 								//North East	South	West
 		int[][] possibleMoves = {{-1,0}, {0,1}, {1, 0},{0,-1}};
 		int index = (int)(Math.random() * possibleMoves.length);
 		int[] newPosition = new int[2]; 
 		newPosition[0] = currentRow + possibleMoves[index][0];
 		newPosition[1] = currentCol + possibleMoves[index][1];
-		int count = 0;
-				
-		while(count < 4 && (currentRoom.getDoor(index) == null || !(CaveExplorer.caves[newPosition[0]][newPosition[1]] instanceof NPCRoom)))
+		while(currentRoom.getDoor(index) == null || !(CaveExplorer.caves[newPosition[0]][newPosition[1]] instanceof NPCRoom))
 		{
 			index = (int) (Math.random() * possibleMoves.length);
 			newPosition[0] = currentRow + possibleMoves[index][0];
 			newPosition[1] = currentCol + possibleMoves[index][1];
-			count++;
 		}
 		return newPosition;
-	}
+	} */
 
 }
+
 

@@ -85,7 +85,7 @@ public class JohnsonUnlockGame {
 	}
 	public String getValidUserInput() {
 		String input = getInput();
-		
+
 		while(input.length() != 2) {
 			printValidMoves();
 			System.out.print("Please follow directions. Remember, do not include commas or spaces!");

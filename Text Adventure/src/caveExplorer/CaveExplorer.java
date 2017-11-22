@@ -9,35 +9,43 @@ public class CaveExplorer {
 	public static CaveRoom currentRoom;//changes as the user moves
 	public static Inventory inventory;
 	public static boolean playing = true;
+	public static NPC[] police;
 	public static NPC[] npcs;
+	
 	
 	public static void main(String[] args) {
 		in = new Scanner(System.in);
-		CaveRoom.setUpCaves();//creates caves and starting room
+
+		CaveRoom.setUpCaves(); // creates caves and starting room
+
 		inventory = new Inventory();
 		startExploring();
 	}
 
-	public static void print(String s) {
-		System.out.println(s);//LATER: consider replacing with the more sophisticated "printMultiLine"
+	public static void print(String s)
+	{
+		System.out.println(s); // consider replacing with the "print line thing in chatbot"
 	}
+
 	private static void startExploring() {
 		while(playing) {
 			moveNPCs();
+			print("What would you like to do");
 			print(inventory.getDescription());
 			print(currentRoom.getDescription());
 			print(currentRoom.getDirections());
-			print("What would you like to do");
 			currentRoom.interpretInput(in.nextLine());
 		}
 		
 	}
 
 	private static void moveNPCs() {
-		for(NPC n: npcs) {
+
+		for(NPC n: police)
+		{
 			n.autoMove();
 		}
-		inventory.updateMap();
+	inventory.updateMap(caves);
 	}
 
 }
