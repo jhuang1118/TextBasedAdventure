@@ -42,7 +42,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 			int[] randArr = randNums(Room, ROOM_LENGTH);
 			if(randArr[0]+1 <= ROOM_LENGTH-1 && randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
 				//to check for AIOOBE and to prevent laser from starting at 0,0
-				Room[randArr[0]+1][randArr[1]+1] = new EthanDavidObstacles();
+				Room[randArr[0]+1][randArr[1]+1].setContainsLaser(true);
 			}
 		}
 	}
@@ -73,7 +73,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 	
 	public int[] randNums(DavidEthanRoom[][] room, int length) {
 		int[] myArr = new int[2];
-		//for(int i = 0; i < length; i++) {
 			int randNum1 = (int)(Math.random() * length);
 			int randNum2 = (int)(Math.random() * room[length-1].length);
 			while(checkSpecialRoom(room, randNum1, randNum2)) {
@@ -82,12 +81,11 @@ public class EthanRoomBackEnd implements DavidSupport{
 			}
 		myArr[0] = randNum1;
 		myArr[1] = randNum2;
-	//	}
 		return myArr;
 	}
 	//every 5 moves add laser
 	public boolean checkSpecialRoom(DavidEthanRoom[][] room, int num1, int num2) {
-		return room[num1][num2].isContainsTreasure();
+		return room[num1][num2].isContainsTreasure() || room[num1][num2].isContainsLaser();
 	}
 	
 	public void recieveMoney(DavidEthanRoom[][] room, int row, int col) {
