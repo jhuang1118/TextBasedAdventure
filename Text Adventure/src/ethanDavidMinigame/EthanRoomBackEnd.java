@@ -16,12 +16,14 @@ public class EthanRoomBackEnd implements DavidSupport{
 	private TimerTask task;
 	private Timer timer;
 	private int secPassed;
+	private boolean lost;
 	
 	public EthanRoomBackEnd(EthanSupport frontend) {
 		this.frontend = frontend;
 		MONEY_CUT_OFF = 100000;
 		currMoney = 0;
 		secPassed = 0;
+		lost = false;
 	}
 	
 	public void createPowerUps() {
@@ -82,6 +84,14 @@ public class EthanRoomBackEnd implements DavidSupport{
 		myArr[1] = randNum2;
 		return myArr;
 	}
+	public boolean isLost() {
+		return lost;
+	}
+
+	public void setLost(boolean lost) {
+		this.lost = lost;
+	}
+
 	//every 5 moves add laser
 	public boolean checkSpecialRoom(DavidEthanRoom[][] room, int num1, int num2) {
 		return room[num1][num2].isContainsTreasure() || room[num1][num2].isContainsLaser();
@@ -104,7 +114,12 @@ public class EthanRoomBackEnd implements DavidSupport{
 	
 	@Override
 	public boolean stillPlaying() {
-		return !(currMoney == 100000);
+		System.out.println("lost is " + lost);
+		if(lost == true) {
+			System.out.println("went in loop./");
+			return false;
+		}
+		return !(currMoney == 100000) || !lost;
 	}
 
 	@Override
@@ -113,10 +128,10 @@ public class EthanRoomBackEnd implements DavidSupport{
 		return null;
 	}
 
-	private void loseGame() {
-		if() {
-		
-		}	
+	public void loseGame() {
+		System.out.println("You hit the laser and died a miserable death.");
+		setLost(true);
+		stillPlaying();
 	}
 	
 	@Override

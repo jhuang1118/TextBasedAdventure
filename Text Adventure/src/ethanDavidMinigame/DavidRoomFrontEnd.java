@@ -57,11 +57,19 @@ public class DavidRoomFrontEnd implements EthanSupport {
 					if(rooms[currentRow][currentCol].isContainsTreasure()) {
 						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
 					}
+					if(rooms[currentRow][currentCol].isContainsLaser()) {
+						ethanRoom.setLost(true);
+						ethanRoom.loseGame();
+					}
 				}
 				if(dir == 1 && currentCol < rooms[0].length) {
 					currentCol++;
 					if(rooms[currentRow][currentCol].isContainsTreasure()) {
 						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
+					}
+					if(rooms[currentRow][currentCol].isContainsLaser()) {
+						ethanRoom.setLost(true);
+						ethanRoom.loseGame();
 					}
 				}
 				if(dir == 2 && currentRow < rooms.length) {
@@ -69,11 +77,19 @@ public class DavidRoomFrontEnd implements EthanSupport {
 					if(rooms[currentRow][currentCol].isContainsTreasure()) {
 						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
 					}
+					if(rooms[currentRow][currentCol].isContainsLaser()) {
+						ethanRoom.setLost(true);
+						ethanRoom.loseGame();
+					}
 				}
 				if(dir == 3 && currentCol > 0) {
 					currentCol--;
 					if(rooms[currentRow][currentCol].isContainsTreasure()) {
 						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
+					}
+					if(rooms[currentRow][currentCol].isContainsLaser()) {
+						ethanRoom.setLost(true);
+						ethanRoom.loseGame();
 					}
 				}
 			
