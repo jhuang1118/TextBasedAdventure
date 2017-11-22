@@ -37,8 +37,11 @@ public class EthanRoomBackEnd implements DavidSupport{
 		}
 	}
 	
-	public void createLasers() {
-		int ROOM_LENGTH = frontend.getRooms().length;
+	public void createLasers(int repeat, boolean defaultLen) {
+		int ROOM_LENGTH = repeat;
+		if(defaultLen) {
+			ROOM_LENGTH = frontend.getRooms().length;
+		}
 		DavidEthanRoom[][] Room = frontend.getRooms();
 		for(int i = 0; i < 5; i++) {
 			int[] randArr = randNums(Room, ROOM_LENGTH);
@@ -59,16 +62,19 @@ public class EthanRoomBackEnd implements DavidSupport{
 		this.currMoney = currMoney;
 	}
 
-	public void createMoney() {
-		int ROOM_LENGTH = frontend.getRooms().length;
+	public void createMoney(int repeat, boolean defaultLen) {
+		int ROOM_LENGTH = repeat;
 		DavidEthanRoom[][] Room = frontend.getRooms();
-		for(int i = 0; i < ROOM_LENGTH*2; i++) {
+		if(defaultLen) {
+			ROOM_LENGTH = frontend.getRooms().length;
+		}
+		for(int i = 0; i < ROOM_LENGTH; i++) {
 			int[] randArr = randNums(Room, ROOM_LENGTH);
 			Room[randArr[0]][randArr[1]].setContainsTreasure(true);
 			Room[randArr[0]][randArr[1]].setMoney(2500 + (int)(Math.random() * 10000));
 		}
-		createPowerUps();
-		createLasers();
+	//	createPowerUps();
+		createLasers(2, false);
 	}
 	//bug not adding all the $ and L?
 	
@@ -101,6 +107,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 		int moneyCount = room[row][col].getMoney();
 		room[row][col].setContainsTreasure(false);
 		currMoney += moneyCount;
+		createMoney(1, false);
 		frontend.displayMoney();
 	}
 
@@ -119,7 +126,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 			System.out.println("went in loop./");
 			return false;
 		}
-		return !(currMoney == 100000) || !lost;
+		return !(currMoney >= 100000) || !lost;
 	}
 
 	@Override
