@@ -95,7 +95,10 @@ public class DanielLockerGame {
 	}
 
 	private boolean validInput(String input) {
-		
+		String[] directions = {"w","a","s","d"};
+		for(int i = 0; i < directions.length; i++) {
+			if(input )
+		}
 		return false;
 	}
 
