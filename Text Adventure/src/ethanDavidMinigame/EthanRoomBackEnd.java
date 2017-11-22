@@ -42,7 +42,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 		for(int i = 0; i < 5; i++) {
 			int[] randArr = randNums(Room, ROOM_LENGTH);
 			if(randArr[0]+1 <= ROOM_LENGTH-1 && randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
-				Room[randArr[0]][randArr[1]+1].setContainsLaser(true);
+				Room[randArr[0]+1][randArr[1]+1].setContainsLaser(true); //remove +1 in a bit for row. spawning laser
 			}
 		}
 	}
