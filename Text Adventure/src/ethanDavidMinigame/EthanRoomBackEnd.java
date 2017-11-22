@@ -64,7 +64,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 		for(int i = 0; i < ROOM_LENGTH*2; i++) {
 			int[] randArr = randNums(Room, ROOM_LENGTH);
 			Room[randArr[0]][randArr[1]].setContainsTreasure(true);
-			Room[randArr[0]][randArr[1]].setMoney(1000 + (int)(Math.random() * 1000));
+			Room[randArr[0]][randArr[1]].setMoney(2500 + (int)(Math.random() * 10000));
 		}
 		createPowerUps();
 		createLasers();
@@ -87,10 +87,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 	//every 5 moves add laser
 	public boolean checkSpecialRoom(DavidEthanRoom[][] room, int num1, int num2) {
-		return room[num1][num2].isContainsTreasure();
-	}
-	
-	public boolean checkSpecialRoom1(EthanDavidPowerUp[][] room, int num1, int num2) {
 		return room[num1][num2].isContainsTreasure();
 	}
 	
