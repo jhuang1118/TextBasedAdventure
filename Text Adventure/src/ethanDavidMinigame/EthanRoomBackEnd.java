@@ -74,7 +74,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 			Room[randArr[0]][randArr[1]].setMoney(2500 + (int)(Math.random() * 10000));
 		}
 	//	createPowerUps();
-		createLasers(2, false);
 	}
 	//bug not adding all the $ and L?
 	
@@ -108,6 +107,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 		room[row][col].setContainsTreasure(false);
 		currMoney += moneyCount;
 		createMoney(1, false);
+		createLasers(2, false);
 		frontend.displayMoney();
 	}
 
