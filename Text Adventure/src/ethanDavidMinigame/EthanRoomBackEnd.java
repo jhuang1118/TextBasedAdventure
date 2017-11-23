@@ -28,7 +28,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 		for(int i = 0; i < 5; i++) {
 			int[] randArr = randNums(Room, ROOM_LENGTH);
 			if(randArr[0]+1 <= ROOM_LENGTH-1 && randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
-				Room[randArr[0]+1][randArr[1]+1].setContainsPowerup(true);
+				Room[randArr[0]][randArr[1]+1].setContainsPowerup(true);
 			}
 		}
 	}
@@ -41,8 +41,8 @@ public class EthanRoomBackEnd implements DavidSupport{
 		DavidEthanRoom[][] Room = frontend.getRooms();
 		for(int i = 0; i < 5; i++) {
 			int[] randArr = randNums(Room, ROOM_LENGTH);
-			if(randArr[0]+1 <= ROOM_LENGTH-1 && randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
-				Room[randArr[0]+1][randArr[1]+1].setContainsLaser(true); //remove +1 in a bit for row. spawning laser
+			if(randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
+				Room[randArr[0]][randArr[1]+1].setContainsLaser(true); //remove +1 in a bit for row. spawning laser
 			}
 		}
 	}
@@ -116,9 +116,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 	
 	@Override
 	public boolean stillPlaying() {
-		System.out.println("lost is " + lost);
 		if(lost == true) {
-			System.out.println("went in loop.");
 			return false;
 		}
 		return !(currMoney >= 100000) || !lost;
@@ -132,7 +130,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 
 	public void loseGame() {
 		System.out.println("You hit the laser and died a miserable death.");
-		setLost(true);
 		stillPlaying();
 	}
 
@@ -140,5 +137,11 @@ public class EthanRoomBackEnd implements DavidSupport{
 	public Object victorious() {
 		// TODO Auto-generated method stub
 		return stillPlaying() == true;
+	}
+
+	@Override
+	public void startTimer() {
+		// TODO Auto-generated method stub
+		
 	}
 }

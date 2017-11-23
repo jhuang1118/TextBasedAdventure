@@ -10,4 +10,8 @@ public interface DavidSupport {
 
 	Object victorious();
 
+	void setLost(boolean b);
+
+	void loseGame();
+
 }

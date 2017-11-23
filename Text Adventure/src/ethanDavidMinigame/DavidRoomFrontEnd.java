@@ -58,8 +58,8 @@ public class DavidRoomFrontEnd implements EthanSupport {
 						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
 					}
 					if(rooms[currentRow][currentCol].isContainsLaser()) {
-						ethanRoom.setLost(true);
-						ethanRoom.loseGame();
+						backend.setLost(true);
+						backend.loseGame();
 					}
 				}
 				if(dir == 1 && currentCol < rooms[0].length) {
@@ -68,8 +68,8 @@ public class DavidRoomFrontEnd implements EthanSupport {
 						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
 					}
 					if(rooms[currentRow][currentCol].isContainsLaser()) {
-						ethanRoom.setLost(true);
-						ethanRoom.loseGame();
+						backend.setLost(true);
+						backend.loseGame();
 					}
 				}
 				if(dir == 2 && currentRow < rooms.length) {
@@ -78,8 +78,8 @@ public class DavidRoomFrontEnd implements EthanSupport {
 						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
 					}
 					if(rooms[currentRow][currentCol].isContainsLaser()) {
-						ethanRoom.setLost(true);
-						ethanRoom.loseGame();
+						backend.setLost(true);
+						backend.loseGame();
 					}
 				}
 				if(dir == 3 && currentCol > 0) {
@@ -88,8 +88,8 @@ public class DavidRoomFrontEnd implements EthanSupport {
 						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
 					}
 					if(rooms[currentRow][currentCol].isContainsLaser()) {
-						ethanRoom.setLost(true);
-						ethanRoom.loseGame();
+						backend.setLost(true);
+						backend.loseGame();
 					}
 				}
 			
@@ -144,10 +144,9 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	public void changeRoom() {
-		EthanRoomBackEnd back = new EthanRoomBackEnd(this);
-		back.createMoney(0, true);
-		back.createLasers(0, true);
-		back.createPowerUps();
+		ethanRoom.createMoney(0, true);
+		ethanRoom.createLasers(0, true);
+		ethanRoom.createPowerUps();
 	}
 
 	@Override
