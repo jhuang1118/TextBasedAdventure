@@ -54,45 +54,38 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	private void goToRoom(int dir) {
 				if(dir == 0 && currentRow > 0) {
 					currentRow--;
-					if(rooms[currentRow][currentCol].isContainsTreasure()) {
-						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
-					}
-					if(rooms[currentRow][currentCol].isContainsLaser()) {
-						backend.setLost(true);
-						backend.loseGame();
-					}
+					collectTreasure();
+					touchedLaser();
 				}
 				if(dir == 1 && currentCol < rooms[0].length) {
 					currentCol++;
-					if(rooms[currentRow][currentCol].isContainsTreasure()) {
-						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
-					}
-					if(rooms[currentRow][currentCol].isContainsLaser()) {
-						backend.setLost(true);
-						backend.loseGame();
-					}
+					collectTreasure();
+					touchedLaser();
 				}
 				if(dir == 2 && currentRow < rooms.length) {
 					currentRow++;
-					if(rooms[currentRow][currentCol].isContainsTreasure()) {
-						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
-					}
-					if(rooms[currentRow][currentCol].isContainsLaser()) {
-						backend.setLost(true);
-						backend.loseGame();
-					}
+					collectTreasure();
+					touchedLaser();
 				}
 				if(dir == 3 && currentCol > 0) {
 					currentCol--;
-					if(rooms[currentRow][currentCol].isContainsTreasure()) {
-						ethanRoom.recieveMoney(rooms, currentRow, currentCol);
-					}
-					if(rooms[currentRow][currentCol].isContainsLaser()) {
-						backend.setLost(true);
-						backend.loseGame();
-					}
+					collectTreasure();
+					touchedLaser();
 				}
 			
+	}
+	
+	public void collectTreasure() {
+		if(rooms[currentRow][currentCol].isContainsTreasure()) {
+			ethanRoom.recieveMoney(rooms, currentRow, currentCol);
+		}
+	}
+	
+	public void touchedLaser() {
+		if(rooms[currentRow][currentCol].isContainsLaser()) {
+			backend.setLost(true);
+			backend.loseGame();
+		}
 	}
 
 	private boolean isValid(String input) {
