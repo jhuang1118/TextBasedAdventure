@@ -94,9 +94,8 @@ public class EthanRoomBackEnd implements DavidSupport{
 		this.lost = lost;
 	}
 
-	//every 5 moves add laser
 	public boolean checkSpecialRoom(DavidEthanRoom[][] room, int num1, int num2) {
-		return room[num1][num2].isContainsTreasure() || room[num1][num2].isContainsLaser();
+		return room[num1][num2].isContainsTreasure() || room[num1][num2].isContainsLaser() || room[num1][num2].isUserIn();
 	}
 	
 	public void recieveMoney(DavidEthanRoom[][] room, int row, int col) {
