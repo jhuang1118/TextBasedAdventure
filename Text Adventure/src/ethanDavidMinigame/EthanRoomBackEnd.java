@@ -117,11 +117,15 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 	
 	@Override
-	public boolean stillPlaying() {
+	public boolean stillPlaying(int money) {
 		if(lost == true) {
+			System.out.println("You hit the laser and died a miserable death.");
 			return false;
 		}
-		return !(currMoney >= 100000) || !lost;
+		if(money >= MONEY_CUT_OFF) {
+			return false;
+		}
+		return true;
 	}
 
 	@Override
@@ -131,14 +135,13 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 
 	public void loseGame() {
-		System.out.println("You hit the laser and died a miserable death.");
-		stillPlaying();
+		stillPlaying(currMoney);
 	}
 
 	@Override
 	public Object victorious() {
 		// TODO Auto-generated method stub
-		return stillPlaying() == true;
+		return stillPlaying(currMoney) == true;
 	}
 
 	@Override

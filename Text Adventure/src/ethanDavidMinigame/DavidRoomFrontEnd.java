@@ -22,7 +22,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	private void play() {
-		while(backend.stillPlaying()) {
+		while(backend.stillPlaying(ethanRoom.getCurrMoney())) {
 			displayBoard();
 			respondToInput(in.nextLine());
 		}

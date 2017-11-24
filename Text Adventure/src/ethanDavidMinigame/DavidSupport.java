@@ -2,7 +2,7 @@ package ethanDavidMinigame;
 
 public interface DavidSupport {
 
-	boolean stillPlaying();
+	int MONEY_CUT_OFF = 50000;
 
 	String getValidUserInput();
 
@@ -13,5 +13,9 @@ public interface DavidSupport {
 	void setLost(boolean b);
 
 	void loseGame();
+
+	int getCurrMoney();
+
+	boolean stillPlaying(int money);
 
 }
