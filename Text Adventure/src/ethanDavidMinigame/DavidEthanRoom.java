@@ -6,6 +6,15 @@ public class DavidEthanRoom {
 	private boolean containsTreasure;
 	private boolean containsLaser;
 	private boolean containsPowerup;
+	private boolean invincible;
+	public boolean isInvincible() {
+		return invincible;
+	}
+
+	public void setInvincible(boolean invincible) {
+		this.invincible = invincible;
+	}
+
 	public boolean isContainsPowerup() {
 		return containsPowerup;
 	}
