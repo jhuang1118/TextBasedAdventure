@@ -12,7 +12,7 @@ public interface DavidSupport {
 
 	void setLost(boolean b);
 
-	void loseGame();
+	void checkLose();
 
 	int getCurrMoney();
 

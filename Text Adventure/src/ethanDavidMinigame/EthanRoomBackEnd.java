@@ -118,7 +118,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 	@Override
 	public boolean stillPlaying(int money) {
 		if(lost == true) {
-			System.out.println("You hit the laser and died a miserable death.");
 			return false;
 		}
 		if(money >= MONEY_CUT_OFF) {
@@ -133,7 +132,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 		return null;
 	}
 
-	public void loseGame() {
+	public void checkLose() {
 		stillPlaying(currMoney);
 	}
 

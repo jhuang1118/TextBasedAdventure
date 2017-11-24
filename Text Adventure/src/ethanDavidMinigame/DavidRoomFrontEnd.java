@@ -88,7 +88,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		if(hHit == 10) {
 			System.out.println("You have hit your head on the wall too much times and died from blood loss.");
 			backend.setLost(true);
-			backend.loseGame();
+			backend.checkLose();
 		}
 	}
 	
@@ -101,7 +101,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	public void touchedLaser() {
 		if(rooms[currentRow][currentCol].isContainsLaser()) {
 			backend.setLost(true);
-			backend.loseGame();
+			backend.checkLose();
 		}
 	}
 
