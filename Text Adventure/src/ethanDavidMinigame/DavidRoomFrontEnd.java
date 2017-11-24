@@ -8,6 +8,8 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	private int currentRow;
 	private int currentCol;
 	
+	private int hHit;
+	
 	public static DavidEthanRoom currentRoom;
 	public EthanRoomBackEnd ethanRoom;
 	
@@ -53,13 +55,13 @@ public class DavidRoomFrontEnd implements EthanSupport {
 					collectTreasure();
 					touchedLaser();
 				}
-				if(dir == 1 && currentCol < rooms[0].length-1) {
+				if(dir == 1 && currentCol < 14) {
 					currentCol++;
 					rooms[currentRow][currentCol].setUserIn(true);
 					collectTreasure();
 					touchedLaser();
 				}
-				if(dir == 2 && currentRow < rooms.length-1) {
+				if(dir == 2 && currentRow < 4) {
 					currentRow++;
 					rooms[currentRow][currentCol].setUserIn(true);
 					collectTreasure();
@@ -71,7 +73,23 @@ public class DavidRoomFrontEnd implements EthanSupport {
 					collectTreasure();
 					touchedLaser();
 				}
-			
+				if((dir == 0 && currentRow == 0) || (dir == 1 && currentCol == 14) || 
+						(dir == 2 && currentRow == 4) || (dir == 3 && currentCol == 0)) {
+					System.out.println("You hit your head against the wall. It hurts.");
+					hHit++;
+					deathFromWall();
+				}
+	}
+	
+	public void deathFromWall() {
+		if(hHit == 5) {
+			System.out.println("You have also started bleeding.");
+		}
+		if(hHit == 10) {
+			System.out.println("You have hit your head on the wall too much times and died from blood loss.");
+			backend.setLost(true);
+			backend.loseGame();
+		}
 	}
 	
 	public void collectTreasure() {
