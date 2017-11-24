@@ -39,8 +39,8 @@ public class EthanRoomBackEnd implements DavidSupport{
 			ROOM_LENGTH = frontend.getRooms().length;
 		}
 		DavidEthanRoom[][] Room = frontend.getRooms();
-		for(int i = 0; i < 5; i++) {
-			int[] randArr = randNums(Room, ROOM_LENGTH);
+		for(int i = 0; i < ROOM_LENGTH; i++) {
+			int[] randArr = randNums(Room, 5);
 			if(randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
 				Room[randArr[0]][randArr[1]+1].setContainsLaser(true); //remove +1 in a bit for row. spawning laser
 			}
@@ -63,8 +63,10 @@ public class EthanRoomBackEnd implements DavidSupport{
 		DavidEthanRoom[][] Room = frontend.getRooms();
 		if(defaultLen) {
 			ROOM_LENGTH = frontend.getRooms().length;
+			repeat = ROOM_LENGTH;
 		}
-		for(int i = 0; i < ROOM_LENGTH; i++) {
+		for(int i = 0; i < repeat; i++) {
+			ROOM_LENGTH = frontend.getRooms().length;
 			int[] randArr = randNums(Room, ROOM_LENGTH);
 			Room[randArr[0]][randArr[1]].setContainsTreasure(true);
 			Room[randArr[0]][randArr[1]].setMoney(2500 + (int)(Math.random() * 10000));
@@ -102,7 +104,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 		room[row][col].setContainsTreasure(false);
 		currMoney += moneyCount;
 		createMoney(1, false);
-		createLasers(2, false);
+		createLasers(1, false);
 		frontend.displayMoney();
 	}
 
