@@ -24,9 +24,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	private void play() {
 		while(backend.stillPlaying()) {
 			displayBoard();
-			displayMoney();
 			respondToInput(in.nextLine());
-			//backend.startTimer();
 		}
 		printGameOverMessage(backend.victorious());
 	}
@@ -35,10 +33,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		System.out.println("You're dead.");
 	}
 
-	/*public void displayTimer() {
-		System.out.println("You have 40 seconds to collect money!");
-	} */
-	
 	public void respondToInput(String input) {
 		while(!isValid(input)) {
 			System.out.println("You can't do that. You must type 'w,a,s, or d.' You still have " +  " seconds left.");
@@ -57,12 +51,12 @@ public class DavidRoomFrontEnd implements EthanSupport {
 					collectTreasure();
 					touchedLaser();
 				}
-				if(dir == 1 && currentCol < rooms[0].length) {
+				if(dir == 1 && currentCol < rooms[0].length-1) {
 					currentCol++;
 					collectTreasure();
 					touchedLaser();
 				}
-				if(dir == 2 && currentRow < rooms.length) {
+				if(dir == 2 && currentRow < rooms.length-1) {
 					currentRow++;
 					collectTreasure();
 					touchedLaser();
