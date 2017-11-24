@@ -32,7 +32,11 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	public void printGameOverMessage(Object victorious) {
-		System.out.println("You're dead.");
+		if(ethanRoom.getCurrMoney() >= 50000) {
+			System.out.println("You collected enough money.");
+		}else {
+			System.out.println("You're dead.");
+		}
 	}
 
 	public void respondToInput(String input) {
@@ -167,9 +171,12 @@ public class DavidRoomFrontEnd implements EthanSupport {
 
 	@Override
 	public void displayMoney() {
-		EthanRoomBackEnd moneyDisplay = new EthanRoomBackEnd(this);
+		int moneyLeft = ethanRoom.MONEY_CUT_OFF - ethanRoom.getCurrMoney();
+		if(moneyLeft <= 0) {
+			moneyLeft = 0;
+		}
 		System.out.println("You have collected " +  ethanRoom.getCurrMoney()
-				+ " money. You still need to collect " + (ethanRoom.MONEY_CUT_OFF - ethanRoom.getCurrMoney())
+				+ " money. You still need to collect " + (moneyLeft)
 				+ " money");
 	}
 
