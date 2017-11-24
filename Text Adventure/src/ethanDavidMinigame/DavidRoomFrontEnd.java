@@ -82,13 +82,15 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	public void deathFromWall() {
-		if(hHit == 5) {
+		if(hHit > 5 && hHit < 7) {
 			System.out.println("You have also started bleeding.");
+		}
+		if(hHit > 7 && hHit < 10) {
+			System.out.println("You are bleeding a lot now. You should really stop..");
 		}
 		if(hHit == 10) {
 			System.out.println("You have hit your head on the wall too much times and died from blood loss.");
 			backend.setLost(true);
-			backend.loseGame();
 		}
 	}
 	
