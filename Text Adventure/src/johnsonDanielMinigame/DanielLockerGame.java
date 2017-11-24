@@ -4,6 +4,9 @@ import caveExplorer.CaveExplorer;
 
 public class DanielLockerGame {
 
+	int[][] placement= {{-1,0},{0,-1},{1,0},{0,1}};
+	//placement indicates how the User moves based on the User input
+	
 	private DanielLocker[][] theLockers;
 	private boolean onLocker;
 	int[] rows = {1,3};
@@ -123,16 +126,43 @@ public class DanielLockerGame {
 
 	public boolean isOnLocker(int row, int col) {
 		int[][] lockerpsns = {{1,1},{1,3},{1,5},{3,1},{3,3},{3,5}};
+		int[][] personpsn = {{row,col}};
+		int count = 0;
 		for(int i = 0; i < lockerpsns.length; i++) {
-			if(lockerpsns[i] == [row][col]) {
+			if(lockerpsns[i].equals(personpsn[0])) {
+				count++;
+			}
+		}
+		if(count > 0) {
+			return true;
 		}
 		return false;
-		
-		
+	
 	}
 	private void answer(String input) {
-		// write a method to interpret the input. For example, if the guy moves left then his col would shift left 1. If he 
-		// is one tile away, then 
+		if(input.equals("w") && isPossibleMove(placement[0])) {
+			move(placement[0]);
+		}
+		else if(input.equals("a") && isPossibleMove(placement[1])){
+			move(placement[1]);
+		}
+		else if(input.equals("s") && isPossibleMove(placement[2])) {
+			move(placement[2]);
+		}
+		else if(input.equals("d") && isPossibleMove(placement[3])) {
+			move(placement[3]);
+		}
+	}
+
+	private boolean isPossibleMove(int[] is) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private void move(int[] placement) {
+		if(isPossibleMove(int[])) {
+			
+		}
 		
 	}
 
