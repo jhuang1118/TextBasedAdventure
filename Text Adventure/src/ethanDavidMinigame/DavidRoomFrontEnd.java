@@ -82,14 +82,17 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	public void deathFromWall() {
-		if(hHit > 5 && hHit < 7) {
-			System.out.println("You have also started bleeding.");
+		if(hHit == 5 && hHit < 7) {
+			System.out.println("You have started bleeding. Who the hell in their right minds starts hitting their head against "
+					+ "the wall in a heist!?");
 		}
-		if(hHit > 7 && hHit < 10) {
-			System.out.println("You are bleeding a lot now. You should really stop..");
+		if(hHit == 7 && hHit < 10) {
+			System.out.println("You are bleeding a lot now. You should really stop before something stupid happens...");
 		}
 		if(hHit == 10) {
-			System.out.println("You have hit your head on the wall too much times and died from blood loss.");
+			System.out.println("You have hit your head on the wall too much times and died from blood loss. The worst heist America"
+					+ " has ever seen. \nYou are a disgrace to bank robbers everywhere. However the bank has put up a sign "
+					+ "near the dent in the wall to \ncommemorate the one time they got robbed but didn't.");
 			backend.setLost(true);
 		}
 	}
