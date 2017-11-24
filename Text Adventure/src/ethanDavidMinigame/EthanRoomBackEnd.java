@@ -14,7 +14,16 @@ public class EthanRoomBackEnd implements DavidSupport{
 	private boolean cheating;
 	private EthanSupport frontend;
 	private boolean lost;
+	private boolean invincible;
 	
+	public boolean isInvincible() {
+		return invincible;
+	}
+
+	public void setInvincible(boolean invincible) {
+		this.invincible = invincible;
+	}
+
 	public EthanRoomBackEnd(EthanSupport frontend) {
 		this.frontend = frontend;
 		MONEY_CUT_OFF = 50000;
