@@ -5,6 +5,17 @@ public class DavidEthanRoom {
 	private boolean userIn;
 	private boolean containsTreasure;
 	private boolean containsLaser;
+	private int invincibleCounter;
+	private int money;
+	private boolean containsPowerup;
+
+	public int getInvincibleCounter() {
+		return invincibleCounter;
+	}
+
+	public void setInvincibleCounter(int invincibleCounter) {
+		this.invincibleCounter = invincibleCounter;
+	}
 
 	public boolean isContainsLaser() {
 		return containsLaser;
@@ -13,8 +24,6 @@ public class DavidEthanRoom {
 	public void setContainsLaser(boolean containsLaser) {
 		this.containsLaser = containsLaser;
 	}
-
-	private int money;
 	
 	public boolean isUserIn() {
 		return userIn;
@@ -57,4 +66,11 @@ public class DavidEthanRoom {
 		return " ";
 	}
 
+	public boolean isContainsPowerup() {
+		return containsPowerup;
+	}
+
+	public void setContainsPowerup(boolean containsPowerup) {
+		this.containsPowerup = containsPowerup;
+	}
 }
