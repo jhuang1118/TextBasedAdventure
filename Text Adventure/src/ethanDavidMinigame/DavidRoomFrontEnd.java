@@ -36,7 +36,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	public void printGameOverMessage(Object victorious) {
-		if(ethanRoom.getCurrMoney() >= 50000) {
+		if(ethanRoom.getCurrMoney() >= 70000) {
 			System.out.println("You collected enough money. Now get to the car!");
 			//method for returning to the main map
 			CaveExplorer.startExploring();
@@ -182,7 +182,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 			moneyLeft = 0;
 		}
 		System.out.println("You have collected " +  ethanRoom.getCurrMoney()
-				+ " money. You still need to collect " + (moneyLeft)
+				+ " money. You still need to collect " + moneyLeft
 				+ " money");
 	}
 

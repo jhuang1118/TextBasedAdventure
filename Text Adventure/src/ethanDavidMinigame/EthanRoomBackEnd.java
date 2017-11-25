@@ -22,7 +22,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 
 	public EthanRoomBackEnd(EthanSupport frontend) {
 		this.frontend = frontend;
-		MONEY_CUT_OFF = 50000;
+		MONEY_CUT_OFF = 70000;
 		currMoney = 0;
 		lost = false;
 	}
