@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class JasonYFrontend extends NPC implements JasonZSupport{
 	
-	public static Scanner in;//for user input
+	public Scanner in;//for user input
 	
 	private JasonYSupport backend;
 	public int copCounter;
@@ -29,7 +29,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 
 	
 	public static final void main(String[] args) {
-		in = new Scanner(System.in);
 		JasonYFrontend demo = new JasonYFrontend(0, 0, null);
 		demo.play();
 	}
@@ -122,6 +121,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		//will ask player for input : p to play and c for controls (something like that)
 		//once they enter the play button (in this case p):
 		//ask for difficulty
+		in = new Scanner(System.in);
 		System.out.println("Welcome to 'Shoot'em Cops'!");
 		System.out.println("That's right! In this game you shoot cops!");
 		System.out.println("Cops will spawn when you enter the game. Cops will continue to spawn after a "
@@ -195,6 +195,32 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	}	
 	
 	public String getSymbol() {
-		return "R";
+		return "P";
+	}
+	
+	public int[] calculateMove(int userRow, int userCol)
+	{
+		int dir = checkDirection();
+		return possibleMoves[dir];
+	}
+	private int checkDirection() {
+		//
+		if(this.getCurrentRow() - CaveRoom.getRow() > 0)
+		{
+			return 0;
+		}
+		if(this.getCurrentRow() - CaveRoom.getRow() < 0)
+		{
+			return 3;
+		}
+		if(this.getCurrentCol() - CaveRoom.getCol() >0)
+		{
+			return 1;
+		}
+		if(this.getCurrentCol() - CaveRoom.getCol() < 0)
+		{
+			return 2;
+		}
+		return 0;
 	}
 }

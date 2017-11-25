@@ -36,7 +36,7 @@ public class CaveRoom {
 		//...('X' when you are in the room)
 	private String defaultContents;//what is in the room when you aren't in the room 
 	
-	private CaveRoom[] borderingRooms;
+	private NPCRoom[] borderingRooms;
 	private Door[] doors;
 	public static int row;
 	public static int col;
@@ -54,7 +54,7 @@ public class CaveRoom {
 		setDefaultContents(" ");
 		contents = defaultContents;
 		//NOTE: Arrays are instantiated with 'null' values
-		borderingRooms = new CaveRoom[4];
+		borderingRooms = new NPCRoom[4];
 		doors = new Door[4];
 		setDirections();
 	}
@@ -116,11 +116,11 @@ public class CaveRoom {
 	 * @param door
 	 */
 	public void setConnection(int direction, CaveRoom anotherRoom, Door door) {
-		addRoom(direction,anotherRoom,door);
-		anotherRoom.addRoom(oppositeDirection(direction), this, door);
+		addRoom(direction,(NPCRoom) anotherRoom,door);
+		anotherRoom.addRoom(oppositeDirection(direction), (NPCRoom) this, door);
 	}
 	
-	public void addRoom(int dir, CaveRoom caveRoom, Door door) {
+	public void addRoom(int dir, NPCRoom caveRoom, Door door) {
 		borderingRooms[dir] = caveRoom;
 		doors[dir] = door;
 		setDirections();//updates the directions 
@@ -267,7 +267,11 @@ public class CaveRoom {
 	public void goToRoom(int dir)
 	{
 		if(borderingRooms[dir] != null && doors[dir] != null && doors[dir].isOpen()){
-			CaveExplorer.currentRoom.leave(); 
+			CaveExplorer.currentRoom.leave();
+			if(borderingRooms[dir].getNpc() instanceof JasonYFrontend)
+			{
+				((JasonYFrontend) borderingRooms[dir].getNpc()).play();
+			}
 			CaveExplorer.currentRoom = borderingRooms[dir];
 			row = borderingRooms[dir].row;
 			col = borderingRooms[dir].col;
