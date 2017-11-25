@@ -161,8 +161,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	public void displayCheating() {
 		ethanRoom.setCheating(true);
 		ethanRoom.cheat();
-		System.out.println(ethanRoom.getCurrMoney());
-		System.out.println("You have typed in the cheat code");
 	}
 
 	@Override
