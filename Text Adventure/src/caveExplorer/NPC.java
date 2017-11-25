@@ -10,7 +10,7 @@ public class NPC {
 	private int currentCol;
 	private NPCRoom currentRoom;
 	
-	//fields for interaction commment
+	//fields for interaction comment
 	private boolean active;
 	private String activeDescription;
 	private String inactiveDescription; 
@@ -27,7 +27,7 @@ public class NPC {
 		currentRoom = null; 
 		active = true;
 	}
-
+	
 	public boolean isActive() {
 		return active;
 	}

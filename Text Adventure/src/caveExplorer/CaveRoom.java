@@ -180,7 +180,6 @@ public class CaveRoom {
 		
 		c[9][5] = new EthanRoomBackEnd("");
 		//c[1][1] = new MiniGameStarter("");
-		c[10][10] = new JasonYFrontend(10, 10);
 
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		NPC testNPC = new NPC(c);

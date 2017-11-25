@@ -3,6 +3,7 @@ package jasonYJasonZMinigame;
 import caveExplorer.CaveExplorer;
 import caveExplorer.CaveRoom;
 import caveExplorer.Door;
+import caveExplorer.NPC;
 import caveExplorer.NPCRoom;
 
 import java.awt.Color;
@@ -10,7 +11,7 @@ import java.awt.event.KeyEvent;
 
 import java.util.Scanner;
 
-public class JasonYFrontend extends NPCRoom implements JasonZSupport{
+public class JasonYFrontend extends NPC implements JasonZSupport{
 	
 	public static Scanner in;//for user input
 	
@@ -21,7 +22,7 @@ public class JasonYFrontend extends NPCRoom implements JasonZSupport{
 	public int row; 
 	public int col;
 	public JasonZSwat[] npc;
-	public CaveRoom[][] caves;
+	public static CaveRoom[][] caves;
 	public NPCRoom[][] map;
 	public Door[] doors;
 	public String[] difficultyWords;
@@ -34,7 +35,7 @@ public class JasonYFrontend extends NPCRoom implements JasonZSupport{
 	}
 	
 	public JasonYFrontend(int row, int col) {
-		super("",row, col);
+		super(caves);
 		this.row = row; 
 		this.col = col;
 		createMap(2);
