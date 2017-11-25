@@ -66,13 +66,13 @@ public class DavidRoomFrontEnd implements EthanSupport {
 					collectTreasure();
 					touchedLaser();
 				}
-				if(dir == 1 && currentCol < 14) {
+				if(dir == 1 && currentCol < rooms[0].length-1) {
 					currentCol++;
 					rooms[currentRow][currentCol].setUserIn(true);
 					collectTreasure();
 					touchedLaser();
 				}
-				if(dir == 2 && currentRow < 4) {
+				if(dir == 2 && currentRow < rooms.length-1) {
 					currentRow++;
 					rooms[currentRow][currentCol].setUserIn(true);
 					collectTreasure();
@@ -84,12 +84,16 @@ public class DavidRoomFrontEnd implements EthanSupport {
 					collectTreasure();
 					touchedLaser();
 				}
-				if((dir == 0 && currentRow == 0) || (dir == 1 && currentCol == 14) || 
-						(dir == 2 && currentRow == 4) || (dir == 3 && currentCol == 0)) {
+				if((dir == 0 && currentRow == 0) || (dir == 1 && currentCol > 14) || 
+						(dir == 2 && currentRow > 4) || (dir == 3 && currentCol == 0)) {
 					System.out.println("You hit your head against the wall. It hurts.");
 					hHit++;
 					deathFromWall();
 				}
+	}
+	
+	public String validMoves() {
+		return "wdsae";
 	}
 	
 	public void deathFromWall() {
@@ -126,10 +130,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		return validMoves().indexOf(input) > -1 && input.length() == 1;
 	}
 	
-	public String validMoves() {
-		return "wdsae";
-	}
-
 	public void displayBoard() {
 		for(int row = 0; row < rooms.length; row++) {
 			for(int col = 0; col < rooms[row].length; col++) {
