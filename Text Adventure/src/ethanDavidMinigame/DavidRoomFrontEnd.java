@@ -2,6 +2,9 @@ package ethanDavidMinigame;
 
 import java.util.Scanner;
 
+import caveExplorer.CaveExplorer;
+import caveExplorer.DavidCar;
+
 public class DavidRoomFrontEnd implements EthanSupport {
 	
 	private DavidEthanRoom[][] rooms;
@@ -14,6 +17,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	public EthanRoomBackEnd ethanRoom;
 	
 	private DavidSupport backend;
+	private DavidCar car;
 	
 	public static Scanner in;
 	
@@ -35,6 +39,8 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		if(ethanRoom.getCurrMoney() >= 50000) {
 			System.out.println("You collected enough money. Now get to the car!");
 			//method for returning to the main map
+			CaveExplorer.startExploring();
+			car.setPosition(9,20);
 		}else {
 			System.out.println("You're dead.");
 		}
@@ -142,6 +148,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		backend = new EthanRoomBackEnd(this);
 		ethanRoom = new EthanRoomBackEnd(this);
 		rooms = new DavidEthanRoom[5][15];
+		car = new DavidCar();
 		for(DavidEthanRoom[] row: rooms) {
 			for(int col = 0; col < row.length; col++) {
 				row[col] = new DavidEthanRoom();

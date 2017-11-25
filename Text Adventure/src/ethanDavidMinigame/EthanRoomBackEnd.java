@@ -1,9 +1,5 @@
 package ethanDavidMinigame;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-
 import caveExplorer.CaveExplorer;
 import caveExplorer.NPCRoom;
 

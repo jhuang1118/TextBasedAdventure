@@ -27,7 +27,7 @@ public class CaveExplorer {
 		System.out.println(s); // consider replacing with the "print line thing in chatbot"
 	}
 
-	private static void startExploring() {
+	public static void startExploring() {
 		while(playing) {
 			moveNPCs();
 			print("What would you like to do");
