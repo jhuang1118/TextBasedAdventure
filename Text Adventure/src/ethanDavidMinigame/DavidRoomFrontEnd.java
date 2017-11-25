@@ -65,24 +65,28 @@ public class DavidRoomFrontEnd implements EthanSupport {
 					rooms[currentRow][currentCol].setUserIn(true);
 					collectTreasure();
 					touchedLaser();
+					collectPowerup();
 				}
 				if(dir == 1 && currentCol < rooms[0].length-1) {
 					currentCol++;
 					rooms[currentRow][currentCol].setUserIn(true);
 					collectTreasure();
 					touchedLaser();
+					collectPowerup();
 				}
 				if(dir == 2 && currentRow < rooms.length-1) {
 					currentRow++;
 					rooms[currentRow][currentCol].setUserIn(true);
 					collectTreasure();
 					touchedLaser();
+					collectPowerup();
 				}
 				if(dir == 3 && currentCol > 0) {
 					currentCol--;
 					rooms[currentRow][currentCol].setUserIn(true);
 					collectTreasure();
 					touchedLaser();
+					collectPowerup();
 				}
 				if((dir == 0 && currentRow == 0) || (dir == 1 && currentCol == 14) || 
 						(dir == 2 && currentRow == 4) || (dir == 3 && currentCol == 0)) {
@@ -92,6 +96,11 @@ public class DavidRoomFrontEnd implements EthanSupport {
 				}
 	}
 	
+	private void collectPowerup() {
+		backend.addInvincibility();
+		
+	}
+
 	public String validMoves() {
 		return "wdsae";
 	}
@@ -172,6 +181,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	public void changeRoom() {
 		ethanRoom.createMoney(0, true);
 		ethanRoom.createLasers(0, true);
+		ethanRoom.createPowerUps();
 	}
 
 	@Override
@@ -182,7 +192,13 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		}
 		System.out.println("You have collected " +  ethanRoom.getCurrMoney()
 				+ " money. You still need to collect " + moneyLeft
-				+ " money");
+				+ " money.");
+	}
+
+	@Override
+	public void displayPowerup() {
+		System.out.println(" Also you have " + ethanRoom.getInvincibleCounter() + " chances to block the lasers.");
+		
 	}
 
 }

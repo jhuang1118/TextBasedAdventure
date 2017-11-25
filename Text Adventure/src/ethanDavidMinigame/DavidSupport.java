@@ -18,4 +18,6 @@ public interface DavidSupport {
 
 	boolean stillPlaying(int money);
 
+	void addInvincibility();
+
 }

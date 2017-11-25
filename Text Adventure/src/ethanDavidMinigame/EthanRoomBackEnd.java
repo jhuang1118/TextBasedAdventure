@@ -4,6 +4,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 	
 	int MONEY_CUT_OFF;
 	private int currMoney;
+	private int invincibleCounter;
 	private boolean cheating;
 	private EthanSupport frontend;
 	private boolean lost;
@@ -149,5 +150,21 @@ public class EthanRoomBackEnd implements DavidSupport{
 	public void startTimer() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void addInvincibility() {
+		invincibleCounter++;
+		setInvincibleCounter(invincibleCounter);
+		frontend.displayPowerup();
+		
+	}
+
+	public int getInvincibleCounter() {
+		return invincibleCounter;
+	}
+
+	public void setInvincibleCounter(int invincibleCounter) {
+		this.invincibleCounter = invincibleCounter;
 	}
 }

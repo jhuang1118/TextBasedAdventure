@@ -13,4 +13,6 @@ public interface EthanSupport {
 	}
 	
 	void displayMoney();
+
+	void displayPowerup();
 }
