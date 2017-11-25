@@ -2,6 +2,9 @@ package ethanDavidMinigame;
 
 import java.util.Scanner;
 
+import caveExplorer.CaveExplorer;
+import caveExplorer.DavidCar;
+
 public class DavidRoomFrontEnd implements EthanSupport {
 	
 	private DavidEthanRoom[][] rooms;
@@ -14,6 +17,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	public EthanRoomBackEnd ethanRoom;
 	
 	private DavidSupport backend;
+	private DavidCar car;
 	
 	public static Scanner in;
 	
@@ -32,8 +36,11 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	public void printGameOverMessage(Object victorious) {
-		if(ethanRoom.getCurrMoney() >= 50000) {
-			System.out.println("You collected enough money.");
+		if(ethanRoom.getCurrMoney() >= 70000) {
+			System.out.println("You collected enough money. Now get to the car!");
+			//method for returning to the main map
+			CaveExplorer.startExploring();
+			car.setPosition(9,20);
 		}else {
 			System.out.println("You're dead.");
 		}
@@ -59,13 +66,13 @@ public class DavidRoomFrontEnd implements EthanSupport {
 					collectTreasure();
 					touchedLaser();
 				}
-				if(dir == 1 && currentCol < 14) {
+				if(dir == 1 && currentCol < rooms[0].length-1) {
 					currentCol++;
 					rooms[currentRow][currentCol].setUserIn(true);
 					collectTreasure();
 					touchedLaser();
 				}
-				if(dir == 2 && currentRow < 4) {
+				if(dir == 2 && currentRow < rooms.length-1) {
 					currentRow++;
 					rooms[currentRow][currentCol].setUserIn(true);
 					collectTreasure();
@@ -83,6 +90,10 @@ public class DavidRoomFrontEnd implements EthanSupport {
 					hHit++;
 					deathFromWall();
 				}
+	}
+	
+	public String validMoves() {
+		return "wdsae";
 	}
 	
 	public void deathFromWall() {
@@ -119,10 +130,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		return validMoves().indexOf(input) > -1 && input.length() == 1;
 	}
 	
-	public String validMoves() {
-		return "wdsae";
-	}
-
 	public void displayBoard() {
 		for(int row = 0; row < rooms.length; row++) {
 			for(int col = 0; col < rooms[row].length; col++) {
@@ -141,6 +148,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		backend = new EthanRoomBackEnd(this);
 		ethanRoom = new EthanRoomBackEnd(this);
 		rooms = new DavidEthanRoom[5][15];
+		car = new DavidCar();
 		for(DavidEthanRoom[] row: rooms) {
 			for(int col = 0; col < row.length; col++) {
 				row[col] = new DavidEthanRoom();
@@ -153,8 +161,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	public void displayCheating() {
 		ethanRoom.setCheating(true);
 		ethanRoom.cheat();
-		System.out.println(ethanRoom.getCurrMoney());
-		System.out.println("You have typed in the cheat code");
 	}
 
 	@Override
@@ -175,7 +181,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 			moneyLeft = 0;
 		}
 		System.out.println("You have collected " +  ethanRoom.getCurrMoney()
-				+ " money. You still need to collect " + (moneyLeft)
+				+ " money. You still need to collect " + moneyLeft
 				+ " money");
 	}
 
