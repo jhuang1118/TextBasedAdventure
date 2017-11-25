@@ -15,7 +15,6 @@ public class JasonYFrontend extends NPCRoom implements JasonZSupport{
 	public static Scanner in;//for user input
 	
 	private JasonYSupport backend;
-	public String contents;
 	public int copCounter;
 	public int neededKills;
 	public int hp;	
@@ -194,11 +193,7 @@ public class JasonYFrontend extends NPCRoom implements JasonZSupport{
 		}
 	}	
 	
-	public void setContents() {
-		this.contents = "P";
-	}
-	
 	public String getContents() {
-		return contents;
+		return "P";
 	}
 }
