@@ -15,16 +15,18 @@ public class JasonYFrontend extends NPCRoom implements JasonZSupport{
 	public static Scanner in;//for user input
 	
 	private JasonYSupport backend;
+	public String contents;
 	public int copCounter;
 	public int neededKills;
-	public int hp;
+	public int hp;	
+	public int row; 
+	public int col;
 	public JasonZSwat[] npc;
 	public CaveRoom[][] caves;
 	public NPCRoom[][] map;
 	public Door[] doors;
 	public String[] difficultyWords;
-	public int row; 
-	public int col;
+
 	
 	public static final void main(String[] args) {
 		in = new Scanner(System.in);
@@ -191,4 +193,12 @@ public class JasonYFrontend extends NPCRoom implements JasonZSupport{
 			JasonZBackend.createPolice(randomRow, randomCol);
 		}
 	}	
+	
+	public void setContents() {
+		this.contents = "P";
+	}
+	
+	public String getContents() {
+		return contents;
+	}
 }
