@@ -1,12 +1,5 @@
 package ethanDavidMinigame;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-
-import caveExplorer.CaveExplorer;
-import caveExplorer.NPCRoom;
-
 public class EthanRoomBackEnd implements DavidSupport{
 	
 	int MONEY_CUT_OFF;
@@ -29,17 +22,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 		MONEY_CUT_OFF = 50000;
 		currMoney = 0;
 		lost = false;
-	}
-	
-	public void createPowerUps() {
-		int ROOM_LENGTH = frontend.getRooms().length;
-		DavidEthanRoom[][] Room = frontend.getRooms();
-		for(int i = 0; i < 5; i++) {
-			int[] randArr = randNums(Room, ROOM_LENGTH);
-			if(randArr[0]+1 <= ROOM_LENGTH-1 && randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
-				Room[randArr[0]][randArr[1]+1].setContainsPowerup(true);
-			}
-		}
 	}
 	
 	public void createLasers(int repeat, boolean defaultLen) {

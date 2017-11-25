@@ -166,7 +166,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	public void changeRoom() {
 		ethanRoom.createMoney(0, true);
 		ethanRoom.createLasers(0, true);
-		ethanRoom.createPowerUps();
 	}
 
 	@Override
