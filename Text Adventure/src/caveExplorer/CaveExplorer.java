@@ -35,7 +35,7 @@ public class CaveExplorer {
 			print(inventory.getDescription());
 			print(currentRoom.getDescription());
 			print(currentRoom.getDirections());
-			print("What would you like to do");
+			print("What would you like to do?");
 			currentRoom.interpretInput(in.nextLine());
 		}
 	}

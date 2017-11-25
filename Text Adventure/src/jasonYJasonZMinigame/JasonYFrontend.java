@@ -94,6 +94,8 @@ public class JasonYFrontend extends NPCRoom implements JasonZSupport{
 			{
 				p.calculateMove(coords[0], coords[1]);
 			}
+			killCounter();
+			copCounter();
 		}
 		if(hp == 0) {
 			System.out.println("GAME OVER!");

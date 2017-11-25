@@ -75,13 +75,12 @@ public class CaveRoom {
 		for(int i = 0; i < doors.length; i++) {
 			if(doors[i] != null){
 				doorFound = true;
-				directions += "There is a " + doors[i].getDescription() 
-				+ " to the " + toDirection(i) + ". " + doors[i].getDetails() + "\n";
+				directions += "You can move to " + toDirection(i) + ". " + "\n";
 			}
 		
-			if(!doorFound) {
-				directions = "You're trapped in this room!";
-			}
+	//		if(!doorFound) {
+	//			directions = "You're trapped in this room!";
+	//		}
 		}
 	}
 	
@@ -174,7 +173,7 @@ public class CaveRoom {
 		{
 			for(int col = 0; col < c[row].length; col ++)
 			{
-				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".", row, col);
+				c[row][col] = new NPCRoom("You are at coordinates ("+ row +", " + col+").", row, col);
 			}
 		}
 
