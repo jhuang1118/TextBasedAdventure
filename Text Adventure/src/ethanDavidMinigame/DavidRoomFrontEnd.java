@@ -131,6 +131,12 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	
 	public void touchedLaser() {
 		if(rooms[currentRow][currentCol].isContainsLaser()) {
+			if(ethanRoom.getInvincibleCounter() > 0) {
+				ethanRoom.setInvincibleCounter(ethanRoom.getInvincibleCounter() - 1);
+				System.out.println("Thank goodness! Your powerup saved you!");
+				displayPowerup();
+			}
+			System.out.println("went out of statement."); //debug
 			backend.setLost(true);
 			backend.checkLose();
 		}

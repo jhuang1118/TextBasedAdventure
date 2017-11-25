@@ -132,7 +132,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 
 	@Override
 	public String getValidUserInput() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -142,13 +141,11 @@ public class EthanRoomBackEnd implements DavidSupport{
 
 	@Override
 	public Object victorious() {
-		// TODO Auto-generated method stub
 		return stillPlaying(currMoney) == true;
 	}
 
 	@Override
 	public void startTimer() {
-		// TODO Auto-generated method stub
 		
 	}
 
