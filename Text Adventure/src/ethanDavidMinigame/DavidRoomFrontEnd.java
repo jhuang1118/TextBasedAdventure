@@ -33,7 +33,8 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	
 	public void printGameOverMessage(Object victorious) {
 		if(ethanRoom.getCurrMoney() >= 50000) {
-			System.out.println("You collected enough money.");
+			System.out.println("You collected enough money. Now get to the car!");
+			//method for returning to the main map
 		}else {
 			System.out.println("You're dead.");
 		}
