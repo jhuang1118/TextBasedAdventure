@@ -152,8 +152,8 @@ public class EthanRoomBackEnd implements DavidSupport{
 		
 	}
 
-	@Override
-	public void addInvincibility() {
+	public void addInvincibility(DavidEthanRoom[][] room, int row, int col) {
+		room[row][col].setContainsPowerup(false);
 		invincibleCounter++;
 		setInvincibleCounter(invincibleCounter);
 		frontend.displayPowerup();

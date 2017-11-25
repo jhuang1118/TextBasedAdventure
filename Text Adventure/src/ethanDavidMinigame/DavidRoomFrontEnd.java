@@ -97,8 +97,9 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	private void collectPowerup() {
-		backend.addInvincibility();
-		
+		if(rooms[currentRow][currentCol].isContainsPowerup()) {
+			ethanRoom.addInvincibility(rooms, currentRow, currentCol);
+		}
 	}
 
 	public String validMoves() {
