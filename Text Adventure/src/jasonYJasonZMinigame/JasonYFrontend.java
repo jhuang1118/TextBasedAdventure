@@ -195,6 +195,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	}	
 	
 	public String getSymbol() {
-		return "P";
+		return "R";
 	}
 }
