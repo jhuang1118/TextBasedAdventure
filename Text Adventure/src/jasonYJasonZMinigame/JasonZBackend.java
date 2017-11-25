@@ -19,56 +19,58 @@ public class JasonZBackend implements JasonYSupport {
 	public static double[] difficulty = {1, 1.1, 1.3, 1.5, 2};
 	public NPCRoom[][] validRooms;//north, east, south, west.
 	public static NPCRoom[][] cave;
+	private int starterRow;
+	private int starterCol;
 	
 	public JasonZBackend(JasonZSupport frontend, int difficulty, NPCRoom[][] floor) {
 		this.frontend = frontend;
 		changeDifficulty(difficulty);
 		Swat = new JasonZSwat[quantity];
 		this.gun = new JasonZGuns(TYPE[0]);
+		starterRow = (int) (floor.length)/2;
+		starterCol = (int) (floor[0].length)/2;
 		setValidRooms(floor);
 		cave = floor;
 	}
 	 
 	private void setValidRooms(NPCRoom[][] floor) {
-		int currentRow = CaveExplorer.currentRoom.row;
-		int currentCol = CaveExplorer.currentRoom.col;
-		int range = gun.getRange();
-		validRooms = new NPCRoom[4][gun.getRange()];
+		int r = gun.getRange();
+		validRooms = new NPCRoom[4][r];
 		int counter = 0;
-		for(int row = currentRow; currentRow < (currentRow + range); row ++)
+		for(int row = starterRow; row < (starterRow + r); row ++)
 		{
 			if(row < floor.length)
 			{
-				validRooms[0][counter] = floor[row][currentCol];
+				validRooms[0][counter] = floor[row][starterCol];
 				counter ++;
 			}
 			
 		}
 		counter = 0;
-		for(int row = currentRow; currentRow > (currentRow - range); row --)
+		for(int row = starterRow; row > (starterRow - r); row --)
 		{
 			if( row > 0)
 			{
-				validRooms[2][counter] = floor[row][currentCol];
+				validRooms[2][counter] = floor[row][starterCol];
 				counter ++;
 			}
 		}
 		counter = 0;
-		for(int col = currentCol; col< (col + range); col ++)
+		for(int col = starterCol; col< (col + r); col ++)
 		{
-			if(col < floor[currentRow].length)
+			if(col < floor[starterRow].length)
 			{
-				validRooms[1][counter] = floor[currentRow][col];
+				validRooms[1][counter] = floor[starterRow][col];
 				counter ++;
 			}
 			
 		}
 		counter = 0;
-		for(int col = currentCol; col > (col - range); col --)
+		for(int col = starterCol; col > (col - r); col --)
 		{
 			if(col > 0)
 			{
-				validRooms[3][counter] = floor[currentRow][col];
+				validRooms[3][counter] = floor[starterRow][col];
 				counter ++;
 			}
 			
