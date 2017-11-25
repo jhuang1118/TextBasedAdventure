@@ -67,7 +67,6 @@ public class JasonYFrontend extends NPCRoom implements JasonZSupport{
 			mapRow ++;
 			mapCol = 0;
 		}
-		CaveExplorer.inventory.updateMap((CaveRoom[][])map);
 	}
 	
 //	public void rangeDisplay() {
