@@ -30,12 +30,12 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	
 	public static final void main(String[] args) {
 		in = new Scanner(System.in);
-		JasonYFrontend demo = new JasonYFrontend(0, 0);
+		JasonYFrontend demo = new JasonYFrontend(0, 0, null);
 		demo.play();
 	}
 	
-	public JasonYFrontend(int row, int col) {
-		super(caves);
+	public JasonYFrontend(int row, int col, CaveRoom[][] c) {
+		super(c);
 		this.row = row; 
 		this.col = col;
 		createMap(2);
@@ -194,7 +194,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		}
 	}	
 	
-	public String getContents() {
+	public String getSymbol() {
 		return "P";
 	}
 }

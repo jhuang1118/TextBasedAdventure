@@ -182,8 +182,8 @@ public class CaveRoom {
 		//c[1][1] = new MiniGameStarter("");
 
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
-		NPC testNPC = new NPC(c);
-		testNPC.setPosition(1,2);
+		JasonYFrontend testNPC = new JasonYFrontend(5,5,c);
+		testNPC.setPosition(5,5);
 		CaveExplorer.police = new NPC[1];
 		CaveExplorer.police[0] = testNPC;
 		c[2][3] = new EthanRoomBackEnd("");
