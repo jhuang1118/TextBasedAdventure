@@ -83,7 +83,7 @@ public class JasonYFrontend extends NPCRoom implements JasonZSupport{
 //			map[coords[0]][coords[1]+1] = " - ";//right
 //			map[coords[0]][coords[1]-1] = " - ";//left
 //		}
-//	}
+//	} 
 	
 	public void play() {
 		introduction();
