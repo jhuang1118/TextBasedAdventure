@@ -107,7 +107,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			mapCol = 0;
 		}
 	}
-	 
+	  
 //	public void rangeDisplay() {
 		//colors in a number of boxes in all directions based on the range of the gun
 		//should be colored red 
