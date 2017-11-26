@@ -89,17 +89,22 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		for(int row = startRoom[0]; row < finalRoom[0]+1; row++) {
 			for(int col = startRoom[1]; col < finalRoom[1]+1; col++) {
 				map[mapRow][mapCol] = (NPCRoom) caves[row][col];
+				NPCRoom c = map[mapRow][mapCol];
+				c.setDescription("You are at "+mapRow+", "+mapCol);
+				c.row = mapRow;
+				c.col = mapCol;
+				
 				if(col == finalRoom[1]) {
-					map[mapRow][mapCol].removeRoom(CaveRoom.EAST);
+					c.removeRoom(CaveRoom.EAST);
 				}
 				if(col == startRoom[1]) {
-					map[mapRow][mapCol].removeRoom(CaveRoom.WEST);
+					c.removeRoom(CaveRoom.WEST);
 				}
 				if(row == finalRoom[0]) {
-					map[mapRow][mapCol].removeRoom(CaveRoom.SOUTH);
+					c.removeRoom(CaveRoom.SOUTH);
 				}	
 				if(row == startRoom[0]) {
-					map[mapRow][mapCol].removeRoom(CaveRoom.NORTH);
+					c.removeRoom(CaveRoom.NORTH);
 				}
 				mapCol++;
 			}

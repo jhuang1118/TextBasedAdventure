@@ -26,8 +26,8 @@ public class JasonZBackend implements JasonYSupport {
 		changeDifficulty(difficulty);
 		Swat = new JasonZSwat[quantity];
 		this.gun = new JasonZGuns(TYPE[0]);
-		this.starterRow = (int) (floor.length)/2;
-		this.starterCol = (int) (floor[0].length)/2;
+		JasonZBackend.starterRow = 3;
+		JasonZBackend.starterCol = 3;
 		setValidRooms(floor);
 		this.cave = floor;
 	}
