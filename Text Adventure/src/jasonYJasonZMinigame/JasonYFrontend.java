@@ -27,8 +27,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 
 	public JasonYFrontend(int row, int col, CaveRoom[][] c) {
 		super(row, col, c);
-		createMap(2);
-		backend = new JasonZBackend(this, 1, map);
 		String[] temp = {"easy", "casual", "hard", "extreme", "hell"};
 		difficultyWords = temp;
 		hp = 100;
@@ -37,7 +35,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	public void createMap(int size) {
 		//creates the map
 		//get current position of player
-		map = new NPCRoom[(size*2)+1][(size*2)+1];
 		caves = CaveExplorer.caves;
 		int[] coords = new int[2];
 		if(getCurrentRow() > 0 && getCurrentCol() > 0)
@@ -85,12 +82,12 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		}
 		else
 		{
-			finalRoom[1] = coords[1] + size;
+			finalRoom[1] = coords[1] + size ;
 		}
-		
+		map = new NPCRoom[finalRoom[0] - startRoom[0]+1][finalRoom[1]- startRoom[1]+1];
 		int mapRow = 0;
 		int mapCol = 0;
-		for(int row = startRoom[0]; row < finalRoom[0] +1; row++) {
+		for(int row = startRoom[0]; row < finalRoom[0]+1; row++) {
 			for(int col = startRoom[1]; col < finalRoom[1]+1; col++) {
 				map[mapRow][mapCol] = (NPCRoom) caves[row][col];
 				mapCol++;
@@ -116,6 +113,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	
 	public void play() {
 		introduction();
+		backend = new JasonZBackend(this, 1, map);
 		while(hp != 0 || neededKills != 0) {
 			System.out.println("What would you like to do?");
 			String input = in.nextLine();
@@ -181,7 +179,8 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		}				
 		int index = returnIndex(input,difficultyWords);
 		createMap(2);
-		CaveExplorer.inventory.updateMap(map); 
+		CaveExplorer.inventory.updateMap(map);
+		System.out.println(CaveExplorer.inventory.getDescription());
 		populateMap(index);
 	}
 
