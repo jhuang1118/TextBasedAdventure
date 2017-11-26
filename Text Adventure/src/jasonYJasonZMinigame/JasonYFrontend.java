@@ -182,10 +182,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		System.out.println("Cops will spawn when you enter the game. Cops will continue to spawn after a "
 				+ "certian amount of time has passed when playing. You need to kill a number of cops to "
 				+ "win the game. If they kill you that's it.");
-		introTwo();
-	}
-	
-	public void introTwo() {
 		System.out.println("So do you want to play? Enter 'p' to play. Enter 'c' for controls");
 		String input = in.nextLine();
 		while(!input.toLowerCase().equals("p")) {			
