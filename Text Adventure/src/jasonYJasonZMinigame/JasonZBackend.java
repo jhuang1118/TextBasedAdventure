@@ -185,9 +185,9 @@ public class JasonZBackend implements JasonYSupport {
 		if(currentRoom.borderingRooms[dir] != null && currentRoom.doors[dir] != null && currentRoom.doors[dir].isOpen()){
 			
 			currentRoom = currentRoom.borderingRooms[dir];
-			starterRow = currentRoom.borderingRooms[dir].row;
-			starterCol = currentRoom.borderingRooms[dir].col;
 			cave[starterRow][starterCol].leave();
+			starterRow = currentRoom.row;
+			starterCol = currentRoom.col;
 			CaveExplorer.currentRoom.enter();
 		}
 		else {
