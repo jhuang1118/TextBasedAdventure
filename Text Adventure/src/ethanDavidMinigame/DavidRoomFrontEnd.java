@@ -204,7 +204,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 
 	@Override
 	public void displayPowerup() {
-		System.out.println(" Also you have " + ethanRoom.getInvincibleCounter() + " chances to block the lasers.");
+		System.out.println(" You have " + ethanRoom.getInvincibleCounter() + " chances to block the lasers.");
 		
 	}
 
