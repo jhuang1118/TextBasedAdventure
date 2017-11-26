@@ -11,7 +11,7 @@ public class CaveExplorer {
 	public static CaveRoom currentRoom;//changes as the user moves
 	public static Inventory inventory;
 	public static boolean playing = true;
-	public static NPC[] police;
+	public static JasonYFrontend[] police;
 	public static NPC[] npcs;
 	
 	
@@ -43,7 +43,7 @@ public class CaveExplorer {
 	private static void moveNPCs() {
 		if(police != null)
 		{
-			for(NPC n: police)
+			for(JasonYFrontend n: police)
 			{
 				n.autoMove();
 			}
