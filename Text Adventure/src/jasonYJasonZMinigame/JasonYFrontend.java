@@ -19,7 +19,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	public int copCounter;
 	public int neededKills;
 	public int hp;
-	public JasonZSwat[] npc;
 	public static CaveRoom[][] caves;
 	public NPCRoom[][] map;
 	public Door[] doors;
@@ -120,8 +119,8 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			System.out.println("What would you like to do?");
 			String input = in.nextLine();
 			backend.validInput(input);	
-			if(npc != null) {
-				for(JasonZSwat p: npc){
+			if(JasonZBackend.Swat != null) {
+				for(JasonZSwat p: JasonZBackend.Swat){
 					if( p != null){
 						p.calculateMove(coords[0], coords[1]);
 					}
