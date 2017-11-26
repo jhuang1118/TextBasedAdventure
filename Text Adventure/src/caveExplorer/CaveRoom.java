@@ -1,5 +1,6 @@
 package caveExplorer;
 
+import ethanDavidMinigame.DavidEthanRoom;
 import ethanDavidMinigame.EthanRoomBackEnd;
 import ethanDavidMinigame.VaultRoom;
 import johnsonDanielMinigame.MiniGameStarter;
@@ -153,7 +154,6 @@ public class CaveRoom {
 				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
 			}
 		}
-		c[9][5] = new EthanRoomBackEnd("");
 		c[1][1] = new MiniGameStarter("");
 		NPC testNPC = new NPC();
 		testNPC.setPosition(1,2);
