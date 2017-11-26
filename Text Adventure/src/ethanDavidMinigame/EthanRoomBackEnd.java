@@ -20,7 +20,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 
 	public EthanRoomBackEnd(EthanSupport frontend) {
 		this.frontend = frontend;
-		MONEY_CUT_OFF = 70000;
+		MONEY_CUT_OFF = 65000;
 		currMoney = 0;
 		lost = false;
 	}
@@ -159,11 +159,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 	@Override
 	public Object victorious() {
 		return stillPlaying(currMoney) == true;
-	}
-
-	@Override
-	public void startTimer() {
-		
 	}
 
 	public void addInvincibility(DavidEthanRoom[][] room, int row, int col) {

@@ -2,11 +2,9 @@ package ethanDavidMinigame;
 
 public interface DavidSupport {
 
-	int MONEY_CUT_OFF = 50000;
+	int MONEY_CUT_OFF = 65000;
 
 	String getValidUserInput();
-
-	void startTimer();
 
 	Object victorious();
 

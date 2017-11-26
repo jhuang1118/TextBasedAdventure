@@ -136,9 +136,11 @@ public class DavidRoomFrontEnd implements EthanSupport {
 				System.out.println("Thank goodness! Your powerup saved you!");
 				displayPowerup();
 			}
-			System.out.println("went out of statement."); //debug
+			//System.out.println("went out of statement."); debug
+			else {
 			backend.setLost(true);
 			backend.checkLose();
+			}
 		}
 	}
 
@@ -164,7 +166,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		backend = new EthanRoomBackEnd(this);
 		ethanRoom = new EthanRoomBackEnd(this);
 		rooms = new DavidEthanRoom[5][15];
-		car = new DavidCar();
+		//car = new DavidCar();
 		for(DavidEthanRoom[] row: rooms) {
 			for(int col = 0; col < row.length; col++) {
 				row[col] = new DavidEthanRoom();
