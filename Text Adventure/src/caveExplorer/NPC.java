@@ -1,12 +1,14 @@
 package caveExplorer;
 
+import jasonYJasonZMinigame.JasonYFrontend;
+
 public class NPC {
 
 	//fields needed to program navigation 
 	private CaveRoom[][] floor;
 	private int currentRow; 
 	private int currentCol;
-	private NPCRoom currentRoom; 
+	private NPCRoom currentRoom;
 	
 	//fields for interaction commment
 	private boolean active;
@@ -14,9 +16,10 @@ public class NPC {
 	private String inactiveDescription; 
 	//you can add more
 	
+	public int[][] possibleMoves = {{-1,0}, {0,1}, {1, 0},{0,-1}};
 	
-	public NPC() {
-		this.floor = CaveExplorer.caves;
+	public NPC(CaveRoom[][] cave) {
+		this.floor = cave;
 		this.activeDescription = "There is a person standing in the room, waiting to talk to you. Press 'e' to talk";
 		this.inactiveDescription = "The person you spoke to earlier is standing here.";
 		this.currentCol = -1; 
@@ -29,7 +32,28 @@ public class NPC {
 		return active;
 	}
 	
-	
+	public int[] getCoords() {
+		int[] coords = new int[2];
+		coords[0] = currentRow;
+		coords[1] = currentCol;
+		return coords;
+	}
+
+	public int getCurrentRow() {
+		return currentRow;
+	}
+
+	public void setCurrentRow(int currentRow) {
+		this.currentRow = currentRow;
+	}
+
+	public int getCurrentCol() {
+		return currentCol;
+	}
+
+	public void setCurrentCol(int currentCol) {
+		this.currentCol = currentCol;
+	}
 
 	public void setActive(boolean active) {
 		this.active = active;
@@ -77,17 +101,21 @@ public class NPC {
 	public void autoMove() {
 		if(active)
 		{
-			int[] move = calculateMove();
+			int[] move = calculateMove(currentRow, currentCol);
 			int newRow = move[0];
 			int newCol = move[1];
 			setPosition(newRow, newCol);
+			int playerRow = currentRoom.getRow();
+			int playerCol = currentRoom.getCol();
+			if(newRow == playerRow && newCol == playerCol) {
+				JasonYFrontend.play();
+			}
 		}
 		
 	}
 
-	private int[] calculateMove() {
+	public int[] calculateMove(int userRow, int userCol) {
 								//North East	South	West
-		int[][] possibleMoves = {{-1,0}, {0,1}, {1, 0},{0,-1}};
 		int index = (int)(Math.random() * possibleMoves.length);
 		int[] newPosition = new int[2]; 
 		newPosition[0] = currentRow + possibleMoves[index][0];

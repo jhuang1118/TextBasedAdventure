@@ -47,7 +47,7 @@ public class Inventory {
 	public static void updateMap(CaveRoom[][] caves) {
 		map = " ";
 		// make for. line across top:
-		for(int i = 0; i< caves[0].length -1; i++)
+		for(int i = 0; i< caves.length -1; i++)
 		{
 			map += "____";//4
 		}
@@ -98,6 +98,7 @@ public class Inventory {
 				map += text +"\n";
 			}
 		}
+		
 	}
 	public String getDescription()
 	{

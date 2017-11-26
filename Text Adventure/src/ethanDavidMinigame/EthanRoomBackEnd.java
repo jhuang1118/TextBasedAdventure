@@ -130,6 +130,23 @@ public class EthanRoomBackEnd implements DavidSupport{
 		return true;
 	}
 
+	public boolean stillPlaying() {
+		if(MONEY_CUT_OFF/4 == currMoney) {
+			activateAI();
+			System.out.println("The security has launched it's ai to prevent you from earning more $!");
+			
+		}
+		return MONEY_CUT_OFF == 100000;
+	}
+
+	private void activateAI() {
+		// TODO Auto-generated method stub
+		/**
+		 * override to create response to keys other than wdsa
+		 * @param direction
+		 */
+	}
+
 	@Override
 	public String getValidUserInput() {
 		return null;

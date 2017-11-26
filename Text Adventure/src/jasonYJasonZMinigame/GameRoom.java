@@ -1,30 +1,19 @@
 package jasonYJasonZMinigame;
 
-public class GameRoom {
+import caveExplorer.CaveRoom;
+
+public class GameRoom extends CaveRoom{
 
 	private int row;
 	private int col;
 	private boolean isObstacle;
 	
-	public GameRoom(){
+	public GameRoom(int row, int col){
+		super("empty area", row, col);
 		isObstacle = false;
-	}
-
-	public int getRow() {
-		return row;
-	}
-
-	public void setRow(int row) {
 		this.row = row;
-	}
-
-	public int getCol() {
-		return col;
-	}
-
-	public void setCol(int col) {
 		this.col = col;
-	}
+	} 
 
 	public boolean isObstacle() {
 		return isObstacle;
