@@ -37,9 +37,10 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	
 	public void printGameOverMessage(Object victorious) {
 		if(ethanRoom.getCurrMoney() >= 65000) {
+			car = new DavidCar();
 			System.out.println("You collected enough money. Now get to the car!");
 			CaveExplorer.startExploring();
-			//car.setPosition(9,20);
+			car.setPosition(9,20);
 		}else {
 			System.out.println("You're dead.");
 		}
@@ -164,7 +165,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		backend = new EthanRoomBackEnd(this);
 		ethanRoom = new EthanRoomBackEnd(this);
 		rooms = new DavidEthanRoom[5][15];
-		car = new DavidCar();
 		for(DavidEthanRoom[] row: rooms) {
 			for(int col = 0; col < row.length; col++) {
 				row[col] = new DavidEthanRoom();

@@ -1,13 +1,10 @@
 package caveExplorer;
 
-<<<<<<< HEAD
 import ethanDavidMinigame.DavidEthanRoom;
 import ethanDavidMinigame.EthanRoomBackEnd;
 import ethanDavidMinigame.VaultRoom;
 import johnsonDanielMinigame.MiniGameStarter;
 
-=======
->>>>>>> refs/heads/master
 public class CaveRoom {
 	
 	public static int[] getCoordinates() {
@@ -80,21 +77,12 @@ public class CaveRoom {
 				doorFound = true;
 				directions += "There is a " + doors[i].getDescription() 
 				+ " to the " + toDirection(i) + ". " + doors[i].getDetails() + "\n";
-<<<<<<< HEAD
-				
-=======
->>>>>>> refs/heads/master
 			}
 		}
-<<<<<<< HEAD
 		
 		if(!doorFound) {
 			directions = "You're trapped in this room!";
 		}
-		
-
-=======
->>>>>>> refs/heads/master
 	}
 	
 	/**
@@ -177,18 +165,11 @@ public class CaveRoom {
 	/**
 	 * THIS IS WHERE YOU EDIT YOUR CAVES 
 	 */
-
-	public static void setUpCaves()
-	{
-		CaveExplorer.caves = new CaveRoom[20][20];
-		CaveRoom[][] c = CaveExplorer.caves; // the vault room
-		
-=======
+	
 	public static void setUpCaves()
 	{
 		CaveExplorer.caves = new NPCRoom[20][20];
 		CaveRoom[][] c = CaveExplorer.caves; // shortcut
->>>>>>> refs/heads/master
 		for(int row = 0; row < c.length; row++)
 		{
 			for(int col = 0; col < c[row].length; col ++)
@@ -198,7 +179,7 @@ public class CaveRoom {
 		}
 
 		c[1][1] = new MiniGameStarter("");
-		NPC testNPC = new NPC();
+		NPC testNPC = new NPC(c);
 		testNPC.setPosition(1,2);
 		CaveExplorer.police = new NPC[1];
 		CaveExplorer.police[0] = testNPC;
