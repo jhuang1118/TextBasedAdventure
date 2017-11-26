@@ -90,16 +90,16 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			for(int col = startRoom[1]; col < finalRoom[1]+1; col++) {
 				map[mapRow][mapCol] = (NPCRoom) caves[row][col];
 				if(col == finalRoom[1]) {
-					map[mapRow][mapCol].setConnection(3,map[mapRow][mapCol],new Door());
+					map[mapRow][mapCol].removeRoom(CaveRoom.EAST);
 				}
 				if(col == startRoom[1]) {
-					map[mapRow][mapCol].setConnection(1,map[mapRow][mapCol],new Door());
+					map[mapRow][mapCol].removeRoom(CaveRoom.WEST);
 				}
 				if(row == finalRoom[0]) {
-					map[mapRow][mapCol].setConnection(0,map[mapRow][mapCol],new Door());
+					map[mapRow][mapCol].removeRoom(CaveRoom.SOUTH);
 				}	
 				if(row == startRoom[0]) {
-					map[mapRow][mapCol].setConnection(0,map[mapRow][mapCol],new Door());
+					map[mapRow][mapCol].removeRoom(CaveRoom.NORTH);
 				}
 				mapCol++;
 			}
@@ -127,7 +127,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		backend = new JasonZBackend(this, 1, map);
 		System.out.println(CaveExplorer.inventory.getMap());
 		while(hp != 0 || neededKills != 0) {
-			int[] coords = CaveExplorer.currentRoom.getCoordinates(CaveExplorer.currentRoom);
+			int[] coords = {JasonZBackend.starterRow, JasonZBackend.starterCol};
 			System.out.println("You are at coordinates (" + coords[0]+ ", " + coords[1] + ").");
 			System.out.println("What would you like to do?");
 			String input = in.nextLine();
@@ -304,8 +304,8 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	}
 	private int checkDirection() {
 		//
-		int row = CaveExplorer.currentRoom.getRow(CaveExplorer.currentRoom);
-		int col = CaveExplorer.currentRoom.getCol(CaveExplorer.currentRoom);
+		int row = CaveRoom.getRow(CaveExplorer.currentRoom);
+		int col = CaveRoom.getCol(CaveExplorer.currentRoom);
 		if(this.getCurrentRow() -  row> 0)
 		{
 			return 0;

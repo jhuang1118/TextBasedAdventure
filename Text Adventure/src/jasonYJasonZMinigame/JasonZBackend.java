@@ -13,7 +13,7 @@ public class JasonZBackend implements JasonYSupport {
 	public final static String[][] TYPE = {{"M16", "0"}, {"AR15","0"},{"Beretta 9000", "1"}, {"Beretta Cheetah", "1"}, {"Calico M960", "2"},{"Jatimatic","2"}};
 	public static JasonZSwat[] Swat;
 	public int direction = 0;
-	public static int quantity;
+	public static int quantity = 10;
 	public static int killCount;
 	public static double[] difficulty = {1, 1.1, 1.3, 1.5, 2};
 	public NPCRoom[][] validRooms;//north, east, south, west.
@@ -26,10 +26,10 @@ public class JasonZBackend implements JasonYSupport {
 		changeDifficulty(difficulty);
 		Swat = new JasonZSwat[quantity];
 		this.gun = new JasonZGuns(TYPE[0]);
-		starterRow = (int) (floor.length)/2;
-		starterCol = (int) (floor[0].length)/2;
+		this.starterRow = (int) (floor.length)/2;
+		this.starterCol = (int) (floor[0].length)/2;
 		setValidRooms(floor);
-		cave = floor;
+		this.cave = floor;
 	}
 	 
 	private void setValidRooms(NPCRoom[][] floor) {
@@ -80,7 +80,7 @@ public class JasonZBackend implements JasonYSupport {
 	{
 		for(int i =0; i<quantity; i++)
 		{
-			if(Swat[i] == null)
+			if(Swat[i] != null)
 			{
 				Swat[i] = new JasonZSwat(row,col,cave, checkNullCops());
 				Swat[i].makeGuns(TYPE[(int) (Math.random()*TYPE.length)]);
@@ -163,16 +163,48 @@ public class JasonZBackend implements JasonYSupport {
 
 	@Override
 	public void validInput(String input) {
-		if( input.equals("f"))
-		{
-			attack();
+		while(!isValid(input)) {
+			printValidMoves();
+			input = CaveExplorer.in.nextLine();
 		}
-		else
-		{
-			CaveExplorer.currentRoom.interpretInput(input);
+		int direction = validMoves().indexOf(input);
+		if(direction < 4) {
+			/*
+			 * convert w,a,s,d to directions 0,3,2,1
+			 */
+			goToRoom(direction);
+		}else {
+			attack();
 		}
 		//if it is a valid input ....
 		
+	}
+
+	private void goToRoom(int dir) {
+		NPCRoom currentRoom = cave[starterRow][starterCol];
+		if(currentRoom.borderingRooms[dir] != null && currentRoom.doors[dir] != null && currentRoom.doors[dir].isOpen()){
+			
+			currentRoom = currentRoom.borderingRooms[dir];
+			starterRow = currentRoom.borderingRooms[dir].row;
+			starterCol = currentRoom.borderingRooms[dir].col;
+			cave[starterRow][starterCol].leave();
+			CaveExplorer.currentRoom.enter();
+		}
+		else {
+				CaveExplorer.inventory.updateMap(CaveExplorer.caves);
+		}
+	}
+
+	private String validMoves() {
+		return "wdsaf";
+	}
+
+	private boolean isValid(String input) {
+		return validMoves().indexOf(input) != -1 && input.length() == 1;
+	}
+
+	private void printValidMoves() {
+		System.out.println("You can only enter 'w', 'a', 's', 'd,' or 'f'.");
 	}
 
 	private void ArrowKeys(KeyEvent event) {
