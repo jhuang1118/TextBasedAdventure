@@ -107,7 +107,9 @@ public class Inventory {
 		return map + "\n" + "Also you have " + getCash() + " cash \n";
 	}
 
-
+	public String getMap() {
+		return map;
+	}
 	
 	public void updateHP(int dmg) {
 		hp -= dmg;

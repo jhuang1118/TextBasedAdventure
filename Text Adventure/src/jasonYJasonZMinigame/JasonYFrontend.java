@@ -115,16 +115,19 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		introduction();
 		backend = new JasonZBackend(this, 1, map);
 		while(hp != 0 || neededKills != 0) {
+			int[] coords = CaveExplorer.currentRoom.getCoordinates(CaveExplorer.currentRoom);
+			System.out.println("You are at coordinates (" + coords[0] + ", " + coords[1] + ").");
 			System.out.println("What would you like to do?");
 			String input = in.nextLine();
-			backend.validInput(in.nextLine());
-			int[] coords = CaveExplorer.currentRoom.getCoordinates(CaveExplorer.currentRoom);
+			backend.validInput(input);	
 			for( JasonZSwat p: npc)
 			{
 				p.calculateMove(coords[0], coords[1]);
 			}
+			CaveExplorer.inventory.updateMap(map);
 			killCounter();
 			copCounter();
+			System.out.println(CaveExplorer.inventory.getMap());
 		}
 		if(hp == 0) {
 			System.out.println("GAME OVER!");
@@ -180,7 +183,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		int index = returnIndex(input,difficultyWords);
 		createMap(2);
 		CaveExplorer.inventory.updateMap(map);
-		System.out.println(CaveExplorer.inventory.getDescription());
+		System.out.println(CaveExplorer.inventory.getMap());
 		populateMap(index);
 	}
 
