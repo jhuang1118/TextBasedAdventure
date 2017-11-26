@@ -15,11 +15,11 @@ public class DavidCar extends NPCRoom {
 	}
 	
 	public String getDescription() {
-		if(!canEnter()) {
-			return "You can't leave yet remember? We came to this town for one thing\nand one thing only. Go get "
-					+ "the money!";
+		if(canEnter()) {
+			return "Great you got the cash! Quickly, press 'e' so we can get out of here!";
 		}
-		return "Great you got the cash! Quickly, press 'e' so we can get out of here!";
+		return "You can't leave yet remember? We came to this town for one thing\nand one thing only. Go get "
+		+ "the money!";
 	} 
 	
 	public boolean canEnter() {
