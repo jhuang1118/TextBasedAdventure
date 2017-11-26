@@ -111,10 +111,9 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 
 	public void cheat() {
-		DavidRoomFrontEnd cheating1 = new DavidRoomFrontEnd();
 		if(cheating) {
 			currMoney = MONEY_CUT_OFF;
-			cheating1.displayMoney();
+			frontend.displayMoney();
 		}	
 	}
 	
