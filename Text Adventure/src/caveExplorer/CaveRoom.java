@@ -144,8 +144,6 @@ public class CaveRoom {
 	public static void setUpCaves()
 	{
 		CaveExplorer.caves = new CaveRoom[20][20];
-		//CaveExplorer.caves = new CaveRoom[15][15];
-		//CaveRoom[][] m = CaveExplorer.caves; 
 		CaveRoom[][] c = CaveExplorer.caves; // the vault room
 		
 		for(int row = 0; row < c.length; row++)
@@ -155,19 +153,8 @@ public class CaveRoom {
 				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
 			}
 		}
-		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
-		/* NPC testNPC = new NPC();
-		testNPC.setPosition((int)(Math.random() * c.length),(int)(Math.random()* c.length));
-		CaveExplorer.police = new NPC[1];
-		CaveExplorer.police[0] = testNPC; */
-		
-<<<<<<< HEAD
-
-=======
 		c[9][5] = new EthanRoomBackEnd("");
 		c[1][1] = new MiniGameStarter("");
-
-		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		NPC testNPC = new NPC();
 		testNPC.setPosition(1,2);
 		CaveExplorer.police = new NPC[1];
@@ -175,22 +162,8 @@ public class CaveRoom {
 		testNPC.setPosition(3,4);
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = testNPC;
-		//Set Starting Room
-		//3. Replace some default rooms with custom rooms (SAVE FOR LATER)
-		/*NPC testNPC = new NPC();
-		testNPC.setPosition(1,2);
-		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs[0] = testNPC;*/	
-		/*NPC enemy = new Enemy();
-		enemy.setPosition(1, 2);
-		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs[0] = enemy; */
-		//4. Set starting room
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
-
-		//5. Set up doors 
-		
 		setupStore();
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
 		c[1][1].setConnection(EAST, c[1][2], new Door());
