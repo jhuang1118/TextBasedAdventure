@@ -7,6 +7,7 @@ import caveExplorer.DavidCar;
 
 public class DavidRoomFrontEnd implements EthanSupport {
 	
+	private CaveExplorer CaveExplorer;
 	private DavidEthanRoom[][] rooms;
 	private int currentRow;
 	private int currentCol;
@@ -39,8 +40,8 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		if(ethanRoom.getCurrMoney() >= 65000) {
 			car = new DavidCar();
 			System.out.println("You collected enough money. Now get to the car!");
-			CaveExplorer.startExploring();
-			car.setPosition(9,20);
+			CaveExplorer.main(null);
+			car.setPosition(9,10);
 		}else {
 			System.out.println("You're dead.");
 		}

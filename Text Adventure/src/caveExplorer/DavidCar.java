@@ -79,7 +79,7 @@ public class DavidCar extends NPC{
 		return newPosition;
 	}
 	
-	private boolean enteredCar() {
+	public boolean enteredCar() {
 		return false;
 	}
 
