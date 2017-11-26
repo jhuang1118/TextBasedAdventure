@@ -36,8 +36,8 @@ public class CaveRoom {
 		//...('X' when you are in the room)
 	private String defaultContents;//what is in the room when you aren't in the room 
 	
-	private NPCRoom[] borderingRooms;
-	private Door[] doors;
+	public NPCRoom[] borderingRooms;
+	public Door[] doors;
 	public int row;
 	public int col;
 	
@@ -124,6 +124,11 @@ public class CaveRoom {
 		borderingRooms[dir] = caveRoom;
 		doors[dir] = door;
 		setDirections();//updates the directions 
+	}
+	public void removeRoom(int dir)
+	{
+		borderingRooms[dir] = null;
+		setDirections();
 	}
 	
 	public void interpretInput(String input) {
