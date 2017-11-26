@@ -186,10 +186,11 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			input = in.nextLine();
 		}				
 		int index = returnIndex(input,difficultyWords);
-		createMap(2);
+		createMap(2);		
+		populateMap(index);
 		CaveExplorer.inventory.updateMap(map);
 		System.out.println(CaveExplorer.inventory.getMap());
-		populateMap(index);
+
 	}
 
 	public void controls() {
