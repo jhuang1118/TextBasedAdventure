@@ -2,7 +2,7 @@ package ethanDavidMinigame;
 
 public class EthanRoomBackEnd implements DavidSupport{
 	
-	int MONEY_CUT_OFF;
+	public int MONEY_CUT_OFF;
 	private int currMoney;
 	private int invincibleCounter;
 	private boolean cheating;

@@ -18,7 +18,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	public EthanRoomBackEnd ethanRoom;
 	
 	private DavidSupport backend;
-	private DavidCar car;
 	
 	public static Scanner in;
 	
@@ -38,10 +37,8 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	
 	public void printGameOverMessage(Object victorious) {
 		if(ethanRoom.getCurrMoney() >= 65000) {
-			car = new DavidCar();
 			System.out.println("You collected enough money. Now get to the car!");
 			CaveExplorer.main(null);
-			car.setPosition(9,10);
 		}else {
 			System.out.println("You're dead.");
 		}

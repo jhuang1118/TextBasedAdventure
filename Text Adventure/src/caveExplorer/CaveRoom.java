@@ -175,6 +175,7 @@ public class CaveRoom {
 		//Set up doors
 		
 		c[5][5] = new VaultRoom(null);
+		c[9][9] = new DavidCar(null);
 		setConnectionForAll();
 	}
 
