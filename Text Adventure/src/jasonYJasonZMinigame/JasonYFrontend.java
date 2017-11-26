@@ -124,7 +124,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	
 	public void play() {
 		introduction();
-		backend = new JasonZBackend(this, 1, map);
 		System.out.println(CaveExplorer.inventory.getMap());
 		while(hp != 0 || neededKills != 0) {
 			int[] coords = {JasonZBackend.starterRow, JasonZBackend.starterCol};
@@ -196,7 +195,8 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			input = in.nextLine();
 		}				
 		int index = returnIndex(input,difficultyWords);
-		createMap(2);		
+		createMap(2);
+		backend = new JasonZBackend(this, 1, map);
 		populateMap(index);
 		CaveExplorer.inventory.updateMap(map);
 	}
