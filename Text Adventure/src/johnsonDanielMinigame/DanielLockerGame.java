@@ -4,12 +4,17 @@ import caveExplorer.CaveExplorer;
 
 public class DanielLockerGame {
 
+	int[][] placement= {{-1,0},{0,-1},{1,0},{0,1}};
+	//placement indicates how the User moves based on the User input
+	
 	private DanielLocker[][] theLockers;
+	private boolean onLocker;
 	int[] rows = {1,3};
 	int[] cols = {1,3,5};
-
+	
 	public DanielLockerGame() {
 		theLockers = new DanielLocker[6][6];
+		onLocker = false;
 		makeLocker(theLockers,1,1);
 		makeLocker(theLockers,1,3);
 		makeLocker(theLockers,1,5);
@@ -18,6 +23,14 @@ public class DanielLockerGame {
 		makeLocker(theLockers,3,5);
 	}
 	
+	public boolean isOnLocker() {
+		return onLocker;
+	}
+
+	public void setOnLocker(boolean onLocker) {
+		this.onLocker = onLocker;
+	}
+
 	public static void main(String[] args) {
 		DanielLockerGame demo = new DanielLockerGame();
 		demo.play();
@@ -85,23 +98,71 @@ public class DanielLockerGame {
 	}
 
 	private String getValidUserInput() {
-		String tempInput = CaveExplorer.in.nextLine();
-		if(validInput(tempInput)==true) {
-			
+		String input = CaveExplorer.in.nextLine();
+		
+		while(!validInput(input)) {
+			System.out.print("Please enter 'w', 'a', 's', 'd'.");
+			input = CaveExplorer.in.nextLine();
+			return input;
 		}
+			
+		return input;
 		
-		
-		// write a method to see if the user's input is part of wasd and if it isn't, then you give them an error message
+	
 	}
 
 	private boolean validInput(String input) {
-		
+		String[] directions = {"w","a","s","d"};
+		if(input.length() == 1) {
+			for(int i = 0; i < directions.length; i++) {
+				if(input != directions[i]) {
+					return false;
+				}
+			}
+			return true;
+		}
 		return false;
 	}
 
+	public boolean isOnLocker(int row, int col) {
+		int[][] lockerpsns = {{1,1},{1,3},{1,5},{3,1},{3,3},{3,5}};
+		int[][] personpsn = {{row,col}};
+		int count = 0;
+		for(int i = 0; i < lockerpsns.length; i++) {
+			if(lockerpsns[i].equals(personpsn[0])) {
+				count++;
+			}
+		}
+		if(count > 0) {
+			return true;
+		}
+		return false;
+	
+	}
 	private void answer(String input) {
-		// write a method to interpret the input. For example, if the guy moves left then his col would shift left 1. If he 
-		// is one tile away, then 
+		if(input.equals("w") && isPossibleMove(placement[0])) {
+			move(placement[0]);
+		}
+		else if(input.equals("a") && isPossibleMove(placement[1])){
+			move(placement[1]);
+		}
+		else if(input.equals("s") && isPossibleMove(placement[2])) {
+			move(placement[2]);
+		}
+		else if(input.equals("d") && isPossibleMove(placement[3])) {
+			move(placement[3]);
+		}
+	}
+
+	private boolean isPossibleMove(int[] is) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private void move(int[] placement) {
+		if(isPossibleMove(int[])) {
+			
+		}
 		
 	}
 
