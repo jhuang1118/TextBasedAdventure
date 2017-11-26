@@ -234,8 +234,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	}
 
 	private void populateMap(int mode,int size) {
-		int baseNum = (int)(Math.random()*5);
-		int spawnNum = (int) (baseNum * JasonZBackend.difficulty[mode]);
+		int spawnNum = mode;
 		int[] coords = new int[2];
 		if(getCurrentRow() > 0 && getCurrentCol() > 0)
 		{
