@@ -15,7 +15,7 @@ public class JasonZBackend implements JasonYSupport {
 	public static int quantity = 10;
 	public static int killCount;
 	public static double[] difficulty = {1, 1.1, 1.3, 1.5, 2};
-	public NPCRoom[][] validRooms;//north, east, south, west.
+	public JasonZSwat[] validTarget;
 	public static NPCRoom[][] cave;
 	public static int starterRow;
 	public static int starterCol;
@@ -30,12 +30,13 @@ public class JasonZBackend implements JasonYSupport {
 		this.cave = floor;
 	}
 	 
-	private void setValidRooms(NPCRoom room) {
+	private void setValidTarget(NPCRoom room) {
 		int r = gun.getRange();
-		validRooms = new NPCRoom[2][2*r];
-		int counter = 0;
+		validTarget = new JasonZSwat[r*4];
 		int startR = starterRow -r;
 		int startC = starterCol-r;
+		int finalR = starterRow +r;
+		int finalC = starterCol +r;
 		if(startR < 0)
 		{
 			startR = 0;
@@ -44,23 +45,32 @@ public class JasonZBackend implements JasonYSupport {
 		{
 			startC = 0;
 		}
-		for(int row = startR; row < (starterRow + r); row ++)
+		if( finalR > cave.length)
 		{
-			if(row < cave.length)
-			{ 
-				validRooms[0][counter] = cave[row][starterCol];
-				counter ++;
+			finalR = cave.length;
+		}
+		if(finalC > cave[0].length)
+		{
+			finalC = cave[0].length;
+		}
+		int counter =0;
+		for(int row = startR; row < finalR; row ++)
+		{
+			NPCRoom c = cave[row][starterCol];
+			if(c.getNpc() != null)
+			{
+				validTarget[counter] = (JasonZSwat) c.getNpc();
+				counter++;
 			}
 		}
-		counter = 0;
-		for(int col = startC; col< (col + r); col ++)
+		for(int col = startC; col< finalC; col ++)
 		{
-			if(col < cave[starterRow].length)
+			NPCRoom c = cave[starterRow][col];
+			if(c.getNpc() != null)
 			{
-				validRooms[1][counter] = cave[starterRow][col];
-				counter ++;
+				validTarget[counter] = (JasonZSwat) c.getNpc();
+				counter++;
 			}
-			
 		}
 	}
 
@@ -103,25 +113,11 @@ public class JasonZBackend implements JasonYSupport {
 
 	public JasonZSwat firstPersonDir()
 	{
-		for(int i = 0; i<validRooms[0].length; i++)
+		for( JasonZSwat s: validTarget)
 		{
-			if(validRooms[0][i] != null)
+			if(s != null)
 			{
-				if(validRooms[0][i].containsNPC())
-				{
-					return (JasonZSwat) validRooms[0][i].getNpc();
-				}
-			}
-		}
-		
-		for(int i = 0; i<validRooms[1].length; i++)
-		{
-			if(validRooms[1][i] != null)
-			{
-				if(validRooms[1][i].containsNPC())
-				{
-					return (JasonZSwat) validRooms[1][i].getNpc();
-				}
+				return s;
 			}
 		}
 		return null;
@@ -190,8 +186,8 @@ public class JasonZBackend implements JasonYSupport {
 			cave[starterRow][starterCol].leave();
 			starterRow = currentRoom.row;
 			starterCol = currentRoom.col;
-			CaveExplorer.currentRoom.enter();
-			setValidRooms(currentRoom);
+			currentRoom.enter();
+			setValidTarget(currentRoom);
 		}
 	}
 
