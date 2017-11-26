@@ -125,9 +125,10 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	public void play() {
 		introduction();
 		backend = new JasonZBackend(this, 1, map);
+		System.out.println(CaveExplorer.inventory.getMap());
 		while(hp != 0 || neededKills != 0) {
 			int[] coords = CaveExplorer.currentRoom.getCoordinates(CaveExplorer.currentRoom);
-			System.out.println("You are at coordinates (" + coords[0] + ", " + coords[1] + ").");
+			System.out.println("You are at coordinates (" + coords[0]+ ", " + coords[1] + ").");
 			System.out.println("What would you like to do?");
 			String input = in.nextLine();
 			backend.validInput(input);	
@@ -198,8 +199,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		createMap(2);		
 		populateMap(index);
 		CaveExplorer.inventory.updateMap(map);
-		System.out.println(CaveExplorer.inventory.getMap());
-
 	}
 
 	public void controls() {
