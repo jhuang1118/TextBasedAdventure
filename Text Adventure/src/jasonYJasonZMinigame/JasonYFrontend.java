@@ -254,7 +254,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		{
 			startRoom[0] = coords[0] - size;
 			
-		}
+		} 
 		if(coords[1]-size < 0)
 		{
 			startRoom[1] = 0;
