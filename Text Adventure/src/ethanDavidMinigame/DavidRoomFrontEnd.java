@@ -38,7 +38,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	public void printGameOverMessage(Object victorious) {
 		if(ethanRoom.getCurrMoney() >= 70000) {
 			System.out.println("You collected enough money. Now get to the car!");
-			//method for returning to the main map
 			CaveExplorer.startExploring();
 			car.setPosition(9,20);
 		}else {
@@ -136,7 +135,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 				System.out.println("Thank goodness! Your powerup saved you!");
 				displayPowerup();
 			}
-			//System.out.println("went out of statement."); debug
 			else {
 			backend.setLost(true);
 			backend.checkLose();
@@ -166,7 +164,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		backend = new EthanRoomBackEnd(this);
 		ethanRoom = new EthanRoomBackEnd(this);
 		rooms = new DavidEthanRoom[5][15];
-		//car = new DavidCar();
+		car = new DavidCar();
 		for(DavidEthanRoom[] row: rooms) {
 			for(int col = 0; col < row.length; col++) {
 				row[col] = new DavidEthanRoom();
@@ -175,15 +173,12 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		changeRoom();
 	}
 
-	@Override
 	public void displayCheating() {
 		ethanRoom.setCheating(true);
 		ethanRoom.cheat();
 	}
 
-	@Override
 	public DavidEthanRoom[][] getRooms() {
-		// TODO Auto-generated method stub
 		return rooms;
 	}
 	
@@ -193,7 +188,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		ethanRoom.createPowerUps();
 	}
 
-	@Override
 	public void displayMoney() {
 		int moneyLeft = ethanRoom.MONEY_CUT_OFF - ethanRoom.getCurrMoney();
 		if(moneyLeft <= 0) {
@@ -204,7 +198,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 				+ " money.");
 	}
 
-	@Override
 	public void displayPowerup() {
 		System.out.println(" You have " + ethanRoom.getInvincibleCounter() + " chances to block the lasers.");
 		

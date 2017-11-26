@@ -76,7 +76,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 			Room[randArr[0]][randArr[1]].setMoney(2500 + (int)(Math.random() * 10000));
 		}
 	}
-	//bug not adding all the $ and L?
 	
 	public int[] randNums(DavidEthanRoom[][] room, int length) {
 		int[] myArr = new int[2];
@@ -119,7 +118,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 		}	
 	}
 	
-	@Override
 	public boolean stillPlaying(int money) {
 		if(lost == true) {
 			return false;
@@ -136,7 +134,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 			System.out.println("The security has launched it's ai to prevent you from earning more $!");
 			
 		}
-		return MONEY_CUT_OFF == 100000;
+		return MONEY_CUT_OFF == 65000;
 	}
 
 	private void activateAI() {
