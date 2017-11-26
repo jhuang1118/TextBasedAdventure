@@ -117,11 +117,14 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		while(hp != 0 || neededKills != 0) {
 			System.out.println("What would you like to do?");
 			String input = in.nextLine();
-			backend.validInput(in.nextLine());
+			backend.validInput(input);
 			int[] coords = CaveExplorer.currentRoom.getCoordinates(CaveExplorer.currentRoom);
 			for( JasonZSwat p: npc)
 			{
-				p.calculateMove(coords[0], coords[1]);
+				if( p != null)
+				{
+					p.calculateMove(coords[0], coords[1]);
+				}
 			}
 			killCounter();
 			copCounter();

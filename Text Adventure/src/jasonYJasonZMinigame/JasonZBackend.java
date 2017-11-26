@@ -15,7 +15,6 @@ public class JasonZBackend implements JasonYSupport {
 	public int direction = 0;
 	public static int quantity;
 	public static int killCount;
-	public double spawnTime = 3;
 	public static double[] difficulty = {1, 1.1, 1.3, 1.5, 2};
 	public NPCRoom[][] validRooms;//north, east, south, west.
 	public static NPCRoom[][] cave;
@@ -138,8 +137,6 @@ public class JasonZBackend implements JasonYSupport {
 	@Override
 	public void changeDifficulty(int i) {
 		changeGunStats(difficulty[i]);
-		changeSpawnTime((spawnTime*difficulty[i]));
-		
 	}
 
 
@@ -163,9 +160,6 @@ public class JasonZBackend implements JasonYSupport {
 		
 	}
 
-	public void changeSpawnTime(double spawnTime) {
-		this.spawnTime = spawnTime;
-	}
 
 	@Override
 	public void validInput(String input) {
