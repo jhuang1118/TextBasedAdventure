@@ -25,9 +25,10 @@ public class JasonZBackend implements JasonYSupport {
 		changeDifficulty(difficulty);
 		Swat = new JasonZSwat[quantity];
 		this.gun = new JasonZGuns(TYPE[0]);
-		JasonZBackend.starterRow = 3;
-		JasonZBackend.starterCol = 3;
+		JasonZBackend.starterRow = (int) Math.ceil(floor.length/2);
+		JasonZBackend.starterCol = (int) Math.ceil(floor[starterRow].length/2);
 		this.cave = floor;
+		setValidTarget(floor[starterRow][starterCol]);
 	}
 	 
 	private void setValidTarget(NPCRoom room) {

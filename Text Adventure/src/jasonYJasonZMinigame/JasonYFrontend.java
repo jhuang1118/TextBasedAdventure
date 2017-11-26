@@ -46,7 +46,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			coords[0] = 0;
 			coords[1] = 0;
 		}
-		
 		int[] startRoom = new int[2];
 		if( (coords[0]-size) < 0) 
 		{
