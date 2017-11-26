@@ -57,6 +57,6 @@ public class JasonZSwat extends NPC {
 	
 	public String getSymbol()
 	{
-		return "G";
+		return "S";
 	}
 }

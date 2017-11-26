@@ -121,10 +121,8 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			String input = in.nextLine();
 			backend.validInput(input);	
 			if(npc != null) {
-				for( JasonZSwat p: npc)
-				{
-					if( p != null)
-					{
+				for(JasonZSwat p: npc){
+					if( p != null){
 						p.calculateMove(coords[0], coords[1]);
 					}
 				}
@@ -226,8 +224,8 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		int baseNum = (int)(Math.random()*5);
 		int spawnNum = (int) (baseNum * JasonZBackend.difficulty[mode]);
 		for(int i = 0; i < spawnNum; i++) {
-			int randomRow = (int)(Math.random() * 5);
-			int randomCol = (int)(Math.random() * 5);
+			int randomRow = (int)(Math.random() * map.length);
+			int randomCol = (int)(Math.random() * map[0].length);
 			JasonZBackend.createPolice(randomRow, randomCol);
 		}
 	}	

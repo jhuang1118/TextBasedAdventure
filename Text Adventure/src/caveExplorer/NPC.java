@@ -86,7 +86,7 @@ public class NPC {
 	}
 
 	public void setPosition(int row, int col) {
-		if((row>= 0 && row< floor.length) && (col>=0 && col < floor[row].length) && floor[row][col] instanceof NPCRoom)
+		if((row>= 0 && row< floor.length) && (col>=0 && col < floor[row].length) && floor[row][col] instanceof NPCRoom) 
 		{
 			if(currentRoom != null)
 			{

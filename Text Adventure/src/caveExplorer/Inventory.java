@@ -37,7 +37,7 @@ public class Inventory {
 	{
 		setCash(0);
 		hp = 100;
-//		updateMap(CaveExplorer.caves);
+		updateMap(CaveExplorer.caves);
 	}
 	
 	public int getCash() {
