@@ -3,7 +3,7 @@ package caveExplorer;
 public class DavidCar extends NPC{
 
 	//fields needed to program navigation 
-	private CaveRoom[][] floor;
+	private static CaveRoom[][] floor;
 	private int currentRow; 
 	private int currentCol;
 	private NPCRoom currentRoom; 
@@ -15,6 +15,7 @@ public class DavidCar extends NPC{
 	
 	
 	public DavidCar() {
+		super(floor);
 		this.floor = CaveExplorer.caves;
 		this.activeDescription = "You have reached your car! Quickly press 'e' to enter the get-away car!";
 		this.currentCol = -1; 
