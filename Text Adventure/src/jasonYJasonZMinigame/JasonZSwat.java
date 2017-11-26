@@ -36,21 +36,21 @@ public class JasonZSwat extends NPC {
 	}
 	private int checkDirection() {
 		//
-		if(this.getCurrentRow() - CaveRoom.getRow() > 0)
+		if(this.getCurrentRow() - JasonZBackend.starterRow > 0)
 		{
 			return 0;
 		}
-		if(this.getCurrentRow() - CaveRoom.getRow() < 0)
+		if(this.getCurrentRow() - JasonZBackend.starterRow < 0)
 		{
-			return 3;
+			return 2;
 		}
-		if(this.getCurrentCol() - CaveRoom.getCol() >0)
+		if(this.getCurrentCol() - JasonZBackend.starterCol >0)
 		{
 			return 1;
 		}
-		if(this.getCurrentCol() - CaveRoom.getCol() < 0)
+		if(this.getCurrentCol() - JasonZBackend.starterCol < 0)
 		{
-			return 2;
+			return 3;
 		}
 		return 0;
 	}
