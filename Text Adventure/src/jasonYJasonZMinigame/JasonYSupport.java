@@ -6,6 +6,5 @@ public interface JasonYSupport {
 	void kickOff();
 	void increaseKillCount();
 	void changeDifficulty(int i);
-	void changeSpawnTime(double d);
 	void validInput(String input);
 }

@@ -122,7 +122,10 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			backend.validInput(input);	
 			for( JasonZSwat p: npc)
 			{
-				p.calculateMove(coords[0], coords[1]);
+				if( p != null)
+				{
+					p.calculateMove(coords[0], coords[1]);
+				}
 			}
 			CaveExplorer.inventory.updateMap(map);
 			killCounter();

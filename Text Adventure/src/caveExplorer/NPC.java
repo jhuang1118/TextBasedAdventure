@@ -5,7 +5,7 @@ import jasonYJasonZMinigame.JasonYFrontend;
 public class NPC {
 
 	//fields needed to program navigation 
-	private CaveRoom[][] floor;
+	public CaveRoom[][] floor;
 	private int currentRow; 
 	private int currentCol;
 	private NPCRoom currentRoom;
