@@ -1,13 +1,5 @@
 package caveExplorer;
 
-<<<<<<< HEAD
-import ethanDavidMinigame.DavidEthanRoom;
-import ethanDavidMinigame.EthanRoomBackEnd;
-import ethanDavidMinigame.VaultRoom;
-import johnsonDanielMinigame.MiniGameStarter;
-
-=======
->>>>>>> refs/heads/master
 public class CaveRoom {
 	
 	public static int[] getCoordinates() {
@@ -80,21 +72,8 @@ public class CaveRoom {
 				doorFound = true;
 				directions += "There is a " + doors[i].getDescription() 
 				+ " to the " + toDirection(i) + ". " + doors[i].getDetails() + "\n";
-<<<<<<< HEAD
-				
-=======
->>>>>>> refs/heads/master
 			}
 		}
-<<<<<<< HEAD
-		
-		if(!doorFound) {
-			directions = "You're trapped in this room!";
-		}
-		
-
-=======
->>>>>>> refs/heads/master
 	}
 	
 	/**
@@ -180,15 +159,8 @@ public class CaveRoom {
 
 	public static void setUpCaves()
 	{
-		CaveExplorer.caves = new CaveRoom[20][20];
-		CaveRoom[][] c = CaveExplorer.caves; // the vault room
-		
-=======
-	public static void setUpCaves()
-	{
 		CaveExplorer.caves = new NPCRoom[20][20];
 		CaveRoom[][] c = CaveExplorer.caves; // shortcut
->>>>>>> refs/heads/master
 		for(int row = 0; row < c.length; row++)
 		{
 			for(int col = 0; col < c[row].length; col ++)
@@ -196,41 +168,12 @@ public class CaveRoom {
 				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
 			}
 		}
-
-		c[1][1] = new MiniGameStarter("");
-		NPC testNPC = new NPC();
-		testNPC.setPosition(1,2);
-		CaveExplorer.police = new NPC[1];
-		CaveExplorer.police[0] = testNPC;
-		testNPC.setPosition(3,4);
-		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs[0] = testNPC;
+		
+		
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
-		setupStore();
+		//Set up doors
 		setConnectionForAll();
-		}
-	
-	private static void setupStore() {
-		for(int i = 18; i>15; i--)
-		{
-			for( int e = 0; e< 20; e++)
-			{
-				CaveExplorer.caves[i][e].setConnection(NORTH, CaveExplorer.caves[i][e], new Door());
-			}
-		}
-		//horizontal doors
-		for(int i = 19; i>15; i--)
-		{
-			for( int e =0; e<19; e++)
-			{
-				CaveExplorer.caves[i][e].setConnection(EAST, CaveExplorer.caves[i][e+1], new Door());
-			}
-		}
-		//vertical doors
-		//doors
-		CaveExplorer.caves[16][10].setConnection(NORTH, CaveExplorer.caves[15][10], new Door());
-		CaveExplorer.caves[16][9].setConnection(NORTH, CaveExplorer.caves[15][10], new Door());
 	}
 
 	private static void setConnectionForAll() {
@@ -253,8 +196,7 @@ public class CaveRoom {
 		{
 			c[i][c[i].length-1].setConnection(SOUTH, c[i][c[i].length-1], new Door());
 		}
-	} 
-	
+	}
 	/**
 	 * override to add more moves
 	 * @return
@@ -285,6 +227,11 @@ public class CaveRoom {
 		}
 
 	}
+		/* else
+		{
+			System.err.println("You can't do that");
+
+		} */
 	/**
 	 * returns the OPPOSITE direction
 	 * 		oD(0) returns 2
@@ -329,3 +276,4 @@ public class CaveRoom {
 	}
 
 }
+

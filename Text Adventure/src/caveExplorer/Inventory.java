@@ -4,37 +4,27 @@ import jasonYJasonZMinigame.JasonZGuns;
 
 public class Inventory {
 	
-
 	private boolean ID = false;
-	
-	
-	private String map;
-	private static int hp;
-	private boolean isKidnapped;
-	private boolean hasGun; 
-	private int key;
-	
-	
 	
 	public boolean isID() {
 		return ID;
 	}
-	
 	public void setID(boolean iD) {
 		ID = iD;
 	}
+
+	private static String map;
 
 	private int cash;
 	private String[] defaultGuns = {"M16", "0"};
 	JasonZGuns currentGun = new JasonZGuns(defaultGuns);
 
-
+	private static int hp;
 
 
 	public Inventory()
 	{
 		setCash(0);
-		hp = 100;
 		updateMap(CaveExplorer.caves);
 	}
 	
@@ -104,38 +94,13 @@ public class Inventory {
 	{
 		return map + "\n" + "Also you have " + getCash() + " cash \n";
 	}
-
-
-	
-	public void updateHP(int dmg) {
-		hp -= dmg;
-	}
-	
-	public  int getHP() {
-		return this.hp;
-	}
-	
-	public void toggleIsKidnapped() {
-		isKidnapped = !isKidnapped;
-	}
-	public boolean getIsKidnapped() {
-		return isKidnapped;
-	}
-	
-	public void getHasGun() {
-		hasGun = !hasGun;
-	}
-	public boolean toggleHasGun() {
-		return hasGun;
-	}
-	
-	public int getKey() {
-		return key;
-
+	public void updateHP() {
 		
+		hp = 100;
 	}
 	
-	public void setKey(int num) {
-		key = num;
+	public static int getHP() {
+		return hp;
 	}
+	
 }
