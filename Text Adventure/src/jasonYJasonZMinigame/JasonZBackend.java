@@ -12,7 +12,6 @@ public class JasonZBackend implements JasonYSupport {
 	public static JasonZGuns gun;
 	public final static String[][] TYPE = {{"M16", "0"}, {"AR15","0"},{"Beretta 9000", "1"}, {"Beretta Cheetah", "1"}, {"Calico M960", "2"},{"Jatimatic","2"}};
 	public static JasonZSwat[] Swat;
-	public int direction = 0;
 	public static int quantity = 10;
 	public static int killCount;
 	public static double[] difficulty = {1, 1.1, 1.3, 1.5, 2};
@@ -104,13 +103,24 @@ public class JasonZBackend implements JasonYSupport {
 
 	public JasonZSwat firstPersonDir()
 	{
-		for(int i = 0; i<validRooms[direction].length; i++)
+		for(int i = 0; i<validRooms[0].length; i++)
 		{
-			if(validRooms[direction][i] != null)
+			if(validRooms[0][i] != null)
 			{
-				if(validRooms[direction][i].containsNPC())
+				if(validRooms[0][i].containsNPC())
 				{
-					return (JasonZSwat) validRooms[direction][i].getNpc();
+					return (JasonZSwat) validRooms[0][i].getNpc();
+				}
+			}
+		}
+		
+		for(int i = 0; i<validRooms[1].length; i++)
+		{
+			if(validRooms[1][i] != null)
+			{
+				if(validRooms[1][i].containsNPC())
+				{
+					return (JasonZSwat) validRooms[1][i].getNpc();
 				}
 			}
 		}
@@ -195,12 +205,6 @@ public class JasonZBackend implements JasonYSupport {
 
 	private void printValidMoves() {
 		System.out.println("You can only enter 'w', 'a', 's', 'd,' or 'f'.");
-	}
-
-	private void ArrowKeys(KeyEvent event) {
-		direction = event.getKeyCode()%38;
-		//change validRooms;
-		
 	}
 
 }
