@@ -24,8 +24,6 @@ public class NPC {
 		this.currentCol = col;
 		this.activeDescription = "There is a person standing in the room, waiting to talk to you. Press 'e' to talk";
 		this.inactiveDescription = "The person you spoke to earlier is standing here.";
-		this.currentCol = -1; 
-		this.currentRow = -1;
 		currentRoom = null; 
 		active = true;
 	}
@@ -95,7 +93,7 @@ public class NPC {
 			currentRow = row;
 			currentCol = col;
 			currentRoom = (NPCRoom) floor[row][col];
-			if(CaveExplorer.currentRoom.row == row && CaveExplorer.currentRoom.col == col)
+			if( currentRoom.equals(CaveExplorer.currentRoom))
 			{
 				this.play();
 			}
