@@ -127,9 +127,9 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 				}
 			}
 			CaveExplorer.inventory.updateMap(map);
+			System.out.println(CaveExplorer.inventory.getMap());
 			killCounter();
 			copCounter();
-			System.out.println(CaveExplorer.inventory.getMap());
 		}
 		if(hp == 0) {
 			System.out.println("GAME OVER!");
@@ -141,13 +141,13 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 
 	public void killCounter() {
 		neededKills = neededKills - JasonZBackend.killCount;
-		System.out.println("You have killed " + JasonZBackend.killCount + " cops. You need to kill " + neededKills + " cops.");
+		System.out.println("You have killed " + JasonZBackend.killCount + " cop(s). You need to kill " + neededKills + " cop(s).");
 		
 	}
 
 	public void copCounter() {
 		//displays the number of cops in the map
-		System.out.println("There are " + copCounter + " in the area.");
+		System.out.println("There are " + copCounter + "cop(s) in the area.");
 	}
  
 	public void introduction() {
