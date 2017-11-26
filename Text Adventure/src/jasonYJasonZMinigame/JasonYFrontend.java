@@ -89,6 +89,18 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		for(int row = startRoom[0]; row < finalRoom[0]+1; row++) {
 			for(int col = startRoom[1]; col < finalRoom[1]+1; col++) {
 				map[mapRow][mapCol] = (NPCRoom) caves[row][col];
+				if(col == finalRoom[1]) {
+					map[mapRow][mapCol].setConnection(3,map[mapRow][mapCol],new Door());
+				}
+				if(col == startRoom[1]) {
+					map[mapRow][mapCol].setConnection(1,map[mapRow][mapCol],new Door());
+				}
+				if(row == finalRoom[0]) {
+					map[mapRow][mapCol].setConnection(0,map[mapRow][mapCol],new Door());
+				}	
+				if(row == startRoom[0]) {
+					map[mapRow][mapCol].setConnection(0,map[mapRow][mapCol],new Door());
+				}
 				mapCol++;
 			}
 			mapRow ++;
@@ -147,7 +159,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 
 	public void copCounter() {
 		//displays the number of cops in the map
-		System.out.println("There are " + copCounter + "cop(s) in the area.");
+		System.out.println("There are " + copCounter + " cop(s) in the area.");
 	}
  
 	public void introduction() {
