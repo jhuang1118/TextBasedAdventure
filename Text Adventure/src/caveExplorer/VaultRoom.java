@@ -22,7 +22,7 @@ public class VaultRoom extends NPCRoom {
 		int randNum = (int)(Math.random() *5);
 		if(CaveExplorer.inventory.isID() || randNum == 3) {
 			System.out.print("\n You open the vault and enter.");
-			//DavidRoom;
+			getDavidRoom();
 			return true;
 		}else {
 			System.out.print("\n It's impossible to open the vault with your bare hands. Maybe if you had the manager's key or if you kept trying...\n");
@@ -61,5 +61,11 @@ public class VaultRoom extends NPCRoom {
 		}else {
 			super.performAction(direction);
 		}		
+	}
+	public DavidRoomFrontEnd getDavidRoom() {
+		return DavidRoom;
+	}
+	public void setDavidRoom(DavidRoomFrontEnd davidRoom) {
+		DavidRoom = davidRoom;
 	}
 }

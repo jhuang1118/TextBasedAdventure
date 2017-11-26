@@ -41,7 +41,7 @@ public class Inventory {
 		{
 			map += "____";//4
 		}
-		map +="___ \n";//3
+		map +="___\n";//3
 		for(CaveRoom[] row: caves)
 		{
 			for(int i = 0; i< 3; i++)
