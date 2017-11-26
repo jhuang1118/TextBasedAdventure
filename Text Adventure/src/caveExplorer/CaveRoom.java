@@ -7,27 +7,27 @@ import johnsonDanielMinigame.MiniGameStarter;
 
 public class CaveRoom {
 	
-	public static int[] getCoordinates() {
+	public static int[] getCoordinates(CaveRoom c) {
 		int[] coords = new int[2];
-		coords[0] = row;
-		coords[1] = col;
+		coords[0] = c.row;
+		coords[1] = c.col;
 		return coords;
 	}
 	 
-	public static int getRow() {
-		return row;
+	public static int getRow(CaveRoom c) {
+		return c.row;
 	}
 
-	public static void setRow(int row) {
-		CaveRoom.row = row;
+	public static void setRow(CaveRoom c, int row) {
+		c.row = row;
 	}
 
-	public static int getCol() {
-		return col;
+	public static int getCol(CaveRoom c) {
+		return c.col;
 	}
 
-	public static void setCol(int col) {
-		CaveRoom.col = col;
+	public static void setCol(CaveRoom c, int col) {
+		c.col = col;
 	}
 	
 	private String description;
@@ -38,8 +38,8 @@ public class CaveRoom {
 	
 	private NPCRoom[] borderingRooms;
 	private Door[] doors;
-	public static int row;
-	public static int col;
+	public int row;
+	public int col;
 	
 	//constants
 	public static final int NORTH = 0;
@@ -177,22 +177,19 @@ public class CaveRoom {
 			}
 		}
 
-		
-		c[9][5] = new EthanRoomBackEnd("");
+		CaveExplorer.currentRoom = c[0][1];
+		CaveExplorer.currentRoom.enter();
+		//c[9][5] = new EthanRoomBackEnd("");
 		//c[1][1] = new MiniGameStarter("");
 
 		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
 		JasonYFrontend testNPC = new JasonYFrontend(5,5,c);
 		testNPC.setPosition(5,5);
-		CaveExplorer.police = new NPC[1];
+		CaveExplorer.police = new JasonYFrontend[1];
 		CaveExplorer.police[0] = testNPC;
-		c[2][3] = new EthanRoomBackEnd("");
-		testNPC.setPosition(3,4);
-		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs[0] = testNPC;
+		//c[2][3] = new EthanRoomBackEnd("");
 
-		CaveExplorer.currentRoom = c[0][1];
-		CaveExplorer.currentRoom.enter();
+		
 		//Set up doors
 		setConnectionForAll();
 	}

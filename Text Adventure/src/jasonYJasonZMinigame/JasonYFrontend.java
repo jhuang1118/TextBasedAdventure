@@ -118,8 +118,8 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			System.out.println("What would you like to do?");
 			String input = in.nextLine();
 			backend.validInput(in.nextLine());
-			int[] coords = CaveExplorer.currentRoom.getCoordinates();
-			for(JasonZSwat p: npc)
+			int[] coords = CaveExplorer.currentRoom.getCoordinates(CaveExplorer.currentRoom);
+			for( JasonZSwat p: npc)
 			{
 				p.calculateMove(coords[0], coords[1]);
 			}
@@ -237,21 +237,23 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	}
 	private int checkDirection() {
 		//
-		if(this.getCurrentRow() - CaveRoom.getRow() > 0)
+		int row = CaveExplorer.currentRoom.getRow(CaveExplorer.currentRoom);
+		int col = CaveExplorer.currentRoom.getCol(CaveExplorer.currentRoom);
+		if(this.getCurrentRow() -  row> 0)
 		{
 			return 0;
 		}
-		if(this.getCurrentRow() - CaveRoom.getRow() < 0)
+		if(this.getCurrentRow() - row < 0)
 		{
-			return 3;
+			return 2;
 		}
-		if(this.getCurrentCol() - CaveRoom.getCol() >0)
+		if(this.getCurrentCol() -  col < 0)
 		{
 			return 1;
 		}
-		if(this.getCurrentCol() - CaveRoom.getCol() < 0)
+		if(this.getCurrentCol() - col > 0)
 		{
-			return 2;
+			return 3;
 		}
 		return 0;
 	}

@@ -95,8 +95,17 @@ public class NPC {
 			currentRow = row;
 			currentCol = col;
 			currentRoom = (NPCRoom) floor[row][col];
+			if(CaveExplorer.currentRoom.row == row && CaveExplorer.currentRoom.col == col)
+			{
+				this.play();
+			}
 			currentRoom.enterNPC(this);
 		}
+		
+	}
+
+	public void play() {
+		// TODO Auto-generated method stub
 		
 	}
 
