@@ -147,7 +147,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 					}
 				}
 			}
-			CaveExplorer.inventory.updateMap(map);
+			CaveExplorer.inventory.updateMap(JasonZBackend.cave);
 			System.out.println(CaveExplorer.inventory.getMap());
 			killCounter();
 			copCounter();
