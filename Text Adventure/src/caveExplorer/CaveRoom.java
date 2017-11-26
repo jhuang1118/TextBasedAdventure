@@ -173,6 +173,8 @@ public class CaveRoom {
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
 		//Set up doors
+		
+		c[5][5] = new VaultRoom(null);
 		setConnectionForAll();
 	}
 
