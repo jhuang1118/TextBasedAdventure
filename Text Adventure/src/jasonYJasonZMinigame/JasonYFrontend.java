@@ -120,11 +120,13 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			System.out.println("What would you like to do?");
 			String input = in.nextLine();
 			backend.validInput(input);	
-			for( JasonZSwat p: npc)
-			{
-				if( p != null)
+			if(npc != null) {
+				for( JasonZSwat p: npc)
 				{
-					p.calculateMove(coords[0], coords[1]);
+					if( p != null)
+					{
+						p.calculateMove(coords[0], coords[1]);
+					}
 				}
 			}
 			CaveExplorer.inventory.updateMap(map);
@@ -142,7 +144,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 
 	public void killCounter() {
 		neededKills = neededKills - JasonZBackend.killCount;
-		System.out.println("You have killed " + JasonZBackend.killCount + " cops. You need to kill " + neededKills + "cops.");
+		System.out.println("You have killed " + JasonZBackend.killCount + " cops. You need to kill " + neededKills + " cops.");
 		
 	}
 
