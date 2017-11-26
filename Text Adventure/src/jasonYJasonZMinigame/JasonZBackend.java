@@ -83,7 +83,7 @@ public class JasonZBackend implements JasonYSupport {
 		{
 			if(Swat[i] == null)
 			{
-				Swat[i] = new JasonZSwat(cave, checkNullCops());
+				Swat[i] = new JasonZSwat(row,col,cave, checkNullCops());
 				Swat[i].makeGuns(TYPE[(int) (Math.random()*TYPE.length)]);
 				Swat[i].setPosition(row, col);
 				break;

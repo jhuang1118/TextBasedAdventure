@@ -11,12 +11,14 @@ public class JasonZSwat extends NPC {
 	public int hp = 100;
 	public int armor = 70;
 	public int index;
+	public int row;
+	public int col;
 	
 	
-	public JasonZSwat(NPCRoom[][] floor,int index)
+	public JasonZSwat(int row, int col, NPCRoom[][] floor,int index)
 	{
 		//w.e the map is called.
-		super(floor);
+		super(row, col, floor);
 		this.index = index;
 	}
 	public void makeGuns(String[] info) {
@@ -27,7 +29,10 @@ public class JasonZSwat extends NPC {
 	public int[] calculateMove(int userRow, int userCol)
 	{
 		int dir = checkDirection();
-		return possibleMoves[dir];
+		int[] newPosition = new int[2]; 
+		newPosition[0] = row + possibleMoves[dir][0];
+		newPosition[1] = col + possibleMoves[dir][1];
+		return newPosition;
 	}
 	private int checkDirection() {
 		//

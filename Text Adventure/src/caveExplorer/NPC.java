@@ -18,8 +18,10 @@ public class NPC {
 	
 	public static int[][] possibleMoves = {{-1,0}, {0,1}, {1, 0},{0,-1}};
 	
-	public NPC(CaveRoom[][] cave) {
+	public NPC(int row, int col, CaveRoom[][] cave) {
 		this.floor = cave;
+		this.currentRow = row;
+		this.currentCol = col;
 		this.activeDescription = "There is a person standing in the room, waiting to talk to you. Press 'e' to talk";
 		this.inactiveDescription = "The person you spoke to earlier is standing here.";
 		this.currentCol = -1; 

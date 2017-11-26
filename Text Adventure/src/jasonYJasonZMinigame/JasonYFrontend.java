@@ -18,25 +18,15 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	private JasonYSupport backend;
 	public int copCounter;
 	public int neededKills;
-	public int hp;	
-	public int row; 
-	public int col;
+	public int hp;
 	public JasonZSwat[] npc;
 	public static CaveRoom[][] caves;
 	public NPCRoom[][] map;
 	public Door[] doors;
 	public String[] difficultyWords;
 
-	
-	public static final void main(String[] args) {
-		JasonYFrontend demo = new JasonYFrontend(0, 0, null);
-		demo.play();
-	}
-	
 	public JasonYFrontend(int row, int col, CaveRoom[][] c) {
-		super(c);
-		this.row = row; 
-		this.col = col;
+		super(row, col, c);
 		createMap(2);
 		backend = new JasonZBackend(this, 1, map);
 		String[] temp = {"easy", "casual", "hard", "extreme", "hell"};
@@ -50,17 +40,57 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		map = new NPCRoom[(size*2)+1][(size*2)+1];
 		caves = CaveExplorer.caves;
 		int[] coords = new int[2];
-		coords[0] = row;
-		coords[1] = col;
+		if(getCurrentRow() > 0 && getCurrentCol() > 0)
+		{
+			coords[0] = getCurrentRow();
+			coords[1] = getCurrentCol();
+		}
+		else
+		{
+			coords[0] = 0;
+			coords[1] = 0;
+		}
+		
 		int[] startRoom = new int[2];
-		startRoom[0] = coords[0] - size;
-		startRoom[1] = coords[1] - size;
+		if( (coords[0]-size) < 0) 
+		{
+			startRoom[0] = 0;
+		}
+		else 
+		{
+			startRoom[0] = coords[0] - size;
+			
+		}
+		if(coords[1]-size < 0)
+		{
+			startRoom[1] = 0;
+		}
+		else
+		{
+			startRoom[1] = coords[1] - size;
+		}
+		
 		int[] finalRoom = new int[2];
-		finalRoom[0] = coords[0] + size;
-		finalRoom[1] = coords[1] + size;
+		if(coords[0] +size > caves.length)
+		{
+			coords[0] = caves.length;
+		}
+		else
+		{
+			finalRoom[0] = coords[0] + size;
+		}
+		if( (coords[1]+size) > caves[0].length)
+		{
+			finalRoom[1] = caves.length;
+		}
+		else
+		{
+			finalRoom[1] = coords[1] + size;
+		}
+		
 		int mapRow = 0;
 		int mapCol = 0;
-		for(int row = startRoom[0]; row < finalRoom[0]+1 ; row++) {
+		for(int row = startRoom[0]; row < finalRoom[0] +1; row++) {
 			for(int col = startRoom[1]; col < finalRoom[1]+1; col++) {
 				map[mapRow][mapCol] = (NPCRoom) caves[row][col];
 				mapCol++;
@@ -201,7 +231,10 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	public int[] calculateMove(int userRow, int userCol)
 	{
 		int dir = checkDirection();
-		return possibleMoves[dir];
+		int[] newPosition = new int[2]; 
+		newPosition[0] = getCurrentRow() + possibleMoves[dir][0];
+		newPosition[1] = getCurrentCol() + possibleMoves[dir][1];
+		return newPosition;
 	}
 	private int checkDirection() {
 		//
