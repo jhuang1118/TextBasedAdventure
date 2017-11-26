@@ -184,7 +184,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		populateMap(index);
 	}
 
-	private void controls() {
+	public void controls() {
 		System.out.println("The controls to this game are 'w', 'a', 's', 'd' to move up, left, down, and right "
 				+ "respectively. You can also press 'f' to shoot. Enter 'back' to go back.");//'f' or whatever key Jason used for fire input
 		String input = in.nextLine();
@@ -217,8 +217,8 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		int baseNum = (int)(Math.random()*5);
 		int spawnNum = (int) (baseNum * JasonZBackend.difficulty[mode]);
 		for(int i = 0; i < spawnNum; i++) {
-			int randomRow = (int)(Math.random() * 10);
-			int randomCol = (int)(Math.random() * 10);
+			int randomRow = (int)(Math.random() * 5);
+			int randomCol = (int)(Math.random() * 5);
 			JasonZBackend.createPolice(randomRow, randomCol);
 		}
 	}	
