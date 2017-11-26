@@ -93,7 +93,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 					System.out.println("You hit your head against the wall. It hurts.");
 					hHit++;
 					deathFromWall();
-				}
+				} 
 	}
 	
 	private void collectPowerup() {
