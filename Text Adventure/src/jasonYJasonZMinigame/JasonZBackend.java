@@ -39,7 +39,7 @@ public class JasonZBackend implements JasonYSupport {
 		for(int row = starterRow; row < (starterRow + r); row ++)
 		{
 			if(row < floor.length)
-			{
+			{ 
 				validRooms[0][counter] = floor[row][starterCol];
 				counter ++;
 			}
