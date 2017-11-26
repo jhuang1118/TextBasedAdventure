@@ -16,7 +16,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	public Scanner in;//for user input
 	
 	private JasonYSupport backend;
-	public int index;
 	public int copCounter;
 	public int neededKills;
 	public int hp;
@@ -30,7 +29,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		String[] temp = {"easy", "casual", "hard", "extreme", "hell"};
 		difficultyWords = temp;
 		hp = 100;
-		index = 0;
 	}
 
 	public void createMap(int size) {
@@ -126,8 +124,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	
 	public void play() {
 		introduction();
-		backend = new JasonZBackend(this, 1, map);
-		populateMap(index,2);
 		System.out.println(CaveExplorer.inventory.getMap());
 		while(hp != 0 || neededKills != 0) {
 			int[] coords = {JasonZBackend.starterRow, JasonZBackend.starterCol};
@@ -198,8 +194,10 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			System.out.println("The avaiable difficulties are 'easy', 'casual', 'hard', 'extreme', and 'hell'.");
 			input = in.nextLine();
 		}				
-		index = returnIndex(input,difficultyWords);
-		createMap(2);		
+		int index = returnIndex(input,difficultyWords);
+		createMap(2);
+		backend = new JasonZBackend(this, 1, map);
+		populateMap(index,2);
 		CaveExplorer.inventory.updateMap(map);
 	}
 
