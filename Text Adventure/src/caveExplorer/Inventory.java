@@ -92,7 +92,7 @@ public class Inventory {
 	}
 	public String getDescription()
 	{
-		return map + "\n" + "Also you have " + getCash() + " cash \n";
+		return map + "\n" + "Also you have " + CaveExplorer.inventory.getCash() + " cash \n";
 	}
 	public void updateHP() {
 		
