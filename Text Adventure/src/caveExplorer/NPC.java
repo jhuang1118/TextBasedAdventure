@@ -23,7 +23,7 @@ public class NPC {
 		this.currentRow = row;
 		this.currentCol = col;
 		this.activeDescription = "There is a person standing in the room, waiting to talk to you. Press 'e' to talk";
-		this.inactiveDescription = "";
+		this.inactiveDescription = ""; 
 		currentRoom = null; 
 		active = true;
 	}
