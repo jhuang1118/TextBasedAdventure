@@ -199,7 +199,7 @@ public class CaveRoom {
 		setConnectionForAll();
 	}
 	
-	private static void setConnectionForAll() {
+	public static void setConnectionForAll() {
 		CaveRoom[][] c = CaveExplorer.caves;
 		for(int row = 0; row< c.length-1; row++)
 		{
@@ -273,6 +273,7 @@ public class CaveRoom {
 			if(borderingRooms[dir].getNpc() instanceof JasonYFrontend)
 			{
 				((JasonYFrontend) borderingRooms[dir].getNpc()).play();
+				((JasonYFrontend) borderingRooms[dir].getNpc()).setActive(false);
 			}
 			CaveExplorer.currentRoom = borderingRooms[dir];
 			row = borderingRooms[dir].row;

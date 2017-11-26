@@ -135,7 +135,11 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			System.out.println("You are at coordinates (" + coords[0]+ ", " + coords[1] + ").");
 			System.out.println("What would you like to do?");
 			String input = in.nextLine();
-			backend.validInput(input);	
+			if(input.equals("c")){
+				neededKills = 0;
+				break;
+			}
+			backend.validInput(input);			
 			if(JasonZBackend.Swat != null) {
 				for(JasonZSwat p: JasonZBackend.Swat){
 					if( p != null){
@@ -153,6 +157,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		}
 		if(neededKills == 0) {
 			System.out.println("Congrats! You've won the game!");
+			caveExplorer.CaveRoom.setConnectionForAll();
 		}
 	}
 
@@ -185,7 +190,14 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		String input = in.nextLine();
 		while(!input.toLowerCase().equals("p")) {			
 			if(input.toLowerCase().equals("c")) {
-				controls();
+				System.out.println("The controls to this game are 'w', 'a', 's', 'd' to move up, left, down, and right "
+						+ "respectively. You can also press 'f' to shoot. Enter 'back' to go back.");//'f' or whatever key Jason used for fire input
+				input = in.nextLine();
+				while(!input.toLowerCase().equals("back")) {
+					System.out.println("That is not a valid input. Enter 'back' to go back.");
+					input = in.nextLine();
+				}
+				System.out.println("So do you want to play? Enter 'p' to play. Enter 'c' for controls");
 			}
 			else{
 				System.out.println("Valid inputs are 'p' and 'c'.");
@@ -200,21 +212,11 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			input = in.nextLine();
 		}				
 		int index = returnIndex(input,difficultyWords);
+		input = "";
 		createMap(2);
 		backend = new JasonZBackend(this, 1, map);
 		populateMap(index,2);
 		CaveExplorer.inventory.updateMap(map);
-	}
-
-	public void controls() {
-		System.out.println("The controls to this game are 'w', 'a', 's', 'd' to move up, left, down, and right "
-				+ "respectively. You can also press 'f' to shoot. Enter 'back' to go back.");//'f' or whatever key Jason used for fire input
-		String input = in.nextLine();
-		while(!input.toLowerCase().equals("back")) {
-			System.out.println("That is not a valid input. Enter 'back' to go back.");
-			input = in.nextLine();
-		}
-		introTwo();
 	}
 
 	private boolean isValid(String s, String[] arr) {

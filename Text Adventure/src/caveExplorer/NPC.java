@@ -96,6 +96,7 @@ public class NPC {
 			if( currentRoom.equals(CaveExplorer.currentRoom))
 			{
 				this.play();
+				this.active = false;
 			}
 			currentRoom.enterNPC(this);
 		}
