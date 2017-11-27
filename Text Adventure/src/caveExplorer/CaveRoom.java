@@ -8,6 +8,21 @@ public class CaveRoom {
 		coords[1] = col;
 		return coords;
 	}
+	public static int getRow(CaveRoom c) {
+		return c.row;
+	}
+
+	public static void setRow(CaveRoom c, int row) {
+		c.row = row;
+	}
+
+	public static int getCol(CaveRoom c) {
+		return c.col;
+	}
+
+	public static void setCol(CaveRoom c, int col) {
+		c.col = col;
+	}
 	 
 	public static int getRow() {
 		return row;
