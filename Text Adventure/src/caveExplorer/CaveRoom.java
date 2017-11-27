@@ -278,5 +278,10 @@ public class CaveRoom {
 		return doors[direction];
 	}
 
+	public void removeRoom(int dir)
+	{
+		borderingRooms[dir] = null;
+		setDirections();
+	}
 }
 
