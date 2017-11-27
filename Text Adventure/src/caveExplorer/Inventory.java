@@ -25,6 +25,7 @@ public class Inventory {
 	public Inventory()
 	{
 		setCash(0);
+		hp = 100;
 		updateMap(CaveExplorer.caves);
 	}
 	
