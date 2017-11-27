@@ -197,6 +197,9 @@ public class CaveRoom {
 		testNPC.setPosition(5,5);
 		CaveExplorer.police = new JasonYFrontend[1];
 		CaveExplorer.police[0] = testNPC;
+		Merchant Merchant = new Merchant(6,2,c);
+		Merchant.setPosition(6, 2);
+		
 		setConnectionForAll();
 	}
 

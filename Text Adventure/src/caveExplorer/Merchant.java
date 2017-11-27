@@ -1,7 +1,7 @@
 package caveExplorer;
 
 
-public class Merchant{
+public class Merchant extends NPC {
 
 	
 	private int currentRow;
@@ -13,12 +13,13 @@ public class Merchant{
 	private String activeDescription;
 	private String inactiveDescription;
 		
-	public Merchant() {
+	public Merchant(int r, int c, CaveRoom[][] cave) {
+		super(r, c, cave);
 		this.floor = CaveExplorer.caves;
 		this.activeDescription = "I am the local merchant. We have not met yet but I give away free stuff to whoever can answer my question.";
 		this.inactiveDescription = "The merchant does not want to talk anymore.";
-		this.currentCol = 0;
-		this.currentRow = -9;
+		this.currentCol = c;
+		this.currentRow = r;
 		currentRoom = null;
 		active = true;
 	}
