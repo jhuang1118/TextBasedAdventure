@@ -5,9 +5,12 @@ import caveExplorer.NPCRoom;
 import ethanDavidMinigame.DavidRoomFrontEnd;
 
 public class VaultRoom extends NPCRoom {
+	
+	boolean entered;
 
 	public VaultRoom(String description) {
 		super(description);
+		entered = false;
 		// TODO Auto-generated constructor stub
 	}
 	public String getContents() {
@@ -18,14 +21,20 @@ public class VaultRoom extends NPCRoom {
 	}
 	public boolean canEnter() {
 		int randNum = (int)(Math.random() *5);
-		if(CaveExplorer.inventory.isID() || randNum == 3) {
-			System.out.print("\n You manage to open the vault and enter.\n");
-			DavidRoomFrontEnd.main(null);
-			return true;
+		if(entered) {
+			System.out.print("It's too dangerous to enter again.\n");
 		}else {
-			System.out.print("\n It's impossible to open the vault with your bare hands. Maybe if you had the manager's key or if you kept trying...\n");
-			return false;
+			if(CaveExplorer.inventory.isID() || randNum == 3 && !entered) {
+				System.out.print("\n You manage to open the vault and enter.\n");
+				entered = true;
+				DavidRoomFrontEnd.main(null);
+				return true;
+			}else {
+				System.out.print("\n It's impossible to open the vault with your bare hands. Maybe if you had the manager's key or if you kept trying...\n");
+				return false;
+			}
 		}
+		return false;
 	}
 	public boolean isValid(String input) {
 		return validMoves().indexOf(input.toLowerCase()) > -1 && input.length() == 1;
