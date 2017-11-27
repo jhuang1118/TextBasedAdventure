@@ -130,7 +130,7 @@ public class Inventory {
 		hasGun = !hasGun;
 	}
 	public boolean toggleHasGun() {
-		return hasGun;
+		return hasGun; 
 	}
 	
 	public int getKey() {
