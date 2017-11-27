@@ -70,13 +70,13 @@ public class NPCRoom extends CaveRoom {
 	{
 		if(containsNPC() && npc.isActive())
 		{
-			return super.getDescription() + "/n" + npc.getDescription();
+			return super.getDescription() + "\n" + npc.getDescription();
 		}
 		else
 		{
 			if(containsNPC() && !npc.isActive())
 			{
-				return super.getDescription() + "/n" + npc.getInactiveDescription();
+				return super.getDescription() + "\n" + npc.getInactiveDescription();
 			}
 			else
 			{
