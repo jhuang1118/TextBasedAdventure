@@ -21,6 +21,10 @@ public class JasonZBackend implements JasonYSupport {
 	public static int starterCol;
 	public NPCRoom currentRoom;
 	
+	public NPCRoom getCurrentRoom() {
+		return currentRoom;
+	}
+
 	public JasonZBackend(JasonZSupport frontend, int difficulty, NPCRoom[][] floor) {
 		this.frontend = frontend;
 		changeDifficulty(difficulty);
@@ -29,10 +33,10 @@ public class JasonZBackend implements JasonYSupport {
 		JasonZBackend.starterRow = (int) Math.ceil(floor.length/2);
 		JasonZBackend.starterCol = (int) Math.ceil(floor[starterRow].length/2);
 		this.cave = floor;
-		setValidTarget(floor[starterRow][starterCol]);
+		currentRoom = floor[starterRow][starterCol];
 	}
 	 
-	private void setValidTarget(NPCRoom room) {
+	void setValidTarget(NPCRoom room) {
 		int r = gun.getRange();
 		validTarget = new JasonZSwat[r*4];
 		int startR = starterRow -r;
@@ -108,7 +112,6 @@ public class JasonZBackend implements JasonYSupport {
 
 	public void attack()
 	{
-		setValidTarget(currentRoom);
 		JasonZSwat target = firstPersonDir();
 		if(target != null) damage(target, gun.trueDamage());
 		else System.out.println("You fire at air to show your dominance.");
@@ -184,7 +187,6 @@ public class JasonZBackend implements JasonYSupport {
 			starterRow = currentRoom.row;
 			starterCol = currentRoom.col;
 			currentRoom.enter();
-			setValidTarget(currentRoom);
 		}
 	}
 
