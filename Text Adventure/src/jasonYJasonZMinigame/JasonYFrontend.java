@@ -147,6 +147,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 					}
 				}
 			}
+			((JasonZBackend) backend).setValidTarget(((JasonZBackend) backend).getCurrentRoom());
 			CaveExplorer.inventory.updateMap(JasonZBackend.cave);
 			System.out.println(CaveExplorer.inventory.getMap());
 			copCounter();
@@ -220,7 +221,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		int index = returnIndex(input,difficultyWords);
 		input = "";
 		createMap(2);
-		backend = new JasonZBackend(this, 1, map);
+		this.backend = new JasonZBackend(this, 1, map);
 		populateMap(index);
 		CaveExplorer.inventory.updateMap(map);
 	}
