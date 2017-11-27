@@ -115,6 +115,9 @@ public class JasonZBackend implements JasonYSupport {
 		JasonZSwat target = firstPersonDir();
 		if(target != null) damage(target, gun.trueDamage());
 		else System.out.println("You fire at air to show your dominance.");
+		
+		
+		CaveExplorer.inventory.updateMap(cave);
 	}
 
 	public JasonZSwat firstPersonDir()
@@ -137,6 +140,11 @@ public class JasonZBackend implements JasonYSupport {
 			target.armor -= damage;
 		}
 		else target.hp -= damage;
+		
+		if(target.hp < 0)
+		{
+			target.setActive(false);
+		}
 	}
 
 	@Override
