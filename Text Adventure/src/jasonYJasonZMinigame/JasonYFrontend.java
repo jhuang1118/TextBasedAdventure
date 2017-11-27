@@ -17,7 +17,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	
 	private JasonYSupport backend;
 	public int copCounter;
-	public int neededKills;
 	public int hp;
 	public static CaveRoom[][] caves;
 	public NPCRoom[][] map;
@@ -29,6 +28,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		String[] temp = {"easy", "casual", "hard", "extreme", "hell"};
 		difficultyWords = temp;
 		hp = 100;
+		copCounter = 1;
 	}
 
 	public void createMap(int size) {
@@ -129,13 +129,13 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	public void play() {
 		introduction();
 		System.out.println(CaveExplorer.inventory.getMap());
-		while(hp != 0 || neededKills != 0) {
+		while(hp != 0 && copCounter != 0) {
 			int[] coords = {JasonZBackend.starterRow, JasonZBackend.starterCol};
 			System.out.println("You are at coordinates (" + coords[0]+ ", " + coords[1] + ").");
 			System.out.println("What would you like to do?");
 			String input = in.nextLine();
 			if(input.equals("c")){
-				neededKills = 0;
+				copCounter = 0;
 				break;
 			}
 			backend.validInput(input);			
@@ -151,22 +151,15 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			CaveExplorer.inventory.updateMap(JasonZBackend.cave);
 			System.out.println(CaveExplorer.inventory.getMap());
 			copCounter();
-			killCounter();
-
+			System.out.println("You have killed " + JasonZBackend.killCount + " cop(s). You need to kill " + copCounter + " cop(s).");
 		}
 		if(hp == 0) {
 			System.out.println("GAME OVER!");
 		}
-		if(neededKills == 0) {
+		if(copCounter == 0) {
 			System.out.println("Congrats! You've won the game!");
 			caveExplorer.CaveRoom.setConnectionForAll();
 		}
-	}
-
-	public void killCounter() {
-		neededKills = copCounter - JasonZBackend.killCount;
-		System.out.println("You have killed " + JasonZBackend.killCount + " cop(s). You need to kill " + neededKills + " cop(s).");
-		
 	}
 
 	public void copCounter() {

@@ -143,8 +143,13 @@ public class JasonZBackend implements JasonYSupport {
 			target.hp -= damage;
 			if(target.hp < 0) {
 				target.hp = 0;
-				target.setActive(false);
 				killCount++;
+				for(int i = 0; i < Swat.length; i++) {
+					if(Swat[i] == target) {
+						Swat[i] = null;
+					}
+				}
+				setValidTarget(getCurrentRoom());
 			}
 		}
 		System.out.println("That cop took " + damage + ". He has " + target.hp + " left.");
