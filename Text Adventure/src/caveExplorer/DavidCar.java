@@ -60,7 +60,7 @@ public class DavidCar extends NPCRoom {
 	public void performAction(int direction) {
 		if(direction == 4) {
 			canEnter();
-			//end the game
+			CaveExplorer.playing = false;
 		}else {
 			super.performAction(direction);
 		}		
