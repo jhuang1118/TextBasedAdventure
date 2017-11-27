@@ -96,4 +96,8 @@ public class NPCRoom extends CaveRoom {
 			return super.getContents();
 		}
 	}
+	
+	public void setMiniDescription(String string) {
+		miniDescription = string;
+	}
 }
