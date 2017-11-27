@@ -182,7 +182,7 @@ public class CaveRoom {
 		{
 			for(int col = 0; col < c[row].length; col ++)
 			{
-				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
+				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".",row,col);
 			}
 		}
 		
