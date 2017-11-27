@@ -1,5 +1,7 @@
 package caveExplorer;
 
+import jasonYJasonZMinigame.JasonYFrontend;
+
 public class CaveRoom {
 	
 	public static int[] getCoordinates() {
@@ -191,6 +193,10 @@ public class CaveRoom {
 		
 		c[5][5] = new VaultRoom(null);
 		c[9][9] = new DavidCar(null);
+		JasonYFrontend testNPC = new JasonYFrontend(5,5,c);
+		testNPC.setPosition(5,5);
+		CaveExplorer.police = new JasonYFrontend[1];
+		CaveExplorer.police[0] = testNPC;
 		setConnectionForAll();
 	}
 
