@@ -47,6 +47,15 @@ public class DanielLocker {
 		this.isOpen = isOpen;
 	}
 	
+	public String toString() {
+		if(isOpen) {
+			return "O";
+		}
+		else {
+			return "L";
+		}
+	}
+	
 	
 	
 	

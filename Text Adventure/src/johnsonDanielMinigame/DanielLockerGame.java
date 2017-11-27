@@ -10,7 +10,9 @@ public class DanielLockerGame {
 	private boolean onLocker;
 	int[] rows = {1,3};
 	int[] cols = {1,3,5};
-	
+	int ROWTOT = 6;
+	int COLTOT = 6;
+	private int newPsn;
 	public DanielLockerGame() {
 		theLockers = new DanielLocker[6][6];
 		onLocker = false;
@@ -52,7 +54,7 @@ public class DanielLockerGame {
 			displayBoard();
 			displayKeysLeft(keys);
 			String input = getValidUserInput();
-			answer(input);
+			//answer(input);
 			keys--;
 		}
 		printGG();
@@ -131,39 +133,27 @@ public class DanielLockerGame {
 	
 	}
 	private void answer(String input) {
-		if(input.equals("w") && isPossibleMove(placement[0])) {
-			move(placement[0]);
-		}
-		else if(input.equals("a") && isPossibleMove(placement[1])){
-			move(placement[1]);
-		}
-		else if(input.equals("s") && isPossibleMove(placement[2])) {
-			move(placement[2]);
-		}
-		else if(input.equals("d") && isPossibleMove(placement[3])) {
-			move(placement[3]);
+		String[] splitInput = input.split(",");
+		Integer coor1 = Integer.valueOf(splitInput[0]);
+		Integer coor2 = Integer.valueOf(splitInput[1]);
+		if(isOnLocker(coor1,coor2)) {
+			theLockers[coor1][coor2].setOpen(true);
+			johnsonDanielMinigame.JohnsonUnlockGame.main(null);
 		}
 	}
 
-	private boolean isPossibleMove(int[] is) {
-		
-		return false;
-	}
-
-	private void move(int[] placement) {
-		if(isPossibleMove(int[])) {
-			
-		}
-		
-	}
-
+	
 	private void displayKeysLeft(int keys) {
 		System.out.println("You have " + keys + " keys left.");
 	}
 
 	private void displayBoard() {
-		// TODO Auto-generated method stub
-		
+		for(int row = 0; row < ROWTOT; row++) {
+			for(int col = 0; col < COLTOT; col++) {
+				System.out.print(theLockers[row][col]);
+			}
+			System.out.println(" ");
+		}
 	}
 
 }
