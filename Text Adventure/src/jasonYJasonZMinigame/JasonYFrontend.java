@@ -142,7 +142,8 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			if(JasonZBackend.Swat != null) {
 				for(JasonZSwat p: JasonZBackend.Swat){
 					if( p != null){
-						p.calculateMove(coords[0], coords[1]);
+						int[] moves = p.calculateMove(coords[0], coords[1]);
+						p.setPosition(moves[0], moves[1]);
 					}
 				}
 			}
