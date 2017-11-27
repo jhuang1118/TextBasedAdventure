@@ -223,6 +223,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		createMap(2);
 		this.backend = new JasonZBackend(this, 1, map);
 		populateMap(index);
+		((JasonZBackend) backend).setValidTarget(((JasonZBackend) backend).getCurrentRoom());
 		CaveExplorer.inventory.updateMap(map);
 	}
 

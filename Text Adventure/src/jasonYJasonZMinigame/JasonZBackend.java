@@ -119,17 +119,24 @@ public class JasonZBackend implements JasonYSupport {
 
 	public JasonZSwat firstPersonDir()
 	{
-		for( JasonZSwat s: validTarget){
-			if(s != null){
-				return s;
-			}
+		if(validTarget != null)
+		{
+			for( JasonZSwat s: validTarget){
+				if(s != null){
+					return s;
+				}
+			}	
 		}
 		return null;
 		
 	}
 	public void damage(JasonZSwat target, double damage)
 	{
-		target.hp -= damage;
+		if(target.armor > 0)
+		{
+			target.armor -= damage;
+		}
+		else target.hp -= damage;
 	}
 
 	@Override
