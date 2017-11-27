@@ -78,7 +78,7 @@ public class JasonZBackend implements JasonYSupport {
 	public static void createPolice(int row, int col)
 	{
 		for(int i =0; i<quantity; i++)
-		{ 
+		{
 			if(Swat[i] == null)
 			{
 				Swat[i] = new JasonZSwat(row,col,cave, checkNullCops());
