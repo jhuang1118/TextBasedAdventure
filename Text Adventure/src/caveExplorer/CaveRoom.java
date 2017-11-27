@@ -200,7 +200,7 @@ public class CaveRoom {
 		Merchant Merchant = new Merchant(6,2,c);
 		Merchant.setPosition(6, 2);
 		
-		setConnectionForAll();
+	//	setConnectionForAll();
 	}
 
 	private static void setConnectionForAll() {
