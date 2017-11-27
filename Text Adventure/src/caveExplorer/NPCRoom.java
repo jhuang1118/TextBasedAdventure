@@ -3,6 +3,9 @@ package caveExplorer;
 public class NPCRoom extends CaveRoom {
 
 	private NPC npc;
+	public int miniRow;
+	public int miniCol;
+	
 	
 	public NPC getNpc() {
 		return npc;
