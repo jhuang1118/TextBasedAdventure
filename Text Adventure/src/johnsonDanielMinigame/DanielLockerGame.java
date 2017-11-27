@@ -160,6 +160,7 @@ public class DanielLockerGame {
 			johnsonDanielMinigame.JohnsonUnlockGame.main(null);
 
 		}
+		}
 	}
 
 
