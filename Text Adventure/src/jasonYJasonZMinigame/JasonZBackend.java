@@ -116,10 +116,8 @@ public class JasonZBackend implements JasonYSupport {
 
 	public JasonZSwat firstPersonDir()
 	{
-		for( JasonZSwat s: validTarget)
-		{
-			if(s != null)
-			{
+		for( JasonZSwat s: validTarget){
+			if(s != null){
 				return s;
 			}
 		}
