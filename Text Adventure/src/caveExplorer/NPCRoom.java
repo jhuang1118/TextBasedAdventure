@@ -5,7 +5,7 @@ public class NPCRoom extends CaveRoom {
 	private NPC npc;
 	public int miniRow;
 	public int miniCol;
-	
+	private String miniDescription;
 	
 	public NPC getNpc() {
 		return npc;
