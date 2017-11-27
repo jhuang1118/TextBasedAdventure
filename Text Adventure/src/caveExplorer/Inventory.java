@@ -108,8 +108,7 @@ public class Inventory {
 	public static  int getHP() {
 		return hp;
 	}
-	
-<<<<<<< HEAD
+
 	public void toggleIsKidnapped() {
 		isKidnapped = !isKidnapped;
 	}
@@ -117,48 +116,23 @@ public class Inventory {
 		return isKidnapped;
 	}
 	
-	public void getHasGun() {
+	/* public void getHasGun() {
 		hasGun = !hasGun;
 	}
 	public boolean toggleHasGun() {
 		return hasGun;
-	}
+	} */
 	
 	public int getKey() {
 		return key;
 
 	}
 	
-	
-	
-	
-=======
 	public String getMap() {
 		return map;
-	}
-	
-	public void toggleIsKidnapped() {
-		isKidnapped = !isKidnapped;
-	}
-	public boolean getIsKidnapped() {
-		return isKidnapped;
-	}
-	
-	public void getHasGun() {
-		hasGun = !hasGun;
-	}
-	public boolean toggleHasGun() {
-		return hasGun;
-	}
-	
-	public int getKey() {
-		return key;
-
-		
 	}
 	
 	public void setKey(int num) {
 		key = num;
 	}
->>>>>>> branch 'master' of https://github.com/jhuang1118/TextBasedAdventure
 }
