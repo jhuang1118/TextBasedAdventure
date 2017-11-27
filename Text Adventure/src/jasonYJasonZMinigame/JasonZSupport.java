@@ -10,8 +10,6 @@ public interface JasonZSupport {
 		//createMap();
 		//populateMap();
 		//display it all
-	void killCounter();
-		//displays number of kills
 	void copCounter();
 		//displays number of cops on the map
 	void introduction();

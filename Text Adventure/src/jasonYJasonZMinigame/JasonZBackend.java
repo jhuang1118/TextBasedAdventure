@@ -145,8 +145,8 @@ public class JasonZBackend implements JasonYSupport {
 				target.hp = 0;
 				cave[target.row][target.col].leaveNPC();
 				Swat[target.index] = null;
-				setValidTarget(currentRoom);
 				increaseKillCount();
+				setValidTarget(currentRoom);
 			}
 		}
 		System.out.println("That cop took " + damage + ". He has "+target.armor+" armor, and " + target.hp + " left.");
