@@ -19,7 +19,7 @@ public class DavidCar extends NPCRoom {
 	} 
 	
 	public boolean canEnter() {
-		if(CaveExplorer.inventory.getCash() < ethanRoom.MONEY_CUT_OFF) {
+		if(CaveExplorer.inventory.getCash() < 65000) {
 			System.out.println("You can't leave without getting the money from the bank!");
 			return false;
 		}
