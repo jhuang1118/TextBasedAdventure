@@ -33,46 +33,35 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		//get current position of player
 		caves = CaveExplorer.caves;
 		int[] coords = new int[2];
-		if(getCurrentRow() > 0 && getCurrentCol() > 0)
-		{
+		if(getCurrentRow() > 0 && getCurrentCol() > 0){
 			coords[0] = getCurrentRow();
 			coords[1] = getCurrentCol();
 		}
-		else
-		{
+		else{
 			coords[0] = 0;
 			coords[1] = 0;
 		}
 		int[] startRoom = new int[2];
-		if( (coords[0]-size) < 0) 
-		{
+		if( (coords[0]-size) < 0) {
 			startRoom[0] = 0;
 		}
-		else 
-		{
+		else {
 			startRoom[0] = coords[0] - size;
-			
 		}
-		if(coords[1]-size < 0)
-		{
+		if(coords[1]-size < 0){
 			startRoom[1] = 0;
 		}
-		else
-		{
+		else{
 			startRoom[1] = coords[1] - size;
 		}
-		
 		int[] finalRoom = new int[2];
-		if(coords[0] +size > caves.length)
-		{
+		if(coords[0] +size > caves.length){
 			coords[0] = caves.length;
 		}
-		else
-		{
+		else{
 			finalRoom[0] = coords[0] + size;
 		}
-		if( (coords[1]+size) > caves[0].length)
-		{
+		if((coords[1]+size) > caves[0].length){
 			finalRoom[1] = caves.length;
 		}
 		else
@@ -181,14 +170,12 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	}
 
 	private void clearAllContent() {
-	for(int i =0 ; i < map.length; i ++)
-	{
-		for(int e =0; e< map[i].length; e++)
-		{
-			map[i][e].leaveNPC();
+		for(int i =0 ; i < map.length; i ++){
+			for(int e =0; e< map[i].length; e++){
+				map[i][e].leaveNPC();
+			}
 		}
 	}
-}
 
 	public void copCounter() {
 		//displays the number of cops in the map
@@ -278,8 +265,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		return "P";
 	}
 	
-	public int[] calculateMove(int userRow, int userCol)
-	{
+	public int[] calculateMove(int userRow, int userCol){
 		int dir = checkDirection();
 		int[] newPosition = new int[2]; 
 		newPosition[0] = getCurrentRow() + possibleMoves[dir][0];
@@ -287,23 +273,18 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		return newPosition;
 	}
 	private int checkDirection() {
-		//
 		int row = CaveRoom.getRow(CaveExplorer.currentRoom);
 		int col = CaveRoom.getCol(CaveExplorer.currentRoom);
-		if(this.getCurrentRow() -  row> 0)
-		{
+		if(this.getCurrentRow() -  row> 0){
 			return 0;
 		}
-		if(this.getCurrentRow() - row < 0)
-		{
+		if(this.getCurrentRow() - row < 0){
 			return 2;
 		}
-		if(this.getCurrentCol() -  col < 0)
-		{
+		if(this.getCurrentCol() -  col < 0){
 			return 1;
 		}
-		if(this.getCurrentCol() - col > 0)
-		{
+		if(this.getCurrentCol() - col > 0){
 			return 3;
 		}
 		return 0;
