@@ -199,7 +199,7 @@ public class CaveRoom {
 		setConnectionForAll();
 	}
 	
-	public static void setConnectionForAll() {
+	private static void setConnectionForAll() {
 		CaveRoom[][] c = CaveExplorer.caves;
 		for(int row = 0; row< c.length-1; row++)
 		{
