@@ -168,6 +168,14 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 
 	public void copCounter() {
 		//displays the number of cops in the map
+		for(int i = 0; i < JasonZBackend.Swat.length;i++) {
+			if(JasonZBackend.Swat[i] != null) {
+				copCounter++;
+			}
+			else {
+				break;
+			}
+		}
 		System.out.println("There are " + copCounter + " cop(s) in the area.");
 	}
  
@@ -233,7 +241,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	}
 
 	private void populateMap(int mode,int size) {
-		int spawnNum = mode;
+		int spawnNum = mode + 1;
 		int[] coords = new int[2];
 		if(getCurrentRow() > 0 && getCurrentCol() > 0)
 		{
