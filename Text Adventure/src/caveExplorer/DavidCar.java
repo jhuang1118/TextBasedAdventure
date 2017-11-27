@@ -45,14 +45,17 @@ public class DavidCar extends NPCRoom {
 		}
 
 	}
+	
 	public void printValidMoves() {
 		System.out.println("You can only enter 'w', 'a', 's', or 'd' to move " + 
 				"or you can press 'e' to interact.");
 			
 	}
+	
 	public String validMoves() {
 		return "wdsae";
 	}
+	
 	public void performAction(int direction) {
 		if(direction == 4 && canEnter()) {
 			System.out.println("You successfully robbed a bank.");
