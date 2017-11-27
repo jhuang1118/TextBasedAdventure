@@ -46,8 +46,8 @@ public class CaveRoom {
 		//...('X' when you are in the room)
 	private String defaultContents;//what is in the room when you aren't in the room 
 	
-	private CaveRoom[] borderingRooms;
-	private Door[] doors;
+	public CaveRoom[] borderingRooms;
+	public Door[] doors;
 	public static int row;
 	public static int col;
 	
