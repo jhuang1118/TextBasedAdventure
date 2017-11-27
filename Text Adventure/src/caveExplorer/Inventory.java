@@ -103,4 +103,8 @@ public class Inventory {
 		return hp;
 	}
 	
+	public String getMap() {
+		return map;
+	}
+	
 }
