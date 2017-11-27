@@ -138,7 +138,7 @@ public class DanielLockerGame {
 	
 	}
 	private void answer(String input) {
-<<<<<<< HEAD
+
 
 		if(input.equals("w") && isPossibleMove(placement[0])) {
 			move(placement[0]);
@@ -151,18 +151,18 @@ public class DanielLockerGame {
 		}
 		else if(input.equals("d") && isPossibleMove(placement[3])) {
 			move(placement[3]);
-=======
+
 		String[] splitInput = input.split(",");
 		Integer coor1 = Integer.valueOf(splitInput[0]);
 		Integer coor2 = Integer.valueOf(splitInput[1]);
 		if(isOnLocker(coor1,coor2)) {
 			theLockers[coor1][coor2].setOpen(true);
 			johnsonDanielMinigame.JohnsonUnlockGame.main(null);
->>>>>>> branch 'master' of https://github.com/jhuang1118/TextBasedAdventure
+
 		}
 	}
 
-<<<<<<< HEAD
+
 	private boolean isPossibleMove(int[] is) {
 		// TODO Auto-generated method stub
 		return false;
@@ -179,9 +179,7 @@ public class DanielLockerGame {
 		
 	}
 
-=======
-	
->>>>>>> branch 'master' of https://github.com/jhuang1118/TextBasedAdventure
+
 	private void displayKeysLeft(int keys) {
 		System.out.println("You have " + keys + " keys left.");
 	}
