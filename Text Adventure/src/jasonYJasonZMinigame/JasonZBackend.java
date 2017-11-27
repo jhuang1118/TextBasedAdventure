@@ -94,9 +94,11 @@ public class JasonZBackend implements JasonYSupport {
 		}
 	}
 	
-	public int damagePlayers(int userHP, JasonZSwat damager)
+	public void damagePlayers(int userHP, JasonZSwat damager)
 	{
-		return userHP -= damager.gun.trueDamage();
+		userHP -= damager.gun.trueDamage();
+		JasonYFrontend.hp = userHP;
+		
 	}
 
 	private static int checkNullCops() {
@@ -204,8 +206,8 @@ public class JasonZBackend implements JasonYSupport {
 			
 			currentRoom = currentRoom.borderingRooms[dir];
 			cave[starterRow][starterCol].leave();
-			starterRow = currentRoom.row;
-			starterCol = currentRoom.col;
+			starterRow = currentRoom.miniRow;
+			starterCol = currentRoom.miniCol;
 			currentRoom.enter();
 		}
 	}
@@ -223,7 +225,7 @@ public class JasonZBackend implements JasonYSupport {
 	}
 
 	public boolean canFire(JasonZSwat swat) {
-		if( starterRow == swat.row || swat.col == starterCol)
+		if( starterRow == swat.currentRow || swat.currentCol == starterCol)
 		{
 			return true; 
 		}
