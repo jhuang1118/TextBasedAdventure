@@ -170,12 +170,12 @@ public class CaveRoom {
 		}
 		
 		
-		CaveExplorer.currentRoom = c[0][1];
+		CaveExplorer.currentRoom = c[0][0];
 		CaveExplorer.currentRoom.enter();
 		//Set up doors
 		
 		c[5][5] = new VaultRoom(null);
-		c[9][9] = new DavidCar(null);
+		c[9][0] = new DavidCar(null);
 		setConnectionForAll();
 	}
 
