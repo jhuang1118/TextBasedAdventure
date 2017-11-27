@@ -100,20 +100,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			mapCol = 0;
 		}
 	}
-	  
-//	public void rangeDisplay() {
-		//colors in a number of boxes in all directions based on the range of the gun
-		//should be colored red 
-		//grab the players coordinates
-//		int[] coords = CaveExplorer.currentRoom.getCoordinates();
-//		int range = JasonZBackend.gun.getRange();
-//		for(int i = 0; i < range; i++) {
-//			map[coords[0]+i][coords[1]] = " | ";//down
-//			map[coords[0]-i][coords[1]] = " | ";//up
-//			map[coords[0]][coords[1]+1] = " - ";//right
-//			map[coords[0]][coords[1]-1] = " - ";//left
-//		}
-//	} 
+
 	public void play() {
 		introduction();
 		System.out.println(CaveExplorer.inventory.getMap());

@@ -30,8 +30,14 @@ public class JasonZBackend implements JasonYSupport {
 		changeDifficulty(difficulty);
 		Swat = new JasonZSwat[quantity];
 		this.gun = new JasonZGuns(TYPE[0]);
-		JasonZBackend.starterRow = (int) Math.ceil(floor.length/2);
-		JasonZBackend.starterCol = (int) Math.ceil(floor[starterRow].length/2);
+		if(floor.length % 2 == 1) {
+			JasonZBackend.starterRow = (int) Math.ceil(((floor.length-1)/2)+1);
+			JasonZBackend.starterCol = (int) Math.ceil(((floor[starterRow].length-1)/2)+1);
+		}
+		else {
+			JasonZBackend.starterRow = (int) Math.ceil(floor.length/2);
+			JasonZBackend.starterCol = (int) Math.ceil(floor[starterRow].length/2);
+		}
 		this.cave = floor;
 		currentRoom = floor[starterRow][starterCol];
 	}
@@ -40,7 +46,7 @@ public class JasonZBackend implements JasonYSupport {
 		int r = gun.getRange();
 		validTarget = new JasonZSwat[r*4];
 		int startR = starterRow -r;
-		int startC = starterCol-r;
+		int startC = starterCol -r;
 		int finalR = starterRow +r;
 		int finalC = starterCol +r;
 		if(startR < 0){
@@ -151,7 +157,7 @@ public class JasonZBackend implements JasonYSupport {
 	}
 
 	public void increaseKillCount() {
-		JasonZBackend.killCount ++;
+		JasonZBackend.killCount++;
 	}
 
 	public void validInput(String input) {
