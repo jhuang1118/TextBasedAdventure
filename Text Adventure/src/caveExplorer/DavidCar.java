@@ -19,7 +19,7 @@ public class DavidCar extends NPCRoom {
 	} 
 	
 	public boolean canEnter() {
-		if(CaveExplorer.inventory.getCash() != ethanRoom.MONEY_CUT_OFF) {
+		if(CaveExplorer.inventory.getCash() < ethanRoom.MONEY_CUT_OFF) {
 			System.out.println("You can't leave without getting the money from the bank!");
 			return false;
 		}
@@ -53,8 +53,7 @@ public class DavidCar extends NPCRoom {
 		return "wdsae";
 	}
 	public void performAction(int direction) {
-		if(direction == 4) {
-			canEnter();
+		if(direction == 4 && canEnter()) {
 			System.out.println("You successfully robbed a bank.");
 			CaveExplorer.playing = false;
 		}else {
