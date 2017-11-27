@@ -26,7 +26,7 @@ public class JasonZSwat extends NPC {
 		this.gun = new JasonZGuns(info);
 	}
 	
-	public int[] calculateMove(int userRow, int userCol)
+	public int[] calculateMove(int row, int col)
 	{
 		int dir = checkDirection();
 		int[] newPosition = new int[2]; 
