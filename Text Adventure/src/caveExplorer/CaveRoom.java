@@ -1,5 +1,7 @@
 package caveExplorer;
 
+import jasonYJasonZMinigame.JasonYFrontend;
+
 public class CaveRoom {
 	
 	public static int[] getCoordinates() {
@@ -7,6 +9,21 @@ public class CaveRoom {
 		coords[0] = row;
 		coords[1] = col;
 		return coords;
+	}
+	public static int getRow(CaveRoom c) {
+		return c.row;
+	}
+
+	public static void setRow(CaveRoom c, int row) {
+		c.row = row;
+	}
+
+	public static int getCol(CaveRoom c) {
+		return c.col;
+	}
+
+	public static void setCol(CaveRoom c, int col) {
+		c.col = col;
 	}
 	 
 	public static int getRow() {
@@ -31,8 +48,8 @@ public class CaveRoom {
 		//...('X' when you are in the room)
 	private String defaultContents;//what is in the room when you aren't in the room 
 	
-	private CaveRoom[] borderingRooms;
-	private Door[] doors;
+	public CaveRoom[] borderingRooms;
+	public Door[] doors;
 	public static int row;
 	public static int col;
 	
@@ -165,7 +182,7 @@ public class CaveRoom {
 		{
 			for(int col = 0; col < c[row].length; col ++)
 			{
-				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
+				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".",row,col);
 			}
 		}
 		
@@ -174,8 +191,12 @@ public class CaveRoom {
 		CaveExplorer.currentRoom.enter();
 		//Set up doors
 		
-		c[5][5] = new VaultRoom(null);
-		c[9][9] = new DavidCar(null);
+		c[5][5] = new VaultRoom(null,5,5);
+		c[9][9] = new DavidCar(null,9,9);
+		JasonYFrontend testNPC = new JasonYFrontend(5,5,c);
+		testNPC.setPosition(5,5);
+		CaveExplorer.police = new JasonYFrontend[1];
+		CaveExplorer.police[0] = testNPC;
 		setConnectionForAll();
 	}
 
@@ -278,5 +299,10 @@ public class CaveRoom {
 		return doors[direction];
 	}
 
+	public void removeRoom(int dir)
+	{
+		borderingRooms[dir] = null;
+		setDirections();
+	}
 }
 

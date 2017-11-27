@@ -25,6 +25,7 @@ public class Inventory {
 	public Inventory()
 	{
 		setCash(0);
+		hp = 100;
 		updateMap(CaveExplorer.caves);
 	}
 	
@@ -103,4 +104,31 @@ public class Inventory {
 		return hp;
 	}
 	
+	public String getMap() {
+		return map;
+	}
+	
+	public void toggleIsKidnapped() {
+		isKidnapped = !isKidnapped;
+	}
+	public boolean getIsKidnapped() {
+		return isKidnapped;
+	}
+	
+	public void getHasGun() {
+		hasGun = !hasGun;
+	}
+	public boolean toggleHasGun() {
+		return hasGun;
+	}
+	
+	public int getKey() {
+		return key;
+
+		
+	}
+	
+	public void setKey(int num) {
+		key = num;
+	}
 }

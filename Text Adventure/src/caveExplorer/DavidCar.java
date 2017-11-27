@@ -6,8 +6,8 @@ public class DavidCar extends NPCRoom {
 
 	public EthanRoomBackEnd ethanRoom;
 
-	public DavidCar(String description) {
-		super(description);
+	public DavidCar(String description,int row, int col) {
+		super(description, row, col);
 	}
 	
 	public String getContents() {

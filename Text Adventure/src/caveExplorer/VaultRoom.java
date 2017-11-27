@@ -8,8 +8,8 @@ public class VaultRoom extends NPCRoom {
 	
 	private DavidRoomFrontEnd DavidRoom;
 
-	public VaultRoom(String description) {
-		super(description);
+	public VaultRoom(String description,int row, int col) {
+		super(description,row, col);
 		// TODO Auto-generated constructor stub
 	}
 	public String getContents() {

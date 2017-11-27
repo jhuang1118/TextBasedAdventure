@@ -3,12 +3,15 @@ package caveExplorer;
 public class NPCRoom extends CaveRoom {
 
 	private NPC npc;
+	public int miniRow;
+	public int miniCol;
+	private String miniDescription;
 	
 	public NPC getNpc() {
 		return npc;
 	}
 
-	public NPCRoom(String description) {
+	public NPCRoom(String description, int row, int col) {
 		super(description, row, col);
 		// TODO Auto-generated constructor stub
 	}
@@ -67,13 +70,13 @@ public class NPCRoom extends CaveRoom {
 	{
 		if(containsNPC() && npc.isActive())
 		{
-			return super.getDescription() + "/n" + npc.getDescription();
+			return super.getDescription() + "\n" + npc.getDescription();
 		}
 		else
 		{
 			if(containsNPC() && !npc.isActive())
 			{
-				return super.getDescription() + "/n" + npc.getInactiveDescription();
+				return super.getDescription() + "\n" + npc.getInactiveDescription();
 			}
 			else
 			{
@@ -92,5 +95,9 @@ public class NPCRoom extends CaveRoom {
 		{
 			return super.getContents();
 		}
+	}
+	
+	public void setMiniDescription(String string) {
+		miniDescription = string;
 	}
 }
