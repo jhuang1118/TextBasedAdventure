@@ -29,16 +29,6 @@ public class JasonZGuns {
 		this.maxAmmo = (int) stats[2];
 		this.rateOfFire = stats[3];
 	}
-
-	public void reload()
-	{
-		this.ammo = this.maxAmmo;
-	}
-	
-	public void decreaseAmmo()
-	{
-		this.ammo -= rateOfFire;
-	}
 	
 	public double trueDamage()
 	{

@@ -94,9 +94,10 @@ public class JasonZBackend implements JasonYSupport {
 		}
 	}
 	
-	public int damagePlayers(int userHP, JasonZSwat damager)
+	public void damagePlayers(int userHP, JasonZSwat damager)
 	{
-		return userHP -= damager.gun.trueDamage();
+		userHP -= damager.gun.trueDamage();
+		JasonYFrontend.hp = userHP;
 	}
 
 	private static int checkNullCops() {
@@ -137,7 +138,7 @@ public class JasonZBackend implements JasonYSupport {
 			target.armor -= damage;
 		}
 		else target.hp -= damage;
-		System.out.println("That cop took " + damage + ". He has "zz);
+		System.out.println("That cop took " + damage + ". He has ");
 	}
 
 	@Override
@@ -192,8 +193,8 @@ public class JasonZBackend implements JasonYSupport {
 			
 			currentRoom = currentRoom.borderingRooms[dir];
 			cave[starterRow][starterCol].leave();
-			starterRow = currentRoom.row;
-			starterCol = currentRoom.col;
+			starterRow = currentRoom.miniRow;
+			starterCol = currentRoom.miniCol;
 			currentRoom.enter();
 		}
 	}
@@ -210,4 +211,11 @@ public class JasonZBackend implements JasonYSupport {
 		System.out.println("You can only enter 'w', 'a', 's', 'd,' or 'f'.");
 	}
 
+	public boolean canFire(JasonZSwat swat) {
+		if( starterRow == swat.currentRow || swat.currentCol == starterCol)
+		{
+			return true; 
+		}
+		return false;
+	}
 }

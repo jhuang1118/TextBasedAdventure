@@ -6,8 +6,8 @@ public class NPC {
 
 	//fields needed to program navigation 
 	public CaveRoom[][] floor;
-	private int currentRow; 
-	private int currentCol;
+	public int currentRow; 
+	public int currentCol;
 	private NPCRoom currentRoom;
 	
 	//fields for interaction comment

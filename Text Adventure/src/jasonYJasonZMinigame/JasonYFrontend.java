@@ -6,9 +6,6 @@ import caveExplorer.Door;
 import caveExplorer.NPC;
 import caveExplorer.NPCRoom;
 
-import java.awt.Color;
-import java.awt.event.KeyEvent;
-
 import java.util.Scanner;
 
 public class JasonYFrontend extends NPC implements JasonZSupport{
@@ -17,7 +14,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	
 	private JasonYSupport backend;
 	public int copCounter;
-	public int hp;
+	public static int hp;
 	public static CaveRoom[][] caves;
 	public NPCRoom[][] map;
 	public Door[] doors;
@@ -104,7 +101,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	public void play() {
 		introduction();
 		System.out.println(CaveExplorer.inventory.getMap());
-		while(hp != 0 && copCounter != 0) {
+		while(hp > 0 && copCounter != 0) {
 			int[] coords = {JasonZBackend.starterRow, JasonZBackend.starterCol};
 			System.out.println("You are at coordinates (" + coords[0]+ ", " + coords[1] + ").");
 			System.out.println("What would you like to do?");
@@ -120,11 +117,16 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 					if( p != null){
 						if(((JasonZBackend) backend).canFire(p))
 						{
-							hp -= ((JasonZBackend) backend).damagePlayers(hp, p);
+							((JasonZBackend) backend).damagePlayers(hp, p);
+							System.out.println(p.gun.trueDamage());
 							System.out.println("You were hit! You have "+ hp );
 						}
-						int[] moves = p.calculateMove(coords[0], coords[1]);
-						p.setPosition(moves[0], moves[1]);
+						else
+						{
+							int[] moves = p.calculateMove(coords[0], coords[1]);
+							p.setPosition(moves[0], moves[1]);
+						}
+						
 						
 					}
 				}
@@ -135,13 +137,23 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			copCounter();
 			System.out.println("You have killed " + JasonZBackend.killCount + " cop(s). You need to kill " + copCounter + " cop(s).");
 		}
-		if(hp == 0) {
+		if(hp < 0) {
 			System.out.println("GAME OVER!");
+			clearAllContent();
 		}
 		if(copCounter == 0) {
 			System.out.println("Congrats! You've won the game!");
-			caveExplorer.CaveRoom.setConnectionForAll();
+			clearAllContent();
+			copCounter = 0;
 		}
+	}
+
+	public int getHp() {
+		return hp;
+	}
+
+	public void setHp(int hp) {
+		this.hp = hp;
 	}
 
 	private void clearAllContent() {
