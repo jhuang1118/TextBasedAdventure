@@ -136,7 +136,14 @@ public class JasonZBackend implements JasonYSupport {
 		{
 			target.armor -= damage;
 		}
-		else target.hp -= damage;
+		else {
+			target.hp -= damage;
+			if(target.hp < 0) {
+				target.hp = 0;
+				target.setActive(false);
+			}
+		}
+		System.out.println("That cop took " + damage + ". He has " + target.hp + " left.");
 	}
 
 	@Override
