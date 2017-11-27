@@ -19,6 +19,10 @@ public class Inventory {
 	private String[] defaultGuns = {"M16", "0"};
 	JasonZGuns currentGun = new JasonZGuns(defaultGuns);
 
+	private boolean isKidnapped;
+
+	private int key;
+
 	private static int hp;
 
 
@@ -26,6 +30,8 @@ public class Inventory {
 	{
 		setCash(0);
 		updateMap(CaveExplorer.caves);
+		isKidnapped = false;
+		key = 0;
 	}
 	
 	public int getCash() {
@@ -94,13 +100,34 @@ public class Inventory {
 	{
 		return map + "\n" + "Also you have " + CaveExplorer.inventory.getCash() + " cash \n";
 	}
-	public void updateHP() {
-		
-		hp = 100;
+	public static void updateHP(int dmg) {
+		hp -= dmg;
 	}
 	
-	public static int getHP() {
+	public static  int getHP() {
 		return hp;
 	}
+	
+	public void toggleIsKidnapped() {
+		isKidnapped = !isKidnapped;
+	}
+	public boolean getIsKidnapped() {
+		return isKidnapped;
+	}
+	
+	public void getHasGun() {
+		hasGun = !hasGun;
+	}
+	public boolean toggleHasGun() {
+		return hasGun;
+	}
+	
+	public int getKey() {
+		return key;
+
+	}
+	
+	
+	
 	
 }

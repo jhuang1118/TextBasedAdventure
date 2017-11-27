@@ -62,54 +62,49 @@ public class JohnsonUnlockGame {
 		int num1 = Integer.parseInt(input.substring(0,1));
 		int num2 = Integer.parseInt(input.substring(1,2));
 		JohnsonButton currentButton = theButtons[num1][num2];
-		if(theButtons[num1][num2] != null) {
+		if(currentButton.isRevealed() == false) {
 			String colorOfSquare = currentButton.getColor();
-			theButtons[num1][num2].setRevealed(true);
+			currentButton.setRevealed(true);
 			if(colorOfSquare == "B") {
 				currentButton.setTrigger(true);
 				won = true;
 				chances = 0;
-			}
-			if(colorOfSquare == "R") {
+			}else if(colorOfSquare == "R") {
 				System.out.println("You are very close to the right button!!");
 				chances += 2;
-			}
-			if(colorOfSquare == "Y") {
+			}else if(colorOfSquare == "Y") {
 				System.out.println("You are kind of close to the right button!");
 				chances++;
-			}
-			if(colorOfSquare == "G") {
+			}else if(colorOfSquare == "G") {
 				System.out.println("You are not that close. I suggest you pick a button elsewhere.");
 			}
-			currentButton = null;
-		}
+			
+		}else
 		System.out.println("You have already pressed this button. You cannot press it again.");
+		chances++;
 	}
 	public String getValidUserInput() {
 		String input = getInput();
-		boolean checkingInput = true;
-		while(checkingInput)
-		{
-			if(input.length()<2 || input == null)
-			{
-				checkingInput = true;
-				System.out.println("Please follow directions. Remember, do not include commas!");
-				input = getInput();
-			}
-			else
-			{
-				checkingInput = false;
-			}
-		}
-		
-		String num1 = input.substring(0,1);
-		String num2 = input.substring(1,2);
-		
-		if((!(isValid(num1) && isValid(num2)) || input.length() != 2)) {
+
+		while(input.length() != 2 || input != "c") {
 			printValidMoves();
-			System.out.println("Please follow directions. Remember, do not include commas!");
+			System.out.print("Please follow directions. Remember, do not include commas or spaces!");
 			input = getInput();
 		}
+		if(input.equals("c")) {
+			won = true;
+			printGameOverMessage(0,0);
+			DanielLockerGame.main(null);
+		}
+		String num1 = input.substring(0,1);
+		String num2 = input.substring(1,2);
+		while(((isValid(num1) == false || isValid(num2) == false))) {
+			printValidMoves();
+			System.out.print("Please enter a valid input. Just numbers, no letters or weird symbols!");
+			input = getInput();
+			return input;
+		}
+		
 		return input;
 		
 	}

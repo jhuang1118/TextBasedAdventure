@@ -105,10 +105,15 @@ public class DanielLockerGame {
 			input = CaveExplorer.in.nextLine();
 			return input;
 		}
+
 			
+
 		return input;
+	
 		
 	
+
+
 	}
 
 	private boolean validInput(String input) {
@@ -140,6 +145,7 @@ public class DanielLockerGame {
 	
 	}
 	private void answer(String input) {
+
 		if(input.equals("w") && isPossibleMove(placement[0])) {
 			move(placement[0]);
 		}
@@ -163,6 +169,10 @@ public class DanielLockerGame {
 		if(isPossibleMove(int[])) {
 			
 		}
+
+		String[] directions = {"w","a","s","d"};
+		
+
 		
 	}
 
