@@ -23,7 +23,7 @@ public class DavidCar extends NPCRoom {
 	} 
 	
 	public boolean canEnter() {
-		if(ethanRoom.getCurrMoney() != ethanRoom.MONEY_CUT_OFF) {
+		if(CaveExplorer.inventory.getCash() != ethanRoom.MONEY_CUT_OFF) {
 			return false;
 		}
 		else {
