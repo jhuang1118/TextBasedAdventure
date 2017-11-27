@@ -200,6 +200,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 					input = in.nextLine();
 				}
 				System.out.println("So do you want to play? Enter 'p' to play. Enter 'c' for controls");
+				input = in.nextLine();
 			}
 			else{
 				System.out.println("Valid inputs are 'p' and 'c'.");
