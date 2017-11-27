@@ -103,10 +103,15 @@ public class DanielLockerGame {
 			input = CaveExplorer.in.nextLine();
 			return input;
 		}
+
 			
+
 		return input;
+	
 		
 	
+
+
 	}
 
 	private boolean validInput(String input) {
@@ -133,16 +138,50 @@ public class DanielLockerGame {
 	
 	}
 	private void answer(String input) {
+<<<<<<< HEAD
+
+		if(input.equals("w") && isPossibleMove(placement[0])) {
+			move(placement[0]);
+		}
+		else if(input.equals("a") && isPossibleMove(placement[1])){
+			move(placement[1]);
+		}
+		else if(input.equals("s") && isPossibleMove(placement[2])) {
+			move(placement[2]);
+		}
+		else if(input.equals("d") && isPossibleMove(placement[3])) {
+			move(placement[3]);
+=======
 		String[] splitInput = input.split(",");
 		Integer coor1 = Integer.valueOf(splitInput[0]);
 		Integer coor2 = Integer.valueOf(splitInput[1]);
 		if(isOnLocker(coor1,coor2)) {
 			theLockers[coor1][coor2].setOpen(true);
 			johnsonDanielMinigame.JohnsonUnlockGame.main(null);
+>>>>>>> branch 'master' of https://github.com/jhuang1118/TextBasedAdventure
 		}
 	}
 
+<<<<<<< HEAD
+	private boolean isPossibleMove(int[] is) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private void move(int[] placement) {
+		if(isPossibleMove(int[])) {
+			
+		}
+
+		String[] directions = {"w","a","s","d"};
+		
+
+		
+	}
+
+=======
 	
+>>>>>>> branch 'master' of https://github.com/jhuang1118/TextBasedAdventure
 	private void displayKeysLeft(int keys) {
 		System.out.println("You have " + keys + " keys left.");
 	}
