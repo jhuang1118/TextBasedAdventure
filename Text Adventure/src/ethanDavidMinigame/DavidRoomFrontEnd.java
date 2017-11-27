@@ -35,13 +35,12 @@ public class DavidRoomFrontEnd implements EthanSupport {
 		}
 		printGameOverMessage(backend.victorious());
 	}
-	
+	 
 	public void printGameOverMessage(Object victorious) {
 		if(ethanRoom.getCurrMoney() >= 65000) {
 			caveExplorer.CaveExplorer.inventory.setCash(ethanRoom.getCurrMoney());
 			System.out.println(caveExplorer.CaveExplorer.inventory.getCash());
 			System.out.println("You collected enough money. Now get to the car!");
-		//	CaveExplorer.main(null);
 		}else {
 			System.out.println("You're dead.");
 		}
