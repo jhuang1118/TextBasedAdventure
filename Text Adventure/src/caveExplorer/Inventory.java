@@ -108,12 +108,12 @@ public class Inventory {
 
 
 	
-	public void updateHP(int dmg) {
+	public static void updateHP(int dmg) {
 		hp -= dmg;
 	}
 	
-	public  int getHP() {
-		return this.hp;
+	public static  int getHP() {
+		return hp;
 	}
 	
 	public void toggleIsKidnapped() {

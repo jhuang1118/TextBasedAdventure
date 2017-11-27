@@ -86,10 +86,15 @@ public class JohnsonUnlockGame {
 	public String getValidUserInput() {
 		String input = getInput();
 
-		while(input.length() != 2) {
+		while(input.length() != 2 || input != "c") {
 			printValidMoves();
 			System.out.print("Please follow directions. Remember, do not include commas or spaces!");
 			input = getInput();
+		}
+		if(input.equals("c")) {
+			won = true;
+			printGameOverMessage(0,0);
+			DanielLockerGame.main(null);
 		}
 		String num1 = input.substring(0,1);
 		String num2 = input.substring(1,2);
