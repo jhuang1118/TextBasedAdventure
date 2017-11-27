@@ -244,9 +244,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	}
 
 	private void populateMap(int mode) {
-		mode ++;
-		for( int i = 0; i< mode; i++)
-		{
+		for(int i = 0; i < mode + 1; i++) {
 			int randomRow = ((int)(Math.random() * map.length));
 			int randomCol = ((int)(Math.random() * map[0].length));
 			JasonZBackend.createPolice(randomRow, randomCol);
