@@ -109,7 +109,7 @@ public class JasonZBackend implements JasonYSupport {
 	{
 		JasonZSwat target = firstPersonDir();
 		if(target != null) damage(target, gun.trueDamage());
-		else System.out.println("You fire at air to show your dominance. :thinking: ");
+		else System.out.println("You fire at air to show your dominance.");
 	}
 
 	public JasonZSwat firstPersonDir()
