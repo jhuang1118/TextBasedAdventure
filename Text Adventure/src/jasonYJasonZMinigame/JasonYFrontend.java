@@ -221,7 +221,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		input = "";
 		createMap(2);
 		backend = new JasonZBackend(this, 1, map);
-		populateMap(index,2);
+		populateMap(index);
 		CaveExplorer.inventory.updateMap(map);
 	}
 
@@ -243,61 +243,10 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		return -1;
 	}
 
-	private void populateMap(int mode,int size) {
-		int spawnNum = mode + 1;
-		int[] coords = new int[2];
-		if(getCurrentRow() > 0 && getCurrentCol() > 0)
-		{
-			coords[0] = getCurrentRow();
-			coords[1] = getCurrentCol();
-		}
-		else
-		{
-			coords[0] = 0;
-			coords[1] = 0;
-		}
-		
-		int[] startRoom = new int[2];
-		if( (coords[0]-size) < 0) 
-		{
-			startRoom[0] = 0;
-		}
-		else 
-		{
-			startRoom[0] = coords[0] - size;
-			
-		} 
-		if(coords[1]-size < 0)
-		{
-			startRoom[1] = 0;
-		}
-		else
-		{
-			startRoom[1] = coords[1] - size;
-		}
-		
-		int[] finalRoom = new int[2];
-		if(coords[0] +size > caves.length)
-		{
-			coords[0] = caves.length;
-		}
-		else
-		{
-			finalRoom[0] = coords[0] + size;
-		}
-		if( (coords[1]+size) > caves[0].length)
-		{
-			finalRoom[1] = caves.length;
-		}
-		else
-		{
-			finalRoom[1] = coords[1] + size;
-		}
-		for(int i = 0; i < spawnNum; i++) {
-			int rangeRow = finalRoom[0] - startRoom[0];
-			int rangeCol = finalRoom[1] - startRoom[1];
-			int randomRow = ((int)(Math.random() * rangeRow))+startRoom[0];
-			int randomCol = ((int)(Math.random() * rangeCol))+startRoom[1];
+	private void populateMap(int mode) {
+		for(int i = 0; i < mode + 1; i++) {
+			int randomRow = ((int)(Math.random() * map.length));
+			int randomCol = ((int)(Math.random() * map[0].length));
 			JasonZBackend.createPolice(randomRow, randomCol);
 		}
 	}	
