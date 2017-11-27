@@ -5,29 +5,29 @@ import jasonYJasonZMinigame.JasonYFrontend;
 public class NPC {
 
 	//fields needed to program navigation 
-	private CaveRoom[][] floor;
-	private int currentRow; 
-	private int currentCol;
+	public CaveRoom[][] floor;
+	public int currentRow; 
+	public int currentCol;
 	private NPCRoom currentRoom;
 	
-	//fields for interaction commment
+	//fields for interaction comment
 	private boolean active;
 	private String activeDescription;
 	private String inactiveDescription; 
 	//you can add more
 	
-	public int[][] possibleMoves = {{-1,0}, {0,1}, {1, 0},{0,-1}};
+	public static int[][] possibleMoves = {{-1,0}, {0,1}, {1, 0},{0,-1}};
 	
-	public NPC(CaveRoom[][] cave) {
+	public NPC(int row, int col, CaveRoom[][] cave) {
 		this.floor = cave;
+		this.currentRow = row;
+		this.currentCol = col;
 		this.activeDescription = "There is a person standing in the room, waiting to talk to you. Press 'e' to talk";
-		this.inactiveDescription = "The person you spoke to earlier is standing here.";
-		this.currentCol = -1; 
-		this.currentRow = -1;
+		this.inactiveDescription = ""; 
 		currentRoom = null; 
 		active = true;
 	}
-
+	
 	public boolean isActive() {
 		return active;
 	}
@@ -84,7 +84,7 @@ public class NPC {
 	}
 
 	public void setPosition(int row, int col) {
-		if((row>= 0 && row< floor.length) && (col>=0 && col < floor[row].length) && floor[row][col] instanceof NPCRoom)
+		if((row>= 0 && row< floor.length) && (col>=0 && col < floor[row].length) && floor[row][col] instanceof NPCRoom) 
 		{
 			if(currentRoom != null)
 			{
@@ -93,8 +93,19 @@ public class NPC {
 			currentRow = row;
 			currentCol = col;
 			currentRoom = (NPCRoom) floor[row][col];
+			if( currentRoom.equals(CaveExplorer.currentRoom) && this instanceof JasonYFrontend)
+			{
+				this.play();
+				this.active = false;
+				CaveExplorer.remove(this);
+			}
 			currentRoom.enterNPC(this);
 		}
+		
+	}
+
+	public void play() {
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -105,11 +116,6 @@ public class NPC {
 			int newRow = move[0];
 			int newCol = move[1];
 			setPosition(newRow, newCol);
-			int playerRow = currentRoom.getRow();
-			int playerCol = currentRoom.getCol();
-			if(newRow == playerRow && newCol == playerCol) {
-				JasonYFrontend.play();
-			}
 		}
 		
 	}

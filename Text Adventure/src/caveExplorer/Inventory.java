@@ -29,6 +29,7 @@ public class Inventory {
 	public Inventory()
 	{
 		setCash(0);
+		hp = 100;
 		updateMap(CaveExplorer.caves);
 		isKidnapped = false;
 		key = 0;
@@ -98,7 +99,7 @@ public class Inventory {
 	}
 	public String getDescription()
 	{
-		return map + "\n" + "Also you have " + CaveExplorer.inventory.getCash() + " cash \n";
+		return map + "\n" + "Also you have " + getCash() + " cash \n";
 	}
 	public static void updateHP(int dmg) {
 		hp -= dmg;
@@ -108,6 +109,7 @@ public class Inventory {
 		return hp;
 	}
 	
+<<<<<<< HEAD
 	public void toggleIsKidnapped() {
 		isKidnapped = !isKidnapped;
 	}
@@ -130,4 +132,33 @@ public class Inventory {
 	
 	
 	
+=======
+	public String getMap() {
+		return map;
+	}
+	
+	public void toggleIsKidnapped() {
+		isKidnapped = !isKidnapped;
+	}
+	public boolean getIsKidnapped() {
+		return isKidnapped;
+	}
+	
+	public void getHasGun() {
+		hasGun = !hasGun;
+	}
+	public boolean toggleHasGun() {
+		return hasGun;
+	}
+	
+	public int getKey() {
+		return key;
+
+		
+	}
+	
+	public void setKey(int num) {
+		key = num;
+	}
+>>>>>>> branch 'master' of https://github.com/jhuang1118/TextBasedAdventure
 }

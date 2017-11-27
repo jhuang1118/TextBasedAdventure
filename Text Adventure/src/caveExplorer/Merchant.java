@@ -1,7 +1,7 @@
 package caveExplorer;
 
 
-public class Merchant {
+public class Merchant{
 
 	
 	private int currentRow;
@@ -15,10 +15,10 @@ public class Merchant {
 		
 	public Merchant() {
 		this.floor = CaveExplorer.caves;
-		this.activeDescription = "I am the local merchant. We have not met yet. Tell me, what is your name?";
+		this.activeDescription = "I am the local merchant. We have not met yet but I give away free stuff to whoever can answer my question.";
 		this.inactiveDescription = "The merchant does not want to talk anymore.";
-		this.currentCol = -3;
-		this.currentRow = -5;
+		this.currentCol = 0;
+		this.currentRow = -9;
 		currentRoom = null;
 		active = true;
 	}
@@ -35,10 +35,16 @@ public class Merchant {
 	}
 	
 	public void interact() {
-		String[][] fightMoves = {{"Food","5"},{"Water", "10"}};
-		CaveExplorer.print("What would you like to buy?");
+		CaveExplorer.print("I will give you 5 keys if you can tell me how many legs a spider has.");
 		String s = CaveExplorer.in.nextLine();
+		while(s.equals("8")){
+			CaveExplorer.print("Try again!");
+			s = CaveExplorer.in.nextLine();
+		}
+		CaveExplorer.print("Congrats, now you will be able to play games with those keys.");
 		active = false;
+		johnsonDanielMinigame.DanielLockerGame.main(null);
+		
 	}
 
 }

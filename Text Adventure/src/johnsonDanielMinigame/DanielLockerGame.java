@@ -1,17 +1,18 @@
 package johnsonDanielMinigame;
 
+import java.util.Scanner;
 import caveExplorer.CaveExplorer;
 
 public class DanielLockerGame {
 
 	int[][] placement= {{-1,0},{0,-1},{1,0},{0,1}};
-	//placement indicates how the User moves based on the User input
-	
 	private DanielLocker[][] theLockers;
 	private boolean onLocker;
 	int[] rows = {1,3};
 	int[] cols = {1,3,5};
-	
+	int ROWTOT = 6;
+	int COLTOT = 6;
+	private int newPsn;
 	public DanielLockerGame() {
 		theLockers = new DanielLocker[6][6];
 		onLocker = false;
@@ -44,10 +45,7 @@ public class DanielLockerGame {
 		int colSelected = generateRandNum(0,cols.length-1);
 		
 		createThing(rowSelected, colSelected);
-		
-		
-		
-		
+				
 		System.out.println("In this part of the game you will walk around the map and go to lockers. You will have only 3 keys and each key can open any locker only once. "
 				+ "These lockers contain either the person you are looking for, a bomb, or"
 				+ " nothing. When you walk up to a locker, press 'x'");
@@ -56,7 +54,7 @@ public class DanielLockerGame {
 			displayBoard();
 			displayKeysLeft(keys);
 			String input = getValidUserInput();
-			answer(input);
+			//answer(input);
 			keys--;
 		}
 		printGG();
@@ -101,7 +99,7 @@ public class DanielLockerGame {
 		String input = CaveExplorer.in.nextLine();
 		
 		while(!validInput(input)) {
-			System.out.print("Please enter 'w', 'a', 's', 'd'.");
+			System.out.print("Please enter coordinates in the form row, col without any parenthesis or spaces. Remember the minimum row and columumn is 0 and the max is 5.");
 			input = CaveExplorer.in.nextLine();
 			return input;
 		}
@@ -117,14 +115,9 @@ public class DanielLockerGame {
 	}
 
 	private boolean validInput(String input) {
-		String[] directions = {"w","a","s","d"};
-		if(input.length() == 1) {
-			for(int i = 0; i < directions.length; i++) {
-				if(input != directions[i]) {
-					return false;
-				}
-			}
-			return true;
+		String[] splitInput = input.split(",");
+		if(splitInput.length == 2) {
+			return Integer.valueOf(splitInput[0]) > 0 && Integer.valueOf(splitInput[0]) < 6 && Integer.valueOf(splitInput[1]) > 0 && Integer.valueOf(splitInput[0]) < 6; 
 		}
 		return false;
 	}
@@ -145,6 +138,7 @@ public class DanielLockerGame {
 	
 	}
 	private void answer(String input) {
+<<<<<<< HEAD
 
 		if(input.equals("w") && isPossibleMove(placement[0])) {
 			move(placement[0]);
@@ -157,9 +151,18 @@ public class DanielLockerGame {
 		}
 		else if(input.equals("d") && isPossibleMove(placement[3])) {
 			move(placement[3]);
+=======
+		String[] splitInput = input.split(",");
+		Integer coor1 = Integer.valueOf(splitInput[0]);
+		Integer coor2 = Integer.valueOf(splitInput[1]);
+		if(isOnLocker(coor1,coor2)) {
+			theLockers[coor1][coor2].setOpen(true);
+			johnsonDanielMinigame.JohnsonUnlockGame.main(null);
+>>>>>>> branch 'master' of https://github.com/jhuang1118/TextBasedAdventure
 		}
 	}
 
+<<<<<<< HEAD
 	private boolean isPossibleMove(int[] is) {
 		// TODO Auto-generated method stub
 		return false;
@@ -176,13 +179,20 @@ public class DanielLockerGame {
 		
 	}
 
+=======
+	
+>>>>>>> branch 'master' of https://github.com/jhuang1118/TextBasedAdventure
 	private void displayKeysLeft(int keys) {
 		System.out.println("You have " + keys + " keys left.");
 	}
 
 	private void displayBoard() {
-		// TODO Auto-generated method stub
-		
+		for(int row = 0; row < ROWTOT; row++) {
+			for(int col = 0; col < COLTOT; col++) {
+				System.out.print(theLockers[row][col]);
+			}
+			System.out.println(" ");
+		}
 	}
 
 }
