@@ -191,8 +191,8 @@ public class CaveRoom {
 		CaveExplorer.currentRoom.enter();
 		//Set up doors
 		
-		c[5][5] = new VaultRoom(null);
-		c[9][9] = new DavidCar(null);
+		c[5][5] = new VaultRoom(null,5,5);
+		c[9][9] = new DavidCar(null,9,9);
 		JasonYFrontend testNPC = new JasonYFrontend(5,5,c);
 		testNPC.setPosition(5,5);
 		CaveExplorer.police = new JasonYFrontend[1];
