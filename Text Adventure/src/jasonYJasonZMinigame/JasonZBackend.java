@@ -19,6 +19,7 @@ public class JasonZBackend implements JasonYSupport {
 	public static NPCRoom[][] cave;
 	public static int starterRow;
 	public static int starterCol;
+	public NPCRoom currentRoom;
 	
 	public JasonZBackend(JasonZSupport frontend, int difficulty, NPCRoom[][] floor) {
 		this.frontend = frontend;
@@ -107,6 +108,7 @@ public class JasonZBackend implements JasonYSupport {
 
 	public void attack()
 	{
+		setValidTarget(currentRoom);
 		JasonZSwat target = firstPersonDir();
 		if(target != null) damage(target, gun.trueDamage());
 		else System.out.println("You fire at air to show your dominance.");
@@ -169,11 +171,7 @@ public class JasonZBackend implements JasonYSupport {
 			 */
 			goToRoom(direction);
 		}else {
-			if(direction == 4 )
-			{
-				attack();
-			}
-			
+			attack();
 		}
 		//if it is a valid input ....
 		
