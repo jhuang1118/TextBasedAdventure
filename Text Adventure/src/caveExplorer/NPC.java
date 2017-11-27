@@ -93,10 +93,11 @@ public class NPC {
 			currentRow = row;
 			currentCol = col;
 			currentRoom = (NPCRoom) floor[row][col];
-			if( currentRoom.equals(CaveExplorer.currentRoom))
+			if( currentRoom.equals(CaveExplorer.currentRoom) && this instanceof JasonYFrontend)
 			{
 				this.play();
 				this.active = false;
+				CaveExplorer.remove(this);
 			}
 			currentRoom.enterNPC(this);
 		}

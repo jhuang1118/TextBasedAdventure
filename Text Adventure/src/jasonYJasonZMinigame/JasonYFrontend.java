@@ -89,9 +89,9 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			for(int col = startRoom[1]; col < finalRoom[1]+1; col++) {
 				map[mapRow][mapCol] = (NPCRoom) caves[row][col];
 				NPCRoom c = map[mapRow][mapCol];
-				c.setDescription("You are at "+mapRow+", "+mapCol);
-				c.row = mapRow;
-				c.col = mapCol;
+				c.setMiniDescription("You are at "+mapRow+", "+mapCol);
+				c.miniRow = mapRow;
+				c.miniCol = mapCol;
 				
 				if(col == finalRoom[1]) {
 					c.removeRoom(CaveRoom.EAST);
@@ -125,7 +125,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 //			map[coords[0]][coords[1]-1] = " - ";//left
 //		}
 //	} 
-	
 	public void play() {
 		introduction();
 		System.out.println(CaveExplorer.inventory.getMap());
@@ -136,14 +135,21 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			String input = in.nextLine();
 			if(input.equals("c")){
 				neededKills = 0;
+				clearAllContent();
 				break;
 			}
 			backend.validInput(input);			
 			if(JasonZBackend.Swat != null) {
 				for(JasonZSwat p: JasonZBackend.Swat){
 					if( p != null){
+						if(((JasonZBackend) backend).canFire(p))
+						{
+							hp -= ((JasonZBackend) backend).damagePlayers(hp, p);
+							System.out.println("You were hit! You have "+ hp );
+						}
 						int[] moves = p.calculateMove(coords[0], coords[1]);
 						p.setPosition(moves[0], moves[1]);
+						
 					}
 				}
 			}
@@ -162,6 +168,16 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			caveExplorer.CaveRoom.setConnectionForAll();
 		}
 	}
+
+	private void clearAllContent() {
+	for(int i =0 ; i < map.length; i ++)
+	{
+		for(int e =0; e< map[i].length; e++)
+		{
+			map[i][e].leaveNPC();
+		}
+	}
+}
 
 	public void killCounter() {
 		neededKills = copCounter - JasonZBackend.killCount;
@@ -221,7 +237,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		int index = returnIndex(input,difficultyWords);
 		input = "";
 		createMap(2);
-		this.backend = new JasonZBackend(this, 1, map);
+		this.backend = new JasonZBackend(this, index, map);
 		populateMap(index);
 		((JasonZBackend) backend).setValidTarget(((JasonZBackend) backend).getCurrentRoom());
 		CaveExplorer.inventory.updateMap(map);

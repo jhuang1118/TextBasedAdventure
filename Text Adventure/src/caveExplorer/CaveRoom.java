@@ -274,6 +274,7 @@ public class CaveRoom {
 			{
 				((JasonYFrontend) borderingRooms[dir].getNpc()).play();
 				((JasonYFrontend) borderingRooms[dir].getNpc()).setActive(false);
+				borderingRooms[dir].leaveNPC();
 			}
 			CaveExplorer.currentRoom = borderingRooms[dir];
 			row = borderingRooms[dir].row;

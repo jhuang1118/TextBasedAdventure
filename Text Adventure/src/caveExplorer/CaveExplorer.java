@@ -51,4 +51,15 @@ public class CaveExplorer {
 		inventory.updateMap(caves);
 	}
 
+	public static void remove(NPC npc) {
+		for( int i = 0; i< police.length; i++)
+		{
+			if( npc.equals(police[i]))
+			{
+				police[i] = null;
+				break;
+			}
+		}
+	}
+
 }

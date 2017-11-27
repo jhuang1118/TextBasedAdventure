@@ -143,10 +143,13 @@ public class JasonZBackend implements JasonYSupport {
 			target.hp -= damage;
 			if(target.hp < 0) {
 				target.hp = 0;
-				target.setActive(false);
+				cave[target.row][target.col].leaveNPC();
+				Swat[target.index] = null;
+				setValidTarget(currentRoom);
+				increaseKillCount();
 			}
 		}
-		System.out.println("That cop took " + damage + ". He has " + target.hp + " left.");
+		System.out.println("That cop took " + damage + ". He has "+target.armor+" armor, and " + target.hp + " left.");
 	}
 
 	@Override
@@ -217,6 +220,14 @@ public class JasonZBackend implements JasonYSupport {
 
 	private void printValidMoves() {
 		System.out.println("You can only enter 'w', 'a', 's', 'd,' or 'f'.");
+	}
+
+	public boolean canFire(JasonZSwat swat) {
+		if( starterRow == swat.row || swat.col == starterCol)
+		{
+			return true; 
+		}
+		return false;
 	}
 
 }

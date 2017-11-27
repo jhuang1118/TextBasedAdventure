@@ -3,6 +3,9 @@ package caveExplorer;
 public class NPCRoom extends CaveRoom {
 
 	private NPC npc;
+	public int miniRow;
+	public int miniCol;
+	private String miniDescription;
 	
 	public NPC getNpc() {
 		return npc;
@@ -92,5 +95,9 @@ public class NPCRoom extends CaveRoom {
 		{
 			return super.getContents();
 		}
+	}
+
+	public void setMiniDescription(String string) {
+		miniDescription = string;
 	}
 }
