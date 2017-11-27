@@ -29,6 +29,7 @@ public class DavidCar extends NPCRoom {
 	public boolean isValid(String input) {
 		return validMoves().indexOf(input.toLowerCase()) > -1 && input.length() == 1;
 	}
+	
 	public void interpretInput(String input)
 	{
 		while(!isValid(input))
