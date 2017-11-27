@@ -143,7 +143,7 @@ public class CaveRoom {
 		int direction = validMoves().indexOf(input);
 		if(direction < 4) {
 			/*
-			 * convert w,a,s,d to directions 0,3,2,1
+			 * convert w,a,s,d to directions 0,3,2,1 
 			 */
 			goToRoom(direction);
 		}else {
