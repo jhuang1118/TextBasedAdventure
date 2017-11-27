@@ -133,6 +133,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			int[] coords = {JasonZBackend.starterRow, JasonZBackend.starterCol};
 			System.out.println("You are at coordinates (" + coords[0]+ ", " + coords[1] + ").");
 			System.out.println("What would you like to do?");
+			((JasonZBackend) backend).setValidTarget(((JasonZBackend) backend).getCurrentRoom());
 			String input = in.nextLine();
 			if(input.equals("c")){
 				neededKills = 0;
@@ -147,7 +148,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 					}
 				}
 			}
-			((JasonZBackend) backend).setValidTarget(((JasonZBackend) backend).getCurrentRoom());
 			CaveExplorer.inventory.updateMap(JasonZBackend.cave);
 			System.out.println(CaveExplorer.inventory.getMap());
 			copCounter();
