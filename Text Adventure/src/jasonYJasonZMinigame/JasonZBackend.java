@@ -191,7 +191,7 @@ public class JasonZBackend implements JasonYSupport {
 		NPCRoom currentRoom = cave[starterRow][starterCol];
 		if(currentRoom.borderingRooms[dir] != null && currentRoom.doors[dir] != null && currentRoom.doors[dir].isOpen()){
 			
-			currentRoom = currentRoom.borderingRooms[dir];
+			currentRoom = (NPCRoom) currentRoom.borderingRooms[dir];
 			cave[starterRow][starterCol].leave();
 			starterRow = currentRoom.miniRow;
 			starterCol = currentRoom.miniCol;
