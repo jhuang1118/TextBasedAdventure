@@ -46,11 +46,11 @@ public class JasonZSwat extends NPC {
 		}
 		if(this.getCurrentCol() - JasonZBackend.starterCol >0)
 		{
-			return 1;
+			return 3;
 		}
 		if(this.getCurrentCol() - JasonZBackend.starterCol < 0)
 		{
-			return 3;
+			return 1;
 		}
 		return 0;
 	}
