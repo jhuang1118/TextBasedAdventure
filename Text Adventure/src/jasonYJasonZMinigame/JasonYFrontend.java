@@ -174,7 +174,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			}
 			else {
 				break;
-			} 
+			}  
 		}
 		System.out.println("There are " + copCounter + " cop(s) in the area.");
 	}
