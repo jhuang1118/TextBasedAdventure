@@ -251,7 +251,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			int randomCol = ((int)(Math.random() * map[0].length));
 			JasonZBackend.createPolice(randomRow, randomCol);
 		}
-		
 	}	
 	
 	public String getSymbol() {
