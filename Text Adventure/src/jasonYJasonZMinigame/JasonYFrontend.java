@@ -97,7 +97,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			mapCol = 0;
 		}
 	}
-	}
 
 	public void play() {
 		introduction();
