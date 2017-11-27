@@ -141,6 +141,7 @@ public class JasonZBackend implements JasonYSupport {
 			if(target.hp < 0) {
 				target.hp = 0;
 				target.setActive(false);
+				killCount++;
 			}
 		}
 		System.out.println("That cop took " + damage + ". He has " + target.hp + " left.");
