@@ -30,14 +30,8 @@ public class JasonZBackend implements JasonYSupport {
 		changeDifficulty(difficulty);
 		Swat = new JasonZSwat[quantity];
 		this.gun = new JasonZGuns(TYPE[0]);
-		if(floor.length % 2 == 1) {
-			JasonZBackend.starterRow = (int) Math.ceil(((floor.length-1)/2)+1);
-			JasonZBackend.starterCol = (int) Math.ceil(((floor[starterRow].length-1)/2)+1);
-		}
-		else {
-			JasonZBackend.starterRow = (int) Math.ceil(floor.length/2);
-			JasonZBackend.starterCol = (int) Math.ceil(floor[starterRow].length/2);
-		}
+		JasonZBackend.starterRow = (int) Math.ceil(floor.length/2);
+		JasonZBackend.starterCol = (int) Math.ceil(floor[starterRow].length/2);
 		this.cave = floor;
 		currentRoom = floor[starterRow][starterCol];
 	}
@@ -46,41 +40,52 @@ public class JasonZBackend implements JasonYSupport {
 		int r = gun.getRange();
 		validTarget = new JasonZSwat[r*4];
 		int startR = starterRow -r;
-		int startC = starterCol -r;
+		int startC = starterCol-r;
 		int finalR = starterRow +r;
 		int finalC = starterCol +r;
-		if(startR < 0){
+		if(startR < 0)
+		{
 			startR = 0;
 		}
-		if( startC <0){
+		if( startC <0)
+		{
 			startC = 0;
 		}
-		if( finalR > cave.length){
+		if( finalR > cave.length)
+		{
 			finalR = cave.length;
 		}
-		if(finalC > cave[0].length){
+		if(finalC > cave[0].length)
+		{
 			finalC = cave[0].length;
 		}
 		int counter =0;
-		for(int row = startR; row < finalR; row ++){
+		for(int row = startR; row < finalR; row ++)
+		{
 			NPCRoom c = cave[row][starterCol];
-			if(c.getNpc() != null){
+			if(c.getNpc() != null)
+			{
 				validTarget[counter] = (JasonZSwat) c.getNpc();
 				counter++;
 			}
 		}
-		for(int col = startC; col< finalC; col ++){
+		for(int col = startC; col< finalC; col ++)
+		{
 			NPCRoom c = cave[starterRow][col];
-			if(c.getNpc() != null){
+			if(c.getNpc() != null)
+			{
 				validTarget[counter] = (JasonZSwat) c.getNpc();
 				counter++;
 			}
 		}
 	}
 
-	public static void createPolice(int row, int col){
-		for(int i =0; i<quantity; i++){
-			if(Swat[i] == null){
+	public static void createPolice(int row, int col)
+	{
+		for(int i =0; i<quantity; i++)
+		{
+			if(Swat[i] == null)
+			{
 				Swat[i] = new JasonZSwat(row,col,cave, checkNullCops());
 				Swat[i].makeGuns(TYPE[(int) (Math.random()*TYPE.length)]);
 				Swat[i].setPosition(row, col);
@@ -89,30 +94,33 @@ public class JasonZBackend implements JasonYSupport {
 		}
 	}
 	
-	public int damagePlayers(int userHP, JasonZSwat damager){
+	public int damagePlayers(int userHP, JasonZSwat damager)
+	{
 		return userHP -= damager.gun.trueDamage();
 	}
 
 	private static int checkNullCops() {
-		for(int i = 0; i<Swat.length; i++){
-			if(Swat[i] == null){
+		for(int i = 0; i<Swat.length; i++)
+		{
+			if(Swat[i] == null)
+			{
 				return i;
 			}
 		}
 		return 0;
 	}
 
-	public void attack(){
+	public void attack()
+	{
 		JasonZSwat target = firstPersonDir();
 		if(target != null) damage(target, gun.trueDamage());
 		else System.out.println("You fire at air to show your dominance.");
-		
-		
-		CaveExplorer.inventory.updateMap(cave);
 	}
 
-	public JasonZSwat firstPersonDir(){
-		if(validTarget != null){
+	public JasonZSwat firstPersonDir()
+	{
+		if(validTarget != null)
+		{
 			for( JasonZSwat s: validTarget){
 				if(s != null){
 					return s;
@@ -122,21 +130,14 @@ public class JasonZBackend implements JasonYSupport {
 		return null;
 		
 	}
-	public void damage(JasonZSwat target, double damage){
-		if(target.armor > 0){
+	public void damage(JasonZSwat target, double damage)
+	{
+		if(target.armor > 0)
+		{
 			target.armor -= damage;
 		}
-		else {
-			target.hp -= damage;
-			if(target.hp < 0) {
-				target.hp = 0;
-				cave[target.row][target.col].leaveNPC();
-				Swat[target.index] = null;
-				increaseKillCount();
-				setValidTarget(currentRoom);
-			}
-		}
-		System.out.println("That cop took " + damage + ". He has "+target.armor+" armor, and " + target.hp + " left.");
+		else target.hp -= damage;
+		System.out.println("That cop took " + damage + ". He has "zz);
 	}
 
 	@Override
@@ -148,18 +149,25 @@ public class JasonZBackend implements JasonYSupport {
 	private void changeGunStats(double d) {
 		double[][] gStats = JasonZGuns.TYPE;
 		double value = 0;
-		for(int row = 0; row< gStats.length; row++){
-			for(int col = 0; col< gStats[row].length; col++){
+		for(int row = 0; row< gStats.length; row++)
+		{
+			for(int col = 0; col< gStats[row].length; col++)
+			{
 				value = gStats[row][col] * d;
 				gStats[row][col] = value;
+				
 			}
 		}
 	}
 
+	@Override
 	public void increaseKillCount() {
-		JasonZBackend.killCount++;
+		JasonZBackend.killCount ++;
+		
 	}
 
+
+	@Override
 	public void validInput(String input) {
 		while(!isValid(input)) {
 			printValidMoves();
@@ -171,16 +179,17 @@ public class JasonZBackend implements JasonYSupport {
 			 * convert w,a,s,d to directions 0,3,2,1
 			 */
 			goToRoom(direction);
-		}
-		else {
+		}else {
 			attack();
 		}
 		//if it is a valid input ....
+		
 	}
 
 	private void goToRoom(int dir) {
 		NPCRoom currentRoom = cave[starterRow][starterCol];
 		if(currentRoom.borderingRooms[dir] != null && currentRoom.doors[dir] != null && currentRoom.doors[dir].isOpen()){
+			
 			currentRoom = currentRoom.borderingRooms[dir];
 			cave[starterRow][starterCol].leave();
 			starterRow = currentRoom.row;
@@ -201,10 +210,4 @@ public class JasonZBackend implements JasonYSupport {
 		System.out.println("You can only enter 'w', 'a', 's', 'd,' or 'f'.");
 	}
 
-	public boolean canFire(JasonZSwat swat) {
-		if( starterRow == swat.row || swat.col == starterCol){
-			return true; 
-		}
-		return false;
-	}
 }
