@@ -280,11 +280,11 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		}
 		else
 		{
-			finalRoom[1] = coords[1] + size ;
+			finalRoom[1] = coords[1] + size;
 		}
 		for(int i = 0; i < spawnNum; i++) {
-			int rangeRow = startRoom[0] - finalRoom[0];
-			int rangeCol = startRoom[1] - finalRoom[1];
+			int rangeRow = finalRoom[0] - startRoom[0];
+			int rangeCol = finalRoom[1] - startRoom[1];
 			int randomRow = ((int)(Math.random() * rangeRow))+startRoom[0];
 			int randomCol = ((int)(Math.random() * rangeCol))+startRoom[1];
 			JasonZBackend.createPolice(randomRow, randomCol);
