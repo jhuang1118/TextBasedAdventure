@@ -4,10 +4,10 @@ import jasonYJasonZMinigame.JasonYFrontend;
 
 public class CaveRoom {
 	
-	public static int[] getCoordinates() {
+	public static int[] getCoordinates(NPCRoom c) {
 		int[] coords = new int[2];
-		coords[0] = row;
-		coords[1] = col;
+		coords[0] = c.row;
+		coords[1] = c.col;
 		return coords;
 	}
 	public static int getRow(CaveRoom c) {
@@ -26,20 +26,20 @@ public class CaveRoom {
 		c.col = col;
 	}
 	 
-	public static int getRow() {
-		return row;
+	public static int getRow(NPCRoom c) {
+		return c.row;
 	}
 
-	public static void setRow(int row) {
-		CaveRoom.row = row;
+	public static void setRow(NPCRoom c, int row) {
+		c.row = row;
 	}
 
-	public static int getCol() {
-		return col;
+	public static int getCol(NPCRoom c) {
+		return c.col;
 	}
 
-	public static void setCol(int col) {
-		CaveRoom.col = col;
+	public static void setCol(NPCRoom c, int col) {
+		c.col = col;
 	}
 	
 	private String description;
@@ -50,8 +50,8 @@ public class CaveRoom {
 	
 	public CaveRoom[] borderingRooms;
 	public Door[] doors;
-	public static int row;
-	public static int col;
+	public int row;
+	public int col;
 	
 	//constants
 	public static final int NORTH = 0;
@@ -247,8 +247,8 @@ public class CaveRoom {
 		if(borderingRooms[dir] != null && doors[dir] != null && doors[dir].isOpen()){
 			CaveExplorer.currentRoom.leave(); 
 			CaveExplorer.currentRoom = borderingRooms[dir];
-			row = borderingRooms[dir].row;
-			col = borderingRooms[dir].col;
+			row = CaveExplorer.currentRoom.row;
+			col = CaveExplorer.currentRoom.col;
 			CaveExplorer.currentRoom.enter();
 			Inventory.updateMap(CaveExplorer.caves);
 		}
