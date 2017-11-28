@@ -247,8 +247,6 @@ public class CaveRoom {
 		if(borderingRooms[dir] != null && doors[dir] != null && doors[dir].isOpen()){
 			CaveExplorer.currentRoom.leave(); 
 			CaveExplorer.currentRoom = borderingRooms[dir];
-			row = CaveExplorer.currentRoom.row;
-			col = CaveExplorer.currentRoom.col;
 			CaveExplorer.currentRoom.enter();
 			Inventory.updateMap(CaveExplorer.caves);
 		}
