@@ -199,7 +199,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 
 	public void displayPowerup() {
 		System.out.println(" You have " + ethanRoom.getInvincibleCounter() + " chances to block the lasers.");
-		
 	}
 
 }
