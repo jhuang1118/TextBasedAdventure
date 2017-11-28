@@ -2,6 +2,8 @@ package caveExplorer;
 
 import java.util.Scanner;
 
+import jasonYJasonZMinigame.JasonYFrontend;
+
 public class CaveExplorer {
 
 	public static CaveRoom[][] caves; 
@@ -9,7 +11,7 @@ public class CaveExplorer {
 	public static CaveRoom currentRoom;//changes as the user moves
 	public static Inventory inventory;
 	public static boolean playing = true;
-	public static NPC[] police;
+	public static JasonYFrontend[] police;
 	public static NPC[] npcs;
 	
 	
