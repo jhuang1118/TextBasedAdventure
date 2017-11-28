@@ -81,7 +81,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 		int randNum1 = (int)(Math.random() * length);
 		int randNum2 = (int)(Math.random() * room[length-1].length);
 		while(checkSpecialRoom(room, randNum1, randNum2)) {
-			System.out.println("x");
 			randNum1 = (int)(Math.random() * length);
 			randNum2 = (int)(Math.random() * room[length-1].length);
 		}
@@ -98,7 +97,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 
 	public boolean checkSpecialRoom(DavidEthanRoom[][] room, int num1, int num2) {
-		System.out.println("X");
 		return room[num1][num2].isContainsTreasure() || room[num1][num2].isContainsLaser() || room[num1][num2].isContainsPowerup() || room[num1][num2].isUserIn();
 	}
 	
