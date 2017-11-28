@@ -201,9 +201,23 @@ public class CaveRoom {
 		Merchant.setPosition(6, 2);
 		
 		setConnectionForAll();
+	//	setConnectionRooms();
 	}
+	private static void setConnectionRooms() {
+		CaveRoom[][] c = CaveExplorer.caves;
+		c[0][9].setConnection(SOUTH, c[0][9], new Door());
+		for(int row = 0; row< 5; row++)
+		{
 
-	private static void setConnectionForAll() {
+			for(int col = 0; col < c.length-1; col++)
+			{
+				c[row][col].setConnection(SOUTH, c[row+1][col], new Door());
+				c[row][col].setConnection(EAST, c[row][col+1], new Door());
+			}
+		
+		}
+	}
+	public static void setConnectionForAll() {
 		CaveRoom[][] c = CaveExplorer.caves;
 		for(int row = 0; row< c.length-1; row++)
 		{

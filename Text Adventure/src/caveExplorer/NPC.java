@@ -80,7 +80,10 @@ public class NPC {
 	}
 
 	public String getSymbol() {
-		return "P";
+		if(active) {
+			return "P";
+		}
+		return "";
 	}
 
 	public void setPosition(int row, int col) {

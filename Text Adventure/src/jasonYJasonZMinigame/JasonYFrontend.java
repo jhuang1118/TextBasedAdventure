@@ -82,7 +82,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			for(int col = startRoom[1]; col < finalRoom[1]+1; col++) {
 				map[mapRow][mapCol] = (NPCRoom) caves[row][col];
 				NPCRoom c = map[mapRow][mapCol];
-				if( c.getNpc() != null)
+				if(c.getNpc() != null)
 				{
 					c.getNpc().setActive(false);
 				}
@@ -90,6 +90,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 				{
 					RoomsReplaced[checknull(RoomsReplaced)] = c;
 					c = new NPCRoom("This has coordinates "+ row +", " + col+".", row, col);
+					c.setActive(false);
 				}
 				c.setMiniDescription("You are at "+mapRow+", "+mapCol);
 				c.miniRow = mapRow;
@@ -134,7 +135,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			System.out.println("What would you like to do?");
 			String input = in.nextLine();
 			if(input.equals("c")){
-				clearAllContent();
 				copCounter = 0;
 				break;
 			}
@@ -146,7 +146,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 						{
 							((JasonZBackend) backend).damagePlayers(hp, p);
 							System.out.println(p.gun.trueDamage());
-							System.out.println("You were hit! You have "+ hp );
+							System.out.println("You were hit! You have "+ hp + " hp.");
 						}
 						else
 						{
@@ -158,6 +158,9 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 					}
 				}
 			}
+			if(hp < 0) {
+				break;
+			}
 			((JasonZBackend) backend).setValidTarget(((JasonZBackend) backend).getCurrentRoom());
 			CaveExplorer.inventory.updateMap(JasonZBackend.cave);
 			System.out.println(CaveExplorer.inventory.getMap());
@@ -166,14 +169,14 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		}
 		if(hp < 0) {
 			System.out.println("GAME OVER!");
-			replaceRoom();
-			clearAllContent();
+			System.exit(0);
 		}
-		if(copCounter == 0) {
+		else {
 			System.out.println("Congrats! You've won the game!");
-			clearAllContent();
-			copCounter = 0;
 		}
+		clearAllContent();
+		replaceRoom();
+		caveExplorer.CaveRoom.setConnectionForAll();
 	}
 
 	public int getHp() {
@@ -314,7 +317,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			for(int col = startRoom[1]; col < finalRoom[1]+1; col++) {
 				map[mapRow][mapCol] = (NPCRoom) caves[row][col];
 				NPCRoom c = map[mapRow][mapCol];
-				if( c.getNpc() != null)
+				if(c.containsNPC())
 				{
 					c.getNpc().setActive(true);
 				}
@@ -324,6 +327,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 					{
 						NPCRoom ref = RoomsReplaced[i];
 						caves[ref.row][ref.col] = ref;
+						ref.setActive(true);
 					}
 				}
 				if(col == finalRoom[1]) {

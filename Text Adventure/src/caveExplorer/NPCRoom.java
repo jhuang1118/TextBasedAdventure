@@ -5,6 +5,7 @@ public class NPCRoom extends CaveRoom {
 	private NPC npc;
 	public int miniRow;
 	public int miniCol;
+	public boolean isActive;
 	private String miniDescription;
 	
 	public NPC getNpc() {
@@ -13,6 +14,7 @@ public class NPCRoom extends CaveRoom {
 
 	public NPCRoom(String description, int row, int col) {
 		super(description, row, col);
+		isActive = true;
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -87,13 +89,18 @@ public class NPCRoom extends CaveRoom {
 	
 	public String getContents()
 	{
-		if(containsNPC() && npc.isActive())
-		{
-			return npc.getSymbol();
+		if(isActive) {
+			if(containsNPC() && npc.isActive())
+			{
+				return npc.getSymbol();
+			}
+			else
+			{
+				return super.getContents();
+			}
 		}
-		else
-		{
-			return super.getContents();
+		else {
+			return "";
 		}
 	}
 	
@@ -104,5 +111,9 @@ public class NPCRoom extends CaveRoom {
 	public void replaceRoom(int dir) {
 		doors[dir] = null;
 		setDirections();
+	}
+	
+	public void setActive(boolean active) {
+		isActive = active;
 	}
 }

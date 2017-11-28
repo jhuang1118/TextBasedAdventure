@@ -19,10 +19,10 @@ public class VaultRoom extends NPCRoom {
 		return "You have reached the vault. Interact using 'e'";
 	}
 	public boolean canEnter() {
-		int randNum = (int)(Math.random() *5);
+		int randNum = (int)(Math.random() * 4);
 		if(CaveExplorer.inventory.isID() || randNum == 3) {
-			System.out.print("\n You open the vault and enter.\n");
-			DavidRoom.main(null);
+			System.out.print("\nYou open the vault and enter.\n");
+			DavidRoomFrontEnd.main(null);
 			return true;
 		}else {
 			System.out.print("\n It's impossible to open the vault with your bare hands. Maybe if you had the manager's key or if you kept trying...\n");

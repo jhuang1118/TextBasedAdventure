@@ -34,7 +34,7 @@ public class CaveExplorer {
 				+ "is up to you. Once you get the money come back here!\n C: Car\n P: Police \n M: Merchant \n V: Vault");
 		while(playing) {
 			moveNPCs();
-			print("What would you like to do");
+			print("What would you like to do?");
 			print(inventory.getDescription());
 			print(currentRoom.getDescription());
 			print(currentRoom.getDirections());
