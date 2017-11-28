@@ -2,14 +2,16 @@ package caveExplorer;
 
 import java.util.Scanner;
 
+import jasonYJasonZMinigame.JasonYFrontend;
+
 public class CaveExplorer {
 
-	public static CaveRoom[][] caves;
+	public static CaveRoom[][] caves; 
 	public static Scanner in;//for user input
 	public static CaveRoom currentRoom;//changes as the user moves
 	public static Inventory inventory;
 	public static boolean playing = true;
-	public static NPC[] police;
+	public static JasonYFrontend[] police;
 	public static NPC[] npcs;
 	
 	
@@ -27,7 +29,9 @@ public class CaveExplorer {
 		System.out.println(s); // consider replacing with the "print line thing in chatbot"
 	}
 
-	private static void startExploring() {
+	public static void startExploring() {
+		System.out.println("We are dropping you off here. You are on your own now. Your mission is to rob the bank.\nHowever you do it "
+				+ "is up to you. Once you get the money come back here!\n C: Car\n P: Police \n M: Merchant \n V: Vault");
 		while(playing) {
 			moveNPCs();
 			print("What would you like to do");
@@ -40,12 +44,23 @@ public class CaveExplorer {
 	}
 
 	private static void moveNPCs() {
-
-		for(NPC n: police)
-		{
-			n.autoMove();
+		if(police != null) {
+			for(JasonYFrontend n: police)
+			{
+				if( n != null)n.autoMove();
+			}	
 		}
-	inventory.updateMap(caves);
+		Inventory.updateMap(caves);
 	}
-
+	
+	public static void remove(JasonYFrontend npc) {
+		for( int i = 0; i< police.length; i++)
+		{
+			if( npc.equals(police[i]))
+			{
+				police[i] = null;
+				break;
+			}
+		}
+	}
 }

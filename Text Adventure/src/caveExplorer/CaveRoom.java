@@ -1,10 +1,46 @@
 package caveExplorer;
 
-import ethanDavidMinigame.EthanRoomBackEnd;
-import ethanDavidMinigame.VaultRoom;
-import johnsonDanielMinigame.MiniGameStarter;
+import jasonYJasonZMinigame.JasonYFrontend;
 
 public class CaveRoom {
+	
+	public static int[] getCoordinates(NPCRoom c) {
+		int[] coords = new int[2];
+		coords[0] = c.row;
+		coords[1] = c.col;
+		return coords;
+	}
+	public static int getRow(CaveRoom c) {
+		return c.row;
+	}
+
+	public static void setRow(CaveRoom c, int row) {
+		c.row = row;
+	}
+
+	public static int getCol(CaveRoom c) {
+		return c.col;
+	}
+
+	public static void setCol(CaveRoom c, int col) {
+		c.col = col;
+	}
+	 
+	public static int getRow(NPCRoom c) {
+		return c.row;
+	}
+
+	public static void setRow(NPCRoom c, int row) {
+		c.row = row;
+	}
+
+	public static int getCol(NPCRoom c) {
+		return c.col;
+	}
+
+	public static void setCol(NPCRoom c, int col) {
+		c.col = col;
+	}
 	
 	private String description;
 	private String directions;//tells you which door can be used
@@ -12,8 +48,10 @@ public class CaveRoom {
 		//...('X' when you are in the room)
 	private String defaultContents;//what is in the room when you aren't in the room 
 	
-	private CaveRoom[] borderingRooms;
-	private Door[] doors;
+	public CaveRoom[] borderingRooms;
+	public Door[] doors;
+	public int row;
+	public int col;
 	
 	//constants
 	public static final int NORTH = 0;
@@ -21,7 +59,9 @@ public class CaveRoom {
 	public static final int SOUTH = 2;
 	public static final int WEST = 3;
 	
-	public CaveRoom(String description) {
+	public CaveRoom(String description, int row, int col) {
+		this.row = row; 
+		this.col = col;
 		this.description = description;
 		setDefaultContents(" ");
 		contents = defaultContents;
@@ -49,15 +89,8 @@ public class CaveRoom {
 				doorFound = true;
 				directions += "There is a " + doors[i].getDescription() 
 				+ " to the " + toDirection(i) + ". " + doors[i].getDetails() + "\n";
-				
 			}
 		}
-		
-		if(!doorFound) {
-			directions = "You're trapped in this room!";
-		}
-		
-
 	}
 	
 	/**
@@ -110,7 +143,7 @@ public class CaveRoom {
 		int direction = validMoves().indexOf(input);
 		if(direction < 4) {
 			/*
-			 * convert w,a,s,d to directions 0,3,2,1
+			 * convert w,a,s,d to directions 0,3,2,1   
 			 */
 			goToRoom(direction);
 		}else {
@@ -143,78 +176,54 @@ public class CaveRoom {
 
 	public static void setUpCaves()
 	{
-		CaveExplorer.caves = new CaveRoom[20][20];
-		//CaveExplorer.caves = new CaveRoom[15][15];
-		//CaveRoom[][] m = CaveExplorer.caves; 
-		CaveRoom[][] c = CaveExplorer.caves; // the vault room
-		
+		CaveExplorer.caves = new NPCRoom[10][10];
+		CaveRoom[][] c = CaveExplorer.caves; // shortcut
 		for(int row = 0; row < c.length; row++)
 		{
 			for(int col = 0; col < c[row].length; col ++)
 			{
-				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".");
+				c[row][col] = new NPCRoom("This has coordinates "+ row +", " + col+".",row,col);
 			}
 		}
-		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
-		/* NPC testNPC = new NPC();
-		testNPC.setPosition((int)(Math.random() * c.length),(int)(Math.random()* c.length));
-		CaveExplorer.police = new NPC[1];
-		CaveExplorer.police[0] = testNPC; */
 		
-		c[9][5] = new EthanRoomBackEnd("");
-		c[1][1] = new MiniGameStarter("");
-
-		//Replace some default rooms with custom rooms (SAVE FOR LATER) 
-		NPC testNPC = new NPC();
-		testNPC.setPosition(1,2);
-		CaveExplorer.police = new NPC[1];
-		CaveExplorer.police[0] = testNPC;
-		c[2][3] = new EthanRoomBackEnd("");
-		testNPC.setPosition(3,4);
-		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs[0] = testNPC;
-		//Set Starting Room
-
-		//3. Replace some default rooms with custom rooms (SAVE FOR LATER)
-		/*NPC testNPC = new NPC();
-		testNPC.setPosition(1,2);
-		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs[0] = testNPC;*/
 		
-		//4. Set starting room
-
 		CaveExplorer.currentRoom = c[0][1];
 		CaveExplorer.currentRoom.enter();
+		//Set up doors
 		
-		//5. Set up doors 
+		c[5][5] = new VaultRoom(null,5,5);
+		c[0][0] = new DavidCar(null,9,9);
+		JasonYFrontend testNPC = new JasonYFrontend(5,5,c);
+		testNPC.setPosition(5,5);
+		CaveExplorer.police = new JasonYFrontend[1];
+		CaveExplorer.police[0] = testNPC;
+		Merchant Merchant = new Merchant(6,2,c);
+		Merchant.setPosition(6, 2);
 		
-		setupStore();
-		c[0][1].setConnection(SOUTH, c[1][1], new Door());
-		c[1][1].setConnection(EAST, c[1][2], new Door());
-	}
-	
-	private static void setupStore() {
-		for(int i = 18; i>15; i--)
-		{
-			for( int e = 0; e< 20; e++)
-			{
-				CaveExplorer.caves[i][e].setConnection(NORTH, CaveExplorer.caves[i][e], new Door());
-			}
-		}
-		//horizontal doors
-		for(int i = 19; i>15; i--)
-		{
-			for( int e =0; e<19; e++)
-			{
-				CaveExplorer.caves[i][e].setConnection(EAST, CaveExplorer.caves[i][e+1], new Door());
-			}
-		}
-		//vertical doors
-		//doors
-		CaveExplorer.caves[16][10].setConnection(NORTH, CaveExplorer.caves[15][10], new Door());
-		CaveExplorer.caves[16][9].setConnection(NORTH, CaveExplorer.caves[15][10], new Door());
+		setConnectionForAll();
 	}
 
+	public static void setConnectionForAll() {
+		CaveRoom[][] c = CaveExplorer.caves;
+		for(int row = 0; row< c.length-1; row++)
+		{
+			for(int col = 0; col < c.length-1; col++)
+			{
+				c[row][col].setConnection(SOUTH, c[row+1][col], new Door());
+				c[row][col].setConnection(EAST, c[row][col+1], new Door());
+			}
+		}
+		
+		for(int i = 0; i<c[c.length-1].length-1; i++)
+		{
+			c[c.length-1][i].setConnection(EAST, c[c.length-1][i+1], new Door());
+		}
+		
+		for(int i = 0; i< c.length-1; i++)
+		{
+			c[i][c[i].length-1].setConnection(SOUTH, c[i][c[i].length-1], new Door());
+		}
+	}
 	/**
 	 * override to add more moves
 	 * @return
@@ -235,20 +244,19 @@ public class CaveRoom {
 
 	public void goToRoom(int dir)
 	{
-		if(borderingRooms[dir] != null && doors[dir] != null && doors[dir].isOpen())
-		{
+		if(borderingRooms[dir] != null && doors[dir] != null && doors[dir].isOpen()){
 			CaveExplorer.currentRoom.leave(); 
 			CaveExplorer.currentRoom = borderingRooms[dir];
 			CaveExplorer.currentRoom.enter();
-			CaveExplorer.inventory.updateMap(CaveExplorer.caves);
-			
+			Inventory.updateMap(CaveExplorer.caves);
 		}
+
+	}
 		/* else
 		{
 			System.err.println("You can't do that");
 
 		} */
-	}
 	/**
 	 * returns the OPPOSITE direction
 	 * 		oD(0) returns 2
@@ -292,4 +300,10 @@ public class CaveRoom {
 		return doors[direction];
 	}
 
+	public void removeRoom(int dir)
+	{
+		doors[dir] = new Door();
+		setDirections();
+	}
 }
+

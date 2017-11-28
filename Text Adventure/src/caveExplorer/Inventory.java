@@ -4,33 +4,26 @@ import jasonYJasonZMinigame.JasonZGuns;
 
 public class Inventory {
 	
-
 	private boolean ID = false;
-	
-	
-	private String map;
-	private static int hp;
-	private boolean isKidnapped;
-	private boolean hasGun; 
-	private int key;
-	
-	
 	
 	public boolean isID() {
 		return ID;
 	}
-	
 	public void setID(boolean iD) {
 		ID = iD;
 	}
 
-	
+	private static String map;
 
 	private int cash;
 	private String[] defaultGuns = {"M16", "0"};
 	JasonZGuns currentGun = new JasonZGuns(defaultGuns);
 
+	private boolean isKidnapped;
 
+	private int key;
+
+	private static int hp;
 
 
 	public Inventory()
@@ -38,6 +31,8 @@ public class Inventory {
 		setCash(0);
 		hp = 100;
 		updateMap(CaveExplorer.caves);
+		isKidnapped = false;
+		key = 0;
 	}
 	
 	public int getCash() {
@@ -46,14 +41,14 @@ public class Inventory {
 	public void setCash(int cash) {
 		this.cash = cash;
 	}
-	public void updateMap(CaveRoom[][] caves) {
+	public static void updateMap(CaveRoom[][] caves) {
 		map = " ";
 		// make for. line across top:
-		for(int i = 0; i< caves[0].length -1; i++)
+		for(int i = 0; i< caves.length -1; i++)
 		{
 			map += "____";//4
 		}
-		map +="___ \n";//3
+		map +="___\n";//3
 		for(CaveRoom[] row: caves)
 		{
 			for(int i = 0; i< 3; i++)
@@ -100,14 +95,12 @@ public class Inventory {
 				map += text +"\n";
 			}
 		}
+		
 	}
 	public String getDescription()
 	{
 		return map + "\n" + "Also you have " + getCash() + " cash \n";
 	}
-
-
-	
 	public static void updateHP(int dmg) {
 		hp -= dmg;
 	}
@@ -115,7 +108,7 @@ public class Inventory {
 	public static  int getHP() {
 		return hp;
 	}
-	
+
 	public void toggleIsKidnapped() {
 		isKidnapped = !isKidnapped;
 	}
@@ -123,17 +116,20 @@ public class Inventory {
 		return isKidnapped;
 	}
 	
-	public void getHasGun() {
+	/* public void getHasGun() {
 		hasGun = !hasGun;
 	}
 	public boolean toggleHasGun() {
 		return hasGun;
-	}
+	} */
 	
 	public int getKey() {
 		return key;
 
-		
+	}
+	
+	public String getMap() {
+		return map;
 	}
 	
 	public void setKey(int num) {
