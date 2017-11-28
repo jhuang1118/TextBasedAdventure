@@ -61,6 +61,12 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	private void goToRoom(int dir) {
+				if((dir == 0 && currentRow == 0) || (dir == 1 && currentCol == 14) || 
+					(dir == 2 && currentRow == 4) || (dir == 3 && currentCol == 0)) {
+					System.out.println("You hit your head against the wall. It hurts.");
+					hHit++;
+					deathFromWall();
+				} 
 				if(dir == 0 && currentRow > 0) {
 					currentRow--;
 					rooms[currentRow][currentCol].setUserIn(true);
@@ -89,12 +95,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 					touchedLaser();
 					collectPowerup();
 				}
-				if((dir == 0 && currentRow == 0) || (dir == 1 && currentCol == 14) || 
-						(dir == 2 && currentRow == 4) || (dir == 3 && currentCol == 0)) {
-					System.out.println("You hit your head against the wall. It hurts.");
-					hHit++;
-					deathFromWall();
-				} 
 	}
 	
 	private void collectPowerup() {
