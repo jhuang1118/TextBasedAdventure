@@ -43,9 +43,12 @@ public class EthanRoomBackEnd implements DavidSupport{
 		DavidEthanRoom[][] Room = frontend.getRooms();
 		for(int i = 0; i < ROOM_LENGTH; i++) {
 			int[] randArr = randNums(Room, 5);
+			int x = randArr[1]+1;
 			if(randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
+				while(checkSpecialRoom(Room, randArr[0], x)) {
+					randArr = randNums(Room, 5);
+				}
 				Room[randArr[0]][randArr[1]+1].setContainsLaser(true);
-				int x = randArr[1]+1;
 			}
 		}
 	}
