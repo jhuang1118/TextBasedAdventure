@@ -100,4 +100,9 @@ public class NPCRoom extends CaveRoom {
 	public void setMiniDescription(String string) {
 		miniDescription = string;
 	}
+
+	public void replaceRoom(int dir) {
+		doors[dir] = null;
+		setDirections();
+	}
 }
