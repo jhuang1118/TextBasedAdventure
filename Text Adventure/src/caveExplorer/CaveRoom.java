@@ -259,7 +259,6 @@ public class CaveRoom {
 	public void goToRoom(int dir)
 	{
 		if(borderingRooms[dir] != null && doors[dir] != null && doors[dir].isOpen()){
-			System.out.println("went in loop");
 			CaveExplorer.currentRoom.leave(); 
 			CaveExplorer.currentRoom = borderingRooms[dir];
 			CaveExplorer.currentRoom.enter();
