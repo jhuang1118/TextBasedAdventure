@@ -5,7 +5,7 @@ import caveExplorer.CaveExplorer;
 
 public class DanielLockerGame {
 
-	int[][] placement= {{-1,0},{0,-1},{1,0},{0,1}};
+	private DanielLocker[][] theMat;
 	private DanielLocker[][] theLockers;
 	private boolean onLocker;
 	int[] rows = {1,3};
@@ -13,8 +13,10 @@ public class DanielLockerGame {
 	int ROWTOT = 6;
 	int COLTOT = 6;
 	private int newPsn;
+	private int rowSelected;
+	private int colSelected;
 	public DanielLockerGame() {
-		theLockers = new DanielLocker[6][6];
+		theMat = new DanielLocker[6][6];
 		onLocker = false;
 		makeLocker(theLockers,1,1);
 		makeLocker(theLockers,1,3);
@@ -41,16 +43,17 @@ public class DanielLockerGame {
 		arr[row][col] = new DanielLocker();
 	}
 	public void play() {
-		int rowSelected = generateRandNum(0,rows.length-1);
-		int colSelected = generateRandNum(0,cols.length-1);
+		rowSelected = generateRandNum(0,rows.length-1);
+		colSelected = generateRandNum(0,cols.length-1);
 		
 		createThing(rowSelected, colSelected);
 				
-		System.out.println("In this part of the game you will walk around the map and go to lockers. You will have only 3 keys and each key can open any locker only once. "
+		System.out.println("In this part of the game you will pick coordinates around the map and go to lockers. You will have only 3 keys and each key can open any locker only once. "
 				+ "These lockers contain either the person you are looking for, a bomb, or"
-				+ " nothing. When you walk up to a locker, press 'x'");
+				+ " nothing.");
 		int keys = theLockers.length / 2;
 		while(keys > 0) {
+		//	checkWon();
 			displayBoard();
 			displayKeysLeft(keys);
 			String input = getValidUserInput();
@@ -61,11 +64,15 @@ public class DanielLockerGame {
 	}
 
 	
+	/*private void checkWon() {
+		if()
+		
+	}
+	*/
+
 	private void createThing(int rowSelected, int colSelected) {
 		theLockers[rowSelected][colSelected].setPerson(true);
 		theLockers[rowSelected][colSelected].setEmpty(false);
-		
-		
 		
 		int[] options = generateRandNumExcept(rowSelected, colSelected);
 		theLockers[options[0]][options[1]].setBomb(true);
@@ -103,15 +110,9 @@ public class DanielLockerGame {
 			input = CaveExplorer.in.nextLine();
 			return input;
 		}
-
-			
-
+		
 		return input;
 	
-		
-	
-
-
 	}
 
 	private boolean validInput(String input) {
@@ -140,18 +141,6 @@ public class DanielLockerGame {
 	private void answer(String input) {
 
 
-		if(input.equals("w") && isPossibleMove(placement[0])) {
-			move(placement[0]);
-		}
-		else if(input.equals("a") && isPossibleMove(placement[1])){
-			move(placement[1]);
-		}
-		else if(input.equals("s") && isPossibleMove(placement[2])) {
-			move(placement[2]);
-		}
-		else if(input.equals("d") && isPossibleMove(placement[3])) {
-			move(placement[3]);
-
 		String[] splitInput = input.split(",");
 		Integer coor1 = Integer.valueOf(splitInput[0]);
 		Integer coor2 = Integer.valueOf(splitInput[1]);
@@ -160,26 +149,8 @@ public class DanielLockerGame {
 			johnsonDanielMinigame.JohnsonUnlockGame.main(null);
 
 		}
-		}
 	}
-
-
-	private boolean isPossibleMove(int[] is) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	private void move(int[] placement) {
-		if(isPossibleMove(int[])) {
-			
-		}
-
-		String[] directions = {"w","a","s","d"};
-		
-
-		
-	}
-
+	
 
 	private void displayKeysLeft(int keys) {
 		System.out.println("You have " + keys + " keys left.");
