@@ -12,12 +12,15 @@ public class Enemy extends NPC {
 	private String inactiveDescription;
 	private static int enemyHp;
 	
-	public Enemy() {
+	
+	
+	public Enemy(int row, int col, CaveRoom[][] cave) {
+		super(row, col, cave);
 		setFloor(CaveExplorer.caves);
 		activeDescription = "A guard has arrived and is not willing to give up without a fight. Press 'e' to fight him";
 		inactiveDescription = "He is a guard. Be careful!";
-		currentCol = -1;
-		currentRow = -1;
+		currentCol = col;
+		currentRow = col;
 		setCurrentRoom(null);
 		active = true;
 		enemyHp = 100;
@@ -35,13 +38,11 @@ public class Enemy extends NPC {
 	}
 	
 	public void interact() {
-<<<<<<< HEAD
+
 		String[][] fightMoves = {{"punch","true"},{"slap", "true"},{"kick","true"},{"shoot","false"}};
 		CaveExplorer.print("Stop right there!" + " Press '0', '1', '2', or '3' to punch, slap, kick, or shoot, respectively");
-=======
-		String[][] fightMoves = {{"punch","30"},{"neck", "50"},{"kick","25"},{"block","0"}};
-		CaveExplorer.print("Fack off, will ya?!" + " Press '1', '2', '3', or '4' to punch, neck, kick, or block, respectively");
->>>>>>> refs/heads/master
+
+
 		String s = CaveExplorer.in.nextLine();
 		
 		int dmg = (int)(Math.random() * 21) + 10;
