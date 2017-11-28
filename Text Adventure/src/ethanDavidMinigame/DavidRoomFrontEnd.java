@@ -140,6 +140,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 			}
 			else {
 			backend.setLost(true);
+			System.out.println("went thru loop");
 			backend.checkLose();
 			}
 		}

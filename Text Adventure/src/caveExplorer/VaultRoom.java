@@ -19,7 +19,7 @@ public class VaultRoom extends NPCRoom {
 		return "You have reached the vault. Interact using 'e'";
 	}
 	public boolean canEnter() {
-		int randNum = (int)(Math.random() *5);
+		int randNum = (int)(Math.random() * 4);
 		if(CaveExplorer.inventory.isID() || randNum == 3) {
 			System.out.print("\n You open the vault and enter.\n");
 			DavidRoom.main(null);

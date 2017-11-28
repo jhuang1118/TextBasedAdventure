@@ -120,6 +120,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 	
 	public boolean stillPlaying(int money) {
 		if(lost == true) {
+			System.exit(0);
 			return false;
 		}
 		if(money >= MONEY_CUT_OFF) {
