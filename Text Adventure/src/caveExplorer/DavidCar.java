@@ -58,7 +58,8 @@ public class DavidCar extends NPCRoom {
 	
 	public void performAction(int direction) {
 		if(direction == 4 && canEnter()) {
-			System.out.println("You successfully robbed a bank.");
+			System.out.println("You successfully robbed a bank.\n(We do not endorse this kind of behaviour. Please refrain "
+					+ "from robbing any banks in the future.)");
 			CaveExplorer.playing = false;
 		}else {
 			super.performAction(direction);
