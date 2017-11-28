@@ -15,7 +15,7 @@ public class DavidCar extends NPCRoom {
 	}
 	
 	public String getDescription() {
-		return "Press 'e' to leave!";
+		return "Press 'y' to leave!";
 	} 
 	
 	public boolean canEnter() {
@@ -37,7 +37,7 @@ public class DavidCar extends NPCRoom {
 			printValidMoves();
 			input = CaveExplorer.in.nextLine();
 		}
-		if(input.equals("e")) {
+		if(input.equals("y")) {
 			performAction(4);
 		}else {
 			int direction = "wdsa".indexOf(input);
@@ -48,12 +48,12 @@ public class DavidCar extends NPCRoom {
 	
 	public void printValidMoves() {
 		System.out.println("You can only enter 'w', 'a', 's', or 'd' to move " + 
-				"or you can press 'e' to interact.");
+				"or you can press 'y' to interact.");
 			
 	}
 	
 	public String validMoves() {
-		return "wdsae";
+		return "wdsay";
 	}
 	
 	public void performAction(int direction) {

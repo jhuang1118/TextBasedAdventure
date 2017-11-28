@@ -46,16 +46,18 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 
 	public void respondToInput(String input) {
+		if(input.equals("m")) {
+			displayCheating();
+		}
 		while(!isValid(input)) {
 			System.out.println("You can't do that. You must type 'w,a,s, or d.'");
 			input = in.nextLine();
 		}
-		if(input.equals("e")) {
-			displayCheating();
+		if(isValid(input)) {
+			int direction = validMoves().indexOf(input);
+			goToRoom(direction);
+			rooms[currentRow][currentCol].setUserIn(false);
 		}
-		int direction = validMoves().indexOf(input);
-		goToRoom(direction);
-		rooms[currentRow][currentCol].setUserIn(false);
 	}
 	
 	private void goToRoom(int dir) {
@@ -102,7 +104,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 
 	public String validMoves() {
-		return "wdsae";
+		return "wdsam";
 	}
 	
 	public void deathFromWall() {
