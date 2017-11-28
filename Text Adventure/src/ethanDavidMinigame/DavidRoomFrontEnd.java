@@ -72,29 +72,29 @@ public class DavidRoomFrontEnd implements EthanSupport {
 				if(dir == 0 && currentRow > 0) {
 					currentRow--;
 					rooms[currentRow][currentCol].setUserIn(true);
-					collectTreasure();
 					touchedLaser();
+					collectTreasure();
 					collectPowerup();
 				}
 				if(dir == 1 && currentCol < rooms[0].length-1) {
 					currentCol++;
 					rooms[currentRow][currentCol].setUserIn(true);
-					collectTreasure();
 					touchedLaser();
+					collectTreasure();
 					collectPowerup();
 				}
 				if(dir == 2 && currentRow < rooms.length-1) {
 					currentRow++;
 					rooms[currentRow][currentCol].setUserIn(true);
-					collectTreasure();
 					touchedLaser();
+					collectTreasure();
 					collectPowerup();
 				}
 				if(dir == 3 && currentCol > 0) {
 					currentCol--;
 					rooms[currentRow][currentCol].setUserIn(true);
-					collectTreasure();
 					touchedLaser();
+					collectTreasure();
 					collectPowerup();
 				}
 	}
