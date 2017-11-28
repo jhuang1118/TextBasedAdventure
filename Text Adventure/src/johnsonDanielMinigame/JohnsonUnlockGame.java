@@ -77,6 +77,7 @@ public class JohnsonUnlockGame {
 				chances++;
 			}else if(colorOfSquare == "G") {
 				System.out.println("You are not that close. I suggest you pick a button elsewhere.");
+				chances--;
 			}
 			
 		}else
@@ -86,12 +87,12 @@ public class JohnsonUnlockGame {
 	public String getValidUserInput() {
 		String input = getInput();
 
-		while(input.length() != 2 || input != "c") {
+		while(input.length() != 2) {
 			printValidMoves();
 			System.out.print("Please follow directions. Remember, do not include commas or spaces!");
-			input = getInput();
+			getInput();
 		}
-		if(input.equals("c")) {
+		if(input.substring(0,1).equals("c") && input.substring(1,2).equals("c")) {
 			won = true;
 			printGameOverMessage(0,0);
 			DanielLockerGame.main(null);
