@@ -28,9 +28,10 @@ public class CaveExplorer {
 	}
 
 	public static void startExploring() {
+		print("Your objective is to carry out some crimes and a bank heist to obtain enough money to leave.");
 		while(playing) {
 			moveNPCs();
-			print("What would you like to do");
+			print("What would you like to do?");
 			print(inventory.getDescription());
 			print(currentRoom.getDescription());
 			print(currentRoom.getDirections());

@@ -200,9 +200,24 @@ public class CaveRoom {
 		Merchant Merchant = new Merchant(6,2,c);
 		Merchant.setPosition(6, 2);
 		
-	//	setConnectionForAll();
+		setConnectionForAll();
+	//	setConnectionRooms();
 	}
 
+	private static void setConnectionRooms() {
+		CaveRoom[][] c = CaveExplorer.caves;
+		c[0][9].setConnection(SOUTH, c[0][9], new Door());
+		for(int row = 0; row< 5; row++)
+		{
+
+			for(int col = 0; col < c.length-1; col++)
+			{
+				c[row][col].setConnection(SOUTH, c[row+1][col], new Door());
+				c[row][col].setConnection(EAST, c[row][col+1], new Door());
+			}
+		
+		}
+	}
 	private static void setConnectionForAll() {
 		CaveRoom[][] c = CaveExplorer.caves;
 		for(int row = 0; row< c.length-1; row++)
@@ -245,6 +260,7 @@ public class CaveRoom {
 	public void goToRoom(int dir)
 	{
 		if(borderingRooms[dir] != null && doors[dir] != null && doors[dir].isOpen()){
+			System.out.println("went in loop");
 			CaveExplorer.currentRoom.leave(); 
 			CaveExplorer.currentRoom = borderingRooms[dir];
 			row = borderingRooms[dir].row;
