@@ -97,7 +97,7 @@ public class NPC {
 			{
 				this.play();
 				this.active = false;
-				CaveExplorer.remove(this);
+				CaveExplorer.remove((JasonYFrontend) this);
 			}
 			currentRoom.enterNPC(this);
 		}

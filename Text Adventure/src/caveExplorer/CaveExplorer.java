@@ -45,15 +45,15 @@ public class CaveExplorer {
 
 	private static void moveNPCs() {
 		if(police != null) {
-			for(NPC n: police)
+			for(JasonYFrontend n: police)
 			{
-				n.autoMove();
+				if( n != null)n.autoMove();
 			}	
 		}
 		Inventory.updateMap(caves);
 	}
 	
-	public static void remove(NPC npc) {
+	public static void remove(JasonYFrontend npc) {
 		for( int i = 0; i< police.length; i++)
 		{
 			if( npc.equals(police[i]))
