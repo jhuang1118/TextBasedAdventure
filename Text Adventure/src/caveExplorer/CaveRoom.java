@@ -4,10 +4,10 @@ import jasonYJasonZMinigame.JasonYFrontend;
 
 public class CaveRoom {
 	
-	public static int[] getCoordinates() {
+	public static int[] getCoordinates(NPCRoom c) {
 		int[] coords = new int[2];
-		coords[0] = row;
-		coords[1] = col;
+		coords[0] = c.row;
+		coords[1] = c.col;
 		return coords;
 	}
 	public static int getRow(CaveRoom c) {
@@ -26,20 +26,20 @@ public class CaveRoom {
 		c.col = col;
 	}
 	 
-	public static int getRow() {
-		return row;
+	public static int getRow(NPCRoom c) {
+		return c.row;
 	}
 
-	public static void setRow(int row) {
-		CaveRoom.row = row;
+	public static void setRow(NPCRoom c, int row) {
+		c.row = row;
 	}
 
-	public static int getCol() {
-		return col;
+	public static int getCol(NPCRoom c) {
+		return c.col;
 	}
 
-	public static void setCol(int col) {
-		CaveRoom.col = col;
+	public static void setCol(NPCRoom c, int col) {
+		c.col = col;
 	}
 	
 	private String description;
@@ -50,8 +50,8 @@ public class CaveRoom {
 	
 	public CaveRoom[] borderingRooms;
 	public Door[] doors;
-	public static int row;
-	public static int col;
+	public int row;
+	public int col;
 	
 	//constants
 	public static final int NORTH = 0;
@@ -192,7 +192,7 @@ public class CaveRoom {
 		//Set up doors
 		
 		c[5][5] = new VaultRoom(null,5,5);
-		c[9][9] = new DavidCar(null,9,9);
+		c[0][0] = new DavidCar(null,9,9);
 		JasonYFrontend testNPC = new JasonYFrontend(5,5,c);
 		testNPC.setPosition(5,5);
 		CaveExplorer.police = new JasonYFrontend[1];
@@ -203,7 +203,6 @@ public class CaveRoom {
 		setConnectionForAll();
 	//	setConnectionRooms();
 	}
-
 	private static void setConnectionRooms() {
 		CaveRoom[][] c = CaveExplorer.caves;
 		c[0][9].setConnection(SOUTH, c[0][9], new Door());
@@ -218,7 +217,7 @@ public class CaveRoom {
 		
 		}
 	}
-	private static void setConnectionForAll() {
+	public static void setConnectionForAll() {
 		CaveRoom[][] c = CaveExplorer.caves;
 		for(int row = 0; row< c.length-1; row++)
 		{
@@ -263,8 +262,6 @@ public class CaveRoom {
 			System.out.println("went in loop");
 			CaveExplorer.currentRoom.leave(); 
 			CaveExplorer.currentRoom = borderingRooms[dir];
-			row = borderingRooms[dir].row;
-			col = borderingRooms[dir].col;
 			CaveExplorer.currentRoom.enter();
 			Inventory.updateMap(CaveExplorer.caves);
 		}
@@ -320,7 +317,7 @@ public class CaveRoom {
 
 	public void removeRoom(int dir)
 	{
-		borderingRooms[dir] = null;
+		doors[dir] = new Door();
 		setDirections();
 	}
 }

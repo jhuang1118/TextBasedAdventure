@@ -80,7 +80,10 @@ public class NPC {
 	}
 
 	public String getSymbol() {
-		return "P";
+		if(active) {
+			return "P";
+		}
+		return "";
 	}
 
 	public void setPosition(int row, int col) {
@@ -97,7 +100,7 @@ public class NPC {
 			{
 				this.play();
 				this.active = false;
-				CaveExplorer.remove(this);
+				CaveExplorer.remove((JasonYFrontend) this);
 			}
 			currentRoom.enterNPC(this);
 		}

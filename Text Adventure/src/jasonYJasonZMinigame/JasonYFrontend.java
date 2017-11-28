@@ -2,9 +2,11 @@ package jasonYJasonZMinigame;
 
 import caveExplorer.CaveExplorer;
 import caveExplorer.CaveRoom;
+import caveExplorer.DavidCar;
 import caveExplorer.Door;
 import caveExplorer.NPC;
 import caveExplorer.NPCRoom;
+import ethanDavidMinigame.VaultRoom;
 
 import java.util.Scanner;
 
@@ -19,6 +21,11 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 	public NPCRoom[][] map;
 	public Door[] doors;
 	public String[] difficultyWords;
+	public int[] coords;
+	public int[] finalRoom;
+	public int[] startRoom;
+	public NPCRoom[] RoomsReplaced = new NPCRoom[3];
+	
 
 	public JasonYFrontend(int row, int col, CaveRoom[][] c) {
 		super(row, col, c);
@@ -32,7 +39,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		//creates the map
 		//get current position of player
 		caves = CaveExplorer.caves;
-		int[] coords = new int[2];
+		coords = new int[2];
 		if(getCurrentRow() > 0 && getCurrentCol() > 0){
 			coords[0] = getCurrentRow();
 			coords[1] = getCurrentCol();
@@ -41,7 +48,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			coords[0] = 0;
 			coords[1] = 0;
 		}
-		int[] startRoom = new int[2];
+		startRoom = new int[2];
 		if( (coords[0]-size) < 0) {
 			startRoom[0] = 0;
 		}
@@ -54,7 +61,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		else{
 			startRoom[1] = coords[1] - size;
 		}
-		int[] finalRoom = new int[2];
+		finalRoom = new int[2];
 		if(coords[0] +size > caves.length){
 			coords[0] = caves.length;
 		}
@@ -75,6 +82,16 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			for(int col = startRoom[1]; col < finalRoom[1]+1; col++) {
 				map[mapRow][mapCol] = (NPCRoom) caves[row][col];
 				NPCRoom c = map[mapRow][mapCol];
+				if(c.getNpc() != null)
+				{
+					c.getNpc().setActive(false);
+				}
+				if(c instanceof VaultRoom || c instanceof DavidCar)
+				{
+					RoomsReplaced[checknull(RoomsReplaced)] = c;
+					c = new NPCRoom("This has coordinates "+ row +", " + col+".", row, col);
+					c.setActive(false);
+				}
 				c.setMiniDescription("You are at "+mapRow+", "+mapCol);
 				c.miniRow = mapRow;
 				c.miniCol = mapCol;
@@ -98,6 +115,17 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		}
 	}
 
+	private int checknull(NPCRoom[] arr) {
+		for(int i =0; i< arr.length; i++)
+		{
+			if( arr[i] == null)
+			{
+				return i;
+			}
+		}
+		return 0;
+	}
+
 	public void play() {
 		introduction();
 		System.out.println(CaveExplorer.inventory.getMap());
@@ -107,7 +135,6 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			System.out.println("What would you like to do?");
 			String input = in.nextLine();
 			if(input.equals("c")){
-				clearAllContent();
 				copCounter = 0;
 				break;
 			}
@@ -119,7 +146,7 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 						{
 							((JasonZBackend) backend).damagePlayers(hp, p);
 							System.out.println(p.gun.trueDamage());
-							System.out.println("You were hit! You have "+ hp );
+							System.out.println("You were hit! You have "+ hp + " hp.");
 						}
 						else
 						{
@@ -131,6 +158,9 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 					}
 				}
 			}
+			if(hp < 0) {
+				break;
+			}
 			((JasonZBackend) backend).setValidTarget(((JasonZBackend) backend).getCurrentRoom());
 			CaveExplorer.inventory.updateMap(JasonZBackend.cave);
 			System.out.println(CaveExplorer.inventory.getMap());
@@ -139,13 +169,14 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 		}
 		if(hp < 0) {
 			System.out.println("GAME OVER!");
-			clearAllContent();
+			System.exit(0);
 		}
-		if(copCounter == 0) {
+		else {
 			System.out.println("Congrats! You've won the game!");
-			clearAllContent();
-			copCounter = 0;
 		}
+		clearAllContent();
+		replaceRoom();
+		caveExplorer.CaveRoom.setConnectionForAll();
 	}
 
 	public int getHp() {
@@ -276,5 +307,45 @@ public class JasonYFrontend extends NPC implements JasonZSupport{
 			return 3;
 		}
 		return 0;
+	}
+	
+	public void replaceRoom()
+	{
+		int mapRow = 0;
+		int mapCol = 0;
+		for(int row = startRoom[0]; row < finalRoom[0]+1; row++) {
+			for(int col = startRoom[1]; col < finalRoom[1]+1; col++) {
+				map[mapRow][mapCol] = (NPCRoom) caves[row][col];
+				NPCRoom c = map[mapRow][mapCol];
+				if(c.containsNPC())
+				{
+					c.getNpc().setActive(true);
+				}
+				for(int i =0; i< RoomsReplaced.length; i++)
+				{
+					if( RoomsReplaced[i] != null )
+					{
+						NPCRoom ref = RoomsReplaced[i];
+						caves[ref.row][ref.col] = ref;
+						ref.setActive(true);
+					}
+				}
+				if(col == finalRoom[1]) {
+					c.replaceRoom(CaveRoom.EAST);
+				}
+				if(col == startRoom[1]) {
+					c.replaceRoom(CaveRoom.WEST);
+				}
+				if(row == finalRoom[0]) {
+					c.replaceRoom(CaveRoom.SOUTH);
+				}	
+				if(row == startRoom[0]) {
+					c.replaceRoom(CaveRoom.NORTH);
+				}
+				mapCol++;
+			}
+			mapRow ++;
+			mapCol = 0;
+		}
 	}
 }

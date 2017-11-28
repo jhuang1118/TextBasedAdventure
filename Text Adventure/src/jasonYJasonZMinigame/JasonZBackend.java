@@ -3,6 +3,7 @@ package jasonYJasonZMinigame;
 import java.awt.event.KeyEvent;
 
 import caveExplorer.CaveExplorer;
+import caveExplorer.Merchant;
 import caveExplorer.NPCRoom;
 import jasonYJasonZMinigame.JasonZSwat;
 
@@ -65,8 +66,10 @@ public class JasonZBackend implements JasonYSupport {
 			NPCRoom c = cave[row][starterCol];
 			if(c.getNpc() != null)
 			{
+				if(!(c.getNpc() instanceof Merchant)) {
 				validTarget[counter] = (JasonZSwat) c.getNpc();
 				counter++;
+				}
 			}
 		}
 		for(int col = startC; col< finalC; col ++)

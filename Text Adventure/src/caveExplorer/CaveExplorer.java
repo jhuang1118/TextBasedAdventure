@@ -2,6 +2,8 @@ package caveExplorer;
 
 import java.util.Scanner;
 
+import jasonYJasonZMinigame.JasonYFrontend;
+
 public class CaveExplorer {
 
 	public static CaveRoom[][] caves; 
@@ -9,7 +11,7 @@ public class CaveExplorer {
 	public static CaveRoom currentRoom;//changes as the user moves
 	public static Inventory inventory;
 	public static boolean playing = true;
-	public static NPC[] police;
+	public static JasonYFrontend[] police;
 	public static NPC[] npcs;
 	
 	
@@ -28,7 +30,8 @@ public class CaveExplorer {
 	}
 
 	public static void startExploring() {
-		print("Your objective is to carry out some crimes and a bank heist to obtain enough money to leave.");
+		System.out.println("We are dropping you off here. You are on your own now. Your mission is to rob the bank.\nHowever you do it "
+				+ "is up to you. Once you get the money come back here!\n C: Car\n P: Police \n M: Merchant \n V: Vault");
 		while(playing) {
 			moveNPCs();
 			print("What would you like to do?");
@@ -42,15 +45,15 @@ public class CaveExplorer {
 
 	private static void moveNPCs() {
 		if(police != null) {
-			for(NPC n: police)
+			for(JasonYFrontend n: police)
 			{
-				n.autoMove();
+				if( n != null)n.autoMove();
 			}	
 		}
 		Inventory.updateMap(caves);
 	}
 	
-	public static void remove(NPC npc) {
+	public static void remove(JasonYFrontend npc) {
 		for( int i = 0; i< police.length; i++)
 		{
 			if( npc.equals(police[i]))

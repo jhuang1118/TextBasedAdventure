@@ -107,6 +107,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 		currMoney += moneyCount;
 		createMoney(1, false);
 		createLasers(1, false);
+		room[row][col].setUserIn(false);
 		frontend.displayMoney();
 	}
 

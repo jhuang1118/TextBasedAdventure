@@ -15,12 +15,12 @@ public class DavidCar extends NPCRoom {
 	}
 	
 	public String getDescription() {
-		return "Press 'e' to leave!";
+		return "Press 'y' to leave!";
 	} 
 	
 	public boolean canEnter() {
 		if(CaveExplorer.inventory.getCash() < 65000) {
-			System.out.println("You can't leave without getting the money from the bank!");
+			System.err.println("You can't leave without getting the money from the bank!");
 			return false;
 		}
 			return true;
@@ -37,7 +37,7 @@ public class DavidCar extends NPCRoom {
 			printValidMoves();
 			input = CaveExplorer.in.nextLine();
 		}
-		if(input.equals("e")) {
+		if(input.equals("y")) {
 			performAction(4);
 		}else {
 			int direction = "wdsa".indexOf(input);
@@ -48,17 +48,18 @@ public class DavidCar extends NPCRoom {
 	
 	public void printValidMoves() {
 		System.out.println("You can only enter 'w', 'a', 's', or 'd' to move " + 
-				"or you can press 'e' to interact.");
+				"or you can press 'y' to interact.");
 			
 	}
 	
 	public String validMoves() {
-		return "wdsae";
+		return "wdsay";
 	}
 	
 	public void performAction(int direction) {
 		if(direction == 4 && canEnter()) {
-			System.out.println("You successfully robbed a bank.");
+			System.out.println("You successfully robbed a bank.\n(We do not endorse this kind of behaviour. Please refrain "
+					+ "from robbing any banks in the future.)");
 			CaveExplorer.playing = false;
 		}else {
 			super.performAction(direction);

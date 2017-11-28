@@ -46,19 +46,27 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 
 	public void respondToInput(String input) {
+		if(input.equals("m")) {
+			displayCheating();
+		}
 		while(!isValid(input)) {
 			System.out.println("You can't do that. You must type 'w,a,s, or d.'");
 			input = in.nextLine();
 		}
-		if(input.equals("e")) {
-			displayCheating();
+		if(isValid(input)) {
+			int direction = validMoves().indexOf(input);
+			goToRoom(direction);
+			rooms[currentRow][currentCol].setUserIn(false);
 		}
-		int direction = validMoves().indexOf(input);
-		goToRoom(direction);
-		rooms[currentRow][currentCol].setUserIn(false);
 	}
 	
 	private void goToRoom(int dir) {
+				if((dir == 0 && currentRow == 0) || (dir == 1 && currentCol == 14) || 
+					(dir == 2 && currentRow == 4) || (dir == 3 && currentCol == 0)) {
+					System.out.println("You hit your head against the wall. It hurts.");
+					hHit++;
+					deathFromWall();
+				} 
 				if(dir == 0 && currentRow > 0) {
 					currentRow--;
 					rooms[currentRow][currentCol].setUserIn(true);
@@ -87,12 +95,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 					touchedLaser();
 					collectPowerup();
 				}
-				if((dir == 0 && currentRow == 0) || (dir == 1 && currentCol == 14) || 
-						(dir == 2 && currentRow == 4) || (dir == 3 && currentCol == 0)) {
-					System.out.println("You hit your head against the wall. It hurts.");
-					hHit++;
-					deathFromWall();
-				} 
 	}
 	
 	private void collectPowerup() {
@@ -102,7 +104,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 
 	public String validMoves() {
-		return "wdsae";
+		return "wdsam";
 	}
 	
 	public void deathFromWall() {
@@ -199,7 +201,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 
 	public void displayPowerup() {
 		System.out.println(" You have " + ethanRoom.getInvincibleCounter() + " chances to block the lasers.");
-		
 	}
 
 }
