@@ -31,7 +31,7 @@ public class CaveExplorer {
 
 	public static void startExploring() {
 		System.out.println("We are dropping you off here. You are on your own now. Your mission is to rob the bank.\nHowever you do it "
-				+ "is up to you. Once you get the money come back here!");
+				+ "is up to you. Once you get the money come back here!\n C: Car\n P: Police \n M: Merchant \n V: Vault");
 		while(playing) {
 			moveNPCs();
 			print("What would you like to do");
