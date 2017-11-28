@@ -30,9 +30,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 				DavidEthanRoom[][] Room = frontend.getRooms();
 				for(int i = 0; i < 5; i++) {
 					int[] randArr = randNums(Room, ROOM_LENGTH);
-					if(randArr[0]+1 <= ROOM_LENGTH-1 && randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
-						Room[randArr[0]][randArr[1]+1].setContainsPowerup(true);
-					}
+					Room[randArr[0]][randArr[1]].setContainsPowerup(true);
 				}
 			}
 			
@@ -80,12 +78,12 @@ public class EthanRoomBackEnd implements DavidSupport{
 	
 	public int[] randNums(DavidEthanRoom[][] room, int length) {
 		int[] myArr = new int[2];
-			int randNum1 = (int)(Math.random() * length);
-			int randNum2 = (int)(Math.random() * room[length-1].length);
-			while(checkSpecialRoom(room, randNum1, randNum2)) {
-				randNum1 = (int)(Math.random() * length);
-				randNum2 = (int)(Math.random() * room[length-1].length);
-			}
+		int randNum1 = (int)(Math.random() * length);
+		int randNum2 = (int)(Math.random() * room[length-1].length);
+		while(checkSpecialRoom(room, randNum1, randNum2)) {
+			randNum1 = (int)(Math.random() * length);
+			randNum2 = (int)(Math.random() * room[length-1].length);
+		}
 		myArr[0] = randNum1;
 		myArr[1] = randNum2;
 		return myArr;
@@ -99,7 +97,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 	}
 
 	public boolean checkSpecialRoom(DavidEthanRoom[][] room, int num1, int num2) {
-		System.out.println("X");
 		return room[num1][num2].isContainsTreasure() || room[num1][num2].isContainsLaser() || room[num1][num2].isContainsPowerup() || room[num1][num2].isUserIn();
 	}
 	
