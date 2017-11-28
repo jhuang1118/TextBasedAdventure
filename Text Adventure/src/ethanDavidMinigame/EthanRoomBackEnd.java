@@ -47,6 +47,7 @@ public class EthanRoomBackEnd implements DavidSupport{
 			int[] randArr = randNums(Room, 5);
 			if(randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
 				Room[randArr[0]][randArr[1]+1].setContainsLaser(true);
+				System.out.println("laser spawned at coord " + randArr[0] + ", "+ randArr[1]);
 			}
 		}
 	}
@@ -120,7 +121,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 	
 	public boolean stillPlaying(int money) {
 		if(lost == true) {
-			System.exit(0);
 			return false;
 		}
 		if(money >= MONEY_CUT_OFF) {

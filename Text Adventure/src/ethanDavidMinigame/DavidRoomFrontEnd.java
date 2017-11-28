@@ -43,6 +43,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 			System.out.println("You collected enough money. Now get to the car!");
 		}else {
 			System.out.println("You're dead.");
+			System.exit(0);
 		}
 	}
 
@@ -140,7 +141,6 @@ public class DavidRoomFrontEnd implements EthanSupport {
 			}
 			else {
 			backend.setLost(true);
-			System.out.println("went thru loop");
 			backend.checkLose();
 			}
 		}
