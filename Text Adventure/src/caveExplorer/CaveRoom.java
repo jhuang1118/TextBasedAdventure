@@ -302,7 +302,7 @@ public class CaveRoom {
 
 	public void removeRoom(int dir)
 	{
-		borderingRooms[dir] = null;
+		doors[dir] = new Door();
 		setDirections();
 	}
 }
