@@ -29,6 +29,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	private void play() {
+		System.out.println("Your objective is to collect at least $65,000 all the while avoiding the lasers 'L'. If need be, collect the powerups 'p' to prevent death from lasers!");
 		while(backend.stillPlaying(ethanRoom.getCurrMoney())) {
 			displayBoard();
 			respondToInput(in.nextLine());
@@ -61,7 +62,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	private void goToRoom(int dir) {
-				if((dir == 0 && currentRow == 0) || (dir == 1 && currentCol == 14) || 
+					if((dir == 0 && currentRow == 0) || (dir == 1 && currentCol == 14) || 
 					(dir == 2 && currentRow == 4) || (dir == 3 && currentCol == 0)) {
 					System.out.println("You hit your head against the wall. It hurts.");
 					hHit++;
