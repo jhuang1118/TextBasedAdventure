@@ -41,15 +41,15 @@ public class DanielLockerGame {
         int rowSelected = generateRandNum(0,ROWTOT-1);
         int colSelected = generateRandNum(0,COLTOT-1);
                 
-        System.out.println("In this part of the game you will walk around the map and go to lockers. You will have only 3 keys and each key can open any locker only once. "
+        System.out.println("In this part of the game you choose coordinates of a certain locker. You will have only 3 keys and each key can open any locker only once. "
                 + "These lockers contain either the person you are looking for, a bomb, or"
-                + " nothing. When you walk up to a locker, press 'x'");
+                + " nothing. Your objective is to avoid the bomb, and return with the person stuck in the locker. CHEAT CODE = getmeout");
         int keys = ROWTOT;
         while(keys > 0) {
             displayBoard();
             displayKeysLeft(keys);
             String input = getValidUserInput();
-            //answer(input);
+            answer(input);
             keys--;
         }
         printGG();
@@ -83,52 +83,48 @@ public class DanielLockerGame {
     }
 
     private String getValidUserInput() {
-        Scanner reader = new Scanner(System.in);  // Reading from System.in
+    	
+        Scanner reader = new Scanner(System.in);  
         System.out.println("Enter a cell with the top left being 0,0 : row,col. ");
-        String input = reader.next(); // Scans the next token of the input as an int.
-        System.out.println("number entered: " + input);
-        //once finished
-        reader.close(); 
-        return input;
-    }
-
-    private boolean validInput(String input) {
-        String[] splitInput = input.split(",");
-        if(splitInput.length == 2) {
-            return Integer.valueOf(splitInput[0]) > 0 && Integer.valueOf(splitInput[0]) < 6 && Integer.valueOf(splitInput[1]) > 0 && Integer.valueOf(splitInput[0]) < 6; 
-        }
-        return false;
-    }
-
-    public boolean isOnLocker(int row, int col) {
-        int[][] lockerpsns = {{1,1},{1,3},{1,5},{3,1},{3,3},{3,5}};
-        int[][] personpsn = {{row,col}};
-        int count = 0;
-        for(int i = 0; i < lockerpsns.length; i++) {
-            if(lockerpsns[i].equals(personpsn[0])) {
-                count++;
-            }
-        }
-        if(count > 0) {
-            return true;
-        }
-        return false;
-    
-    }
-    private void answer(String input) {
+        String input = reader.next(); 
         String[] splitInput = input.split(",");
         Integer coor1 = Integer.valueOf(splitInput[0]);
         Integer coor2 = Integer.valueOf(splitInput[1]);
-        if(isOnLocker(coor1,coor2)) {
-            theLockers[coor1][coor2].setOpen(true);
-            johnsonDanielMinigame.JohnsonUnlockGame.main(null);
-
+        
+        while(!(coor1<3 && coor1>-1 && coor2<2 && coor2>-1)) {
+        	
+        	System.out.println("Please enter a valid input");
+        	System.out.println("Enter a cell with the top left being 0,0 : row,col. ");
+            input = reader.next(); 
+        	
         }
+        
+        System.out.println("number entered: " + input);
+        reader.close(); 
+        return input;
+        
     }
 
-    private boolean isPossibleMove(int[] is) {
-        // TODO Auto-generated method stub
-        return false;
+    private void answer(String input) {
+    	
+    	if(input.equals("getmeout")){
+    		System.out.println("Ok you want the easy way out. YOU WIN!!");
+    		    		
+    		
+    	}
+    	
+    	else {
+    		String[] splitInput = input.split(",");
+            Integer coor1 = Integer.valueOf(splitInput[0]);
+            Integer coor2 = Integer.valueOf(splitInput[1]);
+            theLockers[coor1][coor2].setOpen(true);
+            johnsonDanielMinigame.JohnsonUnlockGame.main(null);
+            System.out.println("This locker contained " + "a bomb: " + theLockers[coor1][coor2].getIsBomb() +", a person: " + theLockers[coor1][coor2].getIsPerson() ); 
+    	}
+    	
+        
+
+        
     }
 
     private void displayKeysLeft(int keys) {

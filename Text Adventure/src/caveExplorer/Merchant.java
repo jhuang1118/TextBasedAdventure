@@ -16,7 +16,7 @@ public class Merchant extends NPC {
 	public Merchant(int r, int c, CaveRoom[][] cave) {
 		super(r, c, cave);
 		this.floor = CaveExplorer.caves;
-		this.activeDescription = "I am the local merchant. We have not met yet but I give away free stuff to whoever can answer my question. Press enter.";
+		this.activeDescription = "I am the whacky local merchant. We have not met yet but I give away free stuff to whoever can answer my question. Press enter.";
 		this.inactiveDescription = "The merchant does not want to talk anymore.";
 		this.currentCol = c;
 		this.currentRow = r;
@@ -36,7 +36,7 @@ public class Merchant extends NPC {
 	}
 	
 	public void interact() {
-		CaveExplorer.print("I will give you 3 keys if you can tell me how many legs a spider has.");
+		CaveExplorer.print("I will give you 3 keys for your locker quests if you can tell me how many legs a spider has.");
 		String s = CaveExplorer.in.nextLine();
 		while(!(s.equals("8"))){
 			CaveExplorer.print("Try again!");
