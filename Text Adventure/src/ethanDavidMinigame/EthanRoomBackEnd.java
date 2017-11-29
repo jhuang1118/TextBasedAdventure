@@ -37,20 +37,24 @@ public class EthanRoomBackEnd implements DavidSupport{
 	
 	public void createLasers(int repeat, boolean defaultLen) {
 		int ROOM_LENGTH = repeat;
+		DavidEthanRoom[][] Room = frontend.getRooms();
 		if(defaultLen) {
 			ROOM_LENGTH = frontend.getRooms().length;
-		}
-		DavidEthanRoom[][] Room = frontend.getRooms();
-		for(int i = 0; i < ROOM_LENGTH; i++) {
-			int[] randArr = randNums(Room, 5);
-			int x = randArr[1]+1;
-			if(randArr[1]+1 <= Room[ROOM_LENGTH-1].length-1) {
-				while(checkSpecialRoom(Room, randArr[0], x)) {
-					randArr = randNums(Room, 5);
+			for(int i = 0; i < ROOM_LENGTH; i++) {
+				int[] randArr = randNums(Room, 5);
+				int x = randArr[1]+1;
+				if(x >= Room[ROOM_LENGTH-1].length) {
+					Room[randArr[0]][randArr[1]].setContainsLaser(true);
 				}
-				Room[randArr[0]][randArr[1]+1].setContainsLaser(true);
+				else {
+					Room[randArr[0]][randArr[1]+1].setContainsLaser(true);
+				}
 			}
 		}
+		for(int i = 0; i < ROOM_LENGTH; i++) {
+			int[] randArr = randNums(Room, 5);
+			Room[randArr[0]][randArr[1]].setContainsLaser(true);
+			}
 	}
 	public void setCheating(boolean cheating) {
 		this.cheating = cheating;
@@ -109,7 +113,6 @@ public class EthanRoomBackEnd implements DavidSupport{
 		currMoney += moneyCount;
 		createMoney(1, false);
 		createLasers(1, false);
-		room[row][col].setUserIn(false);
 		frontend.displayMoney();
 	}
 

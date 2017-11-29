@@ -63,6 +63,7 @@ public class DavidRoomFrontEnd implements EthanSupport {
 	}
 	
 	private void goToRoom(int dir) {
+		rooms[currentRow][currentCol].setUserIn(false);
 					if((dir == 0 && currentRow == 0) || (dir == 1 && currentCol == 14) || 
 					(dir == 2 && currentRow == 4) || (dir == 3 && currentCol == 0)) {
 					System.out.println("You hit your head against the wall. It hurts.");
