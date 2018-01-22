@@ -36,6 +36,8 @@ public class Agent implements Placeable {
 	}
 	
 	public void move() {
+		int storedRow = this.row;
+		int storedCol = this.col;
 		// up and down agent
 		if (this.type == 0) {
 			// Check for bounds, move the other way if on edge
@@ -56,10 +58,17 @@ public class Agent implements Placeable {
 			// Move
 			this.setCol(this.getCol() + this.direction);
 		}
-		this.room.removeObject();
 		Room newRoom = this.room.getBoard().getBoard()[row][col];
-		newRoom.setObject(this);
-		this.setRoom(newRoom);
+		if (newRoom.hasTreasure() || newRoom.hasAgent()) {
+			this.direction *= -1;
+			this.setRow(storedRow);
+			this.setCol(storedCol);
+		} else {
+			this.room.removeObject();
+			newRoom.setObject(this);
+			this.setRoom(newRoom);
+		}
+		
 	}
 	
 	public int getType() {

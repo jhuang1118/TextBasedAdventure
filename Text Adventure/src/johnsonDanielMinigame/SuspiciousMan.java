@@ -1,10 +1,16 @@
 package johnsonDanielMinigame;
 
 import caveExplorer.CaveExplorer;
+import caveExplorer.CaveRoom;
 import caveExplorer.NPC;
 import johnsonDanielMinigame.MiniGameStarter;
 
 public class SuspiciousMan extends NPC{
+
+	public SuspiciousMan(int row, int col, CaveRoom[][] cave) {
+		super(row, col, cave);
+		
+	}
 
 	@Override
 	public void interact() {
@@ -18,8 +24,7 @@ public class SuspiciousMan extends NPC{
 			s = CaveExplorer.in.nextLine();
 			if (s.equals("yes")) {
 				if (DanielStealth.start()) {
-					CaveExplorer.print("'You've earned it, here's $100'\n" + 
-										"Come back to me and show me this and I'll give you another job.'");
+					CaveExplorer.print("'You've earned it, here's $100'"); 
 					CaveExplorer.inventory.setCash(CaveExplorer.inventory.getCash() + 100);
 					break;
 				} else {

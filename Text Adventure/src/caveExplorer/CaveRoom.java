@@ -1,6 +1,7 @@
 package caveExplorer;
 
 import jasonYJasonZMinigame.JasonYFrontend;
+import johnsonDanielMinigame.SuspiciousMan;
 
 public class CaveRoom {
 	
@@ -194,9 +195,13 @@ public class CaveRoom {
 		c[5][5] = new VaultRoom(null,5,5);
 		c[9][9] = new DavidCar(null,9,9);
 		JasonYFrontend testNPC = new JasonYFrontend(5,5,c);
+		
 		testNPC.setPosition(5,5);
 		CaveExplorer.police = new JasonYFrontend[1];
 		CaveExplorer.police[0] = testNPC;
+		CaveExplorer.npcs = new NPC[1];
+		
+		CaveExplorer.npcs[0] = new SuspiciousMan(3, 1, c);
 		setConnectionForAll();
 	}
 

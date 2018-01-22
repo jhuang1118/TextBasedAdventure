@@ -24,7 +24,7 @@ public class NPC {
 		this.currentCol = col;
 		this.activeDescription = "There is a person standing in the room, waiting to talk to you. Press 'e' to talk";
 		this.inactiveDescription = ""; 
-		currentRoom = null; 
+		currentRoom = (NPCRoom) cave[row][col]; 
 		active = true;
 	}
 	
@@ -127,7 +127,6 @@ public class NPC {
 		newPosition[0] = currentRow + possibleMoves[index][0];
 		newPosition[1] = currentCol + possibleMoves[index][1];
 		int count = 0;
-				
 		while(count < 4 && (currentRoom.getDoor(index) == null || !(CaveExplorer.caves[newPosition[0]][newPosition[1]] instanceof NPCRoom)))
 		{
 			index = (int) (Math.random() * possibleMoves.length);

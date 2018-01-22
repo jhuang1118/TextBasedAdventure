@@ -35,8 +35,8 @@ public class DanielStealthBackEnd {
 	}
 	
 	public boolean move(String dir) {
-		player.move(dir);
 		moveAgents();
+		player.move(dir);
 		if (playerOnTreasure()) {
 			this.setState(WIN);
 		}

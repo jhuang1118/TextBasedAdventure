@@ -46,6 +46,12 @@ public class CaveExplorer {
 				n.autoMove();
 			}	
 		}
+		if (npcs != null) {
+			for(NPC n: npcs)
+			{
+				n.autoMove();
+			}	
+		}
 		Inventory.updateMap(caves);
 	}
 	
